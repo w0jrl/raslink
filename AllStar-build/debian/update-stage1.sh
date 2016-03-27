@@ -10,7 +10,6 @@ sleep 1
 echo "Updating source files for All Star..."
 cd /usr/src/utils
 git pull
-git checkout testing
 sleep 1
 echo "Done"
 # update the system
