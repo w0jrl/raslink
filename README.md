@@ -4,9 +4,13 @@ These files are used to debug new features, as well as test new versions of the 
 #So, you think you're brave?
 Ok... I warned you!
 To switch to the testing version, do the following:
+
 1. cd /usr/src/utils
+
 2. git checkout testing
+
 3. system-update
+
 After the update finishes, you'll be on the bleeding-edge!
 Please report bugs over at:
 
