@@ -1,0 +1,13 @@
+[Unit]
+Description=Asterisk PBX
+After=remote-fs.target systemd-journald-dev-log.socket network-online.target nss-lookup.target mysql.service postgresql.service dahdi.service
+
+[Service]
+Type=oneshot
+RemainAfterExit=yes
+ExecStart=/usr/sbin/asterisk
+ExecStop=/usr/sbin/asterisk -rx 'stop now
+ExecRestart=/usr/sbin/asterisk -rx 'restart now'
+ExecReload=/usr/sbin/asterisk -rx 'module reload'
+[Install]
+WantedBy=multi-user.target

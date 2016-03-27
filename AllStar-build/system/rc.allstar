@@ -1,0 +1,5 @@
+#!/bin/sh
+# start asterisk and dahdi
+(systemctl start dahdi;systemctl start asterisk;sleep 5;/usr/sbin/asterisk -rx "module load chan_echolink") &
+# Start update nodelist
+/usr/local/bin/rc.updatenodelist &
