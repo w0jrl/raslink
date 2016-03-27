@@ -7,12 +7,9 @@ echo "Starting system update.
 This will take a while."
 sleep 1
 # get new sources
-echo "Downloading and unpacking new source files for All Star..."
-cd /usr/src
-mv utils utils_orig
-wget -qq http://jlappliedtechnologies.com/wordpress/wp-content/uploads/allstar/sources-jessie.tar.gz -O- | tar xzv
-sleep 1
-rm -rf utils_orig
+echo "Updating source files for All Star..."
+cd /usr/src/utils
+git pull
 sleep 1
 echo "Done"
 # update the system

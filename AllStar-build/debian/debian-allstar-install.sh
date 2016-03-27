@@ -6,7 +6,7 @@ sleep 5
 echo "downloading and unpacking source files."
 echo "This might take a while."
 cd /usr/src
-wget -qq http://jlappliedtechnologies.com/wordpress/wp-content/uploads/allstar/sources-jessie.tar.gz -O- | tar xzv
+(wget https://github.com/w0jrl/AllStar-raspbian/archive/master.zip;unzip AllStar-raspbian-master.zip;mv AllStar-raspbian-master utils;rm -rf AllStar-raspbian-master.zip)
 echo "Done"
 sleep 1
 echo "Updating the system."
