@@ -1,10 +1,3 @@
-# AllStar-raspbian
-Update files for AllStar on the Raspberry Pi and Debian
-# Running the update
-To update your Raspberry Pi 2 with the latest software, including security fixes, type:
-
-system-update
-# Downloading the image
-You can download the AllStar-raspbian image at:
-
-http://jlappliedtechnologies.com 
+# AllStar-raspbian-testing
+This source code is bleeding-edge, and should not be used by persons who are not used to debugging their own systems!
+These files are used to debug new features, as well as test new versions of the Raspberry Pi.
