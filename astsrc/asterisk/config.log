@@ -543,7 +543,7 @@ configure: failed program was:
 configure:7561: result: no
 configure:7437: checking whether pthreads work without any flags
 configure:7535: gcc -o conftest -g -O2    conftest.c   >&5
-/tmp/ccmE8Eho.o: In function `main':
+/tmp/cc3oDlqx.o: In function `main':
 /usr/src/utils/astsrc/asterisk/conftest.c:26: undefined reference to `pthread_join'
 /usr/src/utils/astsrc/asterisk/conftest.c:27: undefined reference to `__pthread_register_cancel'
 /usr/src/utils/astsrc/asterisk/conftest.c:28: undefined reference to `pthread_create'
@@ -1560,7 +1560,7 @@ configure:14307: $? = 0
 configure:14325: result: yes
 configure:14332: checking for _doprnt
 configure:14388: gcc -o conftest -g -O2   conftest.c  >&5
-/tmp/ccUrGYz8.o: In function `main':
+/tmp/ccYmjiWX.o: In function `main':
 /usr/src/utils/astsrc/asterisk/conftest.c:117: undefined reference to `_doprnt'
 collect2: error: ld returned 1 exit status
 configure:14394: $? = 1
@@ -1714,7 +1714,7 @@ configure:14533: gcc -o conftest -g -O2   conftest.c  >&5
 conftest.c:111:6: warning: conflicting types for built-in function 'floor'
  char floor ();
       ^
-/tmp/cc27P0xW.o: In function `main':
+/tmp/ccCX9YlE.o: In function `main':
 /usr/src/utils/astsrc/asterisk/conftest.c:122: undefined reference to `floor'
 collect2: error: ld returned 1 exit status
 configure:14539: $? = 1
@@ -1918,7 +1918,7 @@ configure:14533: gcc -o conftest -g -O2   conftest.c  >&5
 conftest.c:125:6: warning: conflicting types for built-in function 'pow'
  char pow ();
       ^
-/tmp/ccBDTwld.o: In function `main':
+/tmp/ccM9RPYa.o: In function `main':
 /usr/src/utils/astsrc/asterisk/conftest.c:136: undefined reference to `pow'
 collect2: error: ld returned 1 exit status
 configure:14539: $? = 1
@@ -2080,7 +2080,7 @@ configure:14533: gcc -o conftest -g -O2   conftest.c  >&5
 conftest.c:128:6: warning: conflicting types for built-in function 'rint'
  char rint ();
       ^
-/tmp/ccoC3xhb.o: In function `main':
+/tmp/ccglXGVV.o: In function `main':
 /usr/src/utils/astsrc/asterisk/conftest.c:139: undefined reference to `rint'
 collect2: error: ld returned 1 exit status
 configure:14539: $? = 1
@@ -2245,7 +2245,7 @@ configure:14533: gcc -o conftest -g -O2   conftest.c  >&5
 conftest.c:131:6: warning: conflicting types for built-in function 'sqrt'
  char sqrt ();
       ^
-/tmp/ccOj6kdY.o: In function `main':
+/tmp/ccExy3IH.o: In function `main':
 /usr/src/utils/astsrc/asterisk/conftest.c:142: undefined reference to `sqrt'
 collect2: error: ld returned 1 exit status
 configure:14539: $? = 1
@@ -2434,7 +2434,7 @@ configure:14539: $? = 0
 configure:14557: result: yes
 configure:14477: checking for strlcat
 configure:14533: gcc -o conftest -g -O2   conftest.c  >&5
-/tmp/cc0ntc1v.o: In function `main':
+/tmp/ccLDjYdp.o: In function `main':
 /usr/src/utils/astsrc/asterisk/conftest.c:148: undefined reference to `strlcat'
 collect2: error: ld returned 1 exit status
 configure:14539: $? = 1
@@ -2593,7 +2593,7 @@ configure: failed program was:
 configure:14557: result: no
 configure:14477: checking for strlcpy
 configure:14533: gcc -o conftest -g -O2   conftest.c  >&5
-/tmp/ccq2clKA.o: In function `main':
+/tmp/cci3gSkl.o: In function `main':
 /usr/src/utils/astsrc/asterisk/conftest.c:148: undefined reference to `strlcpy'
 collect2: error: ld returned 1 exit status
 configure:14539: $? = 1
@@ -3201,7 +3201,7 @@ configure:15380: checking for -fno-strict-overflow
 configure:15383: result: yes
 configure:15393: checking for library containing res_9_ninit
 configure:15434: gcc -o conftest -g -O2   conftest.c  >&5
-/tmp/ccCKZ1NO.o: In function `main':
+/tmp/ccegXftz.o: In function `main':
 /usr/src/utils/astsrc/asterisk/conftest.c:146: undefined reference to `res_9_ninit'
 collect2: error: ld returned 1 exit status
 configure:15440: $? = 1
@@ -3356,7 +3356,7 @@ configure: failed program was:
 |   return 0;
 | }
 configure:15434: gcc -o conftest -g -O2   conftest.c -lresolv   >&5
-/tmp/cckYHFcr.o: In function `main':
+/tmp/ccBYG6Xo.o: In function `main':
 /usr/src/utils/astsrc/asterisk/conftest.c:146: undefined reference to `res_9_ninit'
 collect2: error: ld returned 1 exit status
 configure:15440: $? = 1
@@ -3517,7 +3517,7 @@ configure:15515: $? = 0
 configure:15521: result: yes
 configure:15528: checking for library containing res_9_ndestroy
 configure:15569: gcc -o conftest -g -O2   conftest.c  >&5
-/tmp/ccWFBAnw.o: In function `main':
+/tmp/ccOnMlxj.o: In function `main':
 /usr/src/utils/astsrc/asterisk/conftest.c:147: undefined reference to `res_9_ndestroy'
 collect2: error: ld returned 1 exit status
 configure:15575: $? = 1
@@ -3673,7 +3673,7 @@ configure: failed program was:
 |   return 0;
 | }
 configure:15569: gcc -o conftest -g -O2   conftest.c -lresolv   >&5
-/tmp/ccezgLit.o: In function `main':
+/tmp/ccC18lpe.o: In function `main':
 /usr/src/utils/astsrc/asterisk/conftest.c:147: undefined reference to `res_9_ndestroy'
 collect2: error: ld returned 1 exit status
 configure:15575: $? = 1
@@ -3831,7 +3831,7 @@ configure: failed program was:
 configure:15603: result: no
 configure:15611: checking for res_ndestroy
 configure:15644: gcc -o conftest -g -O2   conftest.c  >&5
-/tmp/ccJoEk0v.o: In function `main':
+/tmp/ccn9SdXf.o: In function `main':
 /usr/src/utils/astsrc/asterisk/conftest.c:150: undefined reference to `res_ndestroy'
 collect2: error: ld returned 1 exit status
 configure:15650: $? = 1
@@ -9944,6 +9944,7 @@ config.status:854: creating build_tools/menuselect-deps
 config.status:854: creating makeopts
 config.status:854: creating channels/h323/Makefile
 config.status:854: creating include/asterisk/autoconfig.h
+config.status:1241: include/asterisk/autoconfig.h is unchanged
 configure:33016: Package configured for: 
 configure:33018: OS type  : linux-gnu
 configure:33020: Host CPU : armv7l

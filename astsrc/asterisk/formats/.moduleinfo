@@ -1,7 +1,7 @@
 <category name="MENUSELECT_FORMATS" displayname="Format Interpreters" remove_on_change="formats/modules.link">
 <member name="format_h264" displayname="Raw H.264 data" remove_on_change="formats/format_h264.o formats/format_h264.so">
 </member>
-<member name="format_sln" displayname="Raw Signed Linear Audio support (SLN)" remove_on_change="formats/format_sln.o formats/format_sln.so">
+<member name="format_g726" displayname="Raw G.726 (16/24/32/40kbps) data" remove_on_change="formats/format_g726.o formats/format_g726.so">
 </member>
 <member name="format_g723" displayname="G.723.1 Simple Timestamp File Format" remove_on_change="formats/format_g723.o formats/format_g723.so">
 </member>
@@ -11,7 +11,7 @@
 </member>
 <member name="format_pcm" displayname="Raw/Sun uLaw/ALaw 8KHz (PCM,PCMA,AU), G.722 16Khz" remove_on_change="formats/format_pcm.o formats/format_pcm.so">
 </member>
-<member name="format_g726" displayname="Raw G.726 (16/24/32/40kbps) data" remove_on_change="formats/format_g726.o formats/format_g726.so">
+<member name="format_sln" displayname="Raw Signed Linear Audio support (SLN)" remove_on_change="formats/format_sln.o formats/format_sln.so">
 </member>
 <member name="format_h263" displayname="Raw H.263 data" remove_on_change="formats/format_h263.o formats/format_h263.so">
 </member>

@@ -9,6 +9,9 @@
 </member>
 <member name="res_speech" displayname="Generic Speech Recognition API" remove_on_change="res/res_speech.o res/res_speech.so">
 </member>
+<member name="res_snmp" displayname="SNMP [Sub]Agent for Asterisk" remove_on_change="res/res_snmp.o res/res_snmp.so">
+	<depend>netsnmp</depend>
+</member>
 <member name="res_clioriginate" displayname="Call origination from the CLI" remove_on_change="res/res_clioriginate.o res/res_clioriginate.so">
 </member>
 <member name="res_features" displayname="Call Features Resource" remove_on_change="res/res_features.o res/res_features.so">
@@ -32,9 +35,6 @@
 <member name="res_indications" displayname="Indications Resource" remove_on_change="res/res_indications.o res/res_indications.so">
 </member>
 <member name="res_convert" displayname="File format conversion CLI command" remove_on_change="res/res_convert.o res/res_convert.so">
-</member>
-<member name="res_snmp" displayname="SNMP [Sub]Agent for Asterisk" remove_on_change="res/res_snmp.o res/res_snmp.so">
-	<depend>netsnmp</depend>
 </member>
 <member name="res_musiconhold" displayname="Music On Hold Resource" remove_on_change="res/res_musiconhold.o res/res_musiconhold.so">
 	<conflict>win32</conflict>
