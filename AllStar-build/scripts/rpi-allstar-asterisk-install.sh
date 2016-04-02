@@ -11,8 +11,6 @@
 # change governor to performance
 echo performance > /sys/devices/system/cpu/cpu0/cpufreq/scaling-governor
 
-chmod +x /usr/src/utils/AllStar-build/scripts/required-tools.sh
-/usr/src/utils/AllStar-build/scripts/required-tools.sh
 chmod +x /usr/src/utils/AllStar-build/scripts/rebuild.sh
 /usr/src/utils/AllStar-build/scripts/rebuild.sh
 
