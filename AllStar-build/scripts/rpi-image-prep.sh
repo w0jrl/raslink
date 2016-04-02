@@ -19,6 +19,9 @@ echo "tmpfs /var/log tmpfs defaults,noatime,nosuid,mode=0755,size=100m 0 0" >> /
 apt-get install linux-image-rpi2-rpfv linux-headers-rpi2-rpfv		
 # Replace /boot/config.txt
 cp /usr/src/utils/AllStar-build/system/boot-config.txt /boot/config.txt
+# install required packages
+chmod +x /usr/src/utils/AllStar-build/scripts/required-tools.sh
+/usr/src/utils/AllStar-build/scripts/required-tools.sh
 # remove unneededpackages and sources
 /usr/src/utils/AllStar-build/scripts/chk-packages.sh
 sync
