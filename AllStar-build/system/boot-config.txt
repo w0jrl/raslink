@@ -40,7 +40,7 @@
 #sdtv_mode=2
 
 #uncomment to overclock the arm. 700 MHz is the default.
-arm_freq=900
+#arm_freq=700
 
 # Uncomment some or all of these to enable the optional hardware interfaces
 #dtparam=i2c_arm=on
@@ -56,6 +56,3 @@ kernel=vmlinuz-3.18.0-trunk-rpi2
 initramfs initrd.img-3.18.0-trunk-rpi2 followkernel
 
 gpu_mem=0
-core_freq=250
-sdram_freq=450
-over_voltage=2
