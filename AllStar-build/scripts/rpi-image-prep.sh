@@ -14,7 +14,7 @@ echo performance > /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor
 # helps with write cycles of SD card
 echo "tmpfs /var/log tmpfs defaults,noatime,nosuid,mode=0755,size=100m 0 0" >> /etc/fstab
 # Make sure we are running the latest and greatest
-(rpi-update;apt-get update;apt-get dist-upgrade -y)
+(apt-get update;apt-get dist-upgrade -y)
 # Install kernel and matching headers
 apt-get install linux-image-rpi2-rpfv linux-headers-rpi2-rpfv		
 # Replace /boot/config.txt

@@ -85,6 +85,19 @@ sleep 1
 chmod +x /usr/src/utils/AllStar-build/scripts/add-pi.sh
 /usr/src/utils/AllStar-build/scripts/add-pi.sh
 sleep 1
+echo "Looking for RPI Update..."
+if [ -e /usr/bin/rpi-update ]
+then
+  echo "Uninstalling RPI Update; No longer needed for AllStar."
+  apt-get purge -y rpi-update
+  echo "Cleaning the database..."
+  (apt-get autoremove --purge -y;apt-get clean;apt-get autoclean;apt-get update;apt-get dist-upgrade -y)
+  sleep 1
+  echo "Done"
+else
+  echo "RPI Update isn't installed; Skipping."
+fi
+sleep 1
 sources=/opt/vc/src
 echo "Looking for $sources..."
 if [ -e $sources ]
