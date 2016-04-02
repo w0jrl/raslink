@@ -24,11 +24,6 @@ sleep 1
 (apt-get autoremove --purge -y;apt-get clean;apt-get autoclean)
 sleep 1
 echo "Done"
-# update the SOC firmware
-echo "Updating firmware..."
-sleep 1
-rpi-update
-echo "Done"
 # setup for stage two
 cd /root
 mv .bashrc .bashrc.orig
