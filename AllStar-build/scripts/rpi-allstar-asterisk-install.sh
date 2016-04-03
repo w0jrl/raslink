@@ -1,4 +1,4 @@
-﻿#!/bin/sh
+#!/bin/sh
 # Used to install AllStar Raspbian on a clean image
 # For developers only!
 # Do not use unless you know what you're doing,
@@ -9,7 +9,7 @@
 
 # Script Start
 # change governor to performance
-echo performance > /sys/devices/system/cpu/cpu0/cpufreq/scaling-governor
+echo "performance" > /sys/devices/system/cpu/cpu0/cpufreq/scaling-governor
 
 chmod +x /usr/src/utils/AllStar-build/scripts/rebuild.sh
 /usr/src/utils/AllStar-build/scripts/rebuild.sh

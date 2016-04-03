@@ -1,6 +1,4 @@
 <category name="MENUSELECT_CHANNELS" displayname="Channel Drivers" remove_on_change="channels/modules.link">
-<member name="chan_voter" displayname="radio Voter channel driver" remove_on_change="channels/chan_voter.o channels/chan_voter.so">
-</member>
 <member name="chan_gtalk" displayname="Gtalk Channel Driver" remove_on_change="channels/chan_gtalk.o channels/chan_gtalk.so">
 	<depend>iksemel</depend>
 	<depend>res_jabber</depend>
@@ -18,6 +16,8 @@
 </member>
 <member name="chan_usrp" displayname="USRP Channel Module" remove_on_change="channels/chan_usrp.o channels/chan_usrp.so">
 </member>
+<member name="chan_voter" displayname="radio Voter channel driver" remove_on_change="channels/chan_voter.o channels/chan_voter.so">
+</member>
 <member name="chan_local" displayname="Local Proxy Channel (Note: used internally by other modules)" remove_on_change="channels/chan_local.o channels/chan_local.so">
 </member>
 <member name="chan_dahdi" displayname="DAHDI Telephony" remove_on_change="channels/chan_dahdi.o channels/chan_dahdi.so">
@@ -33,15 +33,12 @@
 	<use>dahdi</use>
         <depend>res_features</depend>
 </member>
-<member name="chan_sip" displayname="Session Initiation Protocol (SIP)" remove_on_change="channels/chan_sip.o channels/chan_sip.so">
-        <depend>res_features</depend>
+<member name="chan_phone" displayname="Linux Telephony API Support" remove_on_change="channels/chan_phone.o channels/chan_phone.so">
+	<depend>ixjuser</depend>
 </member>
 <member name="chan_h323" displayname="The NuFone Network's OpenH323 Channel Driver" remove_on_change="channels/chan_h323.o channels/chan_h323.so">
 	<depend>openh323</depend>
 	<defaultenabled>yes</defaultenabled>
-</member>
-<member name="chan_phone" displayname="Linux Telephony API Support" remove_on_change="channels/chan_phone.o channels/chan_phone.so">
-	<depend>ixjuser</depend>
 </member>
 <member name="chan_mgcp" displayname="Media Gateway Control Protocol (MGCP)" remove_on_change="channels/chan_mgcp.o channels/chan_mgcp.so">
         <depend>res_features</depend>
@@ -73,6 +70,9 @@
 	<depend>isdnnet</depend>
 	<depend>misdn</depend>
 	<depend>suppserv</depend>
+</member>
+<member name="chan_sip" displayname="Session Initiation Protocol (SIP)" remove_on_change="channels/chan_sip.o channels/chan_sip.so">
+        <depend>res_features</depend>
 </member>
 <member name="chan_vpb" displayname="Voicetronix API driver" remove_on_change="channels/chan_vpb.oo channels/chan_vpb.so">
 	<depend>vpbapi</depend>
