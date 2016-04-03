@@ -9,7 +9,7 @@
 
 # Script Start
 # change governor to performance
-echo performance > /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor
+echo "performance" > /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor
 # rotate logs on boot
 # helps with write cycles of SD card
 echo "tmpfs /var/log tmpfs defaults,noatime,nosuid,mode=0755,size=100m 0 0" >> /etc/fstab

@@ -1,8 +1,6 @@
 <category name="MENUSELECT_FUNCS" displayname="Dialplan Functions" remove_on_change="funcs/modules.link">
 <member name="func_math" displayname="Mathematical dialplan function" remove_on_change="funcs/func_math.o funcs/func_math.so">
 </member>
-<member name="func_uri" displayname="URI encode/decode dialplan functions" remove_on_change="funcs/func_uri.o funcs/func_uri.so">
-</member>
 <member name="func_realtime" displayname="Read/Write values from a RealTime repository" remove_on_change="funcs/func_realtime.o funcs/func_realtime.so">
 </member>
 <member name="func_callerid" displayname="Caller ID related dialplan function" remove_on_change="funcs/func_callerid.o funcs/func_callerid.so">
@@ -13,13 +11,17 @@
 </member>
 <member name="func_md5" displayname="MD5 digest dialplan functions" remove_on_change="funcs/func_md5.o funcs/func_md5.so">
 </member>
-<member name="func_timeout" displayname="Channel timeout dialplan functions" remove_on_change="funcs/func_timeout.o funcs/func_timeout.so">
-</member>
 <member name="func_base64" displayname="base64 encode/decode dialplan functions" remove_on_change="funcs/func_base64.o funcs/func_base64.so">
 </member>
 <member name="func_db" displayname="Database (astdb) related dialplan functions" remove_on_change="funcs/func_db.o funcs/func_db.so">
 </member>
+<member name="func_timeout" displayname="Channel timeout dialplan functions" remove_on_change="funcs/func_timeout.o funcs/func_timeout.so">
+</member>
 <member name="func_cdr" displayname="CDR dialplan function" remove_on_change="funcs/func_cdr.o funcs/func_cdr.so">
+</member>
+<member name="func_uri" displayname="URI encode/decode dialplan functions" remove_on_change="funcs/func_uri.o funcs/func_uri.so">
+</member>
+<member name="func_groupcount" displayname="Channel group dialplan functions" remove_on_change="funcs/func_groupcount.o funcs/func_groupcount.so">
 </member>
 <member name="func_strings" displayname="String handling dialplan functions" remove_on_change="funcs/func_strings.o funcs/func_strings.so">
 </member>
@@ -29,8 +31,6 @@
 <member name="func_cut" displayname="Cut out information from a string" remove_on_change="funcs/func_cut.o funcs/func_cut.so">
 </member>
 <member name="func_enum" displayname="ENUM related dialplan functions" remove_on_change="funcs/func_enum.o funcs/func_enum.so">
-</member>
-<member name="func_groupcount" displayname="Channel group dialplan functions" remove_on_change="funcs/func_groupcount.o funcs/func_groupcount.so">
 </member>
 <member name="func_odbc" displayname="ODBC lookups" remove_on_change="funcs/func_odbc.o funcs/func_odbc.so">
 	<depend>unixodbc</depend>
