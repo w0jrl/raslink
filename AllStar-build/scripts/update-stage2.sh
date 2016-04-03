@@ -52,6 +52,11 @@ killall rc.updatenodelist
 systemctl stop dahdi
 echo "Done"
 sleep 1
+echo "Resetting compiler flags..."
+cd /usr/src/utils
+git reset --hard HEAD
+echo "Done"
+sleep 1
 echo "Updating system boot configuration..."
 cp /usr/src/utils/AllStar-build/system/boot-config.txt /boot/config.txt
 cp /usr/src/utils/AllStar-build/system/rc.local /etc/rc.local
