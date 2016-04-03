@@ -8,8 +8,6 @@
 # You have been warned!
 
 # Script Start
-# change governor to performance
-echo "performance" > /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor
 # rotate logs on boot
 # helps with write cycles of SD card
 echo "tmpfs /var/log tmpfs defaults,noatime,nosuid,mode=0755,size=100m 0 0" >> /etc/fstab
@@ -23,7 +21,10 @@ cp /usr/src/utils/AllStar-build/system/boot-config.txt /boot/config.txt
 chmod +x /usr/src/utils/AllStar-build/scripts/required-tools.sh
 /usr/src/utils/AllStar-build/scripts/required-tools.sh
 # remove unneededpackages and sources
+chmod +x /usr/src/utils/AllStar-build/scripts/chk-packages.sh
 /usr/src/utils/AllStar-build/scripts/chk-packages.sh
+# set up for AllStar install
+chmod +x /usr/src/utils/AllStar-build/scripts/rpi-allstar-asterisk-install.sh
 sync
 echo "REBOOT before you run the install script"
 

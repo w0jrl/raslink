@@ -1,5 +1,7 @@
 #!/bin/sh
-# Used to install AllStar Raspbian on a clean image
+# Automated rebuild and patch script for AllStar Raspbian install
+#Used to update and prepare images for shipping
+# Also used for resetting AllStar to defaults in test environments
 # For developers only!
 # Do not use unless you know what you're doing,
 	# and you've made a complete backup first!
@@ -8,9 +10,16 @@
 # You have been warned!
 
 # Script Start
-# change governor to performance
-echo "performance" > /sys/devices/system/cpu/cpu0/cpufreq/scaling-governor
-
-chmod +x /usr/src/utils/AllStar-build/scripts/rebuild.sh
-/usr/src/utils/AllStar-build/scripts/rebuild.sh
+chmod +x /usr/src/utils/AllStar-build/scripts/get-src.sh
+/usr/src/utils/AllStar-build/scripts/get-src.sh
+chmod +x /usr/src/utils/AllStar-build/scripts/build-dahdi.sh
+/usr/src/utils/AllStar-build/scripts/build-dahdi.sh
+chmod +x /usr/src/utils/AllStar-build/scripts/build-libpri.sh
+/usr/src/utils/AllStar-build/scripts/build-libpri.sh
+chmod +x /usr/src/utils/AllStar-build/scripts/build-asterisk.sh
+/usr/src/utils/AllStar-build/scripts/build-asterisk.sh
+sleep 2
+chmod +x /usr/src/utils/AllStar-build/scripts/make-links.sh
+/usr/src/utils/AllStar-build/scripts/make-links.sh
+sync
 
