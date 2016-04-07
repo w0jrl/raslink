@@ -55,6 +55,11 @@ systemctl stop dahdi
 systemctl daemon-reload
 echo "Done"
 sleep 1
+echo "Resetting compiler flags..."
+cd /usr/src/utils
+git reset --hard HEAD
+echo "Done"
+sleep 1
 echo "The update is complete..."
 echo "You can run this tool at any time by typing 'system-update' at a root prompt."
 sleep 1
