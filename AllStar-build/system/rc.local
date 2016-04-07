@@ -12,7 +12,7 @@
 # By default this script does nothing.
 
 # start allstar
-/usr/local/bin/rc.allstar &
+/usr/local/bin/rc.allstar
 
 # Print the IP address
 _IP=$(hostname -I) || true

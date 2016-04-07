@@ -60,6 +60,8 @@ sleep 1
 echo "Updating system boot configuration..."
 cp /usr/src/utils/AllStar-build/system/boot-config.txt /boot/config.txt
 cp /usr/src/utils/AllStar-build/system/rc.local /etc/rc.local
+cp /usr/src/utils/AllStar-build/system/asterisk.service /etc/systemd/system
+systemctl daemon-reload
 echo "Done"
 sleep 1
 echo "The update is complete."
