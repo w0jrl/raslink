@@ -50,7 +50,9 @@ cp /usr/src/utils/AllStar-build/configs/modules.conf /etc/asterisk/modules.conf
 (cp /usr/src/utils/AllStar-build/system/rc.allstar /usr/local/bin/rc.allstar;chmod +x /usr/local/bin/rc.allstar)
 killall rc.updatenodelist
 (cp /usr/src/utils/AllStar-build/system/rc.updatenodelist /usr/local/bin/rc.updatenodelist;chmod +x /usr/local/bin/rc.updatenodelist)
+cp /usr/src/utils/AllStar-build/system/asterisk.service /etc/systemd/system
 systemctl stop dahdi
+systemctl daemon-reload
 echo "Done"
 sleep 1
 echo "The update is complete..."
