@@ -27,17 +27,17 @@ make all
 make install
 make config
 make samples
-cp /usr/src/utils/AllStar-build/system/asterisk.service /etc/systemd/system
+cp /usr/src/utils/AllStar-build/common/asterisk.service /etc/systemd/system
 systemctl daemon-reload
 # Clean out and replace samples
 cd /etc/asterisk/
 rm -rf *
 cp /usr/src/utils/AllStar-build/configs/* .
 # Install Nodelist update and start at boot
-cp /usr/src/utils/AllStar-build/system/rc.updatenodelist /usr/local/bin/rc.updatenodelist
+cp /usr/src/utils/AllStar-build/common/rc.updatenodelist /usr/local/bin/rc.updatenodelist
 chmod +x /usr/local/bin/rc.updatenodelist
-cp /usr/src/utils/AllStar-build/system/rc.local /etc/rc.local
-cp /usr/src/utils/AllStar-build/system/rc.allstar /usr/local/bin/rc.allstar
+cp /usr/src/utils/AllStar-build/common/rc.local /etc/rc.local
+cp /usr/src/utils/AllStar-build/common/rc.allstar /usr/local/bin/rc.allstar
 chmod +x /usr/local/bin/rc.allstar
 # Remove dahdi and asterisk from runlevel scripts
 # rc.allstar will load them

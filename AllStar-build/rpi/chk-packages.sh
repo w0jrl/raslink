@@ -82,8 +82,8 @@ else
   echo "Red Notebook isn't installed; Skipping."
 fi
 sleep 1
-chmod +x /usr/src/utils/AllStar-build/scripts/add-pi.sh
-/usr/src/utils/AllStar-build/scripts/add-pi.sh
+chmod +x /usr/src/utils/AllStar-build/rpi/add-pi.sh
+/usr/src/utils/AllStar-build/rpi/add-pi.sh
 sleep 1
 echo "Looking for RPI Update..."
 if [ -e /usr/bin/rpi-update ]

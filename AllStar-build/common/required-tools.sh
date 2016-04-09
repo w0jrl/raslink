@@ -35,7 +35,7 @@ apt-get install usbutils -y
 apt-get install libsqlite3-dev sqlite3 -y
 
 # link libraries
-ln -s /bin/ln /usr/bin
-ln -s /usr/src/utils/AllStar-build/system/asterisk-restart.sh /usr/bin/asterisk-restart
-ln -s /etc/network/if-up.d/ntpdate /etc/cron.hourly/ntpdate
+ln -fs /bin/ln /usr/bin
+ln -fs /usr/src/utils/AllStar-build/system/asterisk-restart.sh /usr/bin/asterisk-restart
+ln -fs /etc/network/if-up.d/ntpdate /etc/cron.hourly/ntpdate
 

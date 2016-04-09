@@ -16,15 +16,15 @@ echo "tmpfs /var/log tmpfs defaults,noatime,nosuid,mode=0755,size=100m 0 0" >> /
 # Install kernel and matching headers
 apt-get install linux-image-rpi2-rpfv linux-headers-rpi2-rpfv		
 # Replace /boot/config.txt
-cp /usr/src/utils/AllStar-build/system/boot-config.txt /boot/config.txt
+cp /usr/src/utils/AllStar-build/rpi/boot-config.txt /boot/config.txt
 # install required packages
-chmod +x /usr/src/utils/AllStar-build/scripts/required-tools.sh
-/usr/src/utils/AllStar-build/scripts/required-tools.sh
+chmod +x /usr/src/utils/AllStar-build/common/required-tools.sh
+/usr/src/utils/AllStar-build/common/required-tools.sh
 # remove unneededpackages and sources
-chmod +x /usr/src/utils/AllStar-build/scripts/chk-packages.sh
-/usr/src/utils/AllStar-build/scripts/chk-packages.sh
+chmod +x /usr/src/utils/AllStar-build/rpi/chk-packages.sh
+/usr/src/utils/AllStar-build/rpi/chk-packages.sh
 # set up for AllStar install
-chmod +x /usr/src/utils/AllStar-build/scripts/rpi-allstar-asterisk-install.sh
+chmod +x /usr/src/utils/AllStar-build/rpi/rpi-allstar-asterisk-install.sh
 sync
 echo "REBOOT before you run the install script"
 

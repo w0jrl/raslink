@@ -28,7 +28,7 @@ echo "Done"
 cd /root
 mv .bashrc .bashrc.orig
 cat .bashrc.orig > .bashrc
-echo "/usr/src/utils/AllStar-build/scripts/update-stage2.sh" >> .bashrc
+echo "/usr/src/utils/AllStar-build/rpi/update-stage2.sh" >> .bashrc
 echo "Rebooting to finish install."
 sleep 1
 sync
