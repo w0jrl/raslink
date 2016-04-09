@@ -5,4 +5,4 @@
 ln -fs /usr/src/utils/AllStar-build/rpi/update-stage1.sh /usr/bin/system-update
 ln -fs /tmp/rpt_extnodes /var/lib/asterisk/rpt_extnodes
 ln -fs /usr/src/utils/AllStar-build/rpi/wifi-setup.sh /usr/bin/wifi-setup
-chmod +x/usr/src/utils/AllStar-build/rpi/wifi-setup.sh
+chmod +x /usr/src/utils/AllStar-build/rpi/wifi-setup.sh
