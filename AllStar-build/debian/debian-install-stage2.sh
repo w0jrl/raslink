@@ -53,6 +53,8 @@ cp /usr/src/utils/AllStar-build/common/rc.local /etc/rc.local
 (cp /usr/src/utils/AllStar-build/common/rc.updatenodelist /usr/local/bin/rc.updatenodelist;chmod +x /usr/local/bin/rc.updatenodelist)
 systemctl disable dahdi
 systemctl disable asterisk
+ln -fs /usr/src/utils/AllStar-build/common/asterisk-restart.sh /usr/bin/asterisk-restart
+chmod +x /usr/src/utils/AllStar-build/common/asterisk-restart.sh
 echo "Done"
 echo "Starting Asterisk..."
 systemctl start asterisk

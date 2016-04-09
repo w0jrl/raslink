@@ -36,7 +36,5 @@ apt-get install libsqlite3-dev sqlite3 -y
 
 # link libraries
 ln -fs /bin/ln /usr/bin
-ln -fs /usr/src/utils/AllStar-build/common/asterisk-restart.sh /usr/bin/asterisk-restart
-chmod +x /usr/src/utils/AllStar-build/common/asterisk-restart.sh
 ln -fs /etc/network/if-up.d/ntpdate /etc/cron.hourly/ntpdate
 
