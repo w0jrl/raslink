@@ -46,10 +46,12 @@ mv /root/.bashrc.orig /root/.bashrc
 # make sure configuration files and scripts are loaded
 echo "Updating start up scripts..."
 cp /usr/src/utils/AllStar-build/configs/modules.conf /etc/asterisk/modules.conf
-(cp /usr/src/utils/AllStar-build/system/rc.allstar /usr/local/bin/rc.allstar;chmod +x /usr/local/bin/rc.allstar)
+(cp /usr/src/utils/AllStar-build/common/rc.allstar /usr/local/bin/rc.allstar;chmod +x /usr/local/bin/rc.allstar)
 killall rc.updatenodelist
-(cp /usr/src/utils/AllStar-build/system/rc.updatenodelist /usr/local/bin/rc.updatenodelist;chmod +x /usr/local/bin/rc.updatenodelist)
+(cp /usr/src/utils/AllStar-build/common/rc.updatenodelist /usr/local/bin/rc.updatenodelist;chmod +x /usr/local/bin/rc.updatenodelist)
 systemctl stop dahdi
+chmod +x /usr/src/utils/AllStar-build/rpi/make-links.sh
+/usr/src/utils/AllStar-build/rpi/make-links.sh
 echo "Done"
 sleep 1
 echo "Resetting compiler flags..."
@@ -58,9 +60,9 @@ git reset --hard HEAD
 echo "Done"
 sleep 1
 echo "Updating system boot configuration..."
-cp /usr/src/utils/AllStar-build/system/boot-config.txt /boot/config.txt
-cp /usr/src/utils/AllStar-build/system/rc.local /etc/rc.local
-cp /usr/src/utils/AllStar-build/system/asterisk.service /etc/systemd/system
+cp /usr/src/utils/AllStar-build/rpi/boot-config.txt /boot/config.txt
+cp /usr/src/utils/AllStar-build/common/rc.local /etc/rc.local
+cp /usr/src/utils/AllStar-build/common/asterisk.service /etc/systemd/system
 systemctl daemon-reload
 echo "Done"
 sleep 1

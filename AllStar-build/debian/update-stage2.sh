@@ -47,10 +47,10 @@ mv /root/.bashrc.orig /root/.bashrc
 # make sure configuration files and scripts are loaded
 echo "Updating start up scripts..."
 cp /usr/src/utils/AllStar-build/configs/modules.conf /etc/asterisk/modules.conf
-(cp /usr/src/utils/AllStar-build/system/rc.allstar /usr/local/bin/rc.allstar;chmod +x /usr/local/bin/rc.allstar)
+(cp /usr/src/utils/AllStar-build/common/rc.allstar /usr/local/bin/rc.allstar;chmod +x /usr/local/bin/rc.allstar)
 killall rc.updatenodelist
-(cp /usr/src/utils/AllStar-build/system/rc.updatenodelist /usr/local/bin/rc.updatenodelist;chmod +x /usr/local/bin/rc.updatenodelist)
-cp /usr/src/utils/AllStar-build/system/asterisk.service /etc/systemd/system
+(cp /usr/src/utils/AllStar-build/common/rc.updatenodelist /usr/local/bin/rc.updatenodelist;chmod +x /usr/local/bin/rc.updatenodelist)
+cp /usr/src/utils/AllStar-build/common/asterisk.service /etc/systemd/system
 systemctl stop dahdi
 systemctl daemon-reload
 echo "Done"

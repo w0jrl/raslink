@@ -23,8 +23,8 @@ chmod +x /usr/src/utils/AllStar-build/debian/mk-logrotate-asterisk.sh
 echo "Done"
 sleep 1
 echo "Installing packages."
-chmod +x /usr/src/utils/AllStar-build/debian/required-tools.sh
-/usr/src/utils/AllStar-build/debian/required-tools.sh
+chmod +x /usr/src/utils/AllStar-build/common/required-tools.sh
+/usr/src/utils/AllStar-build/common/required-tools.sh
 echo "Done"
 sleep 1
 # setup for stage two
