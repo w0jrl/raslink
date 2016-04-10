@@ -20,6 +20,15 @@ patch < /usr/src/utils/AllStar-build/patches/patch-configure.ac
 # patch for LSB used in Debian init scripts
 patch -p1 < /usr/src/utils/AllStar-build/patches/patch-rc-debian
 patch < /usr/src/utils/AllStar-build/patches/patch-asterisk-makefile
+# add the notch option
+cp /usr/src/astsrc/extras/notch/rpt_notch.c ./apps
+sed -i 's/\/\* #include "rpt_notch.c" \*\//#include "rpt_notch.c"/' ./apps/app_rpt.c
+# add mdc1200 support
+cp /usr/src/astsrc/extras/mdc1200/*.c ./apps
+cp /usr/src/astsrc/extras/mdc1200/*.h ./apps
+sed -i 's/\/\* #include "mdc_decode.c" \*\//#include "mdc_decode.c"/' ./apps/app_rpt.c
+sed -i 's/\/\* #include "mdc_encode.c" \*\//#include "mdc_encode.c"/' ./apps/app_rpt.c
+# configure the build process
 ./configure
 # Build and install Asterisk
 make menuselect.makeopts
@@ -27,17 +36,17 @@ make all
 make install
 make config
 make samples
-cp /usr/src/utils/AllStar-build/system/asterisk.service /etc/systemd/system
+cp /usr/src/utils/AllStar-build/common/asterisk.service /etc/systemd/system
 systemctl daemon-reload
 # Clean out and replace samples
 cd /etc/asterisk/
 rm -rf *
 cp /usr/src/utils/AllStar-build/configs/* .
 # Install Nodelist update and start at boot
-cp /usr/src/utils/AllStar-build/system/rc.updatenodelist /usr/local/bin/rc.updatenodelist
+cp /usr/src/utils/AllStar-build/common/rc.updatenodelist /usr/local/bin/rc.updatenodelist
 chmod +x /usr/local/bin/rc.updatenodelist
-cp /usr/src/utils/AllStar-build/system/rc.local /etc/rc.local
-cp /usr/src/utils/AllStar-build/system/rc.allstar /usr/local/bin/rc.allstar
+cp /usr/src/utils/AllStar-build/common/rc.local /etc/rc.local
+cp /usr/src/utils/AllStar-build/common/rc.allstar /usr/local/bin/rc.allstar
 chmod +x /usr/local/bin/rc.allstar
 # Remove dahdi and asterisk from runlevel scripts
 # rc.allstar will load them

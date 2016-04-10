@@ -47,12 +47,14 @@ echo "snd_pcm_oss" >> /etc/modules
 echo "Done"
 sleep 1
 echo "Setting up startup scripts..."
-cp /usr/src/utils/AllStar-build/debian/rc.local /etc/rc.local
-(cp /usr/src/utils/AllStar-build/system/asterisk.service /etc/systemd/system/asterisk.service;systemctl daemon-reload)
-(cp /usr/src/utils/AllStar-build/system/rc.allstar /usr/local/bin/rc.allstar;chmod +x /usr/local/bin/rc.allstar)
-(cp /usr/src/utils/AllStar-build/system/rc.updatenodelist /usr/local/bin/rc.updatenodelist;chmod +x /usr/local/bin/rc.updatenodelist)
+cp /usr/src/utils/AllStar-build/common/rc.local /etc/rc.local
+(cp /usr/src/utils/AllStar-build/common/asterisk.service /etc/systemd/system/asterisk.service;systemctl daemon-reload)
+(cp /usr/src/utils/AllStar-build/common/rc.allstar /usr/local/bin/rc.allstar;chmod +x /usr/local/bin/rc.allstar)
+(cp /usr/src/utils/AllStar-build/common/rc.updatenodelist /usr/local/bin/rc.updatenodelist;chmod +x /usr/local/bin/rc.updatenodelist)
 systemctl disable dahdi
 systemctl disable asterisk
+ln -fs /usr/src/utils/AllStar-build/common/asterisk-restart.sh /usr/bin/asterisk-restart
+chmod +x /usr/src/utils/AllStar-build/common/asterisk-restart.sh
 echo "Done"
 echo "Starting Asterisk..."
 systemctl start asterisk
