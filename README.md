@@ -1,6 +1,6 @@
 # AllStar-raspbian-testing
 This source code is bleeding-edge, and should not be used by persons who are not used to debugging their own systems!
-These files are used to debug new features, as well as test new versions of the Raspberry Pi.
+These files are used to debug new features, as well as test new versions of the Raspberry Pi and Debian.
 #So, you think you're brave?
 Ok... I warned you!
 To switch to the testing version, do the following:
