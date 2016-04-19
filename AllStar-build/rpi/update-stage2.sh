@@ -41,7 +41,7 @@ make
 make install
 echo "Done"
 sleep 1
-echo "Building URI diag...{
+echo "Building URI diag..."
 cd ../uridiag
 make
 chmod +x uridiag
