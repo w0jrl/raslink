@@ -13,16 +13,16 @@ sleep 1
 chmod +x /usr/src/utils/AllStar-build/debian/chk-packages.sh
 /usr/src/utils/AllStar-build/debian/chk-packages.sh
 sleep 1
-echo "Rebuilding Dahdi..."
+echo "Building Dahdi..."
 sleep 1
 cd /usr/src/utils/astsrc
-		cd ./dahdi*
+cd ./dahdi*
 make clean
 make
 make install
 echo "Done"
 sleep 1
-echo "Rebuilding libpri..."
+echo "Building libpri..."
 sleep 1
 cd ../libpri
 make clean
@@ -32,7 +32,7 @@ sleep 1
 systemctl start dahdi
 echo "Done"
 sleep 1
-echo "Rebuilding asterisk..."
+echo "Building asterisk..."
 sleep 1
 cd ../asterisk
 ./configure
@@ -40,6 +40,13 @@ make clean
 make menuselect.makeopts
 make
 make install
+echo "Done"
+sleep 1
+echo "Building URI diag..."
+cd ../uridiag
+make
+chmod +x uridiag
+cp uridiag /usr/local/bin/uridiag
 echo "Done"
 sleep 1
 # restore bashrc
@@ -56,6 +63,8 @@ systemctl daemon-reload
 ln -fs /usr/src/utils/AllStar-build/common/asterisk-restart.sh /usr/bin/asterisk-restart
 chmod +x /usr/src/utils/AllStar-build/common/asterisk-restart.sh
 ln -fs /tmp/rpt_extnodes /var/lib/asterisk/rpt_extnodes
+ln -fs /usr/src/utils/AllStar-build/common/uricheck.sh /usr/bin/uricheck
+chmod +x /usr/src/utils/AllStar-build/common/uricheck.sh
 echo "Done"
 sleep 1
 echo "Resetting compiler flags..."

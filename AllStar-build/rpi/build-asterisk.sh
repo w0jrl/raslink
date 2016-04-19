@@ -36,8 +36,14 @@ make all
 make install
 make config
 make samples
+# Setup Asterisk service
 cp /usr/src/utils/AllStar-build/common/asterisk.service /etc/systemd/system
 systemctl daemon-reload
+# Build URI diag
+cd uridiag
+make
+chmod +x uridiag
+cp uridiag /usr/local/bin/uridiag
 # Clean out and replace samples
 cd /etc/asterisk/
 rm -rf *
@@ -55,7 +61,6 @@ systemctl disable dahdi
 # add the sound files for app_rpt
 cd /usr/src/utils/astsrc
 cp -a /usr/src/utils/astsrc/sounds/* /var/lib/asterisk/sounds
-
 # make /dev/dsp available
 # not needed for a hub
 # Though it will not hurt anything.
