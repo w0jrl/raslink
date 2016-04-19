@@ -14,6 +14,8 @@ svn checkout http://svn.ohnosec.org/svn/projects/allstar/astsrc-1.4.23-pre/trunk
 # grab the svn version number and put it where asterisk/Makefile expects it.
 cd /usr/src/utils/astsrc
 svnversion >asterisk/.version
+# download uridiag
+svn co http://svn.ohnosec.org/svn/projects/allstar/uridiag/trunk uridiag
 cd /usr/src/utils
 wget http://downloads.asterisk.org/pub/telephony/dahdi-linux-complete/dahdi-linux-complete-current.tar.gz
 # Clean out unneeded source and add dahdi source
