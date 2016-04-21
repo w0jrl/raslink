@@ -57,9 +57,6 @@ cp /usr/src/utils/AllStar-build/configs/modules.conf /etc/asterisk/modules.conf
 (cp /usr/src/utils/AllStar-build/common/rc.allstar /usr/local/bin/rc.allstar;chmod +x /usr/local/bin/rc.allstar)
 killall rc.updatenodelist
 (cp /usr/src/utils/AllStar-build/common/rc.updatenodelist /usr/local/bin/rc.updatenodelist;chmod +x /usr/local/bin/rc.updatenodelist)
-cp /usr/src/utils/AllStar-build/common/asterisk.service /etc/systemd/system
-systemctl stop dahdi
-systemctl daemon-reload
 ln -fs /usr/src/utils/AllStar-build/common/asterisk-restart.sh /usr/bin/asterisk-restart
 chmod +x /usr/src/utils/AllStar-build/common/asterisk-restart.sh
 ln -fs /tmp/rpt_extnodes /var/lib/asterisk/rpt_extnodes
@@ -72,12 +69,16 @@ cd /usr/src/utils
 git reset --hard HEAD
 echo "Done"
 sleep 1
+echo "Updating system boot configuration..."
+cp /usr/src/utils/AllStar-build/common/rc.local /etc/rc.local
+cp /usr/src/utils/AllStar-build/common/asterisk.service /etc/systemd/system
+systemctl daemon-reload
+echo "Done"
+sleep 1
 echo "The update is complete..."
 echo "You can run this tool at any time by typing 'system-update' at a root prompt."
 sleep 1
-echo "Enabling your node..."
-/usr/local/bin/rc.allstar
-sleep 1
+echo "Rebooting your node to apply the new boot configuration."
 sync
-echo "Done"
+sudo reboot
 
