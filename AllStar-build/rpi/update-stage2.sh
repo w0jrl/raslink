@@ -5,6 +5,7 @@
 # Script Start
 echo "Running update, stage two."
 echo "This will take a while."
+sleep 30
 (systemctl stop asterisk;systemctl stop dahdi)
 sleep 1
 echo "Your node can not be used durring this process. It has been disabled."
