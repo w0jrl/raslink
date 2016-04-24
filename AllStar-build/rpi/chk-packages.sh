@@ -114,26 +114,37 @@ echo "Checking status of required packages."
 sleep 1
 curl=/usr/bin/curl
 sqlite3=/usr/bin/sqlite3
-echo "Checking sqlite3..."
+screen=/usr/bin/screen
+echo "Checking Sqlite3..."
 if [ -e $sqlite3 ]
 then
   echo "Sqlite3 is already installed; skipping."
 else
-  echo "Installing sqlite3..."
+  echo "Installing Sqlite3..."
   apt-get install -y libsqlite3-dev sqlite3
   sleep 1
   echo "Done"
 fi
 sleep 1
-echo "Checking curl..."
+echo "Checking Curl..."
 if [ -e $curl ]
 then
   echo "Curl is already installed; skipping."
 else
-  echo "Installing curl..."
+  echo "Installing Curl..."
   apt-get install -y curl
   sleep 1
   echo "Done"
+fi
+sleep 1
+echo "Checking Screen..."
+if [ -e $screen ]
+then
+  echo "Screen is already installed; skipping."
+else
+  echo "Installing Screen..."
+  apt-get install -y screen
+  echo "Done."
 fi
 sleep 1
 apt-get install ntpdate libtonezone-dev -y
