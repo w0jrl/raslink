@@ -18,8 +18,8 @@ echo "Done"
 sleep 1
 echo "Setting up log rotate."
 echo "Logs will be rotated once a month."
-chmod +x /usr/src/utils/AllStar-build/debian/mk-logrotate-asterisk.sh
-/usr/src/utils/AllStar-build/debian/mk-logrotate-asterisk.sh
+chmod +x /usr/src/utils/AllStar-build/common/mk-logrotate-asterisk.sh
+/usr/src/utils/AllStar-build/common/mk-logrotate-asterisk.sh
 echo "Done"
 sleep 1
 echo "Installing packages."
@@ -31,6 +31,7 @@ sleep 1
 cd /root
 mv .bashrc .bashrc.orig
 cat .bashrc.orig > .bashrc
+chmod +x /usr/src/utils/AllStar-build/debian/debian-install-stage2.sh
 echo "/usr/src/utils/AllStar-build/debian/debian-install-stage2.sh" >> .bashrc
 echo "After the system reboots, you need to login as the root user to finish the installation."
 echo "Rebooting to finish install."
