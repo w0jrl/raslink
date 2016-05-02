@@ -8,9 +8,9 @@
 # You have been warned!
 
 # Script Start
-# rotate logs on boot
-# helps with write cycles of SD card
-echo "tmpfs /var/log tmpfs defaults,noatime,nosuid,mode=0755,size=100m 0 0" >> /etc/fstab
+# rotate logs monthly
+chmod +x /usr/src/utils/AllStar-build/common/mk-logrotate-asterisk.sh
+/usr/src/utils/AllStar-build/common/mk-logrotate-asterisk.sh
 # Make sure we are running the latest and greatest
 (apt-get update;apt-get dist-upgrade -y)
 # Install kernel and matching headers
