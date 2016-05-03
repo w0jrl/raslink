@@ -1,4 +1,4 @@
-#! /bin/bash
+#! /bin/sh
 # Rotate logs for Debian
 
 #Script Start.

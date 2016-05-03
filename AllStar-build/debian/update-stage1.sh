@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 # Used to update the system
 # Stage One
 
