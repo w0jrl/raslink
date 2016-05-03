@@ -5,7 +5,6 @@ echo "Building Dahdi..."
 sleep 1
 cd /usr/src/utils/astsrc
 cd ./dahdi*
-make clean
 make
 make install
 make config
@@ -14,7 +13,6 @@ sleep 1
 echo "Building libpri..."
 sleep 1
 cd ../libpri
-make clean
 make
 make instal
 sleep 1
@@ -37,9 +35,7 @@ echo "Done"
 sleep 1
 echo "Building URI diag..."
 cd ../uridiag
-make
-chmod +x uridiag
-cp uridiag /usr/local/bin/uridiag
+make install
 echo "Done"
 sleep 1
 echo "Setting up defaults for AllStar..."
