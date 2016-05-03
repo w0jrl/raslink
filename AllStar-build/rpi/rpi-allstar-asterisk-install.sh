@@ -18,7 +18,6 @@ chmod +x /usr/src/utils/AllStar-build/rpi/build-libpri.sh
 /usr/src/utils/AllStar-build/rpi/build-libpri.sh
 chmod +x /usr/src/utils/AllStar-build/rpi/build-asterisk.sh
 /usr/src/utils/AllStar-build/rpi/build-asterisk.sh
-sleep 2
 chmod +x /usr/src/utils/AllStar-build/rpi/make-links.sh
 /usr/src/utils/AllStar-build/rpi/make-links.sh
 sync
