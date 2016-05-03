@@ -35,6 +35,13 @@ make config
 make samples
 echo "Done"
 sleep 1
+echo "Building URI diag..."
+cd ../uridiag
+make
+chmod +x uridiag
+cp uridiag /usr/local/bin/uridiag
+echo "Done"
+sleep 1
 echo "Setting up defaults for AllStar..."
 cd /etc/asterisk/
 rm -rf *
@@ -54,8 +61,10 @@ cp /usr/src/utils/AllStar-build/common/rc.local /etc/rc.local
 systemctl disable dahdi
 systemctl disable asterisk
 ln -fs /usr/src/utils/AllStar-build/common/asterisk-restart.sh /usr/bin/asterisk-restart
+chmod +x /usr/bin/asterisk-restart
 chmod +x /usr/src/utils/AllStar-build/common/asterisk-restart.sh
 ln -fs /usr/src/utils/AllStar-build/common/uricheck.sh /usr/bin/uricheck
+chmod +x /usr/bin/uricheck
 chmod +x /usr/src/utils/AllStar-build/common/uricheck.sh
 echo "Done"
 echo "Starting Asterisk..."
