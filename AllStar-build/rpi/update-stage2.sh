@@ -45,8 +45,6 @@ cd ../uridiag
 make install
 echo "Done"
 sleep 1
-# restore bashrc
-mv /root/.bashrc.orig /root/.bashrc
 # make sure configuration files and scripts are loaded
 echo "Updating start up scripts..."
 cp /usr/src/utils/AllStar-build/configs/modules.conf /etc/asterisk/modules.conf
@@ -72,6 +70,8 @@ echo "The update is complete."
 echo "You can run this tool at any time by typing 'system-update' at a root prompt."
 sleep 1
 echo "Rebooting your node to apply the new boot configuration."
+# restore bashrc
+mv /root/.bashrc.orig /root/.bashrc
 sync
 sudo reboot
 
