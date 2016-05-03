@@ -60,20 +60,18 @@ cp /usr/src/utils/AllStar-build/common/rc.local /etc/rc.local
 (cp /usr/src/utils/AllStar-build/common/rc.updatenodelist /usr/local/bin/rc.updatenodelist;chmod +x /usr/local/bin/rc.updatenodelist)
 systemctl disable dahdi
 systemctl disable asterisk
-ln -fs /usr/src/utils/AllStar-build/common/asterisk-restart.sh /usr/bin/asterisk-restart
-chmod +x /usr/bin/asterisk-restart
 chmod +x /usr/src/utils/AllStar-build/common/asterisk-restart.sh
-ln -fs /usr/src/utils/AllStar-build/common/uricheck.sh /usr/bin/uricheck
-chmod +x /usr/bin/uricheck
+ln -fs /usr/src/utils/AllStar-build/common/asterisk-restart.sh /usr/bin/asterisk-restart
 chmod +x /usr/src/utils/AllStar-build/common/uricheck.sh
+ln -fs /usr/src/utils/AllStar-build/common/uricheck.sh /usr/bin/uricheck
 echo "Done"
 echo "Starting Asterisk..."
 systemctl start asterisk
 echo "Done"
 sleep 1
 echo "Setting up system update..."
-ln -fs /usr/src/utils/AllStar-build/debian/update-stage1.sh /usr/bin/system-update
 chmod +x /usr/src/utils/AllStar-build/debian/update-stage1.sh
+ln -fs /usr/src/utils/AllStar-build/debian/update-stage1.sh /usr/bin/system-update
 chmod +x /usr/src/utils/AllStar-build/debian/update-stage2.sh
 /usr/local/bin/rc.updatenodelist &
 sleep 3
