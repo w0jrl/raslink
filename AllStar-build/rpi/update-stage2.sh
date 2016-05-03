@@ -1,11 +1,11 @@
-#!/bin/sh
+#!/bin/bash
 # Used to update the system
 # Stage Two
 
 # Script Start
 echo "Running update, stage two."
 echo "This will take a while."
-killall rc.local
+killall rc.local &>/dev/null
 (systemctl stop asterisk;systemctl stop dahdi)
 sleep 1
 echo "Your node can not be used durring this process. It has been disabled."
@@ -17,7 +17,6 @@ echo "Building Dahdi..."
 sleep 1
 cd /usr/src/utils/astsrc
 		cd ./dahdi*
-make clean
 make
 make install
 echo "Done"
@@ -25,7 +24,6 @@ sleep 1
 echo "Building Libpri..."
 sleep 1
 cd ../libpri
-make clean
 make
 make install
 sleep 1
@@ -44,9 +42,7 @@ echo "Done"
 sleep 1
 echo "Building URI diag..."
 cd ../uridiag
-make
-chmod +x uridiag
-cp uridiag /usr/local/bin/uridiag
+make install
 echo "Done"
 sleep 1
 # restore bashrc

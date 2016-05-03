@@ -1,4 +1,4 @@
-#! /bin/sh
+#! /bin/bash
 # Used to build Dahdi for AllStar
 # For developers only!
 # Do not use unless you know what you're doing,
@@ -9,7 +9,6 @@
 
 # Script Start
 cd /usr/src/utils/astsrc/dahdi-linux-complete/
-make clean
 # Patch dahdi for use with AllStar Asterisk
 # https://allstarlink.org/dude-dahdi-2.10.0.1-patches-20150306
 # Soon to be included in the official release of DAHDI from Digium.
@@ -22,7 +21,4 @@ make install
 make config
 systemctl daemon-reload
 systemctl start dahdi
-
-# Dont need any dahdi hardware drivers loaded for most installs
-mv /etc/dahdi/modules /etc/dahdi/modules.old
 

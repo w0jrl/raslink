@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 # start asterisk and dahdi
 (systemctl start dahdi;systemctl start asterisk) &
 # Start update nodelist
