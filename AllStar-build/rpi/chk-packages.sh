@@ -158,7 +158,7 @@ else
   chmod +x /usr/src/utils/AllStar-build/common/mk-logrotate-asterisk.sh
   /usr/src/utils/AllStar-build/common/mk-logrotate-asterisk.sh
   sleep 1
-  echo "Logs will be rotated once a month.
+  echo "Logs will be rotated once a month."
   sleep 2
   echo "Done"
 fi
