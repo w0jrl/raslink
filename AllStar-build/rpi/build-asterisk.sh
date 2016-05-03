@@ -1,4 +1,4 @@
-#! /bin/bash
+#! /bin/sh
 # Used to patch and build asterisk for AllStar
 # For developers only!
 # Do not use unless you know what you're doing,
@@ -9,6 +9,9 @@
 
 # Script Start
 cd /usr/src/utils/astsrc/asterisk/
+# clean the code
+./configure
+make clean
 # patch for ulaw Core and Extras Sound Packages
 patch < /usr/src/utils/AllStar-build/patches/patch-asterisk-menuselect.makeopts
 # patch for SSL used in res_crypto
@@ -18,11 +21,11 @@ patch < /usr/src/utils/AllStar-build/patches/patch-configure.ac
 patch -p1 < /usr/src/utils/AllStar-build/patches/patch-rc-debian
 patch < /usr/src/utils/AllStar-build/patches/patch-asterisk-makefile
 # add the notch option
-cp /usr/src/utils/astsrc/extras/notch/rpt_notch.c ./apps
+cp /usr/src/astsrc/extras/notch/rpt_notch.c ./apps
 sed -i 's/\/\* #include "rpt_notch.c" \*\//#include "rpt_notch.c"/' ./apps/app_rpt.c
 # add mdc1200 support
-cp /usr/src/utils/astsrc/extras/mdc1200/*.c ./apps
-cp /usr/src/utils/astsrc/extras/mdc1200/*.h ./apps
+cp /usr/src/astsrc/extras/mdc1200/*.c ./apps
+cp /usr/src/astsrc/extras/mdc1200/*.h ./apps
 sed -i 's/\/\* #include "mdc_decode.c" \*\//#include "mdc_decode.c"/' ./apps/app_rpt.c
 sed -i 's/\/\* #include "mdc_encode.c" \*\//#include "mdc_encode.c"/' ./apps/app_rpt.c
 # configure the build process
@@ -37,8 +40,10 @@ make samples
 cp /usr/src/utils/AllStar-build/common/asterisk.service /etc/systemd/system
 systemctl daemon-reload
 # Build URI diag
-cd ../uridiag
-make install
+cd uridiag
+make
+chmod +x uridiag
+cp uridiag /usr/local/bin/uridiag
 # Clean out and replace samples
 cd /etc/asterisk/
 rm -rf *
