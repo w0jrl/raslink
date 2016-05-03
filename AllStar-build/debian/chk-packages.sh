@@ -1,4 +1,4 @@
-#!/bin/sh -e
+#!/bin/bash
 # Check package status, and install needed packages
 # Script Start
 echo "Checking status of required packages."

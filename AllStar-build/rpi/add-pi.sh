@@ -1,4 +1,4 @@
-#!/bin/sh -e
+#!/bin/bash
 # adds the pi user if needed
 
 # script start

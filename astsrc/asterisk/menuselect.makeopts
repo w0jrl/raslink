@@ -12,7 +12,7 @@ MENUSELECT_EMBED=
 MENUSELECT_CORE_SOUNDS=CORE-SOUNDS-EN-ULAW 
 MENUSELECT_MOH=
 MENUSELECT_EXTRA_SOUNDS=EXTRA-SOUNDS-EN-ULAW 
-MENUSELECT_BUILD_DEPS=chan_local res_indications res_monitor app_meetme res_adsi res_smdi res_jabber res_features 
+MENUSELECT_BUILD_DEPS=chan_local res_indications app_meetme res_adsi res_smdi res_monitor res_jabber res_features 
 MENUSELECT_DEPSFAILED=MENUSELECT_APPS=app_osplookup
 MENUSELECT_DEPSFAILED=MENUSELECT_CDR=cdr_tds
 MENUSELECT_DEPSFAILED=MENUSELECT_CDR=cdr_radius

@@ -1,4 +1,4 @@
-#! /bin/sh -e
+#! /bin/bash
 # Used to build Dahdi for AllStar
 # For developers only!
 # Do not use unless you know what you're doing,
@@ -21,7 +21,4 @@ make install
 make config
 systemctl daemon-reload
 systemctl start dahdi
-
-# Dont need any dahdi hardware drivers loaded for most installs
-mv /etc/dahdi/modules /etc/dahdi/modules.old
 

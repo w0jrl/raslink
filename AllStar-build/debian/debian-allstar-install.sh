@@ -1,4 +1,4 @@
-#!/bin/sh -e
+#!/bin/bash
 echo "Welcome to the AllStar Debian installer."
 echo "This script will install AllStar on your Debian server."
 echo "If you don't want to install AllStar, press CTRL+c now to abort."

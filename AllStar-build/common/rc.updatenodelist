@@ -1,4 +1,4 @@
-#! /bin/sh -e
+#! /bin/bash
 TOPDOMAIN=allstarlink.org
 SUBDOMAINS="nodes1 nodes2 nodes3 nodes4"
 FILEPATH=/tmp
