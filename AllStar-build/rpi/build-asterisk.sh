@@ -41,9 +41,7 @@ cp /usr/src/utils/AllStar-build/common/asterisk.service /etc/systemd/system
 systemctl daemon-reload
 # Build URI diag
 cd uridiag
-make
-chmod +x uridiag
-cp uridiag /usr/local/bin/uridiag
+make install
 # Clean out and replace samples
 cd /etc/asterisk/
 rm -rf *

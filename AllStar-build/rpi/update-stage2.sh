@@ -17,7 +17,6 @@ echo "Building Dahdi..."
 sleep 1
 cd /usr/src/utils/astsrc
 		cd ./dahdi*
-make clean
 make
 make install
 echo "Done"
@@ -25,7 +24,6 @@ sleep 1
 echo "Building Libpri..."
 sleep 1
 cd ../libpri
-make clean
 make
 make install
 sleep 1
