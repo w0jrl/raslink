@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/sh -e
 # Creates the system-update, wifi-setup, asterisk-restart, uricheck, and node list links.
 
 # Script Start.

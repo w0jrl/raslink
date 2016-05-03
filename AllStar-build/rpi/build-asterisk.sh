@@ -1,4 +1,4 @@
-#! /bin/sh
+#! /bin/sh -e
 # Used to patch and build asterisk for AllStar
 # For developers only!
 # Do not use unless you know what you're doing,

@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/sh -e
 # Used to check a USB Radio Interface (URI) for problems
 echo "Welcome to uricheck."
 echo "if you are not using a USB Radio interface (URI) or do not have your loopback circuit connected, press CTRL+c now to abort."

@@ -1,4 +1,4 @@
-#! /bin/sh
+#! /bin/sh -e
 # Used to build Dahdi for AllStar
 # For developers only!
 # Do not use unless you know what you're doing,
