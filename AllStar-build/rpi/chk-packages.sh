@@ -144,7 +144,23 @@ then
 else
   echo "Installing Screen..."
   apt-get install -y screen
+  sleep 1
   echo "Done."
+fi
+sleep 1
+echo "checking Logrotate status..."
+if [ -e /etc/logrotate.d/asterisk ]
+then
+  echo "Logrotate parameters are already up to date; skipping."
+else
+  echo "updating Logrotate parameters..."
+  sed -i '/tmpfs \/var\/log tmpfs defaults,noatime,nosuid,mode=0755,size=100m 0 0/d' /etc/fstab
+  chmod +x /usr/src/utils/AllStar-build/common/mk-logrotate-asterisk.sh
+  /usr/src/utils/AllStar-build/common/mk-logrotate-asterisk.sh
+  sleep 1
+  echo "Logs will be rotated once a month.
+  sleep 2
+  echo "Done"
 fi
 sleep 1
 apt-get install ntpdate libtonezone-dev -y
