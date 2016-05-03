@@ -1,4 +1,4 @@
-﻿#! /bin/sh -e
+﻿#! /bin/bash
 # Used to patch and build Libpri for All Star
 # For developers only!
 # Do not use unless you know what you're doing,

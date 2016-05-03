@@ -1,4 +1,4 @@
-#!/bin/sh -e
+#!/bin/bash
 echo "Welcome to wify setup"
 sleep 1
 echo "Scanning for networks"

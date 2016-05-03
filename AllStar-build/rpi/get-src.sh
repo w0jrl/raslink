@@ -1,4 +1,4 @@
-#! /bin/sh -e
+#! /bin/bash
 # Used to download sources for Dahdi, Libpri, and Asterisk
 # For developers only!
 # Do not use unless you know what you're doing,

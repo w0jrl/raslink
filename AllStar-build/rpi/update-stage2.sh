@@ -1,4 +1,4 @@
-#!/bin/sh -e
+#!/bin/bash
 # Used to update the system
 # Stage Two
 
