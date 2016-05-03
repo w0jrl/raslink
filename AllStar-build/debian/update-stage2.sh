@@ -1,11 +1,11 @@
-#!/bin/bash
+#!/bin/sh
 # Used to update the system
 # Stage Two
 
 # Script Start
 echo "Running update, stage two."
 echo "This will take a while."
-killall rc.local &>/dev/null
+killall rc.local
 (systemctl stop asterisk;systemctl stop dahdi)
 sleep 1
 echo "Your node can not be used durring this process. It has been disabled."
@@ -44,7 +44,9 @@ echo "Done"
 sleep 1
 echo "Building URI diag..."
 cd ../uridiag
-make install
+make
+chmod +x uridiag
+cp uridiag /usr/local/bin/uridiag
 echo "Done"
 sleep 1
 # restore bashrc
@@ -54,11 +56,13 @@ echo "Updating start up scripts..."
 cp /usr/src/utils/AllStar-build/configs/modules.conf /etc/asterisk/modules.conf
 (cp /usr/src/utils/AllStar-build/common/rc.allstar /usr/local/bin/rc.allstar;chmod +x /usr/local/bin/rc.allstar)
 (cp /usr/src/utils/AllStar-build/common/rc.updatenodelist /usr/local/bin/rc.updatenodelist;chmod +x /usr/local/bin/rc.updatenodelist)
-chmod +x /usr/src/utils/AllStar-build/common/asterisk-restart.sh
 ln -fs /usr/src/utils/AllStar-build/common/asterisk-restart.sh /usr/bin/asterisk-restart
+chmod +x /usr/bin/asterisk-restart
+chmod +x /usr/src/utils/AllStar-build/common/asterisk-restart.sh
 ln -fs /tmp/rpt_extnodes /var/lib/asterisk/rpt_extnodes
-chmod +x /usr/src/utils/AllStar-build/common/uricheck.sh
 ln -fs /usr/src/utils/AllStar-build/common/uricheck.sh /usr/bin/uricheck
+chmod +x /usr/bin/uricheck
+chmod +x /usr/src/utils/AllStar-build/common/uricheck.sh
 echo "Done"
 sleep 1
 echo "Resetting compiler flags..."

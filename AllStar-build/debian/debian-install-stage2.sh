@@ -1,10 +1,11 @@
-﻿#!/bin/bash
+﻿#!/bin/sh
 echo "Running install, stage two."
 sleep 1
 echo "Building Dahdi..."
 sleep 1
 cd /usr/src/utils/astsrc
 cd ./dahdi*
+make clean
 make
 make install
 make config
@@ -13,6 +14,7 @@ sleep 1
 echo "Building libpri..."
 sleep 1
 cd ../libpri
+make clean
 make
 make instal
 sleep 1
@@ -35,7 +37,9 @@ echo "Done"
 sleep 1
 echo "Building URI diag..."
 cd ../uridiag
-make install
+make
+chmod +x uridiag
+cp uridiag /usr/local/bin/uridiag
 echo "Done"
 sleep 1
 echo "Setting up defaults for AllStar..."
@@ -56,18 +60,20 @@ cp /usr/src/utils/AllStar-build/common/rc.local /etc/rc.local
 (cp /usr/src/utils/AllStar-build/common/rc.updatenodelist /usr/local/bin/rc.updatenodelist;chmod +x /usr/local/bin/rc.updatenodelist)
 systemctl disable dahdi
 systemctl disable asterisk
-chmod +x /usr/src/utils/AllStar-build/common/asterisk-restart.sh
 ln -fs /usr/src/utils/AllStar-build/common/asterisk-restart.sh /usr/bin/asterisk-restart
-chmod +x /usr/src/utils/AllStar-build/common/uricheck.sh
+chmod +x /usr/bin/asterisk-restart
+chmod +x /usr/src/utils/AllStar-build/common/asterisk-restart.sh
 ln -fs /usr/src/utils/AllStar-build/common/uricheck.sh /usr/bin/uricheck
+chmod +x /usr/bin/uricheck
+chmod +x /usr/src/utils/AllStar-build/common/uricheck.sh
 echo "Done"
 echo "Starting Asterisk..."
 systemctl start asterisk
 echo "Done"
 sleep 1
 echo "Setting up system update..."
-chmod +x /usr/src/utils/AllStar-build/debian/update-stage1.sh
 ln -fs /usr/src/utils/AllStar-build/debian/update-stage1.sh /usr/bin/system-update
+chmod +x /usr/src/utils/AllStar-build/debian/update-stage1.sh
 chmod +x /usr/src/utils/AllStar-build/debian/update-stage2.sh
 /usr/local/bin/rc.updatenodelist &
 sleep 3
