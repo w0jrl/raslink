@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/sh -e
 # Check package status, and remove packages that aren't needed.
 
 # Script Start

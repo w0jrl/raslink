@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/sh -e
 # Used to update the system
 # Stage Two
 
@@ -44,9 +44,7 @@ echo "Done"
 sleep 1
 echo "Building URI diag..."
 cd ../uridiag
-make
-chmod +x uridiag
-cp uridiag /usr/local/bin/uridiag
+make install
 echo "Done"
 sleep 1
 # restore bashrc

@@ -1,4 +1,4 @@
-#! /bin/sh
+#! /bin/sh -e
 # Install libs required to install AllStar Debian
 # For developers only!
 # Do not use unless you know what you're doing,

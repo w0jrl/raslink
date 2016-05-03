@@ -1,4 +1,4 @@
-﻿#!/bin/sh
+﻿#!/bin/sh -e
 echo "Running install, stage two."
 sleep 1
 echo "Building Dahdi..."
