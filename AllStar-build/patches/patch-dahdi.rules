@@ -1,0 +1,13 @@
+--- tools/dahdi.rules	2015-06-15 15:37:31.000000000 -0400
++++ tools/dahdi.rules	2015-07-25 15:00:34.729172632 -0400
+/* Modify udev rules so that user asterisk does not own dahdi */
+/* N4IRS 07-25-2015  */
+@@ -2,7 +2,7 @@
+ ACTION!="add",	GOTO="dahdi_add_end"
+ 
+ # DAHDI devices with ownership/permissions for running as non-root
+-SUBSYSTEM=="dahdi",		OWNER="asterisk", GROUP="asterisk", MODE="0660"
++# SUBSYSTEM=="dahdi",		OWNER="asterisk", GROUP="asterisk", MODE="0660"
+ 
+ # Backward compat names: /dev/dahdi/<channo>
+ SUBSYSTEM=="dahdi_channels",	SYMLINK+="dahdi/%m"
