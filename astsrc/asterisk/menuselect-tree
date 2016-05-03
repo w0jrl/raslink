@@ -2,6 +2,11 @@
 
 <menu name="Asterisk Module and Build Option Selection">
 <category name="MENUSELECT_APPS" displayname="Applications" remove_on_change="apps/modules.link">
+<member name="app_dahdiras" displayname="DAHDI RAS Application" remove_on_change="apps/app_dahdiras.o apps/app_dahdiras.so">
+	<depend>dahdi</depend>
+</member>
+<member name="app_morsecode" displayname="Morse code" remove_on_change="apps/app_morsecode.o apps/app_morsecode.so">
+</member>
 <member name="app_speech_utils" displayname="Dialplan Speech Applications" remove_on_change="apps/app_speech_utils.o apps/app_speech_utils.so">
 </member>
 <member name="app_dial" displayname="Dialing Application" remove_on_change="apps/app_dial.o apps/app_dial.so">
@@ -47,9 +52,6 @@
 <member name="app_alarmreceiver" displayname="Alarm Receiver for Asterisk" remove_on_change="apps/app_alarmreceiver.o apps/app_alarmreceiver.so">
 </member>
 <member name="app_transfer" displayname="Transfer" remove_on_change="apps/app_transfer.o apps/app_transfer.so">
-</member>
-<member name="app_queue" displayname="True Call Queueing" remove_on_change="apps/app_queue.o apps/app_queue.so">
-        <depend>res_monitor</depend>
 </member>
 <member name="app_lookupblacklist" displayname="Look up Caller*ID name/number from blacklist database" remove_on_change="apps/app_lookupblacklist.o apps/app_lookupblacklist.so">
 </member>
@@ -115,8 +117,6 @@
 </member>
 <member name="app_talkdetect" displayname="Playback with Talk Detection" remove_on_change="apps/app_talkdetect.o apps/app_talkdetect.so">
 </member>
-<member name="app_getcpeid" displayname="Get ADSI CPE ID" remove_on_change="apps/app_getcpeid.o apps/app_getcpeid.so">
-</member>
 <member name="app_parkandannounce" displayname="Call Parking and Announce Application" remove_on_change="apps/app_parkandannounce.o apps/app_parkandannounce.so">
 </member>
 <member name="app_system" displayname="Generic System() application" remove_on_change="apps/app_system.o apps/app_system.so">
@@ -157,6 +157,8 @@
 </member>
 <member name="app_echo" displayname="Simple Echo Application" remove_on_change="apps/app_echo.o apps/app_echo.so">
 </member>
+<member name="app_getcpeid" displayname="Get ADSI CPE ID" remove_on_change="apps/app_getcpeid.o apps/app_getcpeid.so">
+</member>
 <member name="app_senddtmf" displayname="Send DTMF digits Application" remove_on_change="apps/app_senddtmf.o apps/app_senddtmf.so">
 </member>
 <member name="app_privacy" displayname="Require phone number to be entered, if no CallerID sent" remove_on_change="apps/app_privacy.o apps/app_privacy.so">
@@ -169,12 +171,10 @@
 </member>
 <member name="app_settransfercapability" displayname="Set ISDN Transfer Capability" remove_on_change="apps/app_settransfercapability.o apps/app_settransfercapability.so">
 </member>
+<member name="app_queue" displayname="True Call Queueing" remove_on_change="apps/app_queue.o apps/app_queue.so">
+        <depend>res_monitor</depend>
+</member>
 <member name="app_setcdruserfield" displayname="CDR user field apps" remove_on_change="apps/app_setcdruserfield.o apps/app_setcdruserfield.so">
-</member>
-<member name="app_dahdiras" displayname="DAHDI RAS Application" remove_on_change="apps/app_dahdiras.o apps/app_dahdiras.so">
-	<depend>dahdi</depend>
-</member>
-<member name="app_morsecode" displayname="Morse code" remove_on_change="apps/app_morsecode.o apps/app_morsecode.so">
 </member>
 </category>
 <category name="MENUSELECT_CDR" displayname="Call Detail Recording" remove_on_change="cdr/modules.link">

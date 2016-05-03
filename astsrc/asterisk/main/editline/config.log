@@ -49,7 +49,7 @@ configure:1536:1: warning: function declaration isn't a prototype [-Wstrict-prot
 configure:1538:5: warning: function declaration isn't a prototype [-Wstrict-prototypes]
  int main() {
      ^
-/tmp/ccMtoxzb.o: In function `main':
+/tmp/cciDXvG1.o: In function `main':
 /usr/src/utils/astsrc/asterisk/main/editline/configure:1546: undefined reference to `issetugid'
 collect2: error: ld returned 1 exit status
 configure: failed program was:
@@ -83,7 +83,7 @@ configure:1591:1: warning: function declaration isn't a prototype [-Wstrict-prot
 configure:1593:5: warning: function declaration isn't a prototype [-Wstrict-prototypes]
  int main() {
      ^
-/tmp/ccM3nbY2.o: In function `main':
+/tmp/ccog5hpu.o: In function `main':
 /usr/src/utils/astsrc/asterisk/main/editline/configure:1601: undefined reference to `strlcat'
 collect2: error: ld returned 1 exit status
 configure: failed program was:
@@ -117,7 +117,7 @@ configure:1647:1: warning: function declaration isn't a prototype [-Wstrict-prot
 configure:1649:5: warning: function declaration isn't a prototype [-Wstrict-prototypes]
  int main() {
      ^
-/tmp/ccEMFnv1.o: In function `main':
+/tmp/ccLIBCO2.o: In function `main':
 /usr/src/utils/astsrc/asterisk/main/editline/configure:1657: undefined reference to `strlcpy'
 collect2: error: ld returned 1 exit status
 configure: failed program was:
@@ -151,7 +151,7 @@ configure:1703:1: warning: function declaration isn't a prototype [-Wstrict-prot
 configure:1705:5: warning: function declaration isn't a prototype [-Wstrict-prototypes]
  int main() {
      ^
-/tmp/ccA7iEPq.o: In function `main':
+/tmp/ccVwJ2OP.o: In function `main':
 /usr/src/utils/astsrc/asterisk/main/editline/configure:1713: undefined reference to `fgetln'
 collect2: error: ld returned 1 exit status
 configure: failed program was:
@@ -185,7 +185,7 @@ configure:1759:1: warning: function declaration isn't a prototype [-Wstrict-prot
 configure:1761:5: warning: function declaration isn't a prototype [-Wstrict-prototypes]
  int main() {
      ^
-/tmp/ccdTG0p0.o: In function `main':
+/tmp/ccNyInKq.o: In function `main':
 /usr/src/utils/astsrc/asterisk/main/editline/configure:1769: undefined reference to `strvis'
 collect2: error: ld returned 1 exit status
 configure: failed program was:
@@ -219,7 +219,7 @@ configure:1815:1: warning: function declaration isn't a prototype [-Wstrict-prot
 configure:1817:5: warning: function declaration isn't a prototype [-Wstrict-prototypes]
  int main() {
      ^
-/tmp/cczdqyRw.o: In function `main':
+/tmp/cchw7vt8.o: In function `main':
 /usr/src/utils/astsrc/asterisk/main/editline/configure:1825: undefined reference to `strunvis'
 collect2: error: ld returned 1 exit status
 configure: failed program was:

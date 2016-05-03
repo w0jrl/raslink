@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 # Automated build and patch script for AllStar Raspbian install
 #Used to update and prepare images for shipping
 # Also used for resetting AllStar to defaults in test environments
