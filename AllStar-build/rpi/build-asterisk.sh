@@ -25,6 +25,8 @@ cp /usr/src/utils/astsrc/extras/mdc1200/*.c ./apps
 cp /usr/src/utils/astsrc/extras/mdc1200/*.h ./apps
 sed -i 's/\/\* #include "mdc_decode.c" \*\//#include "mdc_decode.c"/' ./apps/app_rpt.c
 sed -i 's/\/\* #include "mdc_encode.c" \*\//#include "mdc_encode.c"/' ./apps/app_rpt.c
+# change TX enabled message
+sed -i 's/"RPTENA"/"TXENA"/' ./apps/app_rpt.c
 # configure the build process
 ./configure
 # Build and install Asterisk
