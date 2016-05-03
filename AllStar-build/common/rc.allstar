@@ -1,5 +1,0 @@
-#!/bin/sh
-# start asterisk and dahdi
-(systemctl start dahdi;systemctl start asterisk) &
-# Start update nodelist
-/usr/local/bin/rc.updatenodelist &
