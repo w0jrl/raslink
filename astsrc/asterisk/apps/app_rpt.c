@@ -12295,7 +12295,7 @@ static int function_cop(struct rpt *myrpt, char *param, char *digitbuf, int comm
 		case 2:
 			myrpt->p.s[myrpt->p.sysstate_cur].txdisable = 0;
 			rpt_telem_select(myrpt,command_source,mylink);
-			rpt_telemetry(myrpt, ARB_ALPHA, (void *) "RPTENA");
+			rpt_telemetry(myrpt, ARB_ALPHA, (void *) "TXENA");
 			return DC_COMPLETE;
 			
 		case 3:
