@@ -65,9 +65,18 @@ git reset --hard HEAD
 echo "Done"
 sleep 1
 echo "Updating system boot configuration..."
-cp /usr/src/utils/AllStar-build/common/rc.local /etc/rc.local
 cp /usr/src/utils/AllStar-build/common/asterisk.service /etc/systemd/system
+cp /usr/src/utils/AllStar-build/common/asterisk.timer /etc/systemd/system
+cp /usr/src/utils/AllStar-build/common/updatenodelist.service /etc/systemd/system
 systemctl daemon-reload
+systemctl enable asterisk.timer
+startup=$(grep -ic "/usr/local/bin/rc.allstar" /etc/rc.local )
+if [ $startup -eq 1 ]
+then
+  sed -i '/\# start allstar/d' /etc/rc.local
+  sed -i '/sleep 30/d' /etc/rc.local
+  sed -i '/\/usr\/local\/bin\/rc.allstar/d' /etc/rc.local
+fi
 echo "Done"
 sleep 1
 echo "The update is complete..."

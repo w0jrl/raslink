@@ -11,7 +11,6 @@
 cd /usr/src/utils/astsrc/dahdi-linux-complete/
 # Patch dahdi for use with AllStar Asterisk
 # https://allstarlink.org/dude-dahdi-2.10.0.1-patches-20150306
-# Soon to be included in the official release of DAHDI from Digium.
 patch -p1 < /usr/src/utils/AllStar-build/patches/patch-dahdi-dude-current
 # remove setting the owner to asterisk
 patch -p0 < /usr/src/utils/AllStar-build/patches/patch-dahdi.rules
