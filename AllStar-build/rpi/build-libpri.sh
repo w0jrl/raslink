@@ -10,6 +10,6 @@
 # Script Start
 cd /usr/src/utils/astsrc/libpri/
 patch </usr/src/utils/AllStar-build/patches/patch-libpri-makefile
-make all
+make
 make install
 

@@ -24,8 +24,6 @@ echo "Building asterisk..."
 sleep 1
 cd ../asterisk
 ./configure
-make clean
-make menuselect.makeopts
 make
 make install
 make config
@@ -51,9 +49,11 @@ sleep 1
 echo "Setting up startup scripts..."
 cp /usr/src/utils/AllStar-build/common/asterisk.service /etc/systemd/system
 cp /usr/src/utils/AllStar-build/common/asterisk.timer /etc/systemd/system
+cp /usr/src/utils/AllStar-build/common/dahdi.timer /etc/systemd/system
 cp /usr/src/utils/AllStar-build/common/updatenodelist.service /etc/systemd/system
 systemctl daemon-reload
 systemctl enable asterisk.timer
+systemctl enable dahdi.timer
 (cp /usr/src/utils/AllStar-build/common/rc.updatenodelist /usr/local/bin/rc.updatenodelist;chmod +x /usr/local/bin/rc.updatenodelist)
 chmod +x /usr/src/utils/AllStar-build/common/asterisk-restart.sh
 ln -fs /usr/src/utils/AllStar-build/common/asterisk-restart.sh /usr/bin/asterisk-restart
@@ -68,7 +68,6 @@ echo "Setting up system update..."
 chmod +x /usr/src/utils/AllStar-build/debian/update-stage1.sh
 ln -fs /usr/src/utils/AllStar-build/debian/update-stage1.sh /usr/bin/system-update
 chmod +x /usr/src/utils/AllStar-build/debian/update-stage2.sh
-sleep 3
 ln -fs /tmp/rpt_extnodes /var/lib/asterisk/rpt_extnodes
 echo "Done"
 sleep 1

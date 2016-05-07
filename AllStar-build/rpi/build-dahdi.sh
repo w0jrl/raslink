@@ -15,7 +15,7 @@ patch -p1 < /usr/src/utils/AllStar-build/patches/patch-dahdi-dude-current
 # remove setting the owner to asterisk
 patch -p0 < /usr/src/utils/AllStar-build/patches/patch-dahdi.rules
 # Build and install dahdi
-make all
+make
 make install
 make config
 systemctl daemon-reload
