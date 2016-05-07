@@ -16,7 +16,6 @@ echo "Building Dahdi..."
 sleep 1
 cd /usr/src/utils/astsrc
 cd ./dahdi*
-make clean
 make
 make install
 echo "Done"
@@ -24,7 +23,6 @@ sleep 1
 echo "Building libpri..."
 sleep 1
 cd ../libpri
-make clean
 make
 make install
 sleep 1
@@ -35,7 +33,6 @@ echo "Building asterisk..."
 sleep 1
 cd ../asterisk
 ./configure
-make clean
 make menuselect.makeopts
 make
 make install
