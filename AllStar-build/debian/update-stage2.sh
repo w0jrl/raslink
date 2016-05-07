@@ -5,8 +5,7 @@
 # Script Start
 echo "Running update, stage two."
 echo "This will take a while."
-killall rc.local &>/dev/null
-(systemctl stop asterisk;systemctl stop dahdi)
+(killall rc.local;systemctl stop dahdi.timer;systemctl stop asterisk.timer;systemctl stop asterisk.service;systemctl stop dahdi) &>/dev/null
 sleep 1
 echo "Your node can not be used durring this process. It has been disabled."
 sleep 1
