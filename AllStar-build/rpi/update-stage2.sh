@@ -70,7 +70,7 @@ then
   sed -i '/\# start allstar/d' /etc/rc.local
   sed -i '/sleep 30/d' /etc/rc.local
   sed -i '/\/usr\/local\/bin\/rc.allstar/d' /etc/rc.local
-  sed 's/^ *//; s/ *$//; /^$/d; /^\s*$/d' /etc/rc.local
+  sed -i 's/^ *//; s/ *$//; /^$/d; /^\s*$/d' /etc/rc.local
   sed -i '$ i\' /etc/rc.local
 fi
 if [ -e /usr/local/rc.allstar ]
