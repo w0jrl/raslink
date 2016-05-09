@@ -152,7 +152,8 @@ app_rpt.o: app_rpt.c /usr/include/stdc-predef.h \
  /usr/src/utils/astsrc/asterisk/include/asterisk/astdb.h \
  /usr/src/utils/astsrc/asterisk/include/asterisk/app.h \
  /usr/src/utils/astsrc/asterisk/include/asterisk/indications.h \
- /usr/include/termios.h /usr/include/arm-linux-gnueabihf/bits/termios.h
+ /usr/include/termios.h /usr/include/arm-linux-gnueabihf/bits/termios.h \
+ mdc_decode.c mdc_decode.h mdc_encode.c mdc_encode.h rpt_notch.c
 
 /usr/include/stdc-predef.h:
 
@@ -529,3 +530,13 @@ app_rpt.o: app_rpt.c /usr/include/stdc-predef.h \
 /usr/include/termios.h:
 
 /usr/include/arm-linux-gnueabihf/bits/termios.h:
+
+mdc_decode.c:
+
+mdc_decode.h:
+
+mdc_encode.c:
+
+mdc_encode.h:
+
+rpt_notch.c:
