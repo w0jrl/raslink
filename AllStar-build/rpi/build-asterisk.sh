@@ -30,14 +30,10 @@ sed -i 's/"RPTENA"/"TXENA"/' ./apps/app_rpt.c
 # configure the build process
 ./configure
 # Build and install Asterisk
-make menuselect.makeopts
-make all
+make
 make install
 make config
 make samples
-# Setup Asterisk service
-cp /usr/src/utils/AllStar-build/common/asterisk.service /etc/systemd/system
-systemctl daemon-reload
 # Build URI diag
 cd ../uridiag
 make install
@@ -45,25 +41,20 @@ make install
 cd /etc/asterisk/
 rm -rf *
 cp /usr/src/utils/AllStar-build/configs/* .
-# Install Nodelist update and start at boot
+# Install Nodelist update and startup scripts
 cp /usr/src/utils/AllStar-build/common/rc.updatenodelist /usr/local/bin/rc.updatenodelist
 chmod +x /usr/local/bin/rc.updatenodelist
-cp /usr/src/utils/AllStar-build/common/rc.local /etc/rc.local
-cp /usr/src/utils/AllStar-build/common/rc.allstar /usr/local/bin/rc.allstar
-chmod +x /usr/local/bin/rc.allstar
-# Remove dahdi and asterisk from runlevel scripts
-# rc.allstar will load them
-systemctl disable asterisk
-systemctl disable dahdi
+cp /usr/src/utils/AllStar-build/common/asterisk.service /etc/systemd/system
+cp /usr/src/utils/AllStar-build/common/asterisk.timer /etc/systemd/system
+cp /usr/src/utils/AllStar-build/common/dahdi.timer /etc/systemd/system
+cp /usr/src/utils/AllStar-build/common/updatenodelist.service /etc/systemd/system
+systemctl daemon-reload
+systemctl enable asterisk.timer
+systemctl enable dahdi.timer
 # add the sound files for app_rpt
 cd /usr/src/utils/astsrc
 cp -a /usr/src/utils/astsrc/sounds/* /var/lib/asterisk/sounds
-# make /dev/dsp available
-# not needed for a hub
-# Though it will not hurt anything.
 echo "snd_pcm_oss" >> /etc/modules
-systemctl stop dahdi
-sleep 1
-/usr/local/bin/rc.allstar
+systemctl start asterisk.service
 echo "Done."
 

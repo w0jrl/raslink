@@ -64,7 +64,7 @@ gcc: fatal error: no input files
 compilation terminated.
 configure:1663: $? = 4
 configure:1686: checking for C compiler default output file name
-configure:1689: gcc -O -Wall     conftest.c  >&5
+configure:1689: gcc -O -Wall -O -Wall      conftest.c  >&5
 configure:1692: $? = 0
 configure:1738: result: a.out
 configure:1743: checking whether the C compiler works
@@ -74,15 +74,15 @@ configure:1769: result: yes
 configure:1776: checking whether we are cross compiling
 configure:1778: result: no
 configure:1781: checking for suffix of executables
-configure:1783: gcc -o conftest -O -Wall     conftest.c  >&5
+configure:1783: gcc -o conftest -O -Wall -O -Wall      conftest.c  >&5
 configure:1786: $? = 0
 configure:1811: result: 
 configure:1817: checking for suffix of object files
-configure:1838: gcc -c -O -Wall    conftest.c >&5
+configure:1838: gcc -c -O -Wall -O -Wall     conftest.c >&5
 configure:1841: $? = 0
 configure:1863: result: o
 configure:1867: checking whether we are using the GNU C compiler
-configure:1891: gcc -c -O -Wall    conftest.c >&5
+configure:1891: gcc -c -O -Wall -O -Wall     conftest.c >&5
 configure:1897: $? = 0
 configure:1900: test -z 			 || test ! -s conftest.err
 configure:1903: $? = 0
@@ -98,14 +98,14 @@ configure:1964: test -s conftest.o
 configure:1967: $? = 0
 configure:1978: result: yes
 configure:1995: checking for gcc option to accept ANSI C
-configure:2065: gcc  -c -O -Wall    conftest.c >&5
+configure:2065: gcc  -c -O -Wall -O -Wall     conftest.c >&5
 configure:2071: $? = 0
 configure:2074: test -z 			 || test ! -s conftest.err
 configure:2077: $? = 0
 configure:2080: test -s conftest.o
 configure:2083: $? = 0
 configure:2101: result: none needed
-configure:2119: gcc -c -O -Wall    conftest.c >&5
+configure:2119: gcc -c -O -Wall -O -Wall     conftest.c >&5
 conftest.c:2:3: error: unknown type name 'choke'
    choke me
    ^
@@ -272,7 +272,7 @@ configure:3037: checking for rm
 configure:3055: found /bin/rm
 configure:3067: result: /bin/rm
 configure:3092: checking for strdup
-configure:3149: gcc -o conftest -O -Wall     conftest.c  >&5
+configure:3149: gcc -o conftest -O -Wall -O -Wall      conftest.c  >&5
 conftest.c:37:6: warning: conflicting types for built-in function 'strdup'
  char strdup ();
       ^
@@ -283,7 +283,7 @@ configure:3164: test -s conftest
 configure:3167: $? = 0
 configure:3179: result: yes
 configure:3196: checking for vsnprintf
-configure:3253: gcc -o conftest -O -Wall     conftest.c  >&5
+configure:3253: gcc -o conftest -O -Wall -O -Wall      conftest.c  >&5
 conftest.c:38:6: warning: conflicting types for built-in function 'vsnprintf'
  char vsnprintf ();
       ^
@@ -324,7 +324,7 @@ ac_cv_cxx_compiler_gnu=yes
 ac_cv_env_CC_set=set
 ac_cv_env_CC_value=gcc
 ac_cv_env_CFLAGS_set=set
-ac_cv_env_CFLAGS_value='-O -Wall  '
+ac_cv_env_CFLAGS_value='-O -Wall -O -Wall   '
 ac_cv_env_CPPFLAGS_set=
 ac_cv_env_CPPFLAGS_value=
 ac_cv_env_CXXFLAGS_set=
@@ -364,7 +364,7 @@ ARFLAGS='crvs'
 CAT1EXT='1'
 CAT3EXT='3'
 CC='gcc'
-CFLAGS='-Wall -O -Wall  '
+CFLAGS='-Wall -O -Wall -O -Wall   '
 CP='/bin/cp'
 CPPFLAGS=''
 CXX='g++'

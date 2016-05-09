@@ -5,8 +5,7 @@
 # Script Start
 echo "Running update, stage two."
 echo "This will take a while."
-killall rc.local &>/dev/null
-(systemctl stop asterisk;systemctl stop dahdi)
+(killall rc.local;systemctl stop dahdi.timer;systemctl stop asterisk.timer;systemctl stop asterisk.service;systemctl stop dahdi) &>/dev/null
 sleep 1
 echo "Your node can not be used durring this process. It has been disabled."
 sleep 1
@@ -17,7 +16,6 @@ echo "Building Dahdi..."
 sleep 1
 cd /usr/src/utils/astsrc
 cd ./dahdi*
-make clean
 make
 make install
 echo "Done"
@@ -25,7 +23,6 @@ sleep 1
 echo "Building libpri..."
 sleep 1
 cd ../libpri
-make clean
 make
 make install
 sleep 1
@@ -36,7 +33,6 @@ echo "Building asterisk..."
 sleep 1
 cd ../asterisk
 ./configure
-make clean
 make menuselect.makeopts
 make
 make install
@@ -65,9 +61,26 @@ git reset --hard HEAD
 echo "Done"
 sleep 1
 echo "Updating system boot configuration..."
-cp /usr/src/utils/AllStar-build/common/rc.local /etc/rc.local
 cp /usr/src/utils/AllStar-build/common/asterisk.service /etc/systemd/system
+cp /usr/src/utils/AllStar-build/common/asterisk.timer /etc/systemd/system
+cp /usr/src/utils/AllStar-build/common/dahdi.timer /etc/systemd/system
+cp /usr/src/utils/AllStar-build/common/updatenodelist.service /etc/systemd/system
 systemctl daemon-reload
+systemctl enable asterisk.timer
+systemctl enable dahdi.timer
+startup=$(grep -ic "/usr/local/bin/rc.allstar" /etc/rc.local )
+if [ $startup -eq 1 ]
+then
+  sed -i '/\# start allstar/d' /etc/rc.local
+  sed -i '/sleep 30/d' /etc/rc.local
+  sed -i '/\/usr\/local\/bin\/rc.allstar/d' /etc/rc.local
+  sed -i 's/^ *//; s/ *$//; /^$/d; /^\s*$/d' /etc/rc.local
+  sed -i '$ i\' /etc/rc.local
+fi
+if [ -e /usr/local/rc.allstar ]
+then
+  rm /usr/local/bin/rc.allstar
+fi
 echo "Done"
 sleep 1
 echo "The update is complete..."
