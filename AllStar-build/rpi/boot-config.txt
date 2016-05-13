@@ -1,4 +1,4 @@
-# For more options and information see 
+# For more options and information see
 # http://www.raspberrypi.org/documentation/configuration/config-txt.md
 # Some settings may impact device functionality. See link above for details
 
@@ -40,7 +40,7 @@
 #sdtv_mode=2
 
 #uncomment to overclock the arm. 700 MHz is the default.
-#arm_freq=700
+#arm_freq=800
 
 # Uncomment some or all of these to enable the optional hardware interfaces
 #dtparam=i2c_arm=on
@@ -52,4 +52,7 @@
 
 # Additional overlays and parameters are documented /boot/overlays/README
 
-gpu_mem=16
+# Enable audio (loads snd_bcm2835)
+dtparam=audio=on
+
+gpu_mem=0
