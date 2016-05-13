@@ -4,7 +4,7 @@
 #script start
 echo "Updateing the kernel..."
 sleep 1
-apt-get install raspberrypi-kernel raspberry-kernel-headers -y
+apt-get install raspberrypi-kernel raspberrypi-kernel-headers -y
 sleep 1
 apt-get remove --purge linux-image-rpi2-rpfv linux-headers-rpi2-rpfv
 sleep 1
