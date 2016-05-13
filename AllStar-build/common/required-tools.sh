@@ -14,7 +14,7 @@ apt-get autoremove -y
 apt-get install ntpdate -y
 apt-get install g++ -y
 apt-get install make -y
-apt-get install build-essential automake -y
+apt-get install build-essential automake automake1.9 -y
 apt-get install git -y
 apt-get install subversion -y
 apt-get install sudo ca-certificates -y
