@@ -52,7 +52,4 @@
 
 # Additional overlays and parameters are documented /boot/overlays/README
 
-kernel=vmlinuz-3.18.0-trunk-rpi2
-initramfs initrd.img-3.18.0-trunk-rpi2 followkernel
-
 gpu_mem=16

@@ -14,7 +14,7 @@ chmod +x /usr/src/utils/AllStar-build/common/mk-logrotate-asterisk.sh
 # Make sure we are running the latest and greatest
 (apt-get update;apt-get dist-upgrade -y)
 # Install kernel and matching headers
-apt-get install linux-image-rpi2-rpfv linux-headers-rpi2-rpfv		
+apt-get install raspberrypi-kernel raspberrypi-kernel-headers
 # Replace /boot/config.txt
 cp /usr/src/utils/AllStar-build/rpi/boot-config.txt /boot/config.txt
 # install required packages
