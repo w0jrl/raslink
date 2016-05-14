@@ -23,7 +23,7 @@
 AR		=	/usr/bin/ar
 ARFLAGS		=	crvs
 CC		=	gcc
-CFLAGS		=	$(OPTIM) -Wall -O -Wall -O -Wall    
+CFLAGS		=	$(OPTIM) -Wall -O -Wall   
 CP		=	/bin/cp
 DSO		=	:
 DSOFLAGS	=	

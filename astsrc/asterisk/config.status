@@ -550,7 +550,7 @@ s,@HOST_VENDOR@,|#_!!_#|unknown,g
 s,@HOST_OS@,|#_!!_#|linux-gnu,g
 s,@OSARCH@,|#_!!_#|linux-gnu,g
 s,@UNAME@,|#_!!_#|/bin/uname,g
-s,@PBX_OSREV@,|#_!!_#|3.18.0-trunk-rpi2,g
+s,@PBX_OSREV@,|#_!!_#|4.4.9-v7+,g
 s,@CXX@,|#_!!_#|g++,g
 s,@LD@,|#_!!_#|/usr/bin/ld,g
 s,@RANLIB@,|#_!!_#|ranlib,g

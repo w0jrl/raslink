@@ -9,14 +9,14 @@
         <depend>usb</depend>
         <defaultenabled>yes</defaultenabled> 	 	 
 </member>
+<member name="chan_voter" displayname="radio Voter channel driver" remove_on_change="channels/chan_voter.o channels/chan_voter.so">
+</member>
 <member name="chan_nbs" displayname="Network Broadcast Sound Support" remove_on_change="channels/chan_nbs.o channels/chan_nbs.so">
 	<depend>nbs</depend>
 </member>
 <member name="chan_tlb" displayname="TheLinkBox channel driver" remove_on_change="channels/chan_tlb.o channels/chan_tlb.so">
 </member>
 <member name="chan_usrp" displayname="USRP Channel Module" remove_on_change="channels/chan_usrp.o channels/chan_usrp.so">
-</member>
-<member name="chan_voter" displayname="radio Voter channel driver" remove_on_change="channels/chan_voter.o channels/chan_voter.so">
 </member>
 <member name="chan_local" displayname="Local Proxy Channel (Note: used internally by other modules)" remove_on_change="channels/chan_local.o channels/chan_local.so">
 </member>
@@ -73,6 +73,9 @@
 </member>
 <member name="chan_sip" displayname="Session Initiation Protocol (SIP)" remove_on_change="channels/chan_sip.o channels/chan_sip.so">
         <depend>res_features</depend>
+</member>
+<member name="chan_pi" displayname="Pi Radio Interface Channel Driver" remove_on_change="channels/chan_pi.o channels/chan_pi.so">
+        <defaultenabled>yes</defaultenabled> 	 	 
 </member>
 <member name="chan_vpb" displayname="Voicetronix API driver" remove_on_change="channels/chan_vpb.oo channels/chan_vpb.so">
 	<depend>vpbapi</depend>

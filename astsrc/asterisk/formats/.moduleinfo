@@ -17,11 +17,11 @@
 </member>
 <member name="format_ilbc" displayname="Raw iLBC data" remove_on_change="formats/format_ilbc.o formats/format_ilbc.so">
 </member>
-<member name="format_vox" displayname="Dialogic VOX (ADPCM) File Format" remove_on_change="formats/format_vox.o formats/format_vox.so">
-</member>
 <member name="format_gsm" displayname="Raw GSM data" remove_on_change="formats/format_gsm.o formats/format_gsm.so">
 </member>
 <member name="format_wav" displayname="Microsoft WAV format (8000Hz Signed Linear)" remove_on_change="formats/format_wav.o formats/format_wav.so">
+</member>
+<member name="format_vox" displayname="Dialogic VOX (ADPCM) File Format" remove_on_change="formats/format_vox.o formats/format_vox.so">
 </member>
 <member name="format_g729" displayname="Raw G729 data" remove_on_change="formats/format_g729.o formats/format_g729.so">
 </member>

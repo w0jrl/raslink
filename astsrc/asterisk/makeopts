@@ -35,7 +35,7 @@ HOST_OS=linux-gnu
 
 PROC=armv7l
 OSARCH=linux-gnu
-OSREV=3.18.0-trunk-rpi2
+OSREV=4.4.9-v7+
 
 GC_CFLAGS=-ffunction-sections
 GC_LDFLAGS=-Wl,--gc-sections

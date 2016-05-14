@@ -1,4 +1,4 @@
-﻿#! /bin/bash
+#! /bin/bash
 # Patch and build Libpri for All Star
 # For developers only!
 # Do not use unless you know what you're doing,
