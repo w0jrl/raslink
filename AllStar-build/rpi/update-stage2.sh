@@ -61,9 +61,12 @@ cp /usr/src/utils/AllStar-build/common/asterisk.service /etc/systemd/system
 cp /usr/src/utils/AllStar-build/common/asterisk.timer /etc/systemd/system
 cp /usr/src/utils/AllStar-build/common/dahdi.timer /etc/systemd/system
 cp /usr/src/utils/AllStar-build/common/updatenodelist.service /etc/systemd/system
+cp /usr/src/utils/AllStar-build/common/dahdi /etc/init.d
+update-rc.d dahdi defaults
 systemctl daemon-reload
 systemctl enable asterisk.timer
 systemctl enable dahdi.timer
+systemctl enable updatenodelist.service
 startup=$(grep -ic "/usr/local/bin/rc.allstar" /etc/rc.local )
 if [ $startup -eq 1 ]
 then
