@@ -11,7 +11,7 @@ echo "Done"
 echo "Please follow the on-screen instructions".
 echo "When done, press q then enter to quit."
 sleep 2
-/usr/local/bin/uridiag
+/usr/bin/uridiag
 sleep 2
 echo "Re-enabling your node..."
 (service dahdi start;service asterisk start)
