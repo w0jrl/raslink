@@ -16,6 +16,7 @@ cd /usr/src/utils/astsrc
 echo "Downloading and unpacking dahdi..."
 wget http://downloads.asterisk.org/pub/telephony/dahdi-linux-complete/dahdi-linux-complete-current.tar.gz &>/dev/null
 tar zxvf ./dahdi-linux-complete-current.tar.gz &>/dev/null
+sleep 1
 mv dahdi-linux-complete* dahdi-linux-complete
 rm -rf *.tar.gz
 echo "Done"
