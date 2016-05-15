@@ -12,75 +12,22 @@ sleep 1
 chmod +x /usr/src/utils/AllStar-build/rpi/chk-packages.sh
 /usr/src/utils/AllStar-build/rpi/chk-packages.sh
 sleep 1
-cd /usr/src/utils
-echo "Downloading and unpacking dahdi..."
-wget http://downloads.asterisk.org/pub/telephony/dahdi-linux-complete/dahdi-linux-complete-current.tar.gz &>/dev/null
-cd /usr/src/utils/astsrc
-tar zxvf /usr/src/utils/dahdi-linux-complete-current.tar.gz &>/dev/null
-mv dahdi* dahdi
-rm -rf /usr/src/utils/*.tar.gz
-echo "Done"
+chmod +x /usr/src/utils/AllStar-build/common/update-dahdi.sh
+/usr/src/utils/AllStar-build/common/update-dahdi.sh
 sleep 1
-echo "Building dahdi..."
+chmod +x /usr/src/utils/AllStar-build/common/update-libpri.sh
+/usr/src/utils/AllStar-build/common/update-libpri.sh
 sleep 1
-cd ./dahdi
-patch -p1 < /usr/src/utils/AllStar-build/patches/patch-dahdi-dude-current
-# remove setting the owner to asterisk
-patch -p0 < /usr/src/utils/AllStar-build/patches/patch-dahdi.rules
-# Build and install dahdi
-make
-make install
-make config
-echo "Done"
-sleep 1
-echo "Building libpri..."
-sleep 1
-cd ../libpri
-patch </usr/src/utils/AllStar-build/patches/patch-libpri-makefile
-make
-make instal
-sleep 1
-cp /usr/src/utils/AllStar-build/common/dahdi /etc/init.d
-update-rc.d dahdi defaults
-systemctl daemon-reload
-systemctl start dahdi
-echo "Done"
-sleep 1
-echo "Building asterisk..."
-sleep 1
-cd ../asterisk
-# patch for ulaw Core and Extras Sound Packages
-patch < /usr/src/utils/AllStar-build/patches/patch-asterisk-menuselect.makeopts
-# patch for SSL used in res_crypto
-patch < /usr/src/utils/AllStar-build/patches/patch-configure
-patch < /usr/src/utils/AllStar-build/patches/patch-configure.ac
-# patch for LSB used in Debian init scripts
-patch -p1 < /usr/src/utils/AllStar-build/patches/patch-rc-debian
-patch < /usr/src/utils/AllStar-build/patches/patch-asterisk-makefile
-# add the notch option
-cp /usr/src/utils/astsrc/extras/notch/rpt_notch.c ./apps
-sed -i 's/\/\* #include "rpt_notch.c" \*\//#include "rpt_notch.c"/' ./apps/app_rpt.c
-# add mdc1200 support
-cp /usr/src/utils/astsrc/extras/mdc1200/*.c ./apps
-cp /usr/src/utils/astsrc/extras/mdc1200/*.h ./apps
-sed -i 's/\/\* #include "mdc_decode.c" \*\//#include "mdc_decode.c"/' ./apps/app_rpt.c
-sed -i 's/\/\* #include "mdc_encode.c" \*\//#include "mdc_encode.c"/' ./apps/app_rpt.c
-# change TX enabled message
-sed -i 's/"RPTENA"/"TXENA"/' ./apps/app_rpt.c
-# build and install asterisk
-./configure
-make
-make install
-echo "Done"
+chmod +x /usr/src/utils/AllStar-build/common/update-asterisk.sh
+/usr/src/utils/AllStar-build/common/update-asterisk.sh
 sleep 1
 echo "Building URI diag..."
-cd ../uridiag
+cd /usr/src/utils/astsrc/uridiag
 make install
 echo "Done"
 sleep 1
 # make sure configuration files and scripts are loaded
 echo "Updating start up scripts..."
-cp /usr/src/utils/AllStar-build/configs/modules.conf /etc/asterisk/modules.conf
 (cp /usr/src/utils/AllStar-build/common/rc.updatenodelist /usr/local/bin/rc.updatenodelist;chmod +x /usr/local/bin/rc.updatenodelist)
 chmod +x /usr/src/utils/AllStar-build/rpi/make-links.sh
 /usr/src/utils/AllStar-build/rpi/make-links.sh

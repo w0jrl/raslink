@@ -12,7 +12,7 @@ echo "Done"
 sleep 1
 echo "Building Dahdi..."
 sleep 1
-cd ./dahdi
+cd /usr/src/utils/astsrc/dahdi
 patch -p1 < /usr/src/utils/AllStar-build/patches/patch-dahdi-dude-current
 # remove setting the owner to asterisk
 patch -p0 < /usr/src/utils/AllStar-build/patches/patch-dahdi.rules
@@ -24,7 +24,7 @@ echo "Done"
 sleep 1
 echo "Building libpri..."
 sleep 1
-cd ../libpri
+cd /usr/src/utils/astsrc/libpri
 patch </usr/src/utils/AllStar-build/patches/patch-libpri-makefile
 make
 make instal
@@ -37,7 +37,7 @@ echo "Done"
 sleep 1
 echo "Building asterisk..."
 sleep 1
-cd ../asterisk
+cd /usr/src/utils/astsrc/asterisk
 # patch for ulaw Core and Extras Sound Packages
 patch < /usr/src/utils/AllStar-build/patches/patch-asterisk-menuselect.makeopts
 # patch for SSL used in res_crypto
@@ -64,7 +64,7 @@ make samples
 echo "Done"
 sleep 1
 echo "Building URI diag..."
-cd ../uridiag
+cd /usr/src/utils/astsrc/uridiag
 make install
 echo "Done"
 sleep 1
