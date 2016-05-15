@@ -37,4 +37,5 @@ apt-get install screen -y
 # link libraries
 ln -fs /bin/ln /usr/bin
 ln -fs /etc/network/if-up.d/ntpdate /etc/cron.hourly/ntpdate
+service cron restart
 

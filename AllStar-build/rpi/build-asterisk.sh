@@ -32,7 +32,6 @@ sed -i 's/"RPTENA"/"TXENA"/' ./apps/app_rpt.c
 # Build and install Asterisk
 make
 make install
-make config
 make samples
 # Build URI diag
 cd ../uridiag
@@ -48,8 +47,6 @@ cp /usr/src/utils/AllStar-build/common/asterisk.service /etc/systemd/system
 cp /usr/src/utils/AllStar-build/common/asterisk.timer /etc/systemd/system
 cp /usr/src/utils/AllStar-build/common/dahdi.timer /etc/systemd/system
 cp /usr/src/utils/AllStar-build/common/updatenodelist.service /etc/systemd/system
-cp /usr/src/utils/AllStar-build/common/dahdi /etc/init.d
-update-rc.d dahdi defaults
 systemctl daemon-reload
 systemctl enable asterisk.timer
 systemctl enable dahdi.timer

@@ -2,7 +2,7 @@
 ACTION!="add",	GOTO="dahdi_add_end"
 
 # DAHDI devices with ownership/permissions for running as non-root
-# SUBSYSTEM=="dahdi",		OWNER="asterisk", GROUP="asterisk", MODE="0660"
+SUBSYSTEM=="dahdi",		OWNER="asterisk", GROUP="asterisk", MODE="0660"
 
 # Backward compat names: /dev/dahdi/<channo>
 SUBSYSTEM=="dahdi_channels",	SYMLINK+="dahdi/%m"
