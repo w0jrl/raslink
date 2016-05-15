@@ -6,7 +6,7 @@ cd /usr/src/utils
 echo "Downloading and unpacking dahdi..."
 if [ -e /usr/src/utils/astsrc/dahdi* ]
 then
-  rm -rf /usr/src/utils/astsrc/dahdi
+  rm -rf /usr/src/utils/astsrc/dahdi*
 fi
 wget http://downloads.asterisk.org/pub/telephony/dahdi-linux-complete/dahdi-linux-complete-current.tar.gz &>/dev/null
 cd /usr/src/utils/astsrc
@@ -26,4 +26,4 @@ patch -p0 < /usr/src/utils/AllStar-build/patches/patch-dahdi.rules
 make
 make install
 make config
-echo "Done
+echo "Done"
