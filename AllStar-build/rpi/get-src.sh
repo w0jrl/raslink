@@ -22,7 +22,7 @@ wget http://downloads.asterisk.org/pub/telephony/dahdi-linux-complete/dahdi-linu
 cd /usr/src/utils/astsrc
 rm -rf zaptel
 tar zxvf /usr/src/utils/dahdi-linux-complete-current.tar.gz
-mv dahdi-linux-complete* dahdi-linux-complete
+mv dahdi* dahdi
 cd /usr/src/utils/
 rm -rf *.tar.gz
 

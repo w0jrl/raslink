@@ -12,18 +12,18 @@ sleep 1
 chmod +x /usr/src/utils/AllStar-build/rpi/chk-packages.sh
 /usr/src/utils/AllStar-build/rpi/chk-packages.sh
 sleep 1
-cd /usr/src/utils/astsrc
+cd /usr/src/utils
 echo "Downloading and unpacking dahdi..."
 wget http://downloads.asterisk.org/pub/telephony/dahdi-linux-complete/dahdi-linux-complete-current.tar.gz &>/dev/null
-tar zxvf ./dahdi-linux-complete-current.tar.gz &>/dev/null
-sleep 1
-mv dahdi-linux-complete* dahdi-linux-complete
-rm -rf *.tar.gz
+cd /usr/src/utils/astsrc
+tar zxvf /usr/src/utils/dahdi-linux-complete-current.tar.gz &>/dev/null
+mv dahdi* dahdi
+rm -rf /usr/src/utils/*.tar.gz
 echo "Done"
 sleep 1
 echo "Building dahdi..."
 sleep 1
-cd ./dahdi*
+cd ./dahdi
 patch -p1 < /usr/src/utils/AllStar-build/patches/patch-dahdi-dude-current
 # remove setting the owner to asterisk
 patch -p0 < /usr/src/utils/AllStar-build/patches/patch-dahdi.rules
