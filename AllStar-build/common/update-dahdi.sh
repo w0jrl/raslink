@@ -4,7 +4,7 @@
 # Script Start
 cd /usr/src/utils
 echo "Downloading and unpacking dahdi..."
-if [ -e /usr/src/utils/astsrc/dahdi ]
+if [ -e /usr/src/utils/astsrc/dahdi* ]
 then
   rm -rf /usr/src/utils/astsrc/dahdi
 fi
