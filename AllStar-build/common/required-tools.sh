@@ -34,6 +34,7 @@ apt-get install sox -y
 apt-get install usbutils -y
 apt-get install libsqlite3-dev sqlite3 -y
 apt-get install screen -y
+apt-get install fxload -y
 # link libraries
 ln -fs /bin/ln /usr/bin
 ln -fs /etc/network/if-up.d/ntpdate /etc/cron.hourly/ntpdate

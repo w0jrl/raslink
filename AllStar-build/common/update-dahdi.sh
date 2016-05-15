@@ -4,6 +4,10 @@
 # Script Start
 cd /usr/src/utils
 echo "Downloading and unpacking dahdi..."
+if [ -e /usr/src/utils/astsrc/dahdi ]
+then
+  rm -rf /usr/src/utils/astsrc/dahdi
+fi
 wget http://downloads.asterisk.org/pub/telephony/dahdi-linux-complete/dahdi-linux-complete-current.tar.gz &>/dev/null
 cd /usr/src/utils/astsrc
 tar zxvf /usr/src/utils/dahdi-linux-complete-current.tar.gz &>/dev/null

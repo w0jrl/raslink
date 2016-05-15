@@ -163,6 +163,6 @@ else
   echo "Done"
 fi
 sleep 1
-apt-get install ntpdate libtonezone-dev automake automake1.9 -y
+apt-get install ntpdate libtonezone-dev automake automake1.9 fxload -y
 ln -fs /etc/network/if-up.d/ntpdate /etc/cron.hourly/ntpdate
 service cron restart
