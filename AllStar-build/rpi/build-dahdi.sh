@@ -18,6 +18,4 @@ patch -p0 < /usr/src/utils/AllStar-build/patches/patch-dahdi.rules
 make
 make install
 make config
-systemctl daemon-reload
-systemctl start dahdi
 

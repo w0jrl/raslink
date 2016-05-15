@@ -546,15 +546,15 @@ struct ast_flags config_flags = { CONFIG_FLAG_WITHCOMMENTS };
 
 /* Un-comment the following to include support decoding of MDC-1200 digital tone
    signalling protocol (using KA6SQG's GPL'ed implementation) */
-#include "mdc_decode.c"
+/* #include "mdc_decode.c" */
 
 /* Un-comment the following to include support encoding of MDC-1200 digital tone
    signalling protocol (using KA6SQG's GPL'ed implementation) */
-#include "mdc_encode.c"
+/* #include "mdc_encode.c" */
 
 /* Un-comment the following to include support for notch filters in the
    rx audio stream (using Tony Fisher's mknotch (mkfilter) implementation) */
-#include "rpt_notch.c"
+/* #include "rpt_notch.c" */
 
 
 #ifdef	__RPT_NOTCH
@@ -12295,7 +12295,7 @@ static int function_cop(struct rpt *myrpt, char *param, char *digitbuf, int comm
 		case 2:
 			myrpt->p.s[myrpt->p.sysstate_cur].txdisable = 0;
 			rpt_telem_select(myrpt,command_source,mylink);
-			rpt_telemetry(myrpt, ARB_ALPHA, (void *) "TXENA");
+			rpt_telemetry(myrpt, ARB_ALPHA, (void *) "RPTENA");
 			return DC_COMPLETE;
 			
 		case 3:

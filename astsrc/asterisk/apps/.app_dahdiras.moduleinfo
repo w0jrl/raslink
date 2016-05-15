@@ -1,3 +1,0 @@
-<member name="app_dahdiras" displayname="DAHDI RAS Application" remove_on_change="apps/app_dahdiras.o apps/app_dahdiras.so">
-	<depend>dahdi</depend>
-</member>
