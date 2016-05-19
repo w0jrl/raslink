@@ -29,11 +29,8 @@ sleep 1
 # make sure configuration files and scripts are loaded
 echo "Updating start up scripts..."
 (cp /usr/src/utils/AllStar-build/common/rc.updatenodelist /usr/local/bin/rc.updatenodelist;chmod +x /usr/local/bin/rc.updatenodelist)
-chmod +x /usr/src/utils/AllStar-build/common/asterisk-restart.sh
-ln -fs /usr/src/utils/AllStar-build/common/asterisk-restart.sh /usr/bin/asterisk-restart
-ln -fs /tmp/rpt_extnodes /var/lib/asterisk/rpt_extnodes
-chmod +x /usr/src/utils/AllStar-build/common/uricheck.sh
-ln -fs /usr/src/utils/AllStar-build/common/uricheck.sh /usr/bin/uricheck
+chmod +x /usr/src/utils/AllStar-build/debian/makelinks.sh
+/usr/src/utils/AllStar-build/debian/makelinks.sh
 echo "Done"
 sleep 1
 echo "Resetting compiler flags..."
