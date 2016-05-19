@@ -2,6 +2,9 @@
 # Used to patch and build asterisk for AllStar
 
 # Script Start
+cd /usr/src/utils/astsrc
+# grab the svn version number and put it where asterisk/Makefile expects it.
+svnversion >asterisk/.version
 cd /usr/src/utils/astsrc/asterisk/
 # patch for ulaw Core and Extras Sound Packages
 patch < /usr/src/utils/AllStar-build/patches/patch-asterisk-menuselect.makeopts
