@@ -12,7 +12,6 @@ cd /usr/src/utils
 git pull
 cd /usr/src/utils/astsrc
 svnversion >asterisk/.version
-sleep 1
 echo "Done"
 # update the system
 echo "Updating system software..."
