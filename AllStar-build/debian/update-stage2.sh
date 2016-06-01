@@ -58,7 +58,7 @@ then
   sed -i 's/^ *//; s/ *$//; /^$/d; /^\s*$/d' /etc/rc.local
   sed -i '$ i\' /etc/rc.local
 fi
-if [ -e /usr/local/rc.allstar ]
+if [ -e /usr/local/bin/rc.allstar ]
 then
   rm /usr/local/bin/rc.allstar
 fi
