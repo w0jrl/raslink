@@ -35,6 +35,7 @@ echo "Done"
 sleep 1
 echo "Resetting compiler flags..."
 cd /usr/src/utils
+git clean -fd
 git checkout -f
 echo "Done"
 sleep 1
