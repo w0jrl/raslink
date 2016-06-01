@@ -23,6 +23,7 @@ chmod +x /usr/src/utils/AllStar-build/common/update-asterisk.sh
 sleep 1
 echo "Building URI diag..."
 cd /usr/src/utils/astsrc/uridiag
+make
 make install
 echo "Done"
 sleep 1
@@ -35,7 +36,7 @@ echo "Done"
 sleep 1
 echo "Resetting compiler flags..."
 cd /usr/src/utils
-git clean -fd
+git clean -f
 git checkout -f
 echo "Done"
 sleep 1
@@ -58,7 +59,7 @@ then
   sed -i 's/^ *//; s/ *$//; /^$/d; /^\s*$/d' /etc/rc.local
   sed -i '$ i\' /etc/rc.local
 fi
-if [ -e /usr/local/rc.allstar ]
+if [ -e /usr/local/bin/rc.allstar ]
 then
   rm /usr/local/bin/rc.allstar
 fi
