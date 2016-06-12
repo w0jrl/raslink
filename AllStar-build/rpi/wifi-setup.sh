@@ -22,7 +22,7 @@ sleep 10
 echo "Connection active"
 sleep 1
 echo "displaying connection information"
-ifconfig wlan0 | grep 'inet addr'
+ifconfig wlan0 | grep 'inet addr.*'
 sleep 2
 echo "If you want to setup another connection, run this tool again"
 echo "Exiting"
