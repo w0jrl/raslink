@@ -12,10 +12,11 @@ echo "Please follow the on-screen instructions".
 echo "When done, press q then enter to quit."
 sleep 2
 /usr/bin/uridiag
-sleep 2
+sleep 1
 echo "Re-enabling your node..."
 (service dahdi start;service asterisk start)
 sleep 1
 echo "Done"
 echo "Please disconnect your loopback circuit, and re-connect your radio."
 echo "Exiting"
+exit 0

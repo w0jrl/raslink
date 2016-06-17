@@ -2,6 +2,7 @@
 # Used to patch and build asterisk for AllStar
 
 # Script Start
+echo "Building asterisk..."
 cd /usr/src/utils/astsrc
 # grab the svn version number and put it where asterisk/Makefile expects it.
 svnversion >asterisk/.version
@@ -30,4 +31,4 @@ sed -i 's/"RPTENA"/"TXENA"/' ./apps/app_rpt.c
 make
 make install
 echo "Done."
-
+exit 0

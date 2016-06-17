@@ -57,4 +57,4 @@ cp -a /usr/src/utils/astsrc/sounds/* /var/lib/asterisk/sounds
 echo "snd_pcm_oss" >> /etc/modules
 systemctl start asterisk.service
 echo "Done."
-
+exit 0

@@ -22,4 +22,4 @@ echo "echo \"Done\"" >> .bashrc
 echo "echo \"You can now run system-update.\"" >> .bashrc
 echo "mv /root/.bashrc.orig /root/.bashrc" >> .bashrc
 reboot
-
+exit 0

@@ -25,4 +25,4 @@ tar zxvf /usr/src/utils/dahdi-linux-complete-current.tar.gz
 mv dahdi* dahdi
 cd /usr/src/utils/
 rm -rf *.tar.gz
-
+exit 0

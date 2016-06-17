@@ -2,8 +2,8 @@
 # Used to build Dahdi for AllStar
 
 # Script Start
-cd /usr/src/utils
 echo "Downloading and unpacking dahdi..."
+cd /usr/src/utils
 if [ -e /usr/src/utils/astsrc/dahdi* ]
 then
   rm -rf /usr/src/utils/astsrc/dahdi*
@@ -27,3 +27,4 @@ make
 make install
 make config
 echo "Done"
+exit 0

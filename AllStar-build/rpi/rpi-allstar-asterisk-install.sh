@@ -21,4 +21,4 @@ chmod +x /usr/src/utils/AllStar-build/rpi/build-asterisk.sh
 chmod +x /usr/src/utils/AllStar-build/rpi/make-links.sh
 /usr/src/utils/AllStar-build/rpi/make-links.sh
 sync
-
+exit 0

@@ -39,4 +39,4 @@ apt-get install fxload -y
 ln -fs /bin/ln /usr/bin
 ln -fs /etc/network/if-up.d/ntpdate /etc/cron.hourly/ntpdate
 service cron restart
-
+exit 0

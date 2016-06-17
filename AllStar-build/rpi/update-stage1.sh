@@ -30,4 +30,4 @@ echo "/usr/src/utils/AllStar-build/rpi/update-stage2.sh" >> .bashrc
 echo "Rebooting to finish install."
 sync
 sudo reboot
-
+exit 0

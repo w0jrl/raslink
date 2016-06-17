@@ -11,7 +11,6 @@ rm -rf /usr/src/utils/*.tar.gz
 echo "Done"
 sleep 1
 echo "Building Dahdi..."
-sleep 1
 cd /usr/src/utils/astsrc/dahdi
 patch -p1 < /usr/src/utils/AllStar-build/patches/patch-dahdi-dude-current
 # remove setting the owner to asterisk
@@ -23,12 +22,10 @@ make config
 echo "Done"
 sleep 1
 echo "Building libpri..."
-sleep 1
 cd /usr/src/utils/astsrc/libpri
 patch </usr/src/utils/AllStar-build/patches/patch-libpri-makefile
 make
 make instal
-sleep 1
 cp /usr/src/utils/AllStar-build/common/dahdi /etc/init.d
 update-rc.d dahdi defaults
 systemctl daemon-reload
@@ -36,7 +33,6 @@ systemctl start dahdi
 echo "Done"
 sleep 1
 echo "Building asterisk..."
-sleep 1
 cd /usr/src/utils/astsrc/asterisk
 # patch for ulaw Core and Extras Sound Packages
 patch < /usr/src/utils/AllStar-build/patches/patch-asterisk-menuselect.makeopts
@@ -65,6 +61,7 @@ echo "Done"
 sleep 1
 echo "Building URI diag..."
 cd /usr/src/utils/astsrc/uridiag
+make
 make install
 echo "Done"
 sleep 1
@@ -115,4 +112,4 @@ echo "After editing files, reboot to get your node online."
 echo "Enjoy AllStar on Debian!"
 # Restore bashrc
 mv /root/.bashrc.orig /root/.bashrc
-
+exit 0

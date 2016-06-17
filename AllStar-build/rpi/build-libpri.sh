@@ -16,4 +16,4 @@ cp /usr/src/utils/AllStar-build/common/dahdi /etc/init.d
 update-rc.d dahdi defaults
 systemctl daemon-reload
 systemctl start dahdi
-
+exit 0

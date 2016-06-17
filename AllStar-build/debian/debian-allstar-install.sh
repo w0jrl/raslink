@@ -35,7 +35,6 @@ chmod +x /usr/src/utils/AllStar-build/debian/debian-install-stage2.sh
 echo "/usr/src/utils/AllStar-build/debian/debian-install-stage2.sh" >> .bashrc
 echo "After the system reboots, you need to login as the root user to finish the installation."
 echo "Rebooting to finish install."
-sleep 1
 sync
 sudo reboot
-
+exit 0

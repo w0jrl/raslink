@@ -8,7 +8,6 @@ echo "This will take a while."
 (killall rc.local;systemctl stop dahdi.timer;systemctl stop asterisk.timer;systemctl stop asterisk.service;systemctl stop dahdi) &>/dev/null
 sleep 1
 echo "Your node can not be used durring this process. It has been disabled."
-sleep 1
 chmod +x /usr/src/utils/AllStar-build/debian/chk-packages.sh
 /usr/src/utils/AllStar-build/debian/chk-packages.sh
 sleep 1
@@ -66,10 +65,9 @@ echo "Done"
 sleep 1
 echo "The update is complete..."
 echo "You can run this tool at any time by typing 'system-update' at a root prompt."
-sleep 1
 echo "Rebooting your node to apply the new boot configuration."
 # restore bashrc
 mv /root/.bashrc.orig /root/.bashrc
 sync
 sudo reboot
-
+exit 0

@@ -27,4 +27,4 @@ chmod +x /usr/src/utils/AllStar-build/rpi/chk-packages.sh
 chmod +x /usr/src/utils/AllStar-build/rpi/rpi-allstar-asterisk-install.sh
 sync
 echo "REBOOT before you run the install script"
-
+exit 0

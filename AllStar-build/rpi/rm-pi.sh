@@ -12,3 +12,4 @@ then
 else
   echo "The pi user doesn't exist; Skipping."
 fi
+exit 0

@@ -12,3 +12,4 @@ echo "   postrotate" >>/etc/logrotate.d/asterisk
 echo "   /usr/sbin/asterisk -rx 'logger reload' > /dev/null 2>&1" >>/etc/logrotate.d/asterisk
 echo "   endscript" >>/etc/logrotate.d/asterisk
 echo "}" >>/etc/logrotate.d/asterisk
+exit 0
