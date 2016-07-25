@@ -35,7 +35,7 @@ else
   apt-get install -y screen
   echo "Done."
 fi
-apt-get install ntpdate libtonezone-dev automake automake1.9 fxload -y
+apt-get install ntpdate libtonezone-dev automake fxload -y
 ln -fs /etc/network/if-up.d/ntpdate /etc/cron.hourly/ntpdate
 service cron restart
 exit 0
