@@ -7,4 +7,4 @@ system-update
 # Downloading the image
 You can download the AllStar-raspbian image at:
 
-http://jlappliedtechnologies.com
+https://jlappliedtechnologies.com
