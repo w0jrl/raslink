@@ -159,11 +159,21 @@ else
   /usr/src/utils/AllStar-build/common/mk-logrotate-asterisk.sh
   sleep 1
   echo "Logs will be rotated once a month."
-  sleep 2
+  sleep 1
   echo "Done"
 fi
 sleep 1
+echo "checking Asterisk, Libpri, and Dahdi dependencies..."
 apt-get install ntpdate libtonezone-dev automake fxload -y
+sourcesList=$( grep -ic "#deb-src" /etc/apt/sources.list )
+if [ $sourcesList -eq 1 ]; then
+  sed -i 's/#deb-src/deb-src/' /etc/apt/sources.list
+  echo "Installing new dependencies."
+  apt-get update; apt-get build-dep dahdi -y
+else
+  apt-get build-dep dahdi -y
+fi
 ln -fs /etc/network/if-up.d/ntpdate /etc/cron.hourly/ntpdate
 service cron restart
+echo "Done"
 exit 0
