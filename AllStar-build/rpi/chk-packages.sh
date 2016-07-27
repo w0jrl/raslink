@@ -164,7 +164,7 @@ else
 fi
 sleep 1
 echo "checking Asterisk, Libpri, and Dahdi dependencies..."
-apt-get install ntpdate libtonezone-dev automake fxload -y
+apt-get install ntpdate libtonezone-dev automake fxload php5-curl libtool autoconf libical-dev libspandsp-dev libneon27-dev libxml2-dev pkg-config unixodbc-dev uuid uuid-dev libsrtp0-dev -y
 sourcesList=$( grep -ic "#deb-src" /etc/apt/sources.list )
 if [ $sourcesList -eq 1 ]; then
   sed -i 's/#deb-src/deb-src/' /etc/apt/sources.list

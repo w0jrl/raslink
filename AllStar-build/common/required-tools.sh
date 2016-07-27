@@ -35,6 +35,7 @@ apt-get install usbutils -y
 apt-get install libsqlite3-dev sqlite3 -y
 apt-get install screen -y
 apt-get install fxload -y
+apt-get install php5-curl libtool autoconf libical-dev libspandsp-dev libneon27-dev libxml2-dev pkg-config unixodbc-dev uuid uuid-dev libsrtp0-dev -y
 apt-get build-dep dahdi -y
 # link libraries
 ln -fs /bin/ln /usr/bin
