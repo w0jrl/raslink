@@ -3,10 +3,13 @@ echo "Welcome to the AllStar Debian installer."
 echo "This script will install AllStar on your Debian server."
 echo "If you don't want to install AllStar, press CTRL+c now to abort."
 sleep 5
+echo " Installing Unzip and zip..."
+apt-get install unzip zip -y
+echo "Done"
 echo "downloading and unpacking source files."
 echo "This might take a while."
 cd /usr/src
-(wget https://github.com/w0jrl/AllStar-raspbian/archive/master.zip;unzip AllStar-raspbian-master.zip;mv AllStar-raspbian-master utils;rm -rf AllStar-raspbian-master.zip)
+(wget https://github.com/w0jrl/AllStar-raspbian/archive/master.zip;unzip master.zip;mv AllStar-raspbian-master utils;rm -rf master.zip)
 echo "Done"
 sleep 1
 echo "Updating the system."
