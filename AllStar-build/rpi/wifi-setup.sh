@@ -1,8 +1,8 @@
 #!/bin/bash
-echo "Welcome to wify setup."
+echo "Welcome to Wi-Fi setup."
 sleep 1
 country=$( cat /etc/wpa_supplicant/wpa_supplicant.conf | grep "country=" | sed 's/country\=//' )
-read -e -p "$(echo -e "Your country is currently set to: $country\n Do you want to change it? [Y/N]" )" changeCountry
+read -e -p "$(echo -e "Your country is currently set to: $country\n Do you want to change it? [y/N]" )" changeCountry
 if [[ $changeCountry = y ]] || [[ $changecountry = Y ]]
 then
   echo "Your two letter country code must be uppercase."
@@ -13,31 +13,58 @@ then
 else
   echo "Country not changed"
 fi
+sleep 0.5
+echo "Please enter the WiFi card name from the list below:"
+ifconfig | grep wlan
+read -e -p "[wlan0] : " wificard
+if [ "$wificard" = "" ]
+then
+  wificard=wlan0
+fi
 sleep 1
-echo "Scanning for networks..."
-sleep 1
-iwlist wlan0 scan | grep "ESSID" | sed 's/ESSID://g;s/"//g;s/^ *//;s/ *$//'
-sleep 1
-echo "Scan complete"
-sleep 1
+scan=1
+while [ "$scan" == "1" ]
+ do
+  echo "Scanning for networks..."
+  echo "___________________________________"
+  sleep 0.5
+  iwlist $wificard scan | grep "ESSID" | sed 's/ESSID://g;s/"//g;s/^ *//;s/ *$//'
+  sleep 0.5
+  echo "Scan complete"
+  sleep 0.5
+  read -e -p "Do you want to scan again? [y/N]" YN
+  if [[ "$YN" = "y" ]] || [[ "$YN" = "Y" ]]
+  then
+   scan=1
+  else
+   scan=0
+     fi
+done
+sleep 0.5
 read -e -p "Please enter the name of the network you want to connect to: " networkName
 echo "You entered: $networkName"
 read -e -p "Please enter the password for the network: " networkPass
 echo "Password accepted"
-sleep 1
+sleep 0.5
 echo "Setting up connection..."
 wpa_passphrase $networkName $networkPass >> /etc/wpa_supplicant/wpa_supplicant.conf
-sleep 1
+sleep 0.5
 echo "Done"
-sleep 1
+sleep 0.5
 echo "Activating connection; Please wait..."
-ifdown wlan0
-ifup wlan0
-sleep 10
-echo "Connection active"
-sleep 1
+ifdown $wificard
+sleep 0.5
+ifup $wificard
+if ifconfig $wificard | grep -q "addr:"
+then
+  echo "***Connection Active***"
+else
+  echo "***Connection Failed***"
+  exit 1
+fi
+sleep 0.5
 echo "displaying connection information"
-ifconfig wlan0 | grep 'inet addr.*'
+ifconfig $wificard | grep "inet addr.*"
 sleep 2
 echo "If you want to setup another connection, run wifi-setup again."
 echo "To remove a network, edit /etc/wpa_supplicant/wpa_supplicant.conf."
