@@ -21,7 +21,7 @@ if [ "$wificard" = "" ]
 then
   wificard=wlan0
 fi
-sleep 1
+sleep 0.5
 scan=1
 while [ "$scan" == "1" ]
  do
@@ -55,6 +55,7 @@ echo "Activating connection; Please wait..."
 ifdown $wificard
 sleep 0.5
 ifup $wificard
+sleep 10
 if ifconfig $wificard | grep -q "addr:"
 then
   echo "***Connection Active***"
