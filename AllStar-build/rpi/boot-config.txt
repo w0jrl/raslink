@@ -55,7 +55,7 @@
 # Enable audio (loads snd_bcm2835)
 #dtparam=audio=on
 
-gpu_mem=16
+gpu_mem=64
 
 # increase power to usb ports
 max_usb_current=1
