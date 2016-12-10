@@ -149,6 +149,13 @@ else
 fi
 sleep 1
 echo "checking Logrotate status..."
+fstab=$(grep -ic "/var/log tmpfs defaults,noatime,nosuid,mode=0755,size=64m 0 0" /etc/fstab )
+if [ $fstab -eq 1 ]
+then
+  echo "Old fstab log setting detected; removing
+  sed -i '/tmpfs \/var\/log tmpfs defaults,noatime,nosuid,mode=0755,size=64m 0 0/d' /etc/fstab
+  echo "Done"
+fi
 if [ -e /etc/logrotate.d/asterisk ]
 then
   echo "Logrotate parameters are already up to date; skipping."
