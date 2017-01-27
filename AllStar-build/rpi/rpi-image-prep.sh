@@ -1,10 +1,10 @@
 #!/bin/bash
-# Prepare a clean image for AllStar
+# Prepare a clean image for AllStar on Raspbian
 # For developers only!
 # Do not use unless you know what you're doing,
 	# and you've made a complete backup first!
 # This script can break your node!
-# This script should only be run on development Raspberry Pi's!
+# This script should only be run on development Raspberry Pis!
 # You have been warned!
 
 # Script Start
@@ -24,7 +24,7 @@ chmod +x /usr/src/utils/AllStar-build/common/required-tools.sh
 chmod +x /usr/src/utils/AllStar-build/rpi/chk-packages.sh
 /usr/src/utils/AllStar-build/rpi/chk-packages.sh
 # set up for AllStar install
-chmod +x /usr/src/utils/AllStar-build/rpi/rpi-allstar-asterisk-install.sh
+chmod +x /usr/src/utils/AllStar-build/rpi/rpi-allstar-install.sh
 sync
 echo "REBOOT before you run the install script"
 exit 0

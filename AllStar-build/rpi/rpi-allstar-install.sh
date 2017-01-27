@@ -1,5 +1,17 @@
-﻿#!/bin/bash
-echo "Running Debian AllStar install, stage two."
+#!/bin/bash
+# Automated build and patch script for AllStar Raspbian install
+#Used to update and prepare images for shipping
+# Also used for resetting AllStar to defaults in test environments
+# For developers only!
+# Do not use unless you know what you're doing,
+	# and you've made a complete backup first!
+# This script can break your node!
+# This script should only be run on development Raspberry Pis!
+# You have been warned!
+
+# Script Start
+cd /usr/src/utils
+git pull
 chmod +x /usr/src/utils/AllStar-build/common/update-dahdi.sh
 /usr/src/utils/AllStar-build/common/update-dahdi.sh
 chmod +x /usr/src/utils/AllStar-build/common/update-libpri.sh
@@ -39,8 +51,8 @@ systemctl daemon-reload
 systemctl enable asterisk.timer
 systemctl enable dahdi.timer
 systemctl enable updatenodelist.service
-chmod +x /usr/src/utils/AllStar-build/debian/make-links.sh
-/usr/src/utils/AllStar-build/debian/make-links.sh
+chmod +x /usr/src/utils/AllStar-build/rpi/make-links.sh
+/usr/src/utils/AllStar-build/rpi/make-links.sh
 service cron restart
 echo "Done"
 echo "Starting Asterisk..."
@@ -54,7 +66,6 @@ echo "If you don't want to use EchoLink, you don't need to do anything."
 echo "EchoLink is disabled by default."
 echo "All files are located in /etc/asterisk."
 echo "After editing files, reboot to get your node online."
-echo "Enjoy AllStar on Debian!"
-# Restore bashrc
-mv /root/.bashrc.orig /root/.bashrc
+echo "Enjoy AllStar on Raspbian!"
 exit 0
+

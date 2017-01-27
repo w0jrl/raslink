@@ -1,9 +1,9 @@
 #!/bin/bash
 echo "Welcome to Wi-Fi setup."
-sleep 1
+sleep 0.5
 country=$( cat /etc/wpa_supplicant/wpa_supplicant.conf | grep "country=" | sed 's/country\=//' )
-read -e -p "$(echo -e "Your country is currently set to: $country\n Do you want to change it? [y/N]" )" changeCountry
-if [[ $changeCountry = y ]] || [[ $changecountry = Y ]]
+read -e -p "$(echo -e "Your country is currently set to: $country\n Do you want to change it? [Y/N]" )" changeCountry
+if [[ $changeCountry = y ]] || [[ $changeCountry = Y ]]
 then
   echo "Your two letter country code must be uppercase."
   echo "Example: US"
@@ -48,7 +48,6 @@ echo "Password accepted"
 sleep 0.5
 echo "Setting up connection..."
 wpa_passphrase $networkName $networkPass >> /etc/wpa_supplicant/wpa_supplicant.conf
-sleep 0.5
 echo "Done"
 sleep 0.5
 echo "Activating connection; Please wait..."
@@ -59,14 +58,14 @@ sleep 10
 if ifconfig $wificard | grep -q "addr:"
 then
   echo "***Connection Active***"
+  sleep 0.5
+  echo "displaying connection information"
+  ifconfig $wificard | grep "inet addr.*"
 else
   echo "***Connection Failed***"
   exit 1
 fi
 sleep 0.5
-echo "displaying connection information"
-ifconfig $wificard | grep "inet addr.*"
-sleep 2
 echo "If you want to setup another connection, run wifi-setup again."
 echo "To remove a network, edit /etc/wpa_supplicant/wpa_supplicant.conf."
 echo "See https://jlappliedtechnologies.com if you need assistance." 

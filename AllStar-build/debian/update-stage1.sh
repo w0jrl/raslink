@@ -5,23 +5,22 @@
 # Script Start
 echo "Starting system update.
 This will take a while."
-sleep 1
+sleep 0.5
 # get new sources
 echo "Updating source files for All Star..."
 cd /usr/src/utils
 git pull
-cd /usr/src/utils/astsrc
-sleep 1
+sleep 0.5
 echo "Done"
 # update the system
 echo "Updating system software..."
 (apt-get update;apt-get dist-upgrade -y)
-sleep 1
+sleep 0.5
 echo "Done"
 # clean the package database
 echo "Cleaning up unneeded software..."
 (apt-get autoremove --purge -y;apt-get clean;apt-get autoclean)
-sleep 1
+sleep 0.5
 echo "Done"
 # setup for stage two
 cd /root

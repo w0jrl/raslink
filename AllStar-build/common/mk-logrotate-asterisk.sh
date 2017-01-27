@@ -1,5 +1,5 @@
 #! /bin/bash
-# Rotate logs for Debian
+# Rotate logs for AllStar
 
 #Script Start.
 echo "/var/log/asterisk/messages /var/log/asterisk/*log {" >>/etc/logrotate.d/asterisk

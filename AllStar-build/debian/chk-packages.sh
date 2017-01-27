@@ -2,7 +2,6 @@
 # Check package status, and install needed packages
 # Script Start
 echo "Checking status of required packages."
-sleep 1
 curl=/usr/bin/curl
 sqlite3=/usr/bin/sqlite3
 screen=/usr/bin/screen
@@ -15,7 +14,6 @@ else
   apt-get install -y libsqlite3-dev sqlite3
   echo "Done."
 fi
-sleep 1
 echo "Checking Curl..."
 if [ -e $curl ]
 then
@@ -25,7 +23,6 @@ else
   apt-get install -y curl
   echo "Done."
 fi
-sleep 1
 echo "Checking Screen..."
 if [ -e $screen ]
 then
@@ -35,7 +32,6 @@ else
   apt-get install -y screen
   echo "Done."
 fi
-sleep 1
 echo "checking Asterisk, Libpri, and Dahdi dependencies..."
 apt-get install ntpdate libtonezone-dev automake fxload php5-curl libtool autoconf libical-dev libspandsp-dev libneon27-dev libxml2-dev pkg-config unixodbc-dev uuid uuid-dev libsrtp0-dev -y
 sourcesList=$( grep -ic "#deb-src" /etc/apt/sources.list )
@@ -46,7 +42,5 @@ if [ $sourcesList -eq 1 ]; then
 else
   apt-get build-dep dahdi -y
 fi
-ln -fs /etc/network/if-up.d/ntpdate /etc/cron.hourly/ntpdate
-service cron restart
 echo "Done"
 exit 0

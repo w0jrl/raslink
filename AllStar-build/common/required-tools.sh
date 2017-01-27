@@ -4,7 +4,7 @@
 # Do not use unless you know what you're doing,
 	# and you've made a complete backup first!
 # This script can break your node!
-# This script should only be run on new Debian servers, or development Raspberry Pi's!
+# This script should only be run on new Debian servers, or development Raspberry Pis!
 # You have been warned!
 
 # Script Start
@@ -37,8 +37,6 @@ apt-get install screen -y
 apt-get install fxload -y
 apt-get install php5-curl libtool autoconf libical-dev libspandsp-dev libneon27-dev libxml2-dev pkg-config unixodbc-dev uuid uuid-dev libsrtp0-dev -y
 apt-get build-dep dahdi -y
-# link libraries
+# put the linker where Asterisk expects it
 ln -fs /bin/ln /usr/bin
-ln -fs /etc/network/if-up.d/ntpdate /etc/cron.hourly/ntpdate
-service cron restart
 exit 0

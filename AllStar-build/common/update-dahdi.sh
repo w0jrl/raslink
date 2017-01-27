@@ -14,7 +14,6 @@ tar zxvf /usr/src/utils/dahdi-linux-complete-current.tar.gz &>/dev/null
 mv dahdi* dahdi
 rm -rf /usr/src/utils/*.tar.gz
 echo "Done"
-sleep 1
 cd /usr/src/utils/astsrc/dahdi/
 echo "Building dahdi..."
 # Patch dahdi for use with AllStar
