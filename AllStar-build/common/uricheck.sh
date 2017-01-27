@@ -22,7 +22,7 @@ then
   echo "Exiting"
   exit 0
 else
-  echo "You need to be using a USB Radio interface (URI) with a loopback circuit connected.
+  echo "You need to be using a USB Radio interface (URI) with a loopback circuit connected."
   echo "For assistance, visit:"
   echo "https://jlappliedtechnologies.com"
   echo "Exiting"
