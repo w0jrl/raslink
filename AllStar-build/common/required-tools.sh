@@ -8,9 +8,6 @@
 # You have been warned!
 
 # Script Start
-apt-get remove nfs-common -y
-apt-get purge rpcbind -y
-apt-get autoremove -y
 apt-get install ntpdate -y
 apt-get install g++ -y
 apt-get install make -y
@@ -34,7 +31,7 @@ apt-get install sox -y
 apt-get install usbutils -y
 apt-get install libsqlite3-dev sqlite3 -y
 apt-get install screen -y
-apt-get install fxload -y
+apt-get install fxload bc alsa-utils dnsutils -y
 apt-get install php5-curl libtool autoconf libical-dev libspandsp-dev libneon27-dev libxml2-dev pkg-config unixodbc-dev uuid uuid-dev libsrtp0-dev -y
 apt-get build-dep dahdi -y
 # put the linker where Asterisk expects it
