@@ -82,15 +82,16 @@ then
 else
   echo "RPI Update isn't installed; Skipping."
 fi
-sources=/opt/vc/src
-echo "Looking for $sources..."
-if [ -e $sources ]
+subversion=/usr/bin/svn
+echo "Checking Subversion..."
+if [ -e $subversion ]
 then
-  echo "Removing $sources; Not needed for AllStar."
-  rm -rf $sources
+  echo "Removing Subversion; No longer needed for AllStar."
+  apt-get autoremove --purge -y subversion
+  rm -rf /root/.subversion
   echo "Done"
 else
-  echo "$sources doesn't exist on your system; Skipping."
+  echo "Subversion isn't installed; Skipping."
 fi
 echo "Checking status of required packages."
 curl=/usr/bin/curl
@@ -99,7 +100,7 @@ screen=/usr/bin/screen
 echo "Checking Sqlite3..."
 if [ -e $sqlite3 ]
 then
-  echo "Sqlite3 is already installed; skipping."
+  echo "Sqlite3 is already installed; Skipping."
 else
   echo "Installing Sqlite3..."
   apt-get install -y libsqlite3-dev sqlite3
@@ -108,7 +109,7 @@ fi
 echo "Checking Curl..."
 if [ -e $curl ]
 then
-  echo "Curl is already installed; skipping."
+  echo "Curl is already installed; Skipping."
 else
   echo "Installing Curl..."
   apt-get install -y curl
@@ -117,7 +118,7 @@ fi
 echo "Checking Screen..."
 if [ -e $screen ]
 then
-  echo "Screen is already installed; skipping."
+  echo "Screen is already installed; Skipping."
 else
   echo "Installing Screen..."
   apt-get install -y screen
@@ -127,13 +128,13 @@ echo "checking Logrotate status..."
 fstab=$(grep -ic "/var/log tmpfs defaults,noatime,nosuid,mode=0755,size=64m 0 0" /etc/fstab )
 if [ $fstab -eq 1 ]
 then
-  echo "Old fstab log setting detected; removing"
+  echo "Old fstab log setting detected; Removing."
   sed -i '/tmpfs \/var\/log tmpfs defaults,noatime,nosuid,mode=0755,size=64m 0 0/d' /etc/fstab
   echo "Done"
 fi
 if [ -e /etc/logrotate.d/asterisk ]
 then
-  echo "Logrotate parameters are already up to date; skipping."
+  echo "Logrotate parameters are already up to date; Skipping."
 else
   echo "updating Logrotate parameters..."
   sed -i '/tmpfs \/var\/log tmpfs defaults,noatime,nosuid,mode=0755,size=100m 0 0/d' /etc/fstab

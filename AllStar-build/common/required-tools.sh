@@ -13,7 +13,6 @@ apt-get install g++ -y
 apt-get install make -y
 apt-get install build-essential automake -y
 apt-get install git -y
-apt-get install subversion -y
 apt-get install sudo ca-certificates -y
 apt-get install libusb-dev -y
 apt-get install libnewt-dev -y
