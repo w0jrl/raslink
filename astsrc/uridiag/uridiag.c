@@ -70,6 +70,8 @@
 #define MIXER_PARAM_MIC_BOOST "Auto Gain Control"
 #define MIXER_PARAM_SPKR_PLAYBACK_SW "Speaker Playback Switch"
 #define MIXER_PARAM_SPKR_PLAYBACK_VOL "Speaker Playback Volume"
+#define	MIXER_PARAM_SPKR_PLAYBACK_SW_NEW "Headphone Playback Switch"
+#define	MIXER_PARAM_SPKR_PLAYBACK_VOL_NEW "Headphone Playback Volume"
 
 #define EEPROM_START_ADDR       6
 #define EEPROM_END_ADDR         63
@@ -558,15 +560,22 @@ char	device[200];
 void *soundthread(void *this)
 {
 int fd,micmax,spkrmax;
-
+char newname = 0;
+	
 	fd = soundopen(devnum);
 	micmax = amixer_max(devnum,MIXER_PARAM_MIC_CAPTURE_VOL);
 	spkrmax = amixer_max(devnum,MIXER_PARAM_SPKR_PLAYBACK_VOL);
-
+	
+	if (spkrmax == -1) 
+	{
+		newname = 1;
+		spkrmax = amixer_max(devnum,MIXER_PARAM_SPKR_PLAYBACK_VOL_NEW);
+	}
+	
 	setamixer(devnum,MIXER_PARAM_MIC_PLAYBACK_SW,0,0);
 	setamixer(devnum,MIXER_PARAM_MIC_PLAYBACK_VOL,0,0);
-	setamixer(devnum,MIXER_PARAM_SPKR_PLAYBACK_SW,1,0);
-	setamixer(devnum,MIXER_PARAM_SPKR_PLAYBACK_VOL,spkrmax,spkrmax);
+	setamixer(devnum,(newname) ? MIXER_PARAM_SPKR_PLAYBACK_SW_NEW : MIXER_PARAM_SPKR_PLAYBACK_SW,1,0);
+	setamixer(devnum,(newname) ? MIXER_PARAM_SPKR_PLAYBACK_VOL_NEW : MIXER_PARAM_SPKR_PLAYBACK_VOL,spkrmax,spkrmax);
 	setamixer(devnum,MIXER_PARAM_MIC_CAPTURE_VOL,
 			AUDIO_IN_SETTING * micmax / 1000,0);
 	setamixer(devnum,MIXER_PARAM_MIC_BOOST,0,0);
