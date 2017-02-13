@@ -42,6 +42,7 @@ echo "Done"
 sleep 0.5
 echo "Updating system boot configuration..."
 cp /usr/src/utils/AllStar-build/rpi/boot-config.txt /boot/config.txt
+cp /usr/src/utils/AllStar-build/rpi/etc-asound.conf /etc/asound.conf
 cp /usr/src/utils/AllStar-build/common/asterisk.service /etc/systemd/system
 cp /usr/src/utils/AllStar-build/common/asterisk.timer /etc/systemd/system
 cp /usr/src/utils/AllStar-build/common/dahdi.timer /etc/systemd/system

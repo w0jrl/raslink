@@ -17,6 +17,8 @@ chmod +x /usr/src/utils/AllStar-build/common/mk-logrotate-asterisk.sh
 apt-get install raspberrypi-kernel raspberrypi-kernel-headers
 # Replace /boot/config.txt
 cp /usr/src/utils/AllStar-build/rpi/boot-config.txt /boot/config.txt
+# Setup Alsa configuration
+cp /usr/src/utils/AllStar-build/rpi/etc-asound.conf /etc/asound.conf
 # install required packages
 chmod +x /usr/src/utils/AllStar-build/common/required-tools.sh
 /usr/src/utils/AllStar-build/common/required-tools.sh
