@@ -1,0 +1,25 @@
+Below are the required connections for a loopback used to test the URI.
+MAKE SURE you are using the right pinout for YOUR URI
+
+URI CM108 (Older)
+25 pin D-shell male connector
+Pin 1 to Pin 7 (PTT to CTCSS_DETect)
+Pin 2 to Pin 3 (GPIO1 to GPIO3)
+Pin 4 to Pin 8 (GPIO4 to COR_DETect)
+Pin 11 to Pin 24 (RIGHT_OUT to AIN) 
+10K Resistor between Pins 22 & 21 (LEFT_AC to MIC_AC) 
+10K Resistor between Pins 23 & 21 (RIGHT_AC to MIC_AC)
+
+
+
+URIx CM119 (Newer)
+25 pin D-shell male connector
+Pin 1 to Pin 7 (PTT to CTCSS_DETect)
+Pin 2 to Pin 3 (GPIO1 to GPIO3)
+Pin 4 to Pin 8 (GPIO4 to COR_DETect)
+Pin 23 to Pin 24 (RIGHT_OUT to AIN)
+10K Resistor between Pins 22 & 21 (LEFT_AC to MIC_AC)
+10K Resistor between Pins 23 & 21 (RIGHT_AC to MIC_AC)
+Pin 5 to Pin 10 (GPIO5 to GPIO7)
+Pin 6 to Pin 11 (GPIO6 to GPIO8)
+
