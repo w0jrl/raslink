@@ -3,8 +3,7 @@
 # Script Start
 subversion=/usr/bin/svn
 echo "Checking Subversion..."
-if [ -e $subversion ]
-then
+if [ -e $subversion ]; then
   echo "Removing Subversion; No longer needed for AllStar."
   apt-get autoremove --purge -y subversion
   rm -rf /root/.subversion

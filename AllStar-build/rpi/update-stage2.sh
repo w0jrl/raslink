@@ -48,14 +48,16 @@ cp /usr/src/utils/AllStar-build/common/dahdi.timer /etc/systemd/system
 systemctl daemon-reload
 systemctl enable asterisk.timer
 systemctl enable dahdi.timer
+if [ -e /etc/systemd/system/updatenodelist.service ]; then
+  rm /etc/systemd/system/updatenodelist.service
+  systemctl daemon reload
+fi
 sndbcm=$(grep -ic "snd_bcm2835" /etc/modules )
 sndpcm=$(grep -ic "snd_pcm_oss" /etc/modules )
-if [ $sndbcm -eq 1 ]
-then
+if [ $sndbcm -eq 1 ]; then
   sed -i '/snd_bcm2835/d' /etc/modules
 fi
-if [ $sndpcm -gt 1 ]
-then
+if [ $sndpcm -gt 1 ]; then
   sed -i '/snd_pcm_oss/d' /etc/modules
   echo "snd_pcm_oss" >> /etc/modules
 fi
