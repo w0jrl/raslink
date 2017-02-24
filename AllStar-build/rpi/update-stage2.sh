@@ -50,7 +50,7 @@ systemctl enable asterisk.timer
 systemctl enable dahdi.timer
 if [ -e /etc/systemd/system/updatenodelist.service ]; then
   rm /etc/systemd/system/updatenodelist.service
-  systemctl daemon reload
+  systemctl daemon-reload
 fi
 sndbcm=$(grep -ic "snd_bcm2835" /etc/modules )
 sndpcm=$(grep -ic "snd_pcm_oss" /etc/modules )
