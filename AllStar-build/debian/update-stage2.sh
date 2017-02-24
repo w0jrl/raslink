@@ -22,8 +22,7 @@ chmod +x /usr/src/utils/AllStar-build/common/update-asterisk.sh
 sleep 0.5
 echo "Building URI diag..."
 cd /usr/src/utils/astsrc/uridiag
-make
-make install
+make; make install
 echo "Done"
 sleep 0.5
 # make sure configuration files and scripts are loaded
@@ -43,11 +42,9 @@ echo "Updating system boot configuration..."
 cp /usr/src/utils/AllStar-build/common/asterisk.service /etc/systemd/system
 cp /usr/src/utils/AllStar-build/common/asterisk.timer /etc/systemd/system
 cp /usr/src/utils/AllStar-build/common/dahdi.timer /etc/systemd/system
-cp /usr/src/utils/AllStar-build/common/updatenodelist.service /etc/systemd/system
 systemctl daemon-reload
 systemctl enable asterisk.timer
 systemctl enable dahdi.timer
-systemctl enable updatenodelist.service
 sndbcm=$(grep -ic "snd_bcm2835" /etc/modules )
 sndpcm=$(grep -ic "snd_pcm_oss" /etc/modules )
 if [ $sndbcm -eq 1 ]

@@ -28,7 +28,6 @@ sed -i 's/"RPTENA"/"TXENA"/' ./apps/app_rpt.c
 # configure the build process
 ./configure
 # Build and install Asterisk
-make
-make install
+make; make install
 echo "Done."
 exit 0

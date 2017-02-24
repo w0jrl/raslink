@@ -9,7 +9,9 @@ Type=simple
 StandardOutput=null
 ExecStart=/usr/sbin/asterisk -f -C /etc/asterisk/asterisk.conf
 ExecStartPost=-/usr/sbin/asterisk -rx 'module load chan_echolink.so'
+ExecStartPost=-/usr/local/bin/rc.updatenodelist &
 ExecStop=/usr/sbin/asterisk -rx 'stop now'
+ExecStopPost=-/usr/bin/killall -9 rc.updatenodelist
 ExecReload=/usr/sbin/asterisk -rx 'module reload'
 
 # safe_asterisk emulation
