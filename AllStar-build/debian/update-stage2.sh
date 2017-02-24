@@ -42,13 +42,10 @@ echo "Updating system boot configuration..."
 cp /usr/src/utils/AllStar-build/common/asterisk.service /etc/systemd/system
 cp /usr/src/utils/AllStar-build/common/asterisk.timer /etc/systemd/system
 cp /usr/src/utils/AllStar-build/common/dahdi.timer /etc/systemd/system
-systemctl daemon-reload
+cp /usr/src/utils/AllStar-build/common/updatenodelist.service /etc/systemd/system
 systemctl enable asterisk.timer
 systemctl enable dahdi.timer
-if [ -e /etc/systemd/system/updatenodelist.service ]; then
-  rm /etc/systemd/system/updatenodelist.service
-  systemctl daemon-reload
-fi
+systemctl enable updatenodelist.service
 sndbcm=$(grep -ic "snd_bcm2835" /etc/modules )
 sndpcm=$(grep -ic "snd_pcm_oss" /etc/modules )
 if [ $sndbcm -eq 1 ]; then
