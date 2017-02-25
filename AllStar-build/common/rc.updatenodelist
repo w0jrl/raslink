@@ -1,7 +1,6 @@
 #! /bin/bash
 TOPDOMAIN=allstarlink.org
 SUBDOMAINS="nodes1 nodes2 nodes3 nodes4"
-#FILEPATH=/var/lib/asterisk
 FILEPATH=/tmp
 WGET=`which wget` 
 CP=`which cp`
@@ -39,7 +38,6 @@ do
 		if [ $dry_run -eq 0 ]
 		then
        		 	$CHMOD 700 /tmp/rpt_extnodes-temp
-#			$CP /tmp/rpt_extnodes-temp $FILEPATH/rpt_extnodes-temp
       			$MV -f $FILEPATH/rpt_extnodes-temp $FILEPATH/rpt_extnodes
 		else
 			$CAT /tmp/rpt_extnodes-temp
