@@ -71,7 +71,7 @@ do
         retries=$((retries+1))
                 if [ $retries -gt 50 ]
                 then
-                  sleep 10m # doze for 10 min to lighten network load
+                  sleep 30m # doze for 30 min to lighten network load
                 else
                   sleep 30s
         fi
@@ -89,7 +89,7 @@ do
     then
         if [ $retries -gt 50 ]
         then
-          sleep 10m # doze for 10 min to lighten network load
+          sleep 30m # doze for 30 min to lighten network load
         else
           sleep 30s
         fi
