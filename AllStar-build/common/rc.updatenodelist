@@ -29,76 +29,75 @@ do
       res=$?
       if [ $res -eq 0 ]
       then
-#	echo "rubbish" >/tmp/rpt_extnodes-temp
-	$GREP -q extnodes /tmp/rpt_extnodes-temp
-	if [ $? -eq 0 ]
-	then
-		downloads=$((downloads+1))
-		retries=0
-		if [ $dry_run -eq 0 ]
-		then
-       		 	$CHMOD 700 /tmp/rpt_extnodes-temp
-      			$MV -f $FILEPATH/rpt_extnodes-temp $FILEPATH/rpt_extnodes
+        $GREP -q extnodes /tmp/rpt_extnodes-temp
+      if [ $? -eq 0 ]
+      then
+        downloads=$((downloads+1))
+        retries=0
+        if [ $dry_run -eq 0 ]
+        then
+          $CHMOD 700 /tmp/rpt_extnodes-temp
+          $MV -f $FILEPATH/rpt_extnodes-temp $FILEPATH/rpt_extnodes
+        else
+          $CAT /tmp/rpt_extnodes-temp
+        fi
+        if [ $verbose -ne 0 ]
+        then
+          echo "Retrieved node list from $i.$TOPDOMAIN"
+          $DATE
+        fi
+        if [ $downloads -gt 100 ]
+        then
+          downloads=0
+          sleep 5m
+          # use rsync to update the connect messages
+          $RSYNC -av rsync://allstarlink.org/connect-messages /var/lib/asterisk/sounds/rpt/nodenames  
+          break; # Don't dwell on one server, Look for a new server
+        fi
+        if [ $dry_run -eq 0 ]
+        then
+          sleep 5m
 		else
-			$CAT /tmp/rpt_extnodes-temp
-		fi
-		if [ $verbose -ne 0 ]
-		then
-			echo "Retrieved node list from $i.$TOPDOMAIN"
-			$DATE
-		fi
-		if [ $downloads -gt 100 ]
-		then
-			downloads=0
-			sleep 600
-			# use rsync to update the connect messages
-                        $RSYNC -av rsync://allstarlink.org/connect-messages /var/lib/asterisk/sounds/rpt/nodenames  
-			break; # Don't dwell on one server, Look for a new server
-		fi
-		if [ $dry_run -eq 0 ]
-		then
-	        	sleep 600
-		else
-			sleep 5
-		fi
-	else
-		if [ $verbose -ne 0 ]
-		then
-			echo "Retreived garbage node list from $i.$TOPDOMAIN"
-			echo "Moving to next node server in list..."	
-		fi
-		$RM -f /tmp/rpt_extnodes-temp			
-		downloads=0
-		retries=$((retries+1))
+          sleep 5s
+        fi
+    else
+        if [ $verbose -ne 0 ]
+        then
+          echo "Retreived garbage node list from $i.$TOPDOMAIN"
+          echo "Moving to next node server in list..."	
+        fi
+        $RM -f /tmp/rpt_extnodes-temp			
+        downloads=0
+        retries=$((retries+1))
                 if [ $retries -gt 50 ]
-       	        then
-               	        sleep 7200 # doze for 2 hrs to lighten network load
-               	else
-                       	sleep 10
-		fi
-		break
-	fi
-      else
-	$RM -f /tmp/rpt_extnodes-temp
-	if [ $verbose -ne 0 ]
-	then
-        	echo "Problem retrieving node list from $i.$TOPDOMAIN, trying another server";
-		downloads=0
-		retries=$((retries+1))
-	fi
-	if [ $verbose -eq 0 ]
-	then
-		if [ $retries -gt 50 ]
-		then
-			sleep 7200 # doze for 2 hrs to lighten network load
-		else
-			sleep 30
-		fi
-	else
-		sleep 5
-	fi
-	break
-      fi
+                then
+                  sleep 10m # doze for 10 min to lighten network load
+                else
+                  sleep 30s
+        fi
+        break
+    fi
+        else
+          $RM -f /tmp/rpt_extnodes-temp
+    if [ $verbose -ne 0 ]
+    then
+        echo "Problem retrieving node list from $i.$TOPDOMAIN, trying another server";
+        downloads=0
+        retries=$((retries+1))
+    fi
+    if [ $verbose -eq 0 ]
+    then
+        if [ $retries -gt 50 ]
+        then
+          sleep 10m # doze for 10 min to lighten network load
+        else
+          sleep 30s
+        fi
+    else
+        sleep 5s
+    fi
+    break
+        fi
     done
  done
 done
