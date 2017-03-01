@@ -23,5 +23,9 @@ patch -p1 < /usr/src/utils/AllStar-build/patches/patch-dahdi-dude-current
 patch -p0 < /usr/src/utils/AllStar-build/patches/patch-dahdi.rules
 # Build and install dahdi
 make; make install; make config
+if [ `grep -ic "dahdi" /etc/modules` -eq 0 ]; then
+  echo "dahdi" >> /etc/modules
+  modprobe dahdi
+fi
 echo "Done"
 exit 0

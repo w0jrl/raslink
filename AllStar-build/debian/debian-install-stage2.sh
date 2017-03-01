@@ -8,8 +8,7 @@ chmod +x /usr/src/utils/AllStar-build/common/update-asterisk.sh
 /usr/src/utils/AllStar-build/common/update-asterisk.sh
 echo "Building URI diag..."
 cd /usr/src/utils/astsrc/uridiag
-make
-make install
+make; make install
 echo "Done"
 echo "Setting up defaults for AllStar..."
 mkdir /etc/asterisk
@@ -18,14 +17,11 @@ cp /usr/src/utils/AllStar-build/configs/* .
 echo "Done"
 echo "Installing default sound files..."
 cp -a /usr/src/utils/astsrc/sounds/* /var/lib/asterisk/sounds
-sndbcm=$(grep -ic "snd_bcm2835" /etc/modules )
-sndpcm=$(grep -ic "snd_pcm_oss" /etc/modules )
-if [ $sndbcm -eq 1 ]
-then
+if [ `grep -ic "snd_bcm2835" /etc/modules` -eq 1 ]; then
   sed -i '/snd_bcm2835/d' /etc/modules
 fi
-if [ $sndpcm -eq 0 ]
-then
+if [ `grep -ic "snd_pcm_oss" /etc/modules` -gt 1 ]; then
+  sed -i '/snd_pcm_oss/d' /etc/modules
   echo "snd_pcm_oss" >> /etc/modules
 fi
 echo "Done"
