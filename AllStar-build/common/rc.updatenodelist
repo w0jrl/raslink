@@ -49,7 +49,7 @@ do
         if [ $downloads -gt 100 ]
         then
           downloads=0
-          sleep 5m
+          sleep 5s
           # use rsync to update the connect messages
           $RSYNC -av rsync://allstarlink.org/connect-messages /var/lib/asterisk/sounds/rpt/nodenames  
           break; # Don't dwell on one server, Look for a new server
