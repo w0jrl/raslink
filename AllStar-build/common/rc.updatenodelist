@@ -56,9 +56,9 @@ do
         fi
         if [ $dry_run -eq 0 ]
         then
-          sleep 5m
-		else
           sleep 5s
+		else
+          sleep 5m
         fi
     else
         if [ $verbose -ne 0 ]
