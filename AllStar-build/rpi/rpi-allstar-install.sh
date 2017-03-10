@@ -20,8 +20,7 @@ chmod +x /usr/src/utils/AllStar-build/common/update-asterisk.sh
 /usr/src/utils/AllStar-build/common/update-asterisk.sh
 echo "Building URI diag..."
 cd /usr/src/utils/astsrc/uridiag
-make
-make install
+make; make install
 echo "Done"
 echo "Setting up defaults for AllStar..."
 mkdir /etc/asterisk
