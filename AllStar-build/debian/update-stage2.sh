@@ -30,6 +30,11 @@ echo "Updating start up scripts..."
 (cp /usr/src/utils/AllStar-build/common/rc.updatenodelist /usr/local/bin/rc.updatenodelist;chmod +x /usr/local/bin/rc.updatenodelist)
 chmod +x /usr/src/utils/AllStar-build/debian/makelinks.sh
 /usr/src/utils/AllStar-build/debian/makelinks.sh
+cp -a /usr/src/utils/astsrc/sounds/* /var/lib/asterisk/sounds
+gsmcount=`ls -1 /var/lib/asterisk/sounds/rpt/*.gsm 2>/dev/null | wc -l`
+if [ $gsmcount != 0 ]; then
+  rm -f/var/lib/asterisk/sounds/rpt/*.gsm
+fi
 echo "Done"
 sleep 0.5
 echo "Resetting compiler flags..."
