@@ -34,7 +34,7 @@ chmod +x /usr/src/utils/AllStar-build/rpi/make-links.sh
 cp -a /usr/src/utils/astsrc/sounds/* /var/lib/asterisk/sounds
 gsmcount=`ls -1 /var/lib/asterisk/sounds/rpt/*.gsm 2>/dev/null | wc -l`
 if [ $gsmcount != 0 ]; then
-  rm -f/var/lib/asterisk/sounds/rpt/*.gsm
+  rm -f /var/lib/asterisk/sounds/rpt/*.gsm
 fi
 echo "Done"
 sleep 0.5
