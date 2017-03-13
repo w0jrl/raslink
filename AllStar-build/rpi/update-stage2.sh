@@ -5,10 +5,8 @@
 # Script Start
 echo "Running update, stage two."
 echo "This will take a while."
+echo "You can continue using your node during this process."
 sleep 0.5
-(killall rc.local;systemctl stop dahdi.timer;systemctl stop asterisk.timer;systemctl stop asterisk.service;systemctl stop dahdi) &>/dev/null
-sleep 0.5
-echo "Your node can not be used durring this process. It has been disabled."
 chmod +x /usr/src/utils/AllStar-build/rpi/chk-packages.sh
 /usr/src/utils/AllStar-build/rpi/chk-packages.sh
 sleep 0.5
@@ -68,7 +66,8 @@ sleep 0.5
 mv /root/.bashrc.orig /root/.bashrc
 echo "The update is complete."
 echo "You can run this tool at any time by typing 'system-update' at a root prompt."
-echo "Rebooting your node to apply the changes"
+echo "Reloading your node configuration to apply the changes..."
 sync
-sudo reboot
+(sudo systemctl reload dahdi;sudo systemctl reload asterisk;sudo systemctl restart updatenodelist) &
+echo "Done"
 exit 0

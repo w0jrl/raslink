@@ -3,8 +3,9 @@
 # Stage One
 
 # Script Start
-echo "Starting system update.
-This will take a while."
+echo "Starting system update."
+echo "This will take a while."
+echo "You can continue using your node during this process."
 sleep 0.5
 # get new sources
 echo "Updating source files for All Star..."
@@ -28,6 +29,8 @@ mv .bashrc .bashrc.orig
 cat .bashrc.orig > .bashrc
 echo "/usr/src/utils/AllStar-build/debian/update-stage2.sh" >> .bashrc
 echo "Rebooting to finish install."
+echo "When your node reboots, you need to login"
+echo "to finish the update."
 sync
 sudo reboot
 exit 0

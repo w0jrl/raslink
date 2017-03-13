@@ -5,9 +5,8 @@
 # Script Start
 echo "Running update, stage two."
 echo "This will take a while."
-(killall rc.local;systemctl stop dahdi.timer;systemctl stop asterisk.timer;systemctl stop asterisk.service;systemctl stop dahdi) &>/dev/null
+echo "You can continue using your node during this process."
 sleep 0.5
-echo "Your node can not be used durring this process. It has been disabled."
 chmod +x /usr/src/utils/AllStar-build/debian/chk-packages.sh
 /usr/src/utils/AllStar-build/debian/chk-packages.sh
 sleep 0.5
@@ -28,8 +27,8 @@ sleep 0.5
 # make sure configuration files and scripts are loaded
 echo "Updating start up scripts..."
 (cp /usr/src/utils/AllStar-build/common/rc.updatenodelist /usr/local/bin/rc.updatenodelist;chmod +x /usr/local/bin/rc.updatenodelist)
-chmod +x /usr/src/utils/AllStar-build/debian/makelinks.sh
-/usr/src/utils/AllStar-build/debian/makelinks.sh
+chmod +x /usr/src/utils/AllStar-build/debian/make-links.sh
+/usr/src/utils/AllStar-build/debian/make-links.sh
 cp -a /usr/src/utils/astsrc/sounds/* /var/lib/asterisk/sounds
 gsmcount=`ls -1 /var/lib/asterisk/sounds/rpt/*.gsm 2>/dev/null | wc -l`
 if [ $gsmcount != 0 ]; then
@@ -48,6 +47,7 @@ cp /usr/src/utils/AllStar-build/common/asterisk.service /etc/systemd/system
 cp /usr/src/utils/AllStar-build/common/asterisk.timer /etc/systemd/system
 cp /usr/src/utils/AllStar-build/common/dahdi.timer /etc/systemd/system
 cp /usr/src/utils/AllStar-build/common/updatenodelist.service /etc/systemd/system
+systemctl daemon-reload
 systemctl enable asterisk.timer
 systemctl enable dahdi.timer
 systemctl enable updatenodelist.service
@@ -60,11 +60,12 @@ if [ `grep -ic "snd_pcm_oss" /etc/modules` -gt 1 ]; then
 fi
 echo "Done"
 sleep 0.5
-echo "The update is complete..."
-echo "You can run this tool at any time by typing 'system-update' at a root prompt."
-echo "Rebooting your node to apply the changes"
 # restore bashrc
 mv /root/.bashrc.orig /root/.bashrc
+echo "The update is complete."
+echo "You can run this tool at any time by typing 'system-update' at a root prompt."
+echo "Reloading your node configuration to apply the changes..."
 sync
-sudo reboot
+(sudo systemctl reload dahdi;sudo systemctl reload asterisk;sudo systemctl restart updatenodelist) &
+echo "Done"
 exit 0
