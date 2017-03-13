@@ -6,7 +6,7 @@
 echo "Running update, stage two."
 echo "This will take a while."
 echo "You can continue using your node during this process."
-sleep 0.5
+sleep 2
 chmod +x /usr/src/utils/AllStar-build/debian/chk-packages.sh
 /usr/src/utils/AllStar-build/debian/chk-packages.sh
 sleep 0.5
