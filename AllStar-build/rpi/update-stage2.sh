@@ -7,6 +7,8 @@ echo "Running update, stage two."
 echo "This will take a while."
 echo "You can continue using your node during this process."
 sleep 2
+# restore bashrc
+mv /root/.bashrc.orig /root/.bashrc
 chmod +x /usr/src/utils/AllStar-build/rpi/chk-packages.sh
 /usr/src/utils/AllStar-build/rpi/chk-packages.sh
 sleep 0.5
@@ -62,8 +64,6 @@ if [ `grep -ic "snd_pcm_oss" /etc/modules` -gt 1 ]; then
 fi
 echo "Done"
 sleep 0.5
-# restore bashrc
-mv /root/.bashrc.orig /root/.bashrc
 echo "The update is complete."
 echo "You can run this tool at any time by typing 'system-update' at a root prompt."
 echo "Reloading your node configuration to apply the changes..."
