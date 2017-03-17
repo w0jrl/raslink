@@ -7,7 +7,7 @@ echo "Running update, stage two."
 echo "This will take a while."
 (service asterisk stop;service dahdi stop) &>/dev/null
 echo "You cannot use your node during this process."
-echo"It has been disabled."
+echo "It has been disabled."
 sleep 2
 # restore bashrc
 mv /root/.bashrc.orig /root/.bashrc
