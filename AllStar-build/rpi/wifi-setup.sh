@@ -68,6 +68,6 @@ fi
 sleep 0.5
 echo "If you want to setup another connection, run wifi-setup again."
 echo "To remove a network, edit /etc/wpa_supplicant/wpa_supplicant.conf."
-echo "See https://jlappliedtechnologies.com if you need assistance." 
+echo "See https://jlappliedtechnologies.com/raslink if you need assistance." 
 echo "Exiting"
 exit 0

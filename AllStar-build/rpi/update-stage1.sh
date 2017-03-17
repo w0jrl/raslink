@@ -9,7 +9,7 @@ echo "You can continue using your node during this process."
 sleep 2
 # get new sources
 echo "Updating source files for All Star..."
-cd /usr/src/utils
+cd /usr/src/utils/
 git pull
 sleep 0.5
 echo "Done"

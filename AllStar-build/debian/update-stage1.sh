@@ -9,7 +9,7 @@ echo "You can continue using your node during this process."
 sleep 2
 # get new sources
 echo "Updating source files for All Star..."
-cd /usr/src/utils
+cd /usr/src/utils/
 git pull
 sleep 0.5
 echo "Done"
@@ -24,7 +24,7 @@ echo "Cleaning up unneeded software..."
 sleep 0.5
 echo "Done"
 # setup for stage two
-cd /root
+cd /root/
 mv .bashrc .bashrc.orig
 cat .bashrc.orig > .bashrc
 echo "/usr/src/utils/AllStar-build/debian/update-stage2.sh" >> .bashrc

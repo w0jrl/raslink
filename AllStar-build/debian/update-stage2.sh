@@ -22,7 +22,7 @@ chmod +x /usr/src/utils/AllStar-build/common/update-asterisk.sh
 /usr/src/utils/AllStar-build/common/update-asterisk.sh
 sleep 0.5
 echo "Building URI diag..."
-cd /usr/src/utils/astsrc/uridiag
+cd /usr/src/utils/astsrc/uridiag/
 make; make install
 echo "Done"
 sleep 0.5
@@ -39,7 +39,7 @@ fi
 echo "Done"
 sleep 0.5
 echo "Resetting compiler flags..."
-cd /usr/src/utils
+cd /usr/src/utils/
 git clean -f
 git checkout -f
 echo "Done"
@@ -66,6 +66,6 @@ echo "The update is complete."
 echo "You can run this tool at any time by typing 'system-update' at a root prompt."
 echo "Reloading your node configuration to apply the changes..."
 sync
-(sudo systemctl reload dahdi;sudo systemctl reload asterisk;sudo systemctl restart updatenodelist) &
+(systemctl reload dahdi;systemctl reload asterisk;systemctl restart updatenodelist) &
 echo "Done"
 exit 0

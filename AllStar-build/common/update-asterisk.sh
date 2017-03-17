@@ -3,10 +3,10 @@
 
 # Script Start
 echo "Building asterisk..."
-cd /usr/src/utils
+cd /usr/src/utils/
 # put git commit number where asterisk makefile expects it
 git describe --always > /usr/src/utils/astsrc/asterisk/.version
-cd /usr/src/utils/astsrc/asterisk
+cd /usr/src/utils/astsrc/asterisk/
 # add the notch option
 cp /usr/src/utils/astsrc/extras/notch/rpt_notch.c ./apps
 sed -i 's/\/\* #include "rpt_notch.c" \*\//#include "rpt_notch.c"/' ./apps/app_rpt.c
