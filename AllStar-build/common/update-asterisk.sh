@@ -5,8 +5,8 @@
 echo "Building asterisk..."
 cd /usr/src/utils
 # put git commit number where asterisk makefile expects it
-git log -1 --format="%h" > /usr/src/utils/astsrc/asterisk/.version
-cd /usr/src/utils/astsrc/asterisk/
+git describe --always > /usr/src/utils/astsrc/asterisk/.version
+cd /usr/src/utils/astsrc/asterisk
 # add the notch option
 cp /usr/src/utils/astsrc/extras/notch/rpt_notch.c ./apps
 sed -i 's/\/\* #include "rpt_notch.c" \*\//#include "rpt_notch.c"/' ./apps/app_rpt.c
@@ -17,6 +17,8 @@ sed -i 's/\/\* #include "mdc_decode.c" \*\//#include "mdc_decode.c"/' ./apps/app
 sed -i 's/\/\* #include "mdc_encode.c" \*\//#include "mdc_encode.c"/' ./apps/app_rpt.c
 # change TX enabled message
 sed -i 's/"RPTENA"/"TXENA"/' ./apps/app_rpt.c
+# prevent reading false DTMF digits
+sed -i 's/#define DTMF_TO_TOTAL_ENERGY    ((digitmode & DSP_DIGITMODE_RELAXDTMF) ? 26.0 : 42.0)/#define DTMF_TO_TOTAL_ENERGY    ((digitmode & DSP_DIGITMODE_RELAXDTMF) ? 38.0 : 42.0)/' ./main/dsp.c
 # configure the build process
 ./configure
 # Build and install Asterisk
