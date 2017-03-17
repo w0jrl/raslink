@@ -3,9 +3,6 @@
 
 # Script Start
 echo "Building asterisk..."
-cd /usr/src/utils/
-# put git commit number where asterisk makefile expects it
-git describe --always > /usr/src/utils/astsrc/asterisk/.version
 cd /usr/src/utils/astsrc/asterisk/
 # clean objects
 make clean
@@ -21,6 +18,8 @@ sed -i 's/\/\* #include "mdc_encode.c" \*\//#include "mdc_encode.c"/' ./apps/app
 sed -i 's/"RPTENA"/"TXENA"/' ./apps/app_rpt.c
 # prevent reading false DTMF digits
 sed -i 's/#define DTMF_TO_TOTAL_ENERGY    ((digitmode & DSP_DIGITMODE_RELAXDTMF) ? 26.0 : 42.0)/#define DTMF_TO_TOTAL_ENERGY    ((digitmode & DSP_DIGITMODE_RELAXDTMF) ? 38.0 : 42.0)/' ./main/dsp.c
+# put git commit number where asterisk makefile expects it
+git describe --always > ./.version
 # configure the build process
 ./configure
 # Build and install Asterisk
