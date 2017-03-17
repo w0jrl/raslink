@@ -5,7 +5,9 @@
 # Script Start
 echo "Running update, stage two."
 echo "This will take a while."
-echo "You can continue using your node during this process."
+(service asterisk stop;service dahdi stop) &>/dev/null
+echo "You cannot use your node during this process."
+echo"It has been disabled."
 sleep 2
 # restore bashrc
 mv /root/.bashrc.orig /root/.bashrc
@@ -66,8 +68,8 @@ echo "Done"
 sleep 0.5
 echo "The update is complete."
 echo "You can run this tool at any time by typing 'system-update' at a root prompt."
-echo "Reloading your node configuration to apply the changes..."
+echo "Re-enabling your node..."
 sync
-(/boot/config.txt;systemctl reload dahdi;systemctl reload asterisk;systemctl restart updatenodelist) &
+(/boot/config.txt;service asterisk start;service updatenodelist start) &>/dev/null
 echo "Done"
 exit 0
