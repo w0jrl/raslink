@@ -15,7 +15,7 @@ sed -i 's/\/\* #include "mdc_encode.c" \*\//#include "mdc_encode.c"/' ./apps/app
 # change TX enabled message
 sed -i 's/"RPTENA"/"TXENA"/' ./apps/app_rpt.c
 # prevent reading false DTMF digits
-sed -i 's/26.0 : 42.0/38.0 : 42.0/' ./main/dsp.c
+sed -i 's/26.0 : 42.0/32.0 : 42.0/' ./main/dsp.c
 # put git commit number where asterisk makefile expects it
 git describe --always > .version
 # configure the build process
