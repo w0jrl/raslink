@@ -54,7 +54,7 @@ echo "Enjoy AllStar on Debian!"
 # Restore bashrc
 mv /root/.bashrc.orig /root/.bashrc
 if [ `grep -ic "/usr/bin/version" /root/.bashrc` -eq 0 ]; then
-  echo"/usr/bin/version" >> /root/.bashrc
+  echo "/usr/bin/version" >> /root/.bashrc
 fi
 date > /root/.lastupdate
 exit 0

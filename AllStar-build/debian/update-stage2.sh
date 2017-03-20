@@ -13,7 +13,7 @@ sleep 2
 mv /root/.bashrc.orig /root/.bashrc
 # make sure version runs at login
 if [ `grep -ic "/usr/bin/version" /root/.bashrc` -eq 0 ]; then
-  echo"/usr/bin/version" >> /root/.bashrc
+  echo "/usr/bin/version" >> /root/.bashrc
 fi
 chmod +x /usr/src/utils/AllStar-build/debian/chk-packages.sh
 /usr/src/utils/AllStar-build/debian/chk-packages.sh
