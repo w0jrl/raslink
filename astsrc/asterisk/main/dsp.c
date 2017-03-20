@@ -162,7 +162,7 @@ enum gsamp_thresh {
 #define DTMF_REVERSE_TWIST              ((digitmode & DSP_DIGITMODE_RELAXDTMF) ? 9.5  : 2.5)    /* 4dB normal sph 12.5 : 5.5 was 6.5 : 2.5 */
 #define DTMF_RELATIVE_PEAK_ROW  ((digitmode & DSP_DIGITMODE_RELAXDTMF) ? 3.3  : 6.3)    /* 8dB sph was 6.3 */
 #define DTMF_RELATIVE_PEAK_COL  ((digitmode & DSP_DIGITMODE_RELAXDTMF) ? 3.3  : 6.3)    /* 8dB sph was 6.3 */
-#define DTMF_TO_TOTAL_ENERGY    ((digitmode & DSP_DIGITMODE_RELAXDTMF) ? 26.0 : 42.0)
+#define DTMF_TO_TOTAL_ENERGY    ((digitmode & DSP_DIGITMODE_RELAXDTMF) ? 32.0 : 42.0)
 #else
 #define DTMF_NORMAL_TWIST               6.3
 #define DTMF_REVERSE_TWIST              ((digitmode & DSP_DIGITMODE_RELAXDTMF) ? 4.0  : 2.5)    /* 4dB normal */
