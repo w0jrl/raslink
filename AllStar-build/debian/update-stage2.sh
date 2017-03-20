@@ -11,6 +11,10 @@ echo "It has been disabled."
 sleep 2
 # restore bashrc
 mv /root/.bashrc.orig /root/.bashrc
+# make sure version runs at login
+if [ `grep -ic "/usr/bin/version" /root/.bashrc` -eq 0 ]; then
+  echo"/usr/bin/version" >> /root/.bashrc
+fi
 chmod +x /usr/src/utils/AllStar-build/debian/chk-packages.sh
 /usr/src/utils/AllStar-build/debian/chk-packages.sh
 sleep 0.5
@@ -68,6 +72,8 @@ echo "The update is complete."
 echo "You can run this tool at any time by typing 'system-update' at a root prompt."
 echo "Re-enabling your node..."
 sync
+sleep 1
 (service asterisk start;service updatenodelist start) &>/dev/null
 echo "Done"
+date > /root/.lastupdate
 exit 0

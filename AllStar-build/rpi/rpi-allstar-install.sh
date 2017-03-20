@@ -50,6 +50,9 @@ systemctl enable updatenodelist.service
 chmod +x /usr/src/utils/AllStar-build/rpi/make-links.sh
 /usr/src/utils/AllStar-build/rpi/make-links.sh
 service cron restart
+if [ `grep -ic "/usr/bin/version" /root/.bashrc` -eq 0 ]; then
+  echo"/usr/bin/version" >> /root/.bashrc
+fi
 echo "Done"
 echo "Starting Asterisk..."
 systemctl start asterisk
@@ -63,5 +66,5 @@ echo "EchoLink is disabled by default."
 echo "All files are located in /etc/asterisk."
 echo "After editing files, reboot to get your node online."
 echo "Enjoy AllStar on Raspbian!"
+date > /root/.lastupdate
 exit 0
-

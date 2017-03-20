@@ -14,7 +14,7 @@ else
   echo "Country not changed"
 fi
 sleep 0.5
-echo "Please enter the WiFi card name from the list below:"
+echo "Please enter the Wi-Fi card name from the list below:"
 ifconfig | grep wlan
 read -e -p "[wlan0] : " wificard
 if [ "$wificard" = "" ]
@@ -63,6 +63,7 @@ then
   ifconfig $wificard | grep "inet addr.*"
 else
   echo "***Connection Failed***"
+  echo "See https://jlappliedtechnologies.com/raslink if you need assistance." 
   exit 1
 fi
 sleep 0.5
