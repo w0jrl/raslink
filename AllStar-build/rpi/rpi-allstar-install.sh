@@ -50,8 +50,8 @@ systemctl enable updatenodelist.service
 chmod +x /usr/src/utils/AllStar-build/rpi/make-links.sh
 /usr/src/utils/AllStar-build/rpi/make-links.sh
 service cron restart
-if [ `grep -ic "/usr/bin/version" /root/.bashrc` -eq 0 ]; then
-  echo "/usr/bin/version" >> /root/.bashrc
+if [ `grep -ic "/usr/bin/version" /root/.profile` -eq 0 ]; then
+  echo "/usr/bin/version" >> /root/.profile
 fi
 echo "Done"
 echo "Starting Asterisk..."

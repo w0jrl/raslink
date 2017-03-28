@@ -12,8 +12,11 @@ sleep 2
 # restore bashrc
 mv /root/.bashrc.orig /root/.bashrc
 # make sure version runs at login
-if [ `grep -ic "/usr/bin/version" /root/.bashrc` -eq 0 ]; then
-  echo "/usr/bin/version" >> /root/.bashrc
+if [ `grep -ic "/usr/bin/version" /root/.bashrc` -eq 1 ]; then
+  sed -i '/\/usr\/bin\/version/d' /root/.bashrc
+fi
+if [ `grep -ic "/usr/bin/version" /root/.profile` -eq 0 ]; then
+  echo "/usr/bin/version" >> /root/.profile
 fi
 chmod +x /usr/src/utils/AllStar-build/debian/chk-packages.sh
 /usr/src/utils/AllStar-build/debian/chk-packages.sh

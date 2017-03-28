@@ -38,6 +38,9 @@ systemctl enable updatenodelist.service
 chmod +x /usr/src/utils/AllStar-build/debian/make-links.sh
 /usr/src/utils/AllStar-build/debian/make-links.sh
 service cron restart
+if [ `grep -ic "/usr/bin/version" /root/.profile` -eq 0 ]; then
+  echo "/usr/bin/version" >> /root/.profile
+fi
 echo "Done"
 echo "Starting Asterisk..."
 systemctl start asterisk
