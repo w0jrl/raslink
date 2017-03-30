@@ -23,7 +23,7 @@ cd /usr/src/utils/astsrc/uridiag
 make; make install
 echo "Done"
 echo "Setting up defaults for AllStar..."
-mkdir /etc/asterisk
+mkdir -p /etc/asterisk
 cd /etc/asterisk
 cp /usr/src/utils/AllStar-build/configs/* .
 echo "Done"
