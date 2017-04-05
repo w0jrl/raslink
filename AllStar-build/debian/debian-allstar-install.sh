@@ -2,8 +2,7 @@
 echo "Welcome to the AllStar Debian installer."
 echo "This script will install AllStar on your Debian server."
 read -e -p "$(echo -e "Do you want to continue? [Y/N]" ) " install
-if [[ $install = y ]] || [[ $install = Y ]]
-then
+if [[ "$install" = "y" ]] || [[ "$install" = "Y" ]]; then
   echo " Installing Git..."
   apt-get install git -y
   echo "Done"
@@ -37,7 +36,7 @@ then
   cat .bashrc.orig > .bashrc
   chmod +x /usr/src/utils/AllStar-build/debian/debian-install-stage2.sh
   echo "/usr/src/utils/AllStar-build/debian/debian-install-stage2.sh" >> .bashrc
-  echo "After the system reboots, you need to login as the root user to finish the installation."
+  echo "After the system reboots, you need to log in as the root user to finish the installation."
   echo "Rebooting to finish install."
   sync
   sudo reboot

@@ -29,7 +29,7 @@ mv .bashrc .bashrc.orig
 cat .bashrc.orig > .bashrc
 echo "/usr/src/utils/AllStar-build/rpi/update-stage2.sh" >> .bashrc
 echo "Rebooting to finish install."
-echo "When your node reboots, you need to login"
+echo "When your node reboots, you need to log in"
 echo " to finish the update."
 sync
 sudo reboot

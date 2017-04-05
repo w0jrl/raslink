@@ -12,10 +12,10 @@ sleep 2
 # restore bashrc
 mv /root/.bashrc.orig /root/.bashrc
 # make sure version runs at login
-if [ `grep -ic "/usr/bin/version" /root/.bashrc` -eq 1 ]; then
+if [ $(grep -ic "/usr/bin/version" /root/.bashrc) >= 1 ]; then
   sed -i '/\/usr\/bin\/version/d' /root/.bashrc
 fi
-if [ `grep -ic "/usr/bin/version" /root/.profile` -eq 0 ]; then
+if [ $(grep -ic "/usr/bin/version" /root/.profile) == 0 ]; then
   echo "/usr/bin/version" >> /root/.profile
 fi
 chmod +x /usr/src/utils/AllStar-build/rpi/chk-packages.sh
@@ -42,15 +42,14 @@ chmod +x /usr/src/utils/AllStar-build/rpi/make-links.sh
 /usr/src/utils/AllStar-build/rpi/make-links.sh
 cp -a /usr/src/utils/astsrc/sounds/* /var/lib/asterisk/sounds
 gsmcount=`ls -1 /var/lib/asterisk/sounds/rpt/*.gsm 2>/dev/null | wc -l`
-if [ $gsmcount != 0 ]; then
+if [ "$gsmcount" != "0" ]; then
   rm -f /var/lib/asterisk/sounds/rpt/*.gsm
 fi
 echo "Done"
 sleep 0.5
-echo "Resetting compiler flags..."
+echo "Cleaning up object files..."
 cd /usr/src/utils
-git clean -f
-git checkout -f
+(git clean -f;git checkout -f)
 echo "Done"
 sleep 0.5
 echo "Updating system boot configuration..."
@@ -64,10 +63,10 @@ systemctl daemon-reload
 systemctl enable asterisk.timer
 systemctl enable dahdi.timer
 systemctl enable updatenodelist.service
-if [ `grep -ic "snd_bcm2835" /etc/modules` -eq 1 ]; then
+if [ $(grep -ic "snd_bcm2835" /etc/modules) >= 1 ]; then
   sed -i '/snd_bcm2835/d' /etc/modules
 fi
-if [ `grep -ic "snd_pcm_oss" /etc/modules` -gt 1 ]; then
+if [ $(grep -ic "snd_pcm_oss" /etc/modules) > 1 ]; then
   sed -i '/snd_pcm_oss/d' /etc/modules
   echo "snd_pcm_oss" >> /etc/modules
 fi

@@ -77,7 +77,7 @@ else
 fi
 subversion=/usr/bin/svn
 echo "Checking Subversion..."
-if [ -e $subversion ]; then
+if [ -e "$subversion" ]; then
   echo "Removing Subversion; No longer needed for AllStar."
   apt-get autoremove --purge -y subversion
   rm -rf /root/.subversion
@@ -87,7 +87,7 @@ else
 fi
 echo "Checking status of required packages..."
 sourcesList=$( grep -ic "#deb-src" /etc/apt/sources.list )
-if [ $sourcesList -eq 1 ]; then
+if [ "$sourcesList" == "1" ]; then
   sed -i 's/#deb-src/deb-src/' /etc/apt/sources.list
 fi
 chmod +x /usr/src/utils/AllStar-build/common/required-tools.sh
@@ -95,12 +95,12 @@ chmod +x /usr/src/utils/AllStar-build/common/required-tools.sh
 echo "Done"
 echo "checking Logrotate status..."
 fstab=$(grep -ic "/var/log tmpfs defaults,noatime,nosuid,mode=0755,size=64m 0 0" /etc/fstab )
-if [ $fstab -eq 1 ]; then
+if [ "$fstab" == "1" ]; then
   echo "Old fstab log setting detected; Removing."
   sed -i '/tmpfs \/var\/log tmpfs defaults,noatime,nosuid,mode=0755,size=64m 0 0/d' /etc/fstab
   echo "Done"
 fi
-if [[ -e /etc/logrotate.d/asterisk ]] && [[ `grep -ic "compress" /etc/logrotate.d/asterisk` -eq 1 ]]; then
+if [[ -e /etc/logrotate.d/asterisk ]] && [[ $(grep -ic "compress" /etc/logrotate.d/asterisk) == 1 ]]; then
   echo "Logrotate parameters are already up to date; Skipping."
 else
   echo "updating Logrotate parameters..."

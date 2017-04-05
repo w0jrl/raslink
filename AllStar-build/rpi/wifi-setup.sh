@@ -3,8 +3,7 @@ echo "Welcome to Wi-Fi setup."
 sleep 0.5
 country=$( cat /etc/wpa_supplicant/wpa_supplicant.conf | grep "country=" | sed 's/country\=//' )
 read -e -p "$(echo -e "Your country is currently set to: $country\n Do you want to change it? [Y/N]" )" changeCountry
-if [[ $changeCountry = y ]] || [[ $changeCountry = Y ]]
-then
+if [[ "$changeCountry" = "y" ]] || [[ "$changeCountry" = "Y" ]]; then
   echo "Your two letter country code must be uppercase."
   echo "Example: US"
   read -e -p "Please enter your country code: " countryCode
@@ -17,8 +16,7 @@ sleep 0.5
 echo "Please enter the Wi-Fi card name from the list below:"
 ifconfig | grep wlan
 read -e -p "[wlan0] : " wificard
-if [ "$wificard" = "" ]
-then
+if [ "$wificard" = "" ]; then
   wificard=wlan0
 fi
 sleep 0.5
@@ -33,8 +31,7 @@ while [ "$scan" == "1" ]
   echo "Scan complete"
   sleep 0.5
   read -e -p "Do you want to scan again? [y/N]" YN
-  if [[ "$YN" = "y" ]] || [[ "$YN" = "Y" ]]
-  then
+  if [[ "$YN" = "y" ]] || [[ "$YN" = "Y" ]];  then
    scan=1
   else
    scan=0
@@ -55,8 +52,7 @@ ifdown $wificard
 sleep 0.5
 ifup $wificard
 sleep 10
-if ifconfig $wificard | grep -q "addr:"
-then
+if ifconfig $wificard | grep -q "addr:"; then
   echo "***Connection Active***"
   sleep 0.5
   echo "displaying connection information"

@@ -2,8 +2,7 @@
 # Used to check a USB Radio Interface (URI) for problems
 echo "Welcome to uricheck."
 read -e -p "$(echo -e "Are you using a USB Radio interface (URI) with a loopback circuit connected? [Y/N]" ) " answer
-if [[ $answer = y ]] || [[ $answer = Y ]]
-then
+if [[ "$answer" = "y" ]] || [[ "$answer" = "Y" ]]; then
   echo "Your node cannot be used durring this process."
   echo "Disabling your node..."
   (service asterisk stop;service dahdi stop)

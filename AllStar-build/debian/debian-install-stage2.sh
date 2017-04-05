@@ -11,16 +11,19 @@ cd /usr/src/utils/astsrc/uridiag
 make; make install
 echo "Done"
 echo "Setting up defaults for AllStar..."
-mkdir /etc/asterisk
+mkdir -p /etc/asterisk
 cd /etc/asterisk
 cp /usr/src/utils/AllStar-build/configs/* .
 echo "Done"
 echo "Installing default sound files..."
 cp -a /usr/src/utils/astsrc/sounds/* /var/lib/asterisk/sounds
-if [ `grep -ic "snd_bcm2835" /etc/modules` -eq 1 ]; then
+if [ $(grep -ic "snd_bcm2835" /etc/modules) >= 1 ]; then
   sed -i '/snd_bcm2835/d' /etc/modules
 fi
-if [ `grep -ic "snd_pcm_oss" /etc/modules` -gt 1 ]; then
+if [ $(grep -ic "snd_pcm_oss" /etc/modules) == 0 ]; then
+  echo "snd_pcm_oss" >> /etc/modules
+fi
+if [ $(grep -ic "snd_pcm_oss" /etc/modules) > 1 ]; then
   sed -i '/snd_pcm_oss/d' /etc/modules
   echo "snd_pcm_oss" >> /etc/modules
 fi
@@ -38,12 +41,16 @@ systemctl enable updatenodelist.service
 chmod +x /usr/src/utils/AllStar-build/debian/make-links.sh
 /usr/src/utils/AllStar-build/debian/make-links.sh
 service cron restart
-if [ `grep -ic "/usr/bin/version" /root/.profile` -eq 0 ]; then
+if [ $(grep -ic "/usr/bin/version" /root/.profile) == 0 ]; then
   echo "/usr/bin/version" >> /root/.profile
 fi
 echo "Done"
 echo "Starting Asterisk..."
 systemctl start asterisk
+echo "Done"
+echo "Cleaning up object files..."
+cd /usr/src/utils/
+(git clean -f;git checkout -f)
 echo "Done"
 echo "AllStar is now installed..."
 echo "You can update the system at any time by running 'system-update' at a root prompt."
