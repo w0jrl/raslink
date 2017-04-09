@@ -26,7 +26,7 @@ if [ "$fstab" == "1" ]; then
   sed -i '/tmpfs \/var\/log tmpfs defaults,noatime,nosuid,mode=0755,size=64m 0 0/d' /etc/fstab
   echo "Done"
 fi
-if [[ -e /etc/logrotate.d/asterisk ]] && [[ $(grep -ic "compress" /etc/logrotate.d/asterisk) == 1 ]]; then
+if [[ -e /etc/logrotate.d/asterisk ]] && [[ "$(grep -ic "compress" /etc/logrotate.d/asterisk)" == "1" ]]; then
   echo "Logrotate parameters are already up to date; Skipping."
 else
   echo "updating Logrotate parameters..."

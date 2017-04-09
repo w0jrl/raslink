@@ -12,10 +12,10 @@ sleep 2
 # restore bashrc
 mv /root/.bashrc.orig /root/.bashrc
 # make sure version runs at login
-if [ $(grep -ic "/usr/bin/version" /root/.bashrc) >= 1 ]; then
+if [ "$(grep -ic "/usr/bin/version" /root/.bashrc)" == "1" ]; then
   sed -i '/\/usr\/bin\/version/d' /root/.bashrc
 fi
-if [ $(grep -ic "/usr/bin/version" /root/.profile) == 0 ]; then
+if [ "$(grep -ic "/usr/bin/version" /root/.profile)" == "0" ]; then
   echo "/usr/bin/version" >> /root/.profile
 fi
 chmod +x /usr/src/utils/AllStar-build/debian/chk-packages.sh
@@ -53,6 +53,8 @@ cd /usr/src/utils
 echo "Done"
 sleep 0.5
 echo "Updating system boot configuration..."
+cp /usr/src/utils/AllStar-build/debian/boot-config.txt /boot/config.txt
+cp /usr/src/utils/AllStar-build/debian/etc-asound.conf /etc/asound.conf
 cp /usr/src/utils/AllStar-build/common/asterisk.service /etc/systemd/system
 cp /usr/src/utils/AllStar-build/common/asterisk.timer /etc/systemd/system
 cp /usr/src/utils/AllStar-build/common/dahdi.timer /etc/systemd/system
@@ -61,10 +63,10 @@ systemctl daemon-reload
 systemctl enable asterisk.timer
 systemctl enable dahdi.timer
 systemctl enable updatenodelist.service
-if [ $(grep -ic "snd_bcm2835" /etc/modules) == 1 ]; then
+if [ "$(grep -ic "snd_bcm2835" /etc/modules)" == "1" ]; then
   sed -i '/snd_bcm2835/d' /etc/modules
 fi
-if [ $(grep -ic "snd_pcm_oss" /etc/modules) > 1 ]; then
+if [ "$(grep -ic "snd_pcm_oss" /etc/modules)" > "1" ]; then
   sed -i '/snd_pcm_oss/d' /etc/modules
   echo "snd_pcm_oss" >> /etc/modules
 fi
@@ -75,7 +77,7 @@ echo "You can run this tool at any time by typing 'system-update' at a root prom
 echo "Re-enabling your node..."
 sync
 sleep 1
-(service asterisk start;service updatenodelist start) &>/dev/null
+(/boot/config.txt;service asterisk start;service updatenodelist start) &>/dev/null
 echo "Done"
 date > /root/.lastupdate
 exit 0
