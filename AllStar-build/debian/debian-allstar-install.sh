@@ -46,4 +46,4 @@ else
   echo "When you're ready to install AllStar, run this script again."
   echo "Exiting"
 fi
-exit 0
+exit 1

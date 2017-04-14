@@ -32,7 +32,7 @@ chmod +x /usr/src/utils/AllStar-build/common/update-asterisk.sh
 sleep 0.5
 echo "Building URI diag..."
 cd /usr/src/utils/astsrc/uridiag/
-make; make install
+(make;make install)
 echo "Done"
 sleep 0.5
 # make sure configuration files and scripts are loaded
@@ -53,8 +53,6 @@ cd /usr/src/utils
 echo "Done"
 sleep 0.5
 echo "Updating system boot configuration..."
-cp /usr/src/utils/AllStar-build/debian/boot-config.txt /boot/config.txt
-cp /usr/src/utils/AllStar-build/debian/etc-asound.conf /etc/asound.conf
 cp /usr/src/utils/AllStar-build/common/asterisk.service /etc/systemd/system
 cp /usr/src/utils/AllStar-build/common/asterisk.timer /etc/systemd/system
 cp /usr/src/utils/AllStar-build/common/dahdi.timer /etc/systemd/system
@@ -77,7 +75,7 @@ echo "You can run this tool at any time by typing 'system-update' at a root prom
 echo "Re-enabling your node..."
 sync
 sleep 1
-(/boot/config.txt;service asterisk start;service updatenodelist start) &>/dev/null
+(service asterisk start;service updatenodelist start) &>/dev/null
 echo "Done"
 date > /root/.lastupdate
 exit 0
