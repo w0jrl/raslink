@@ -22,9 +22,16 @@ patch -p1 < /usr/src/utils/AllStar-build/patches/patch-dahdi-dude-current
 # remove setting the owner to asterisk
 patch -p0 < /usr/src/utils/AllStar-build/patches/patch-dahdi.rules
 # Build and install dahdi
-(make;make install;make config)
-if [ "$(grep -ic "dahdi" /etc/modules)" == "0" ]; then
-  echo "dahdi" >> /etc/modules
+(make all;make install;make config)
+if [ "$(grep -ic "dahdi" /etc/modules)" == "1" ]; then
+  sed -i '/dahdi/d' /etc/modules
+fi
+if [ -f /etc/init.d/dahdi ]; then
+  update-rc.d dahdi remove
+  rm -rf /etc/init.d/dahdi
+  systemctl disable dahdi.timer
+  rm -rf /etc/systemd/system/dahdi.timer
+  systemctl daemon-reload
 fi
 echo "Done"
 exit 0

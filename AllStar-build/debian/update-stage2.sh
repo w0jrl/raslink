@@ -5,10 +5,10 @@
 # Script Start
 echo "Running update, stage two."
 echo "This will take a while."
-(service asterisk stop;service dahdi stop) &>/dev/null
+service asterisk stop &>/dev/null
 echo "You cannot use your node during this process."
 echo "It has been disabled."
-sleep 2
+sleep 1
 # restore bashrc
 mv /root/.bashrc.orig /root/.bashrc
 # make sure version runs at login
@@ -55,11 +55,9 @@ sleep 0.5
 echo "Updating system boot configuration..."
 cp /usr/src/utils/AllStar-build/common/asterisk.service /etc/systemd/system
 cp /usr/src/utils/AllStar-build/common/asterisk.timer /etc/systemd/system
-cp /usr/src/utils/AllStar-build/common/dahdi.timer /etc/systemd/system
 cp /usr/src/utils/AllStar-build/common/updatenodelist.service /etc/systemd/system
 systemctl daemon-reload
 systemctl enable asterisk.timer
-systemctl enable dahdi.timer
 systemctl enable updatenodelist.service
 if [ "$(grep -ic "snd_bcm2835" /etc/modules)" == "1" ]; then
   sed -i '/snd_bcm2835/d' /etc/modules

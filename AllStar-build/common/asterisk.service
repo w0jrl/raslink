@@ -2,14 +2,16 @@
 Description=Asterisk PBX and telephony daemon
 Documentation=man:asterisk(8)
 Wants=network.target
-After=network-online.target
+After=network.target
 
 [Service]
 Type=simple
 StandardOutput=null
+ExecStartPre=/sbin/modprobe dahdi
 ExecStart=/usr/sbin/asterisk -f -C /etc/asterisk/asterisk.conf
 ExecStartPost=-/usr/sbin/asterisk -rx 'module load chan_echolink.so'
 ExecStop=/usr/sbin/asterisk -rx 'stop now'
+ExecStopPost=-/sbin/modprobe -r dahdi
 ExecReload=/usr/sbin/asterisk -rx 'module reload'
 
 # safe_asterisk emulation

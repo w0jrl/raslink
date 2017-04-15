@@ -9,6 +9,6 @@ git describe --always > .version
 # configure the build process
 ./configure
 # Build and install Asterisk
-(make;make install)
+(make all;make install)
 echo "Done."
 exit 0
