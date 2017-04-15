@@ -8,6 +8,7 @@ After=network.target
 Type=simple
 StandardOutput=null
 ExecStartPre=/sbin/modprobe dahdi
+ExecStartPre=/usr/sbin/dahdi_cfg
 ExecStart=/usr/sbin/asterisk -f -C /etc/asterisk/asterisk.conf
 ExecStartPost=-/usr/sbin/asterisk -rx 'module load chan_echolink.so'
 ExecStop=/usr/sbin/asterisk -rx 'stop now'
