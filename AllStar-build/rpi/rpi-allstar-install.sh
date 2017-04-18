@@ -18,10 +18,8 @@ chmod +x /usr/src/utils/AllStar-build/common/update-libpri.sh
 /usr/src/utils/AllStar-build/common/update-libpri.sh
 chmod +x /usr/src/utils/AllStar-build/common/update-asterisk.sh
 /usr/src/utils/AllStar-build/common/update-asterisk.sh
-echo "Building URI diag..."
-cd /usr/src/utils/astsrc/uridiag
-(make;make install)
-echo "Done"
+chmod +x /usr/src/utils/AllStar-build/common/update-uridiag.sh
+/usr/src/utils/AllStar-build/common/update-uridiag.sh
 echo "Setting up defaults for AllStar..."
 mkdir -p /etc/asterisk
 cd /etc/asterisk

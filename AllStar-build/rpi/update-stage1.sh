@@ -6,7 +6,7 @@
 echo "Starting system update."
 echo "This will take a while."
 echo "You can continue using your node during this process."
-sleep 2
+sleep 1
 # get new sources
 echo "Updating source files for All Star..."
 cd /usr/src/utils/

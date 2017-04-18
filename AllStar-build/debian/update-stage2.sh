@@ -30,10 +30,8 @@ sleep 0.5
 chmod +x /usr/src/utils/AllStar-build/common/update-asterisk.sh
 /usr/src/utils/AllStar-build/common/update-asterisk.sh
 sleep 0.5
-echo "Building URI diag..."
-cd /usr/src/utils/astsrc/uridiag/
-(make;make install)
-echo "Done"
+chmod +x /usr/src/utils/AllStar-build/common/update-uridiag.sh
+/usr/src/utils/AllStar-build/common/update-uridiag.sh
 sleep 0.5
 # make sure configuration files and scripts are loaded
 echo "Updating start up scripts..."

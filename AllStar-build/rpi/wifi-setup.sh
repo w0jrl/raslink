@@ -2,7 +2,7 @@
 echo "Welcome to Wi-Fi setup."
 sleep 0.5
 country=$( cat /etc/wpa_supplicant/wpa_supplicant.conf | grep "country=" | sed 's/country\=//' )
-read -e -p "$(echo -e "Your country is currently set to: $country\n Do you want to change it? [Y/N]" )" changeCountry
+read -e -p "$( echo -e "Your country is currently set to: $country\n Do you want to change it? [Y/N]" )" changeCountry
 if [[ "$changeCountry" = "y" ]] || [[ "$changeCountry" = "Y" ]]; then
   echo "Your two letter country code must be uppercase."
   echo "Example: US"
@@ -21,8 +21,7 @@ if [ "$wificard" = "" ]; then
 fi
 sleep 0.5
 scan=1
-while [ "$scan" == "1" ]
- do
+while [ "$scan" == "1" ]; do
   echo "Scanning for networks..."
   echo "___________________________________"
   sleep 0.5
