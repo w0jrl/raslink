@@ -8443,13 +8443,13 @@ char	*val,fname[300],str[100];
 	if (tgn == 1)
 	{
 		if (myrpt->p.tannmode < 2) return res;
-		return(sayphoneticstr(mychannel,str));
+		return(saycharstr(mychannel,str));
 	}
 	if (name[0] != '3') return res;
 	if (myrpt->p.eannmode < 2) return res;
 	sprintf(str,"%d",atoi(name + 1));	
 	if (elink_db_get(str,'n',NULL,fname,NULL) < 1) return res;
-	res = sayphoneticstr(mychannel,fname);
+	res = saycharstr(mychannel,fname);
 	return res;
 }
 
