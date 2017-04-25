@@ -57,8 +57,8 @@ if ifconfig $wificard | grep -q "addr:"; then
   echo "displaying connection information"
   ifconfig $wificard | grep "inet addr.*"
 else
-  echo "***Connection Failed***"
-  echo "See https://jlappliedtechnologies.com/raslink if you need assistance." 
+  echo "***Connection Failed***" >&2
+  echo "See https://jlappliedtechnologies.com/raslink if you need assistance." >&2
   exit 1
 fi
 sleep 0.5
