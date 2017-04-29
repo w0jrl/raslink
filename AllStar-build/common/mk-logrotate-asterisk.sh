@@ -1,7 +1,7 @@
 #! /bin/bash
-# Rotate logs for AllStar
+# mk-logrotate-asterisk.sh - Rotate logs for AllStar
 
-#Script Start.
+# Script Start.
 echo "/var/log/asterisk/messages /var/log/asterisk/*log {" >>/etc/logrotate.d/asterisk
 echo "   rotate 12" >>/etc/logrotate.d/asterisk
 echo "   monthly" >>/etc/logrotate.d/asterisk

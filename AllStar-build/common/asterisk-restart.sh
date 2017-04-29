@@ -1,5 +1,5 @@
 #!/bin/bash
-# Used to restart Asterisk from a radio
+# asterisk-restart.sh - Used to restart Asterisk from a radio
 
 # Script Start
 sudo systemctl restart asterisk &>/dev/null

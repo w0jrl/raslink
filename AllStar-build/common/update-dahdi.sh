@@ -1,5 +1,5 @@
 #! /bin/bash
-# Used to build Dahdi for AllStar
+# update-dahdi.sh - Used to build Dahdi for AllStar
 
 # Script Start
 echo "Downloading and unpacking dahdi..."
@@ -19,7 +19,7 @@ echo "Building dahdi..."
 # Patch dahdi for use with AllStar
 # https://allstarlink.org/dude-dahdi-2.10.0.1-patches-20150306
 patch -p1 < /usr/src/utils/AllStar-build/patches/patch-dahdi-dude-current
-# remove setting the owner to asterisk
+# Remove setting the owner to asterisk
 patch -p0 < /usr/src/utils/AllStar-build/patches/patch-dahdi.rules
 # Build and install dahdi
 (make all;make install;make config)

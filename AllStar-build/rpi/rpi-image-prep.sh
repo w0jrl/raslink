@@ -1,5 +1,5 @@
 #!/bin/bash
-# Prepare a clean image for AllStar on Raspbian
+# rpi-image-prep.sh - Prepare a clean image for AllStar on Raspbian
 # For developers only!
 # Do not use unless you know what you're doing,
 	# and you've made a complete backup first!
@@ -8,7 +8,7 @@
 # You have been warned!
 
 # Script Start
-# rotate logs monthly
+# Rotate logs monthly
 chmod +x /usr/src/utils/AllStar-build/common/mk-logrotate-asterisk.sh
 /usr/src/utils/AllStar-build/common/mk-logrotate-asterisk.sh
 # Make sure we are running the latest and greatest
@@ -19,13 +19,13 @@ apt-get install raspberrypi-kernel raspberrypi-kernel-headers
 cp /usr/src/utils/AllStar-build/rpi/boot-config.txt /boot/config.txt
 # Setup Alsa configuration
 cp /usr/src/utils/AllStar-build/rpi/etc-asound.conf /etc/asound.conf
-# install required packages
+# Install required packages
 chmod +x /usr/src/utils/AllStar-build/common/required-tools.sh
 /usr/src/utils/AllStar-build/common/required-tools.sh
-# remove unneededpackages and sources
+# Remove unneededpackages and sources
 chmod +x /usr/src/utils/AllStar-build/rpi/chk-packages.sh
 /usr/src/utils/AllStar-build/rpi/chk-packages.sh
-# set up for AllStar install
+# Setup for AllStar install
 chmod +x /usr/src/utils/AllStar-build/rpi/rpi-allstar-install.sh
 sync
 echo "REBOOT before you run the install script"

@@ -1,4 +1,7 @@
 #!/bin/bash
+# debian-allstar-install.sh - Used to install AllStar on Debian
+
+# Script Start
 echo "Welcome to the AllStar Debian installer."
 echo "This script will install AllStar on your Debian server."
 read -e -p "$(echo -e "Do you want to continue? [Y/N]" ) " install
@@ -12,14 +15,14 @@ if [[ "$install" = "y" ]] || [[ "$install" = "Y" ]]; then
   git clone https://github.com/w0jrl/AllStar-raspbian.git utils
   echo "Done"
   sleep 0.5
-  echo "Updating the system."
+  echo "Updating the system..."
   (apt-get update;apt-get dist-upgrade -y)
   echo "Done"
-  echo "Installing kernel headers."
+  echo "Installing kernel headers..."
   apt-get install linux-headers-$(uname -r) -y
   echo "Done"
   sleep 0.5
-  echo "Setting up log rotate."
+  echo "Setting up log rotate..."
   echo "Logs will be rotated once a month."
   chmod +x /usr/src/utils/AllStar-build/common/mk-logrotate-asterisk.sh
   /usr/src/utils/AllStar-build/common/mk-logrotate-asterisk.sh
@@ -30,7 +33,7 @@ if [[ "$install" = "y" ]] || [[ "$install" = "Y" ]]; then
   /usr/src/utils/AllStar-build/common/required-tools.sh
   echo "Done"
   sleep 0.5
-# setup for stage two
+# Setup for stage two
   cd /root
   mv .bashrc .bashrc.orig
   cat .bashrc.orig > .bashrc

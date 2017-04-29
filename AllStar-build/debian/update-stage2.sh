@@ -1,5 +1,5 @@
 #!/bin/bash
-# Used to update the system
+# update-stage2.sh - Used to update the system
 # Stage Two
 
 # Script Start
@@ -9,9 +9,9 @@ service asterisk stop &>/dev/null
 echo "You cannot use your node during this process."
 echo "It has been disabled."
 sleep 1
-# restore bashrc
+# Restore bashrc
 mv /root/.bashrc.orig /root/.bashrc
-# make sure version runs at login
+# Make sure version runs at login
 if [ "$(grep -ic "/usr/bin/version" /root/.bashrc)" == "1" ]; then
   sed -i '/\/usr\/bin\/version/d' /root/.bashrc
 fi
@@ -33,7 +33,7 @@ sleep 0.5
 chmod +x /usr/src/utils/AllStar-build/common/update-uridiag.sh
 /usr/src/utils/AllStar-build/common/update-uridiag.sh
 sleep 0.5
-# make sure configuration files and scripts are loaded
+# Make sure configuration files and scripts are loaded
 echo "Updating start up scripts..."
 (cp /usr/src/utils/AllStar-build/common/rc.updatenodelist /usr/local/bin/rc.updatenodelist;chmod +x /usr/local/bin/rc.updatenodelist)
 chmod +x /usr/src/utils/AllStar-build/debian/make-links.sh

@@ -1,5 +1,5 @@
 #!/bin/bash
-# Used to build Uridiag
+# update-uridiag.sh - Used to build Uridiag
 # Needed for Uricheck to work
 
 # Script Start

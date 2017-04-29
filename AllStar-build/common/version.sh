@@ -1,5 +1,5 @@
 #!/bin/bash
-# Used to display software version, and check
+# version.sh - Used to display software version, and check
 # for available updates
 # Does not perform system update
 # Will run automaticly at root log in

@@ -1,4 +1,7 @@
 ﻿#!/bin/bash
+# debian-install-stage2.sh - Used to complete the AllStar install
+
+# Script Start
 echo "Running Debian AllStar install, stage two."
 chmod +x /usr/src/utils/AllStar-build/common/update-dahdi.sh
 /usr/src/utils/AllStar-build/common/update-dahdi.sh
@@ -48,7 +51,7 @@ echo "Cleaning up object files..."
 cd /usr/src/utils/
 (git clean -f;git checkout -f)
 echo "Done"
-echo "AllStar is now installed..."
+echo "AllStar is now installed."
 echo "You can update the system at any time by running 'system-update' at a root prompt."
 echo "Please edit rpt.conf, iax.conf, extensions.conf, and usbradio.conf."
 echo "If you want to use EchoLink, edit echolink.conf."

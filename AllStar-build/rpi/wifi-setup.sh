@@ -1,4 +1,7 @@
 #!/bin/bash
+# wifi-setup.sh - Used to setup Wi-fi connections
+
+# Script Start
 echo "Welcome to Wi-Fi setup."
 sleep 0.5
 country=$( cat /etc/wpa_supplicant/wpa_supplicant.conf | grep "country=" | sed 's/country\=//' )

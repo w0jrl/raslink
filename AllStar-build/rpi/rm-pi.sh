@@ -1,7 +1,7 @@
 #!/bin/bash
-# removes the pi user if needed
+# rm-pi.sh - Removes the pi user if needed
 
-# script start
+# Script Start
 echo "Looking for the pi user..."
 user=$( grep -ic "pi" /etc/passwd )
 if [ "$user" == "1" ]; then

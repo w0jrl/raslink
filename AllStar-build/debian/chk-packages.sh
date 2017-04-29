@@ -1,5 +1,6 @@
 #!/bin/bash
-# Check package status, and install needed packages
+# chk-packages.sh - Check package status, and install needed packages
+
 # Script Start
 subversion=/usr/bin/svn
 echo "Checking Subversion..."

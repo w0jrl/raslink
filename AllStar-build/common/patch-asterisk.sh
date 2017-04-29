@@ -1,7 +1,7 @@
 #!/bin/bash
-#Used to add customizations to Asterisk
+# patch-asterisk.sh - Used to add customizations to Asterisk
 
-#Script Start
+# Script Start
 
 cd ../../astsrc/asterisk/
 echo "Patching Asterisk files..."

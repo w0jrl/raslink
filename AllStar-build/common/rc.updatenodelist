@@ -1,4 +1,7 @@
 #! /bin/bash
+# rc.updatenodelist - Used to download the list of nodes from AllStar Link
+
+# Script Start
 TOPDOMAIN=allstarlink.org
 SUBDOMAINS="nodes1 nodes2 nodes3 nodes4"
 FILEPATH=/tmp

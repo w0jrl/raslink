@@ -1,5 +1,5 @@
 #!/bin/bash
-# Check package status, and remove packages that aren't needed.
+# chk-packages.sh - Check package status, and remove packages that aren't needed.
 
 # Script Start
 echo "Removing unneeded packages and sources."

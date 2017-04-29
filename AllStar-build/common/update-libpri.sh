@@ -1,5 +1,5 @@
 #! /bin/bash
-# Patch and build Libpri for All Star
+# update-libpri.sh - Patch and build Libpri for All Star
 
 # Script Start
 echo "Building libpri..."

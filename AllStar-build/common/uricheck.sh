@@ -1,5 +1,7 @@
 #!/bin/bash
-# Used to check a USB Radio Interface (URI) for problems
+# uricheck.sh - Used to check a USB Radio Interface (URI) for problems
+
+# Script Start
 echo "Welcome to uricheck."
 read -e -p "$( echo -e "Are you using a USB Radio interface (URI) with a loopback circuit connected? [Y/N]" ) " answer
 if [[ "$answer" = "y" ]] || [[ "$answer" = "Y" ]]; then

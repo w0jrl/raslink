@@ -1,5 +1,5 @@
 #! /bin/bash
-# Install libs required to install AllStar Debian/Raspbian
+# required-tools.sh - Install packages required to install AllStar Debian/Raspbian
 
 # Script Start
 apt-get install -y ntpdate g++ make build-essential automake git\
