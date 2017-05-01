@@ -3,9 +3,9 @@
 # Stage One
 
 # Script Start
-echo "Starting system update."
-echo "This will take a while."
-echo "You can continue using your node during this process."
+echo "Starting system update.
+This will take a while.
+You can continue using your node during this process."
 sleep 1
 # Get new sources
 echo "Updating source files for All Star..."

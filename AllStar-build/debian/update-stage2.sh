@@ -6,8 +6,8 @@
 echo "Running update, stage two."
 echo "This will take a while."
 service asterisk stop &>/dev/null
-echo "You cannot use your node during this process."
-echo "It has been disabled."
+echo "You cannot use your node during this process.
+It has been disabled."
 sleep 1
 # Restore bashrc
 mv /root/.bashrc.orig /root/.bashrc
@@ -70,8 +70,7 @@ echo "The update is complete."
 echo "You can run this tool at any time by typing 'system-update' at a root prompt."
 echo "Re-enabling your node..."
 sync
-sleep 1
-(service asterisk start;service updatenodelist start) &>/dev/null
+service asterisk start
 echo "Done"
 date > /root/.lastupdate
 exit 0

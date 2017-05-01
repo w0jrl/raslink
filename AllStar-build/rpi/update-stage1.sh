@@ -3,9 +3,9 @@
 # Stage One
 
 # Script Start
-echo "Starting system update."
-echo "This will take a while."
-echo "You can continue using your node during this process."
+echo "Starting system update.
+This will take a while.
+You can continue using your node during this process."
 sleep 1
 # Get new sources
 echo "Updating source files for All Star..."
@@ -28,9 +28,9 @@ cd /root
 mv .bashrc .bashrc.orig
 cat .bashrc.orig > .bashrc
 echo "/usr/src/utils/AllStar-build/rpi/update-stage2.sh" >> .bashrc
-echo "Rebooting to finish install."
-echo "When your node reboots, you need to log in"
-echo " to finish the update."
+echo "Rebooting to finish install"
+echo "When your node reboots, you need to log in
+to finish the update."
 sync
 sudo reboot
 exit 0
