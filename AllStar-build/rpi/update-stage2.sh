@@ -66,6 +66,11 @@ if [ "$(grep -ic "snd_pcm_oss" /etc/modules)" > "1" ]; then
   sed -i '/snd_pcm_oss/d' /etc/modules
   echo "snd_pcm_oss" >> /etc/modules
 fi
+if [ "$(grep -ic "scaling_governor" /etc/rc.local)" == "0" ]; then
+  sed -i '/Print the IP address/i\
+# Set CPU governor to performance\
+echo "performance" > \/sys\/devices\/system\/cpu\/cpu0\/cpufreq\/scaling_governor' /etc/rc.local
+fi
 echo "Done"
 sleep 0.5
 echo "The update is complete."
