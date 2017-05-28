@@ -57,3 +57,8 @@ dtparam=audio=on
 
 # Increase power to usb ports
 max_usb_current=1
+
+# Set gpu memory split
+gpu_mem=64
+gpu_mem_512=160
+gpu_mem_1024=256
