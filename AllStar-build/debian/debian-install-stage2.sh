@@ -2,6 +2,9 @@
 # debian-install-stage2.sh - Used to complete the AllStar install
 
 # Script Start
+# Restore bashrc
+mv /root/.bashrc.orig /root/.bashrc
+# Complete install
 echo "Running Debian AllStar install, stage two."
 chmod +x /usr/src/utils/AllStar-build/common/update-dahdi.sh
 /usr/src/utils/AllStar-build/common/update-dahdi.sh
@@ -60,7 +63,5 @@ echo "EchoLink is disabled by default."
 echo "All files are located in /etc/asterisk."
 echo "After editing files, reboot to get your node online."
 echo "Enjoy AllStar on Debian!"
-# Restore bashrc
-mv /root/.bashrc.orig /root/.bashrc
 date > /root/.lastupdate
 exit 0
