@@ -11,6 +11,6 @@ echo "Your last update was on: $( cat /root/.lastupdate )."
 echo "Checking for available updates..."
 git fetch &>/dev/null
 echo "Done"
-echo "Your repository branch is set to: $( git status | grep "branch" | sed 's/On branch//' | sed 's/git pull/system-update/' | sed 's/to update your local branch/to update your node/' )"
+echo "Your repository branch is set to: $( git status | grep "branch" | sed 's/On branch//' | sed 's/git pull/system-update/' | sed 's/to update your local branch/to UPDATE YOUR NODE/' | sed 's/up-to-date/UP-TO-DATE/' )"
 echo "You can review this information at any time by typing 'version' at a root prompt."
 exit 0
