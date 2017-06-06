@@ -16,5 +16,8 @@ fi
 (make all;make install)
 # Fix comment in rpt.conf
 sed -i 's/Say phonetic call sign/Say call sign/' /etc/asterisk/rpt* | sed -i 's/say phonetic call sign/Say call sign/' /etc/asterisk/rpt*
+# Remove unneeded filter comments in usbradio.conf
+sed -i '/Audio to internet/d' /etc/asterisk/usbradio*
+sed -i '/Audio from internet/d' /etc/asterisk/usbradio*
 echo "Done."
 exit 0
