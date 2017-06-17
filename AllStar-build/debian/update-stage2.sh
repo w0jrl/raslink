@@ -55,8 +55,9 @@ cp /usr/src/utils/AllStar-build/common/asterisk.service /etc/systemd/system
 cp /usr/src/utils/AllStar-build/common/asterisk.timer /etc/systemd/system
 cp /usr/src/utils/AllStar-build/common/updatenodelist.service /etc/systemd/system
 systemctl daemon-reload
-systemctl enable asterisk.timer
-systemctl enable updatenodelist.service
+systemctl enable asterisk.timer &>/dev/null
+systemctl enable updatenodelist.service &>/dev/null
+systemctl disable avahi-daemon &>/dev/null
 if [ "$(grep -ic "snd_bcm2835" /etc/modules)" == "1" ]; then
   sed -i '/snd_bcm2835/d' /etc/modules
 fi
