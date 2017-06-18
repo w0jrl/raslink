@@ -11,6 +11,9 @@ It has been disabled."
 sleep 1
 # Restore bashrc
 mv /root/.bashrc.orig /root/.bashrc
+# Check and update repository URL
+chmod +x /usr/src/utils/AllStar-build/common/remote-fetch.sh
+/usr/src/utils/AllStar-build/common/remote-fetch.sh
 # Make sure version runs at login
 if [ "$(grep -ic "/usr/bin/version" /root/.bashrc)" == "1" ]; then
   sed -i '/\/usr\/bin\/version/d' /root/.bashrc
