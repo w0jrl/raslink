@@ -12,7 +12,7 @@ if [[ "$install" = "y" ]] || [[ "$install" = "Y" ]]; then
   echo "downloading and unpacking source files."
   echo "This might take a while."
   cd /usr/src
-  git clone https://github.com/w0jrl/AllStar-raspbian.git utils
+  git clone https://github.com/w0jrl/raslink.git utils
   echo "Done"
   sleep 0.5
   echo "Updating the system..."
