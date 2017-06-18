@@ -12,7 +12,7 @@ apt-get install -y ntpdate g++ make build-essential automake git\
   libical-dev libspandsp-dev libneon27-dev libxml2-dev pkg-config unixodbc-dev uuid uuid-dev libsrtp0-dev dkms
 apt-get build-dep dahdi -y
 if [[ $distro = "Raspbian" ]]; then
-  apt-get install i2c-tools i2c-dev
+  apt-get install i2c-tools libi2c-dev
 fi
 # put the linker where Asterisk expects it
 ln -fs /bin/ln /usr/bin
