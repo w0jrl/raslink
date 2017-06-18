@@ -7,7 +7,7 @@ cd /usr/src/utils/astsrc/asterisk/
 # Put git commit number where asterisk makefile expects it
 git describe --always > .version
 # Configure the build process
-distro=$( lsb_release -is )
+distro=$(lsb_release -is)
 if [[ $distro = "Raspbian" ]]; then
   sed -i '/PROC\=/c\PROC\=arm' ./makeopts.in
 fi

@@ -113,4 +113,8 @@ else
   echo "Logs will be rotated once a month."
   echo "Done"
 fi
+if [ "$( grep -ic "i2c-dev" /etc/modules )" == "0" ]; then
+  echo "i2c-dev" >> /etc/modules
+  modprobe i2c-dev
+fi
 exit 0
