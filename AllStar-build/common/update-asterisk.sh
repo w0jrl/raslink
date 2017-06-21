@@ -21,5 +21,7 @@ sed -i '/Audio to internet/d' /etc/asterisk/usbradio*
 sed -i '/Audio from internet/d' /etc/asterisk/usbradio*
 # Stop loading res_crypto module
 sed -i 's/load \=\> res_crypto.so/noload \=\> res_crypto.so/' /etc/asterisk/modules.conf
+# Increase jbmaxsize in usbradio
+sed -i 's/jbmaxsize \= 200/jbmaxsize \= 500/' /etc/asterisk/usbradio*
 echo "Done."
 exit 0
