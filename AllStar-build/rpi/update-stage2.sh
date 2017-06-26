@@ -39,6 +39,7 @@ sleep 0.5
 # Make sure configuration files and scripts are loaded
 echo "Updating start up scripts..."
 (cp /usr/src/utils/AllStar-build/common/rc.updatenodelist /usr/local/bin/rc.updatenodelist;chmod +x /usr/local/bin/rc.updatenodelist)
+(cp /usr/src/utils/AllStar-build/common/rc.nodenames /usr/local/bin/rc.nodenames;chmod +x /usr/local/bin/rc.nodenames)
 chmod +x /usr/src/utils/AllStar-build/rpi/make-links.sh
 /usr/src/utils/AllStar-build/rpi/make-links.sh
 cp -a /usr/src/utils/astsrc/sounds/* /var/lib/asterisk/sounds
@@ -50,7 +51,7 @@ echo "Done"
 sleep 0.5
 echo "Cleaning up object files..."
 cd /usr/src/utils
-(git clean -f;git checkout -f)
+(git clean -f;git checkout -f) &>/dev/null
 echo "Done"
 sleep 0.5
 echo "Updating system boot configuration..."
@@ -59,10 +60,14 @@ cp /usr/src/utils/AllStar-build/rpi/etc-asound.conf /etc/asound.conf
 cp /usr/src/utils/AllStar-build/common/asterisk.service /etc/systemd/system
 cp /usr/src/utils/AllStar-build/common/asterisk.timer /etc/systemd/system
 cp /usr/src/utils/AllStar-build/common/updatenodelist.service /etc/systemd/system
+cp /usr/src/utils/AllStar-build/common/nodenames.service /etc/systemd/system
 systemctl daemon-reload
 systemctl enable asterisk.timer &>/dev/null
 systemctl enable updatenodelist.service &>/dev/null
 systemctl disable avahi-daemon &>/dev/null
+if [ ! -e /root/.nonames ]; then
+  systemctl enable nodenames.service &>/dev/null
+fi
 if [ "$(grep -ic "snd_bcm2835" /etc/modules)" == "1" ]; then
   sed -i '/snd_bcm2835/d' /etc/modules
 fi

@@ -9,7 +9,7 @@ remove()
 }
 help()
 {
-   cat << _HELP_
+    cat << _HELP_
 Usage:
 End can be used in two ways.
 If you type only the node to control,
@@ -28,7 +28,7 @@ if [[ "$1" = "" ]] || [[ "$1" = "0" ]]; then
   remove
   help
   exit 2
-  elif [[ "$1" = "-h" ]] || [[ "$1" = "--help" ]]; then
+  elif [[ "$1" = "-h" ]] || [[ "$1" = "--help" ]] || [[ "$1" = "help" ]]; then
     remove
     help 
     exit 1
@@ -37,7 +37,7 @@ if [[ "$1" = "" ]] || [[ "$1" = "0" ]]; then
 $1 doesn't exist on this server."
     remove
     exit 2
-elif [[ "$2" = "0" ]] || [[ "$2" = "$1" ]]; then
+  elif [[ "$2" = "0" ]] || [[ "$2" = "$1" ]]; then
     echo "You cannot disconnect a node from itself.
 Try again."
     remove

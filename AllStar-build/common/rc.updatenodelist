@@ -1,5 +1,5 @@
 #! /bin/bash
-# rc.updatenodelist - Used to download the list of nodes from AllStar Link
+# rc.updatenodelist - Download the list of nodes from AllStar Link
 
 # Script Start
 TOPDOMAIN=allstarlink.org
@@ -13,7 +13,6 @@ CHMOD="$( which chmod )"
 GREP="$( which grep )"
 CAT="$( which cat )"
 DATE="$( which date)"
-RSYNC="$( which rsync)"
 
 # Diagnostics
 dry_run=0
@@ -45,8 +44,6 @@ while [ 1 ]; do
         if [ $downloads -gt 100 ]; then
           downloads=0
           sleep 10m
-          # use rsync to update the connect messages
-          $RSYNC -av rsync://allstarlink.org/connect-messages /var/lib/asterisk/sounds/rpt/nodenames  
           break; # Don't dwell on one server, Look for a new server
         fi
         if [ $dry_run -eq 0 ]; then

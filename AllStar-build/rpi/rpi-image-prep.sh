@@ -27,6 +27,11 @@ chmod +x /usr/src/utils/AllStar-build/rpi/chk-packages.sh
 /usr/src/utils/AllStar-build/rpi/chk-packages.sh
 # Setup for AllStar install
 chmod +x /usr/src/utils/AllStar-build/rpi/rpi-allstar-install.sh
+if [ "$(grep -ic "scaling_governor" /etc/rc.local)" == "0" ]; then
+  sed -i '/Print the IP address/i\
+# Set CPU governor to performance\
+echo "performance" > \/sys\/devices\/system\/cpu\/cpu0\/cpufreq\/scaling_governor' /etc/rc.local
+fi
 sync
 echo "REBOOT before you run the install script"
 exit 0

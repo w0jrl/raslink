@@ -1,6 +1,6 @@
-#/etc/systemd/system/updatenodelist.service
+#/etc/systemd/system/nodenames.service
 [Unit]
-Description=AllStar NodeList updater
+Description=AllStar NodeNames updater
 Wants=network.target
 After=network-online.target
 BindsTo=asterisk.service
@@ -8,8 +8,8 @@ BindsTo=asterisk.service
 [Service]
 Type=simple
 StandardOutput=null
-ExecStart=/usr/local/bin/rc.updatenodelist &
-ExecStop=/usr/bin/killall -9 rc.updatenodelist
+ExecStart=/usr/local/bin/rc.nodenames &
+ExecStop=/usr/bin/killall -9 rc.nodenames
 
 # safe_emulation
 Restart=always

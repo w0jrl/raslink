@@ -1,0 +1,28 @@
+#!/bin/bash
+# rc.nodenames - Sync node connect messages
+
+# Script Start
+clone()
+{
+    cd /var/lib/asterisk/sounds/rpt/nodenames
+    rm -r * .* &>/dev/null
+    git clone https://github.com/w0jrl/nodenames.git . &>/dev/null
+}
+update()
+{
+    cd /var/lib/asterisk/sounds/rpt/nodenames
+    (git clean -f;git checkout -f) &>/dev/null
+    git pull &>/dev/null
+}
+while [ 1 ]; do
+  if [ ! -e /var/lib/asterisk/sounds/rpt/nodenames/.git ]; then
+    echo "Downloading nodenames..."
+    clone
+    echo "Done"
+  else
+    echo "Updating nodenames..."
+    update
+    echo "Done"
+  fi
+  sleep 1h
+done

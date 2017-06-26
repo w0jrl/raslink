@@ -40,12 +40,15 @@ fi
 echo "Done"
 echo "Setting up startup scripts and system-update..."
 (cp /usr/src/utils/AllStar-build/common/rc.updatenodelist /usr/local/bin/rc.updatenodelist;chmod +x /usr/local/bin/rc.updatenodelist)
+(cp /usr/src/utils/AllStar-build/common/rc.nodenames /usr/local/bin/rc.nodenames;chmod +x /usr/local/bin/rc.nodenames)
 cp /usr/src/utils/AllStar-build/common/asterisk.service /etc/systemd/system
 cp /usr/src/utils/AllStar-build/common/asterisk.timer /etc/systemd/system
 cp /usr/src/utils/AllStar-build/common/updatenodelist.service /etc/systemd/system
+cp /usr/src/utils/AllStar-build/common/nodenames.service /etc/systemd/system
 systemctl daemon-reload
 systemctl enable asterisk.timer &>/dev/null
 systemctl enable updatenodelist.service &>/dev/null
+systemctl enable nodenames.service &>/dev/null
 systemctl disable avahi-daemon &>/dev/null
 chmod +x /usr/src/utils/AllStar-build/rpi/make-links.sh
 /usr/src/utils/AllStar-build/rpi/make-links.sh

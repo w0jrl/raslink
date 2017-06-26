@@ -1,3 +1,4 @@
+#/etc/systemd/system/asterisk.timer
 [Timer]
 OnStartupSec=10
 
