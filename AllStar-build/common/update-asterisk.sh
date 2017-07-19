@@ -19,8 +19,8 @@ sed -i 's/Say phonetic call sign/Say call sign/' /etc/asterisk/rpt* | sed -i 's/
 # Remove unneeded filter comments in usbradio.conf
 sed -i '/Audio to internet/d' /etc/asterisk/usbradio*
 sed -i '/Audio from internet/d' /etc/asterisk/usbradio*
-# Stop loading res_crypto module
-sed -i 's/load => res_crypto.so/noload \=\> res_crypto.so/' /etc/asterisk/modules.conf
+# Load res_crypto module
+sed -i '/res_crypto.so/c\load \=> res_crypto.so ;   Cryptographic Digital Signatures                  ' /etc/asterisk/modules.conf
 # Increase jbmaxsize in usbradio
 sed -i 's/jbmaxsize \= 200/jbmaxsize \= 500/' /etc/asterisk/usbradio*
 echo "Done."
