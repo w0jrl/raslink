@@ -58,8 +58,8 @@ dtparam=audio=on
 # Increase power to usb ports
 max_usb_current=1
 
-# Set gpu memory split
-gpu_mem=32
-gpu_mem_256=64
-gpu_mem_512=128
-gpu_mem_1024=256
+# Set dynamic gpu memory split
+gpu_mem=16
+gpu_mem_256=32
+gpu_mem_512=64
+gpu_mem_1024=128
