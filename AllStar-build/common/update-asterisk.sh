@@ -21,6 +21,8 @@ sed -i '/Audio to internet/d' /etc/asterisk/usbradio*
 sed -i '/Audio from internet/d' /etc/asterisk/usbradio*
 # Load res_crypto module
 sed -i '/res_crypto.so/c\load \=> res_crypto.so ;   Cryptographic Digital Signatures                  ' /etc/asterisk/modules.conf
+# Load app_sendtext module
+sed -i '/app_sendtext.so/c\load \=> app_sendtext.so ;   Send Text Applications                            ' /etc/asterisk/modules.conf
 # Increase jbmaxsize in usbradio
 sed -i 's/jbmaxsize \= 200/jbmaxsize \= 500/' /etc/asterisk/usbradio*
 echo "Done."
