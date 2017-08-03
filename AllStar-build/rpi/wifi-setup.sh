@@ -32,23 +32,23 @@ if [[ "$changeCountry" = "y" ]] || [[ "$changeCountry" = "Y" ]]; then
 else
   echo "Country not changed"
 fi
-sleep 0.5
+sleep 0.5s
 echo "Please enter the Wi-Fi card name from the list below:"
 ifconfig | grep wlan
 read -e -p "[wlan0] : " wificard
 if [ "$wificard" = "" ]; then
   wificard=wlan0
 fi
-sleep 0.5
+sleep 0.5s
 scan=1
 while [ "$scan" == "1" ]; do
   echo "Scanning for networks..."
   echo "___________________________________"
-  sleep 0.5
+  sleep 0.5s
   iwlist $wificard scan | grep "ESSID" | sed 's/ESSID://g;s/"//g;s/^ *//;s/ *$//'
-  sleep 0.5
+  sleep 0.5s
   echo "Scan complete"
-  sleep 0.5
+  sleep 0.5s
   read -e -p "Do you want to scan again? [y/N]" YN
   if [[ "$YN" = "y" ]] || [[ "$YN" = "Y" ]];  then
    scan=1
@@ -56,32 +56,35 @@ while [ "$scan" == "1" ]; do
    scan=0
      fi
 done
-sleep 0.5
+sleep 0.5s
 read -e -p "Please enter the name of the network you want to connect to: " networkName
 echo "You entered: $networkName"
 read -e -p "Please enter the password for the network: " networkPass
 echo "Password accepted"
-sleep 0.5
+sleep 0.5s
 echo "Setting up connection..."
-wpa_passphrase $networkName $networkPass >> /etc/wpa_supplicant/wpa_supplicant.conf
+echo "network={
+ ssid=\"$networkName\"
+ psk=\"$networkPass\"
+}" >> /etc/wpa_supplicant/wpa_supplicant.conf
 echo "Done"
 sleep 0.5
 echo "Activating connection; Please wait..."
 ifdown $wificard
-sleep 0.5
+sleep 0.5s
 ifup $wificard
-sleep 10
-if ifconfig $wificard | grep -q "addr:"; then
+sleep 10s
+if ifconfig $wificard | grep -q "inet addr:"; then
   echo "***Connection Active***"
-  sleep 0.5
+  sleep 0.5s
   echo "displaying connection information"
-  ifconfig $wificard | grep "inet addr.*"
+  ifconfig $wificard | grep "addr.*"
 else
   echo "***Connection Failed***" >&2
   echo "See https://jlappliedtechnologies.com/raslink if you need assistance." >&2
   exit 1
 fi
-sleep 0.5
+sleep 0.5s
 echo "If you want to setup another connection, run wifi-setup again."
 echo "To remove a network, edit /etc/wpa_supplicant/wpa_supplicant.conf."
 echo "See https://jlappliedtechnologies.com/raslink if you need assistance." 
