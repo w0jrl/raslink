@@ -40,6 +40,6 @@ sed -i 's/26.0 : 42.0/32.0 : 42.0/' ./main/dsp.c
 # Increase queue size in usbradio driver
 sed -i 's/define	QUEUE_SIZE	2/define	QUEUE_SIZE	10/' ./channels/chan_usbradio.c
 # Make sure asterisk uses pthread
-sed -i 's/ASTCFLAGS+=-Wno-unused-result/ASTCFLAGS\+\=-lpthread -Wno-unused-result/' ./Makefile
+sed -i 's/ASTCFLAGS+=-Wno-unused-result/ASTCFLAGS\+\=-pthread -Wno-unused-result/' ./Makefile
 echo "Done"
 exit 0
