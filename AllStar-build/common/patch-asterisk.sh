@@ -28,8 +28,8 @@ cp ../extras/mdc1200/*.h ./apps
 sed -i 's/\/\* #include "mdc_decode.c" \*\//#include "mdc_decode.c"/' ./apps/app_rpt.c
 sed -i 's/\/\* #include "mdc_encode.c" \*\//#include "mdc_encode.c"/' ./apps/app_rpt.c
 # Update app_rpt version information
-sed -i '/ \*  version/c\ \*  version 17.07 07\/10\/2017' ./apps/app_rpt.c
-sed -i '/static  char \*tdesc \= "Radio Repeater \/ Remote Base  version/c\static  char \*tdesc \= "Radio Repeater \/ Remote Base  version 17.07 07\/10\/2017";' ./apps/app_rpt.c
+sed -i '/ \*  version/c\ \*  version 17.08 08\/04\/2017' ./apps/app_rpt.c
+sed -i '/static  char \*tdesc \= "Radio Repeater \/ Remote Base  version/c\static  char \*tdesc \= "Radio Repeater \/ Remote Base  version 17.08 08\/04\/2017";' ./apps/app_rpt.c
 # Change TX enabled message
 sed -i 's/"RPTENA"/"TXENA"/' ./apps/app_rpt.c
 # Make EchoLink call signs use normal characters
