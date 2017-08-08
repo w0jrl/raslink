@@ -70,15 +70,16 @@ echo "network={
 echo "Done"
 sleep 0.5
 echo "Activating connection; Please wait..."
-ifdown $wificard
+ifdown $wificard &>/dev/null
 sleep 0.5s
-ifup $wificard
+ifup $wificard &>/dev/null
 sleep 10s
-if ifconfig $wificard | grep -q "inet addr:"; then
+if [[ $(ifconfig ${wificard} | grep -c "inet addr:") = "1" ]]; then
   echo "***Connection Active***"
   sleep 0.5s
   echo "displaying connection information"
-  ifconfig $wificard | grep "addr.*"
+  ifconfig $wificard | grep "inet addr.*"
+  ifconfig $wificard | grep "inet6 addr.*"
 else
   echo "***Connection Failed***" >&2
   echo "See https://jlappliedtechnologies.com/raslink if you need assistance." >&2
