@@ -24,6 +24,7 @@ git describe --always > .version
 # Configure the build process
 # Remove modules from previous build
 rm -f /usr/lib/asterisk/modules/* &>/dev/null
+# Optimize for the arm cpu if running on the Raspberry Pi
 distro=$(lsb_release -is)
 if [[ $distro = "Raspbian" ]]; then
   sed -i '/PROC\=/c\PROC\=arm' ./makeopts.in

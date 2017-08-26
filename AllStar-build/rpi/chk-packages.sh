@@ -21,7 +21,7 @@ echo "Removing unneeded packages and sources."
 echo "Looking for Sense-hat..."
 if [ -e /usr/src/sense-hat ]; then
   echo "Removing unneeded Sense-hat directory..."
-  rm -rf /usr/src/sense-hat
+  rm -rf /usr/src/sense-hat &>/dev/null
   echo "Done"
 else
   echo "Sense-hat doesn't exist on your system; Skipping."
@@ -29,9 +29,9 @@ fi
 echo "Looking for Libreoffice..."
 if [ -e /usr/bin/libreoffice ]; then
   echo "Uninstalling Libreoffice; Not needed for AllStar."
-  apt-get purge -y libreoffice*
+  apt-get purge -y libreoffice* &>/dev/null
   echo "Cleaning the database..."
-  (apt-get autoremove --purge -y;apt-get clean;apt-get autoclean)
+  (apt-get autoremove --purge -y;apt-get clean;apt-get autoclean) &>/dev/null
   echo "Done"
 else
   echo "Libreoffice isn't installed; Skipping."
@@ -39,9 +39,9 @@ fi
 echo "Looking for Minecraft..."
 if [ -e /usr/bin/minecraft-pi ]; then
   echo "Uninstalling Minecraft; Not needed for AllStar."
-  apt-get purge -y minecraft-pi
+  apt-get purge -y minecraft-pi &>/dev/null
   echo "Cleaning the database..."
-  (apt-get autoremove --purge -y;apt-get clean;apt-get autoclean)
+  (apt-get autoremove --purge -y;apt-get clean;apt-get autoclean) &>/dev/null
   echo "Done"
 else
   echo "Minecraft isn't installed; Skipping."
@@ -49,11 +49,11 @@ fi
 echo "Looking for Wolfram Engine..."
 if [ -e /usr/bin/wolfram ]; then
   echo "Uninstalling Wolfram Engine; Not needed for AllStar."
-  apt-get purge -y wolfram-engine
+  apt-get purge -y wolfram-engine &>/dev/null
   echo "Cleaning the database..."
-  (apt-get autoremove --purge -y;apt-get clean;apt-get autoclean)
+  (apt-get autoremove --purge -y;apt-get clean;apt-get autoclean) &>/dev/null
   echo "Removing Wolfram Engine data..."
-  rm -rf /opt/Wolfram
+  rm -rf /opt/Wolfram &>/dev/null
   echo "Done"
 else
   echo "Wolfram Engine isn't installed; Skipping."
@@ -61,9 +61,9 @@ fi
 echo "Looking for Penguins Puzzle..."
 if [ -e /usr/bin/penguinspuzzle ]; then
   echo "Uninstalling Penguins Puzzle; Not needed for AllStar."
-  apt-get purge -y penguinspuzzle
+  apt-get purge -y penguinspuzzle &>/dev/null
   echo "Cleaning the database..."
-  (apt-get autoremove --purge -y;apt-get clean;apt-get autoclean)
+  (apt-get autoremove --purge -y;apt-get clean;apt-get autoclean) &>/dev/null
   echo "Done"
 else
   echo "Penguins Puzzle isn't installed; Skipping."
@@ -71,9 +71,9 @@ fi
 echo "Looking for Red Notebook..."
 if [ -e /usr/bin/rednotebook ]; then
   echo "Uninstalling red Notebook; Not needed for AllStar."
-  apt-get purge -y rednotebook
+  apt-get purge -y rednotebook &>/dev/null
   echo "Cleaning the database..."
-  (apt-get autoremove --purge -y;apt-get clean;apt-get autoclean)
+  (apt-get autoremove --purge -y;apt-get clean;apt-get autoclean) &>/dev/null
   echo "Done"
 else
   echo "Red Notebook isn't installed; Skipping."
@@ -83,9 +83,9 @@ chmod +x /usr/src/utils/AllStar-build/rpi/rm-pi.sh
 echo "Looking for RPI Update..."
 if [ -e /usr/bin/rpi-update ]; then
   echo "Uninstalling RPI Update; No longer needed for AllStar."
-  apt-get purge -y rpi-update
+  apt-get purge -y rpi-update &>/dev/null
   echo "Cleaning the database..."
-  (apt-get autoremove --purge -y;apt-get clean;apt-get autoclean)
+  (apt-get autoremove --purge -y;apt-get clean;apt-get autoclean) &>/dev/null
   echo "Done"
 else
   echo "RPI Update isn't installed; Skipping."
@@ -94,13 +94,13 @@ subversion=/usr/bin/svn
 echo "Checking Subversion..."
 if [ -e "$subversion" ]; then
   echo "Removing Subversion; No longer needed for AllStar."
-  apt-get autoremove --purge -y subversion
-  rm -rf /root/.subversion
+  apt-get autoremove --purge -y subversion &>/dev/null
+  rm -rf /root/.subversion &>/dev/null
   echo "Done"
 else
   echo "Subversion isn't installed; Skipping."
 fi
-echo "Checking status of required packages..."
+echo "Checking required packages..."
 sourcesList=$( grep -ic "#deb-src" /etc/apt/sources.list )
 if [ "$sourcesList" == "1" ]; then
   sed -i 's/#deb-src/deb-src/' /etc/apt/sources.list

@@ -27,7 +27,7 @@ if [ -e "$subversion" ]; then
 else
   echo "Subversion isn't installed; Skipping."
 fi
-echo "Checking status of required packages..."
+echo "Checking required packages..."
 sourcesList=$( grep -ic "#deb-src" /etc/apt/sources.list )
 if [ "$sourcesList" == "1" ]; then
   sed -i 's/#deb-src/deb-src/' /etc/apt/sources.list

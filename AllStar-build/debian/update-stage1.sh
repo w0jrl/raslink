@@ -25,7 +25,7 @@ sleep 1
 # Get new sources
 echo "Updating source files for All Star..."
 cd /usr/src/utils/
-git pull
+git pull &>/dev/null
 sleep 0.5
 echo "Done"
 # Update the system
@@ -35,17 +35,17 @@ sleep 0.5
 echo "Done"
 # Clean the package database
 echo "Cleaning up unneeded software..."
-(apt-get autoremove --purge -y;apt-get clean;apt-get autoclean)
+(apt-get -qq autoremove --purge -y;apt-get -qq clean;apt-get -qq autoclean)
 sleep 0.5
 echo "Done"
 # Setup for stage two
-cd /root/
+cd /root
 mv .bashrc .bashrc.orig
 cat .bashrc.orig > .bashrc
 echo "/usr/src/utils/AllStar-build/debian/update-stage2.sh" >> .bashrc
-echo "Rebooting to finish install."
-echo "When your node reboots, you need to log in"
-echo "to finish the update."
+echo "Rebooting to finish install"
+echo "When your node reboots, you need to log in
+to finish the update."
 sync
 sudo reboot
 exit 0

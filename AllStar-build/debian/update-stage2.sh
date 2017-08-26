@@ -81,9 +81,6 @@ systemctl disable avahi-daemon &>/dev/null
 if [ ! -e /root/.nonames ]; then
   systemctl enable nodenames.service &>/dev/null
 fi
-if [ "$(grep -ic "snd_bcm2835" /etc/modules)" == "1" ]; then
-  sed -i '/snd_bcm2835/d' /etc/modules
-fi
 if [ "$(grep -ic "snd_pcm_oss" /etc/modules)" > "1" ]; then
   sed -i '/snd_pcm_oss/d' /etc/modules
   echo "snd_pcm_oss" >> /etc/modules
