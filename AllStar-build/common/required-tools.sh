@@ -24,11 +24,13 @@ apt-get -qq install -y ntpdate g++ make build-essential automake git\
   libcurl4-openssl-dev php5-cli libiksemel-dev libvorbis-dev\
   curl sox libsox-fmt-all usbutils libsqlite3-dev sqlite3 screen\
   fxload bc alsa-utils dnsutils php5-curl libtool autoconf gawk\
-  libical-dev libspandsp-dev libneon27-dev libxml2-dev pkg-config unixodbc-dev uuid uuid-dev libsrtp0-dev dkms\
+  libical-dev libspandsp-dev libneon27-dev libxml2-dev pkg-config libspeex-dev unixodbc unixodbc-dev uuid uuid-dev libsrtp0-dev dkms\
   libatomic-ops-dev libatomic1 irqbalance
 apt-get -qq build-dep dahdi -y
 if [[ $distro = "Raspbian" ]]; then
-  apt-get -qq install -y i2c-tools libi2c-dev
+  apt-get -qq install -y i2c-tools libi2c-dev raspberrypi-kernel raspberrypi-kernel-headers
+else
+  apt-get install linux-headers-$(uname -r)
 fi
 # put the linker where Asterisk expects it
 ln -fs /bin/ln /usr/bin
