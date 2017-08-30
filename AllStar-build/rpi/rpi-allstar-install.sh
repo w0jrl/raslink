@@ -26,8 +26,6 @@
 # You have been warned!
 
 # Script Start
-cd /usr/src/utils
-git pull
 chmod +x /usr/src/utils/AllStar-build/common/update-dahdi.sh
 /usr/src/utils/AllStar-build/common/update-dahdi.sh
 chmod +x /usr/src/utils/AllStar-build/common/update-libpri.sh
