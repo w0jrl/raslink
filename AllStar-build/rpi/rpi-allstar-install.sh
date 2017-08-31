@@ -78,14 +78,6 @@ echo "Cleaning up object files..."
 cd /usr/src/utils/
 (git clean -f;git checkout -f)
 echo "Done"
-echo "AllStar is now installed..."
-echo "You can update the system at any time by running 'system-update' at a root prompt."
-echo "Please edit rpt.conf, iax.conf, extensions.conf, and usbradio.conf."
-echo "If you want to use EchoLink, edit echolink.conf."
-echo "If you don't want to use EchoLink, you don't need to do anything."
-echo "EchoLink is disabled by default."
-echo "All files are located in /etc/asterisk."
-echo "After editing files, reboot to get your node online."
-echo "Enjoy AllStar on Raspbian!"
+echo "AllStar is now installed."
 date > /root/.lastupdate
 exit 0
