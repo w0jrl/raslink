@@ -30,10 +30,10 @@ mv /root/.bashrc.orig /root/.bashrc
 chmod +x /usr/src/utils/AllStar-build/common/remote-fetch.sh
 /usr/src/utils/AllStar-build/common/remote-fetch.sh
 # Make sure version runs at login
-if [ "$(grep -ic "/usr/bin/version" /root/.bashrc)" == "1" ]; then
+if [[ "$(grep -ic "/usr/bin/version" /root/.bashrc)" = "1" ]]; then
   sed -i '/\/usr\/bin\/version/d' /root/.bashrc
 fi
-if [ "$(grep -ic "/usr/bin/version" /root/.profile)" == "0" ]; then
+if [[ "$(grep -ic "/usr/bin/version" /root/.profile)" = "0" ]]; then
   echo "/usr/bin/version" >> /root/.profile
 fi
 chmod +x /usr/src/utils/AllStar-build/debian/chk-packages.sh
@@ -66,7 +66,7 @@ echo "Done"
 sleep 0.5
 echo "Cleaning up object files..."
 cd /usr/src/utils
-(git clean -f;git checkout -f) &>/dev/null
+(git clean -f;git checkout -f;rm -f 1) &>/dev/null
 echo "Done"
 sleep 0.5
 echo "Updating system boot configuration..."
@@ -81,7 +81,7 @@ systemctl disable avahi-daemon &>/dev/null
 if [ ! -e /root/.nonames ]; then
   systemctl enable nodenames.service &>/dev/null
 fi
-if [ "$(grep -ic "snd_pcm_oss" /etc/modules)" > "1" ]; then
+if [[ "$(grep -ic "snd_pcm_oss" /etc/modules)" > "1" ]]; then
   sed -i '/snd_pcm_oss/d' /etc/modules
   echo "snd_pcm_oss" >> /etc/modules
 fi
@@ -91,7 +91,7 @@ echo "The update is complete."
 echo "You can run this tool at any time by typing 'system-update' at a root prompt."
 echo "Re-enabling your node..."
 sync
-service asterisk start
+sudo service asterisk start
 echo "Done"
 date > /root/.lastupdate
 exit 0

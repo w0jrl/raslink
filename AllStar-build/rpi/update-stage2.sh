@@ -30,10 +30,10 @@ mv /root/.bashrc.orig /root/.bashrc
 chmod +x /usr/src/utils/AllStar-build/common/remote-fetch.sh
 /usr/src/utils/AllStar-build/common/remote-fetch.sh
 # Make sure version runs at login
-if [ "$(grep -ic "/usr/bin/version" /root/.bashrc)" == "1" ]; then
+if [[ "$(grep -ic "/usr/bin/version" /root/.bashrc)" = "1" ]]; then
   sed -i '/\/usr\/bin\/version/d' /root/.bashrc
 fi
-if [ "$(grep -ic "/usr/bin/version" /root/.profile)" == "0" ]; then
+if [[ "$(grep -ic "/usr/bin/version" /root/.profile)" = "0" ]]; then
   echo "/usr/bin/version" >> /root/.profile
 fi
 chmod +x /usr/src/utils/AllStar-build/rpi/chk-packages.sh
@@ -66,7 +66,7 @@ echo "Done"
 sleep 0.5
 echo "Cleaning up object files..."
 cd /usr/src/utils
-(git clean -f;git checkout -f) &>/dev/null
+(git clean -f;git checkout -f;rm -f 1) &>/dev/null
 echo "Done"
 sleep 0.5
 echo "Updating system boot configuration..."
@@ -83,14 +83,14 @@ systemctl disable avahi-daemon &>/dev/null
 if [ ! -e /root/.nonames ]; then
   systemctl enable nodenames.service &>/dev/null
 fi
-if [ "$(grep -ic "snd_bcm2835" /etc/modules)" == "1" ]; then
+if [[ "$(grep -ic "snd_bcm2835" /etc/modules)" = "1" ]]; then
   sed -i '/snd_bcm2835/d' /etc/modules
 fi
-if [ "$(grep -ic "snd_pcm_oss" /etc/modules)" > "1" ]; then
+if [[ "$(grep -ic "snd_pcm_oss" /etc/modules)" > "1" ]]; then
   sed -i '/snd_pcm_oss/d' /etc/modules
   echo "snd_pcm_oss" >> /etc/modules
 fi
-if [ "$(grep -ic "scaling_governor" /etc/rc.local)" == "0" ]; then
+if [[ "$(grep -ic "scaling_governor" /etc/rc.local)" = "0" ]]; then
   sed -i '/Print the IP address/i\
 # Set CPU governor to performance\
 echo "performance" > \/sys\/devices\/system\/cpu\/cpu0\/cpufreq\/scaling_governor' /etc/rc.local
