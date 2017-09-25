@@ -18,34 +18,6 @@
 
 # Script Start
 echo "Removing unneeded packages and sources."
-echo "Looking for Sense-hat..."
-if [ -e /usr/src/sense-hat ]; then
-  echo "Removing unneeded Sense-hat directory..."
-  rm -rf /usr/src/sense-hat &>/dev/null
-  echo "Done"
-else
-  echo "Sense-hat doesn't exist on your system; Skipping."
-fi
-echo "Looking for Libreoffice..."
-if [ -e /usr/bin/libreoffice ]; then
-  echo "Uninstalling Libreoffice; Not needed for AllStar."
-  apt-get purge -y libreoffice* &>/dev/null
-  echo "Cleaning the database..."
-  (apt-get autoremove --purge -y;apt-get clean;apt-get autoclean) &>/dev/null
-  echo "Done"
-else
-  echo "Libreoffice isn't installed; Skipping."
-fi
-echo "Looking for Minecraft..."
-if [ -e /usr/bin/minecraft-pi ]; then
-  echo "Uninstalling Minecraft; Not needed for AllStar."
-  apt-get purge -y minecraft-pi &>/dev/null
-  echo "Cleaning the database..."
-  (apt-get autoremove --purge -y;apt-get clean;apt-get autoclean) &>/dev/null
-  echo "Done"
-else
-  echo "Minecraft isn't installed; Skipping."
-fi
 echo "Looking for Wolfram Engine..."
 if [ -e /usr/bin/wolfram ]; then
   echo "Uninstalling Wolfram Engine; Not needed for AllStar."
@@ -58,25 +30,15 @@ if [ -e /usr/bin/wolfram ]; then
 else
   echo "Wolfram Engine isn't installed; Skipping."
 fi
-echo "Looking for Penguins Puzzle..."
-if [ -e /usr/bin/penguinspuzzle ]; then
-  echo "Uninstalling Penguins Puzzle; Not needed for AllStar."
-  apt-get purge -y penguinspuzzle &>/dev/null
+echo "Looking for Minecraft..."
+if [ -e /usr/bin/minecraft-pi ]; then
+  echo "Uninstalling Minecraft; Not needed for AllStar."
+  apt-get purge -y minecraft-pi &>/dev/null
   echo "Cleaning the database..."
   (apt-get autoremove --purge -y;apt-get clean;apt-get autoclean) &>/dev/null
   echo "Done"
 else
-  echo "Penguins Puzzle isn't installed; Skipping."
-fi
-echo "Looking for Red Notebook..."
-if [ -e /usr/bin/rednotebook ]; then
-  echo "Uninstalling red Notebook; Not needed for AllStar."
-  apt-get purge -y rednotebook &>/dev/null
-  echo "Cleaning the database..."
-  (apt-get autoremove --purge -y;apt-get clean;apt-get autoclean) &>/dev/null
-  echo "Done"
-else
-  echo "Red Notebook isn't installed; Skipping."
+  echo "Minecraft isn't installed; Skipping."
 fi
 chmod +x /usr/src/utils/AllStar-build/rpi/rm-pi.sh
 /usr/src/utils/AllStar-build/rpi/rm-pi.sh
