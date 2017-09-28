@@ -22,16 +22,14 @@ cd /usr/src/utils/astsrc/asterisk/
 # Put git commit number where asterisk makefile expects it
 git describe --always > .version
 # Configure the build process
-# Remove modules from previous build
-rm -f /usr/lib/asterisk/modules/* &>/dev/null
 # Optimize for the arm cpu if running on the Raspberry Pi
 distro=$(lsb_release -is)
 if [[ $distro = "Raspbian" ]]; then
   sed -i '/PROC\=/c\PROC\=arm' ./makeopts.in
 fi
-(make clean;./configure)
+(export PTLIB_CONFIG=/usr/share/ptlib/make/ptlib-config;./configure)
 # Build and install Asterisk
-(make all;make install)
+(make;make install)
 # Fix comment in rpt.conf
 sed -i 's/Say phonetic call sign/Say call sign/' /etc/asterisk/rpt* | sed -i 's/say phonetic call sign/Say call sign/' /etc/asterisk/rpt*
 # Load res_crypto module
