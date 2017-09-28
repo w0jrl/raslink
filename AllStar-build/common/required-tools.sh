@@ -18,10 +18,10 @@
 
 # Script Start
 distro=$(lsb_release -is)
-apt-get -qq install -y ntpdate g++ make build-essential automake git\
+apt-get -qq install -y ntpdate g++-4.8 make build-essential automake git\
   sudo ca-certificates libusb-dev libnewt-dev libeditline-dev libedit-dev\
   libncurses5-dev libncursesw5-dev bison libssl-dev libasound2-dev\
-  libcurl4-gnutls-dev php5-cli libiksemel-dev libvorbis-dev\
+  libcurl4-openssl-dev php5-cli libiksemel-dev libvorbis-dev\
   curl sox libsox-fmt-all usbutils libsqlite3-dev sqlite3 screen\
   fxload bc alsa-utils dnsutils php5-curl libtool autoconf gawk\
   libical-dev libspandsp-dev libneon27-dev libxml2-dev pkg-config libspeex-dev unixodbc unixodbc-dev uuid uuid-dev libsrtp0-dev dkms\

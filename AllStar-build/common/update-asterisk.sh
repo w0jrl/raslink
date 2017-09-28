@@ -27,7 +27,7 @@ distro=$(lsb_release -is)
 if [[ $distro = "Raspbian" ]]; then
   sed -i '/PROC\=/c\PROC\=arm' ./makeopts.in
 fi
-(export PTLIB_CONFIG=/usr/share/ptlib/make/ptlib-config;./configure)
+(export PTLIB_CONFIG=/usr/share/ptlib/make/ptlib-config;./configure CXX=g++-4.8 CC=gcc-4.8)
 # Build and install Asterisk
 (make;make install)
 # Fix comment in rpt.conf
