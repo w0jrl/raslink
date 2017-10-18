@@ -20,7 +20,7 @@
 
 # Script Start
 echo "Welcome to Wi-Fi setup."
-sleep 0.5
+sleep 0.5s
 country=$( cat /etc/wpa_supplicant/wpa_supplicant.conf | grep "country=" | sed 's/country\=//' )
 read -e -p "$( echo -e "Your country is currently set to: $country\n Do you want to change it? [Y/N]" )" changeCountry
 if [[ "$changeCountry" = "y" ]] || [[ "$changeCountry" = "Y" ]]; then
