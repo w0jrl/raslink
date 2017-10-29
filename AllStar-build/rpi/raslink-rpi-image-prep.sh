@@ -35,14 +35,11 @@ apt-get install raspberrypi-kernel raspberrypi-kernel-headers
 cp /usr/src/utils/AllStar-build/rpi/boot-config.txt /boot/config.txt
 # Setup Alsa configuration
 cp /usr/src/utils/AllStar-build/rpi/etc-asound.conf /etc/asound.conf
-# Install required packages
-chmod +x /usr/src/utils/AllStar-build/common/required-tools.sh
-/usr/src/utils/AllStar-build/common/required-tools.sh
-# Remove unneededpackages and sources
+# Configure packages
 chmod +x /usr/src/utils/AllStar-build/rpi/chk-packages.sh
 /usr/src/utils/AllStar-build/rpi/chk-packages.sh
 # Setup for AllStar install
-chmod +x /usr/src/utils/AllStar-build/rpi/rpi-allstar-install.sh
+chmod +x /usr/src/utils/AllStar-build/rpi/raslink-rpi-install.sh
 if [ "$(grep -ic "scaling_governor" /etc/rc.local)" == "0" ]; then
   sed -i '/Print the IP address/i\
 # Set CPU governor to performance\

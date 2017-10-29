@@ -19,7 +19,7 @@
 
 # Script Start
 echo "Running update, stage two."
-echo "This will take a while."
+echo "This will take awhile."
 service asterisk stop &>/dev/null
 echo "You cannot use your node during this process.
 It has been disabled."

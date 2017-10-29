@@ -19,7 +19,7 @@
 
 # Script Start
 echo "Starting system update.
-This will take a while.
+This will take awhile.
 You can continue using your node during this process."
 sleep 1
 # Get new sources

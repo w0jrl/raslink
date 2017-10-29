@@ -1,5 +1,5 @@
 ﻿#!/bin/bash
-# debian-install-stage2.sh - Complete the AllStar install on Debian
+# raslink-pc-install-stage2.sh - Complete the AllStar install on Debian
 #    Copyright (C) 2017  Jeremy Lincicome (W0JRL)
 #    https://jlappliedtechnologies.com  admin@jlappliedtechnologies.com
 
@@ -20,7 +20,7 @@
 # Restore bashrc
 mv /root/.bashrc.orig /root/.bashrc
 # Complete install
-echo "Running Debian AllStar install, stage two."
+echo "Running RasLink-pc install, stage two."
 chmod +x /usr/src/utils/AllStar-build/common/update-dahdi.sh
 /usr/src/utils/AllStar-build/common/update-dahdi.sh
 chmod +x /usr/src/utils/AllStar-build/common/update-libpri.sh
@@ -57,7 +57,7 @@ cp /usr/src/utils/AllStar-build/common/nodenames.service /etc/systemd/system
 systemctl daemon-reload
 systemctl enable asterisk.timer &>/dev/null
 systemctl enable updatenodelist.service &>/dev/null
-systemctl enable nodelist.service &>/dev/null
+systemctl enable nodenames.service &>/dev/null
 systemctl disable avahi-daemon &>/dev/null
 chmod +x /usr/src/utils/AllStar-build/debian/make-links.sh
 /usr/src/utils/AllStar-build/debian/make-links.sh
