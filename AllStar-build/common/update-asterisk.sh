@@ -30,6 +30,9 @@ fi
 (export PTLIB_CONFIG=/usr/share/ptlib/make/ptlib-config;./configure CXX=g++-4.8 CC=gcc-4.8)
 # Build and install Asterisk
 (make;make install)
+if [ -e /etc/init.d/asterisk ]; then
+  (update-rc.d asterisk remove;rm /etc/init.d/asterisk)
+fi
 # Fix comment in rpt.conf
 sed -i 's/Say phonetic call sign/Say call sign/' /etc/asterisk/rpt* | sed -i 's/say phonetic call sign/Say call sign/' /etc/asterisk/rpt*
 # Load res_crypto module
