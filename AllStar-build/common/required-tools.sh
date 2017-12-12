@@ -28,7 +28,7 @@ apt-get -qq install -y ntpdate g++-4.8 make build-essential automake git\
   libatomic-ops-dev libatomic1 irqbalance libresample-dev libgmime-2.6-dev libpt-dev
 apt-get -qq build-dep dahdi -y
 if [[ $distro = "Raspbian" ]]; then
-  apt-get -qq install -y i2c-tools libi2c-dev raspberrypi-kernel raspberrypi-kernel-headers
+  apt-get -qq install -y i2c-tools libi2c-dev raspberrypi-kernel raspberrypi-kernel-headers fake-hwclock
 else
   apt-get -qq install -y linux-headers-$(uname -r)
 fi
