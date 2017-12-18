@@ -45,7 +45,7 @@ while [ "${scan}" == "1" ]; do
   echo "Scanning for networks..."
   echo "___________________________________"
   sleep 0.5s
-  iwlist $wificard scan | grep "ESSID" | sed 's/ESSID://g;s/"//g;s/^ *//;s/ *$//'
+  iwlist ${wificard} scan | grep "ESSID" | sed 's/ESSID://g;s/"//g;s/^ *//;s/ *$//'
   sleep 0.5s
   echo "Scan complete"
   sleep 0.5s
@@ -70,11 +70,11 @@ echo "network={
 echo "Done"
 sleep 0.5
 echo "Activating connection; Please wait..."
-ifdown $wificard &>/dev/null
+ifdown ${wificard} &>/dev/null
 sleep 0.5s
-ifup $wificard &>/dev/null
+ifup ${wificard} &>/dev/null
 sleep 10s
-if [[ $(ifconfig ${wificard} | grep -ic "inet addr:") == "1" ]]; then
+if [[ $(ifconfig ${wificard} | grep -ic "inet addr") = "1" ]]; then
   echo "***Connection Active***"
   sleep 0.5s
   echo "displaying connection information"
