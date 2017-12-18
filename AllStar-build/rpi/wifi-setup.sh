@@ -1,6 +1,6 @@
 #!/bin/bash
 # wifi-setup.sh - Setup Wi-fi connections
-#    Copyright (C) 2017  Jeremy Lincicome (W0JRL)
+#    Copyright (C) 2018  Jeremy Lincicome (W0JRL)
 #    https://jlappliedtechnologies.com  admin@jlappliedtechnologies.com
 #    Wi-fi card selection and loop scan contributed by Skyler Fennell (KD0WHB
 #    https://www.youtube.com/channel/UCyQzGw5fvymeCcafN-J7krQ
@@ -36,12 +36,12 @@ sleep 0.5s
 echo "Please enter the Wi-Fi card name from the list below:"
 ifconfig | grep wlan
 read -e -p "[wlan0] : " wificard
-if [ "$wificard" = "" ]; then
+if [ "${wificard}" = "" ]; then
   wificard=wlan0
 fi
 sleep 0.5s
 scan=1
-while [ "$scan" == "1" ]; do
+while [ "${scan}" == "1" ]; do
   echo "Scanning for networks..."
   echo "___________________________________"
   sleep 0.5s
@@ -50,7 +50,7 @@ while [ "$scan" == "1" ]; do
   echo "Scan complete"
   sleep 0.5s
   read -e -p "Do you want to scan again? [y/N]" YN
-  if [[ "$YN" = "y" ]] || [[ "$YN" = "Y" ]];  then
+  if [[ "${YN}" = "y" ]] || [[ "${YN" = "Y}" ]];  then
    scan=1
   else
    scan=0
@@ -58,7 +58,7 @@ while [ "$scan" == "1" ]; do
 done
 sleep 0.5s
 read -e -p "Please enter the name of the network you want to connect to: " networkName
-echo "You entered: $networkName"
+echo "You entered: ${networkName}"
 read -e -p "Please enter the password for the network: " networkPass
 echo "Password accepted"
 sleep 0.5s
@@ -74,12 +74,12 @@ ifdown $wificard &>/dev/null
 sleep 0.5s
 ifup $wificard &>/dev/null
 sleep 10s
-if [[ $(ifconfig ${wificard} | grep -c "inet addr:") = "1" ]]; then
+if [[ $(ifconfig ${wificard} | grep -ic "inet addr:") == "1" ]]; then
   echo "***Connection Active***"
   sleep 0.5s
   echo "displaying connection information"
-  ifconfig $wificard | grep "inet addr.*"
-  ifconfig $wificard | grep "inet6 addr.*"
+  ifconfig ${wificard} | grep "inet addr.*"
+  ifconfig ${wificard} | grep "inet6 addr.*"
 else
   echo "***Connection Failed***" >&2
   echo "See https://jlappliedtechnologies.com/raslink if you need assistance." >&2

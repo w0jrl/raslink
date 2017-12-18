@@ -1,6 +1,6 @@
 #!/bin/bash
 # rpi-allstar-install.sh - Automated build and patch script for AllStar Raspbian install
-#    Copyright (C) 2017  Jeremy Lincicome (W0JRL)
+#    Copyright (C) 2018  Jeremy Lincicome (W0JRL)
 #    https://jlappliedtechnologies.com  admin@jlappliedtechnologies.com
 
 #    This program is free software: you can redistribute it and/or modify

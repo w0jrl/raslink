@@ -1,6 +1,6 @@
 #!/bin/bash
 # remote-fetch.sh - Update git repository URL if needed
-#    Copyright (C) 2017  Jeremy Lincicome (W0JRL)
+#    Copyright (C) 2018  Jeremy Lincicome (W0JRL)
 #    https://jlappliedtechnologies.com  admin@jlappliedtechnologies.com
 
 #    This program is free software: you can redistribute it and/or modify
