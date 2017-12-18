@@ -21,6 +21,7 @@ echo "Building asterisk..."
 cd /usr/src/utils/astsrc/asterisk/
 # Put git commit number where asterisk makefile expects it
 git describe --always > .version
+sleep 0.5s
 # Configure the build process
 # Optimize for the arm cpu if running on the Raspberry Pi
 distro=$(lsb_release -is)
