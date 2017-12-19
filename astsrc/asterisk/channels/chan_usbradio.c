@@ -53,6 +53,8 @@ ASTERISK_FILE_VERSION(__FILE__, "$Revision: 535 $")
 #include <errno.h>
 #include <usb.h>
 #include <search.h>
+#include <dirent.h>
+#include <libgen.h>
 #include <linux/ppdev.h>
 #include <linux/parport.h>
 #include <linux/version.h>
@@ -1104,7 +1106,7 @@ static struct usb_device *hid_device_init(char *desired_device)
 				if (desdev[strlen(desdev) - 1] == '\n')
 			        	desdev[strlen(desdev) -1 ] = 0;
 				if (strcasecmp(desdev,devstr)) continue;
-#if (LINUX_VERSION_CODE >= KERNEL_VERSION(2,6,20)) && !defined(AST_BUILDOPT_LIMEY)
+#if (LINUX_VERSION_CODE >= KERNEL_VERSION(2,6,20))
 				sprintf(str,"/sys/class/sound/card%d/device",i);
 				memset(desdev,0,sizeof(desdev));
 				if (readlink(str,desdev,sizeof(desdev) - 1) == -1) continue;

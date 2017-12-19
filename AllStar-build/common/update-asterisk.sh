@@ -23,12 +23,12 @@ cd /usr/src/utils/astsrc/asterisk/
 git describe --always > .version
 sleep 0.5s
 # Configure the build process
+(export PTLIB_CONFIG=/usr/share/ptlib/make/ptlib-config;./configure CXX=g++-4.8 CC=gcc-4.8)
 # Optimize for the arm cpu if running on the Raspberry Pi
 distro=$(lsb_release -is)
 if [[ $distro = "Raspbian" ]]; then
   sed -i '/PROC\=/c\PROC\=arm' ./makeopts.in
 fi
-(export PTLIB_CONFIG=/usr/share/ptlib/make/ptlib-config;./configure CXX=g++-4.8 CC=gcc-4.8)
 # Build and install Asterisk
 (make;make install)
 if [ -e /etc/init.d/asterisk ]; then
