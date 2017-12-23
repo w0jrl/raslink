@@ -20,7 +20,7 @@
 # Script Start
 echo "Running update, stage two."
 echo "This will take awhile."
-service asterisk stop &>/dev/null
+(service asterisk stop &>/dev/null;systemctl disable asterisk.timer &>/dev/null)
 echo "You cannot use your node during this process.
 It has been disabled."
 sleep 1
