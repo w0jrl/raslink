@@ -79,7 +79,7 @@ cp /usr/src/utils/AllStar-build/common/nodenames.service /etc/systemd/system
 systemctl daemon-reload
 systemctl enable asterisk.timer &>/dev/null
 systemctl enable updatenodelist.service &>/dev/null
-systemctl disable avahi-daemon &>/dev/null
+systemctl enable avahi-daemon &>/dev/null
 if [ ! -e /root/.nonames ]; then
   systemctl enable nodenames.service &>/dev/null
 fi
