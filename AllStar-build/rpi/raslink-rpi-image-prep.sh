@@ -40,10 +40,19 @@ chmod +x /usr/src/utils/AllStar-build/rpi/chk-packages.sh
 /usr/src/utils/AllStar-build/rpi/chk-packages.sh
 # Setup for AllStar install
 chmod +x /usr/src/utils/AllStar-build/rpi/raslink-rpi-install.sh
-if [ "$(grep -ic "scaling_governor" /etc/rc.local)" == "0" ]; then
-  sed -i '/Print the IP address/i\
+cpu=$(grep -ic 'for cpu' /etc/rc.local)
+governor=$(grep -ic 'scaling_governor' /etc/rc.local)
+if (( "$governor" >= "0" )) && [ "$cpu" = "0" ]; then
+  sed -i '/scaling_governor/c\
+for cpu in \/sys\/devices\/system\/cpu\/cpu\[0-9\]\*\; do echo -n performance \\\
+| tee $cpu\/cpufreq\/scaling_governor\; done \&\>\/dev\/null' /etc/rc.local
+else
+  if [ "$governor" = "0" ] && [ "$cpu" = "0" ]; then
+    sed -i '/Print the IP address/i\
 # Set CPU governor to performance\
-echo "performance" > \/sys\/devices\/system\/cpu\/cpu0\/cpufreq\/scaling_governor' /etc/rc.local
+for cpu in \/sys\/devices\/system\/cpu\/cpu\[0-9\]\*\; do echo -n performance \\\
+| tee $cpu\/cpufreq\/scaling_governor\; done \&\>\/dev\/null' /etc/rc.local
+  fi
 fi
 sync
 echo "REBOOT before you run the install script"
