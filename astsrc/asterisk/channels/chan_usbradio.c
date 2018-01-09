@@ -17,8 +17,7 @@
  *
  * This program is free software, distributed under the terms of
  * the GNU General Public License Version 2. See the LICENSE file
- * at the top of the source tree.
- * 20160829      inad            added rxlpf rxhpf txlpf txhpf
+  * at the top of the source tree.
  */
 
 /*! \file
@@ -34,12 +33,12 @@
 /*** MODULEINFO
 	<depend>ossaudio</depend>
         <depend>usb</depend>
-        <defaultenabled>yes</defaultenabled>
+        <defaultenabled>yes</defaultenabled> 	 	 
  ***/
 
 #include "asterisk.h"
 
-ASTERISK_FILE_VERSION(__FILE__, "$Revision: 536 $")
+ASTERISK_FILE_VERSION(__FILE__, "$Revision: 535 $")
 
 #include <stdio.h>
 #include <ctype.h>
@@ -158,11 +157,9 @@ ASTERISK_FILE_VERSION(__FILE__, "$Revision: 536 $")
 
 #define C108_VENDOR_ID		0x0d8c
 #define C108_PRODUCT_ID  	0x000c
-#define C108B_PRODUCT_ID  	0x0012
 #define C108AH_PRODUCT_ID  	0x013c
 #define C119_PRODUCT_ID  	0x0008
 #define C119A_PRODUCT_ID  	0x013a
-#define C119B_PRODUCT_ID        0x0013
 #define N1KDO_PRODUCT_ID  	0x6a00
 #define C108_HID_INTERFACE	3
 
@@ -601,10 +598,6 @@ struct chan_usbradio_pvt {
 	float	txctcssgain;
 	char 	txmixa;
 	char 	txmixb;
-    int		rxlpf;
-    int		rxhpf;
-    int		txlpf;
-    int		txhpf;
 
 	char	invertptt;
 
@@ -1093,10 +1086,8 @@ static struct usb_device *hid_device_init(char *desired_device)
             if ((dev->descriptor.idVendor
                   == C108_VENDOR_ID) &&
 		(((dev->descriptor.idProduct & 0xfffc) == C108_PRODUCT_ID) ||
-		(dev->descriptor.idProduct == C108B_PRODUCT_ID) ||
 		(dev->descriptor.idProduct == C108AH_PRODUCT_ID) ||
 		(dev->descriptor.idProduct == C119A_PRODUCT_ID) ||
-		(dev->descriptor.idProduct == C119B_PRODUCT_ID) ||
 		((dev->descriptor.idProduct & 0xff00)  == N1KDO_PRODUCT_ID) ||
 		(dev->descriptor.idProduct == C119_PRODUCT_ID)))
 		{
@@ -1115,7 +1106,7 @@ static struct usb_device *hid_device_init(char *desired_device)
 				if (desdev[strlen(desdev) - 1] == '\n')
 			        	desdev[strlen(desdev) -1 ] = 0;
 				if (strcasecmp(desdev,devstr)) continue;
-#if (LINUX_VERSION_CODE >= KERNEL_VERSION(2,6,20)) 
+#if (LINUX_VERSION_CODE >= KERNEL_VERSION(2,6,20))
 				sprintf(str,"/sys/class/sound/card%d/device",i);
 				memset(desdev,0,sizeof(desdev));
 				if (readlink(str,desdev,sizeof(desdev) - 1) == -1) continue;
@@ -1179,10 +1170,8 @@ static int hid_device_mklist(void)
             if ((dev->descriptor.idVendor
                   == C108_VENDOR_ID) &&
 		(((dev->descriptor.idProduct & 0xfffc) == C108_PRODUCT_ID) ||
-		(dev->descriptor.idProduct == C108B_PRODUCT_ID) ||
 		(dev->descriptor.idProduct == C108AH_PRODUCT_ID) ||
 		(dev->descriptor.idProduct == C119A_PRODUCT_ID) ||
-		(dev->descriptor.idProduct == C119B_PRODUCT_ID) ||
 		((dev->descriptor.idProduct & 0xff00)  == N1KDO_PRODUCT_ID) ||
 		(dev->descriptor.idProduct == C119_PRODUCT_ID)))
 		{
@@ -1201,7 +1190,7 @@ static int hid_device_mklist(void)
 				if (desdev[strlen(desdev) - 1] == '\n')
 			        	desdev[strlen(desdev) -1 ] = 0;
 				if (strcasecmp(desdev,devstr)) continue;
-#if (LINUX_VERSION_CODE >= KERNEL_VERSION(2,6,20)) 
+#if (LINUX_VERSION_CODE >= KERNEL_VERSION(2,6,20))
 				sprintf(str,"/sys/class/sound/card%d/device",i);
 				memset(desdev,0,sizeof(desdev));
 				if (readlink(str,desdev,sizeof(desdev) - 1) == -1) continue;
@@ -5281,17 +5270,7 @@ static struct chan_usbradio_pvt *store_config(struct ast_config *cfg, char *ctg,
 			M_UINT("area",o->area)
 			M_STR("ukey",o->ukey)
  			M_UINT("duplex3",o->duplex3)
-        
-            M_UINT("rxlpf",o->rxlpf)
-            M_UINT("rxhpf",o->rxhpf)
-            M_UINT("txlpf",o->txlpf)
-            M_UINT("txhpf",o->txhpf)
-//            ast_log(LOG_NOTICE,"rxlpf: %d\n",o->rxlpf);
-//            ast_log(LOG_NOTICE,"rxhpf: %d\n",o->rxhpf);
-//            ast_log(LOG_NOTICE,"txlpf: %d\n",o->txlpf);
-//            ast_log(LOG_NOTICE,"txhpf: %d\n",o->txhpf);
-        
-			M_END(;
+			M_END(;			
 			);
 			for(i = 0; i < 32; i++)
 			{
@@ -5366,7 +5345,7 @@ static struct chan_usbradio_pvt *store_config(struct ast_config *cfg, char *ctg,
 			M_UINT("rxsquelchadj", o->rxsquelchadj)
 			M_UINT("fever", o->fever)
 			M_STR("devstr", o->devstr)
-            M_END(;
+			M_END(;
 			);
 		}
 		ast_config_destroy(cfg1);
@@ -5454,11 +5433,6 @@ static struct chan_usbradio_pvt *store_config(struct ast_config *cfg, char *ctg,
 		tChan.name=o->name;
 		tChan.fever = o->fever;
 
-        tChan.rxhpf=o->rxhpf;
-        tChan.rxlpf=o->rxlpf;
-        tChan.txhpf=o->txhpf;
-        tChan.txlpf=o->txlpf;
-        
 		o->pmrChan=createPmrChannel(&tChan,FRAME_SIZE);
 									 
 		o->pmrChan->radioDuplex=o->radioduplex;
