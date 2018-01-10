@@ -18,8 +18,19 @@
 
 # Needed for Uricheck to work
 # Script Start
+status() {
+    $@
+    if [ $? -ne 0 ]; then
+        echo "Uridiag failed to install.
+Please see <https://jlappliedtechnologies.com/raslink/> for assistance."
+        return 1
+    else
+        return 0
+    fi
+}
 echo "Building Uridiag..."
 cd /usr/src/utils/astsrc/uridiag/
-(make;make install)
+status make
+status make install
 echo "Done"
 exit 0

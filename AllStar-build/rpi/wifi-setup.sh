@@ -20,7 +20,7 @@
 
 # Script Start
 echo "Welcome to Wi-Fi setup."
-sleep 0.5s
+sleep 0.5
 country=$( cat /etc/wpa_supplicant/wpa_supplicant.conf | grep "country=" | sed 's/country\=//' )
 read -e -p "$( echo -e "Your country is currently set to: $country\n Do you want to change it? [Y/N]" )" changeCountry
 if [[ "$changeCountry" = "y" ]] || [[ "$changeCountry" = "Y" ]]; then
@@ -32,23 +32,23 @@ if [[ "$changeCountry" = "y" ]] || [[ "$changeCountry" = "Y" ]]; then
 else
   echo "Country not changed"
 fi
-sleep 0.5s
+sleep 0.5
 echo "Please enter the Wi-Fi card name from the list below:"
 ifconfig | grep wlan
 read -e -p "[wlan0] : " wificard
 if [ "${wificard}" = "" ]; then
   wificard=wlan0
 fi
-sleep 0.5s
+sleep 0.5
 scan=1
 while [ "${scan}" == "1" ]; do
   echo "Scanning for networks..."
   echo "___________________________________"
-  sleep 0.5s
+  sleep 0.5
   iwlist ${wificard} scan | grep "ESSID" | sed 's/ESSID://g;s/"//g;s/^ *//;s/ *$//'
-  sleep 0.5s
+  sleep 0.5
   echo "Scan complete"
-  sleep 0.5s
+  sleep 0.5
   read -e -p "Do you want to scan again? [y/N]" YN
   if [[ "${YN}" = "y" ]] || [[ "${YN" = "Y}" ]];  then
    scan=1
@@ -56,12 +56,12 @@ while [ "${scan}" == "1" ]; do
    scan=0
      fi
 done
-sleep 0.5s
+sleep 0.5
 read -e -p "Please enter the name of the network you want to connect to: " networkName
 echo "You entered: ${networkName}"
 read -e -p "Please enter the password for the network: " networkPass
 echo "Password accepted"
-sleep 0.5s
+sleep 0.5
 echo "Setting up connection..."
 echo "network={
  ssid=\"$networkName\"
@@ -71,23 +71,23 @@ echo "Done"
 sleep 0.5
 echo "Activating connection; Please wait..."
 ifdown ${wificard} &>/dev/null
-sleep 0.5s
+sleep 0.5
 ifup ${wificard} &>/dev/null
-sleep 10s
+sleep 10
 if [[ $(ifconfig ${wificard} | grep -ic "inet addr") = "1" ]]; then
   echo "***Connection Active***"
-  sleep 0.5s
+  sleep 0.5
   echo "displaying connection information"
   ifconfig ${wificard} | grep "inet addr.*"
   ifconfig ${wificard} | grep "inet6 addr.*"
 else
   echo "***Connection Failed***" >&2
-  echo "See https://jlappliedtechnologies.com/raslink if you need assistance." >&2
+  echo "See <https://jlappliedtechnologies.com/raslink/> if you need assistance." >&2
   exit 1
 fi
-sleep 0.5s
+sleep 0.5
 echo "If you want to setup another connection, run wifi-setup again."
 echo "To remove a network, edit /etc/wpa_supplicant/wpa_supplicant.conf."
-echo "See https://jlappliedtechnologies.com/raslink if you need assistance." 
+echo "See <https://jlappliedtechnologies.com/raslink/> if you need assistance." 
 echo "Exiting"
 exit 0

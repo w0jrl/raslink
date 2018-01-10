@@ -17,11 +17,23 @@
 #    along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 # Script Start
-echo "Building libpri..."
+status() {
+    $@
+    if [ $? -ne 0 ]; then
+        echo "Libpri failed to install.
+Please see <https://jlappliedtechnologies.com/raslink/> for assistance."
+        return 1
+    else
+        return 0
+    fi
+}
+
+echo "Building Libpri..."
 cd /usr/src/utils/astsrc/libpri/
 # Patch libpri for use with AllStar
-patch </usr/src/utils/AllStar-build/patches/patch-libpri-makefile
+status patch </usr/src/utils/AllStar-build/patches/patch-libpri-makefile
 # Build and install libpri
-(make clean;make all;make install)
+status make all
+status make install)
 echo "Done"
 exit 0

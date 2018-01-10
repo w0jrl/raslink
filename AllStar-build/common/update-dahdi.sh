@@ -17,27 +17,38 @@
 #    along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 # Script Start
-echo "Downloading and unpacking dahdi..."
+status() {
+    $@
+    if [ $? -ne 0 ]; then
+        echo "Dahdi failed to install.
+Please see <https://jlappliedtechnologies.com/raslink/> for assistance."
+        return 1
+    else
+        return 0
+    fi
+}
+echo "Downloading and unpacking Dahdi..."
 cd /usr/src/utils/
 if [ -e /usr/src/utils/astsrc/dahdi* ]
 then
-  rm -rf /usr/src/utils/astsrc/dahdi*
+  status rm -rf /usr/src/utils/astsrc/dahdi*
 fi
-wget http://downloads.asterisk.org/pub/telephony/dahdi-linux-complete/dahdi-linux-complete-current.tar.gz &>/dev/null
+status wget http://downloads.asterisk.org/pub/telephony/dahdi-linux-complete/dahdi-linux-complete-current.tar.gz &>/dev/null
 cd /usr/src/utils/astsrc/
-tar zxvf /usr/src/utils/dahdi-linux-complete-current.tar.gz &>/dev/null
-mv dahdi* dahdi
-rm -rf /usr/src/utils/*.tar.gz
+status tar zxvf /usr/src/utils/dahdi-linux-complete-current.tar.gz &>/dev/null
+status mv dahdi* dahdi
+status rm -rf /usr/src/utils/*.tar.gz
 echo "Done"
 cd /usr/src/utils/astsrc/dahdi/
-echo "Building dahdi..."
+echo "Building Dahdi..."
 # Patch dahdi for use with AllStar
 # https://allstarlink.org/dude-dahdi-2.10.0.1-patches-20150306
-patch -p1 < /usr/src/utils/AllStar-build/patches/patch-dahdi-dude-current
+status patch -p1 < /usr/src/utils/AllStar-build/patches/patch-dahdi-dude-current
 # Remove setting the owner to asterisk
-patch -p0 < /usr/src/utils/AllStar-build/patches/patch-dahdi.rules
+status patch -p0 < /usr/src/utils/AllStar-build/patches/patch-dahdi.rules
 # Build and install dahdi
-(make all;make install;make config)
+status make all
+status make install
 if [ "$(grep -ic "dahdi" /etc/modules)" == "1" ]; then
   sed -i '/dahdi/d' /etc/modules
 fi

@@ -26,14 +26,22 @@
 # You have been warned!
 
 # Script Start
+status() {
+    $@
+    if [ $? -ne 0 ]; then
+        return 1
+    else
+        return 0
+    fi
+}
 chmod +x /usr/src/utils/AllStar-build/common/update-dahdi.sh
-/usr/src/utils/AllStar-build/common/update-dahdi.sh
+status /usr/src/utils/AllStar-build/common/update-dahdi.sh
 chmod +x /usr/src/utils/AllStar-build/common/update-libpri.sh
-/usr/src/utils/AllStar-build/common/update-libpri.sh
+status /usr/src/utils/AllStar-build/common/update-libpri.sh
 chmod +x /usr/src/utils/AllStar-build/common/update-asterisk.sh
-/usr/src/utils/AllStar-build/common/update-asterisk.sh
+status /usr/src/utils/AllStar-build/common/update-asterisk.sh
 chmod +x /usr/src/utils/AllStar-build/common/update-uridiag.sh
-/usr/src/utils/AllStar-build/common/update-uridiag.sh
+status /usr/src/utils/AllStar-build/common/update-uridiag.sh
 echo "Setting up defaults for AllStar..."
 mkdir -p /etc/asterisk
 cd /etc/asterisk
@@ -63,7 +71,6 @@ systemctl daemon-reload
 systemctl enable asterisk.timer &>/dev/null
 systemctl enable updatenodelist.service &>/dev/null
 systemctl enable nodenames.service &>/dev/null
-systemctl disable avahi-daemon &>/dev/null
 chmod +x /usr/src/utils/AllStar-build/rpi/make-links.sh
 /usr/src/utils/AllStar-build/rpi/make-links.sh
 service cron restart

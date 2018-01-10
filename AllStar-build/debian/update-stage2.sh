@@ -18,6 +18,14 @@
 #    along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 # Script Start
+status() {
+    $@
+    if [ $? -ne 0 ]; then
+        return 1
+    else
+        return 0
+    fi
+}
 echo "Running update, stage two."
 echo "This will take awhile."
 (service asterisk stop &>/dev/null;systemctl disable asterisk.timer &>/dev/null)
@@ -37,19 +45,19 @@ if [[ "$(grep -ic "/usr/bin/version" /root/.profile)" = "0" ]]; then
   echo "/usr/bin/version" >> /root/.profile
 fi
 chmod +x /usr/src/utils/AllStar-build/debian/chk-packages.sh
-/usr/src/utils/AllStar-build/debian/chk-packages.sh
+status /usr/src/utils/AllStar-build/debian/chk-packages.sh
 sleep 0.5
 chmod +x /usr/src/utils/AllStar-build/common/update-dahdi.sh
-/usr/src/utils/AllStar-build/common/update-dahdi.sh
+status /usr/src/utils/AllStar-build/common/update-dahdi.sh
 sleep 0.5
 chmod +x /usr/src/utils/AllStar-build/common/update-libpri.sh
-/usr/src/utils/AllStar-build/common/update-libpri.sh
+status /usr/src/utils/AllStar-build/common/update-libpri.sh
 sleep 0.5
 chmod +x /usr/src/utils/AllStar-build/common/update-asterisk.sh
-/usr/src/utils/AllStar-build/common/update-asterisk.sh
+status /usr/src/utils/AllStar-build/common/update-asterisk.sh
 sleep 0.5
 chmod +x /usr/src/utils/AllStar-build/common/update-uridiag.sh
-/usr/src/utils/AllStar-build/common/update-uridiag.sh
+status /usr/src/utils/AllStar-build/common/update-uridiag.sh
 sleep 0.5
 # Make sure configuration files and scripts are loaded
 echo "Updating start up scripts..."

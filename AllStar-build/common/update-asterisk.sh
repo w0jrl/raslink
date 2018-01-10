@@ -17,17 +17,29 @@
 #    along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 # Script Start
-echo "Building asterisk..."
+status() {
+    $@
+    if [ $? -ne 0 ]; then
+        echo "Asterisk failed to install.
+Please see <https://jlappliedtechnologies.com/raslink/> for assistance."
+        return 1
+    else
+        return 0
+    fi
+}
+echo "Building Asterisk..."
 cd /usr/src/utils/astsrc/asterisk/
 # Configure the build process
-(export PTLIB_CONFIG=/usr/share/ptlib/make/ptlib-config;./configure CXX=g++-4.8 CC=gcc-4.8)
+status export PTLIB_CONFIG=/usr/share/ptlib/make/ptlib-config
+status ./configure CXX=g++-4.8 CC=gcc-4.8
 # Optimize for the arm cpu if running on the Raspberry Pi
 distro=$(lsb_release -is)
 if [[ $distro = "Raspbian" ]]; then
   sed -i '/PROC\=/c\PROC\=arm' ./makeopts.in
 fi
 # Build and install Asterisk
-(make;make install)
+status make
+status make install
 if [ -e /etc/init.d/asterisk ]; then
   (update-rc.d asterisk remove;rm /etc/init.d/asterisk)
 fi
