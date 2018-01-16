@@ -28,6 +28,8 @@ Please see <https://jlappliedtechnologies.com/raslink/> for assistance."
     fi
 }
 echo "Building Asterisk..."
+# Remove modules
+status rm -f /usr/lib/asterisk/modules/*
 cd /usr/src/utils/astsrc/asterisk/
 # Configure the build process
 status export PTLIB_CONFIG=/usr/share/ptlib/make/ptlib-config
