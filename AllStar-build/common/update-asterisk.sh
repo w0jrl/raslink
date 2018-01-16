@@ -53,7 +53,8 @@ sed -i '/res_crypto.so/c\load \=> res_crypto.so ;   Cryptographic Digital Signat
 sed -i '/app_sendtext.so/c\load \=> app_sendtext.so ;   Send Text Applications                            ' /etc/asterisk/modules.conf
 # Remove low pass and high pass filter configuration from usbradio
 sed -i -e '/rxlpf \= 0/,+19d' /etc/asterisk/usbradio.conf
-# Increase jbmaxsize in usbradio
-sed -i 's/jbmaxsize \= 200/jbmaxsize \= 500/' /etc/asterisk/usbradio*
+# set jbmaxsize in usbradio
+sed -i 's/jbmaxsize \= 500/jbmaxsize \= 250/' /etc/asterisk/usbradio*
+sed -i 's/jbmaxsize \= 200/jbmaxsize \= 250/' /etc/asterisk/usbradio*
 echo "Done."
 exit 0
