@@ -18,7 +18,7 @@
 
 # Script Start
 distro=$(lsb_release -is)
-apt-get -qq install -y ntpdate g++-4.8 make build-essential automake git\
+apt-get -qq install -y ntpdate g++-4.8  g++ make build-essential automake git\
   sudo ca-certificates libusb-dev libnewt-dev libeditline-dev libedit-dev\
   libncurses5-dev libncursesw5-dev bison libssl-dev libasound2-dev\
   libcurl4-openssl-dev php5-cli libiksemel-dev libvorbis-dev\
