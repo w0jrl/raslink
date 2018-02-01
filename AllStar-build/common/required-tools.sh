@@ -17,9 +17,10 @@
 #    along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 # Script Start
+apt-get -qq install -y lsb-release
 distro=$(lsb_release -is)
 release=$(lsb_release -cs)
-apt-get -qq install -y ntpdate g++-4.8  g++ make build-essential automake git lsb-release\
+apt-get -qq install -y ntpdate g++-4.8  g++ make build-essential automake git\
   sudo ca-certificates libusb-dev libnewt-dev libeditline-dev libedit-dev\
   libncurses5-dev libncursesw5-dev bison libssl-dev libasound2-dev\
   libcurl4-openssl-dev libiksemel-dev libvorbis-dev\
