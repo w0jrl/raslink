@@ -23,7 +23,7 @@ read -e -p "$( echo -e "Are you using a USB Radio interface (URI) with a loopbac
 if [[ "$answer" = "y" ]] || [[ "$answer" = "Y" ]]; then
   echo "Your node cannot be used durring this process."
   echo "Disabling your node..."
-  service asterisk stop
+  service asterisk stop &>/dev/null
   sleep 0.5
   echo "Done"
   echo "Please follow the on-screen instructions".
