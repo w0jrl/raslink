@@ -28,8 +28,8 @@ cp ../extras/mdc1200/*.h ./apps
 sed -i 's/\/\* #include "mdc_decode.c" \*\//#include "mdc_decode.c"/' ./apps/app_rpt.c
 sed -i 's/\/\* #include "mdc_encode.c" \*\//#include "mdc_encode.c"/' ./apps/app_rpt.c
 # Update app_rpt version information
-sed -i '/ \*  version/c\ \*  version 18.02 01\/02\/2018' ./apps/app_rpt.c
-sed -i '/static  char \*tdesc \= "Radio Repeater \/ Remote Base  version/c\static  char \*tdesc \= "Radio Repeater \/ Remote Base  version 18.02 02\/01\/2018";' ./apps/app_rpt.c
+sed -i '/ \*  version/c\ \*  version 18.03 03\/01\/2018' ./apps/app_rpt.c
+sed -i '/static  char \*tdesc \= "Radio Repeater \/ Remote Base  version/c\static  char \*tdesc \= "Radio Repeater \/ Remote Base  version 18.03 03\/01\/2018";' ./apps/app_rpt.c
 # Change TX enabled message
 sed -i 's/"RPTENA"/"TXENA"/' ./apps/app_rpt.c
 # Make EchoLink call signs use normal characters
@@ -50,6 +50,6 @@ if [ "$dirent" = "0" ] && [ "$libgen" = "0" ]; then
 #include <libgen.h>' ./channels/chan_usbradio.c
 fi
 # Make sure asterisk uses pthread
-sed -i 's/ASTCFLAGS+=-Wno-unused-result/ASTCFLAGS\+\=-pthread -Wno-unused-result/' ./Makefile
+sed -i 's/ASTCFLAGS+=-Wno-unused-result/ASTCFLAGS\+\=-lpthread -Wno-unused-result/' ./Makefile
 echo "Done"
 exit 0
