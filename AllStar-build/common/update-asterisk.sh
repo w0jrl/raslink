@@ -52,8 +52,29 @@ sed -i 's/Say phonetic call sign/Say call sign/' /etc/asterisk/rpt* | sed -i 's/
 sed -i '/res_crypto.so/c\load \=> res_crypto.so ;   Cryptographic Digital Signatures                  ' /etc/asterisk/modules.conf
 # Load app_sendtext module
 sed -i '/app_sendtext.so/c\load \=> app_sendtext.so ;   Send Text Applications                            ' /etc/asterisk/modules.conf
-# Remove low pass and high pass filter configuration from usbradio
-sed -i -e '/rxlpf \= 0/,+19d' /etc/asterisk/usbradio.conf
+# Add low pass and high pass filter configuration to usbradio
+filters=$(grep -ic 'rxlpf' /etc/asterisk/usbradio.conf)
+if [[ $filters = "0" ]]; then
+  echo "rxlpf = 0     ; Receiver Audio Low Pass Filter 0,1,2
+      ; 0 - 3.0 kHz cutoff (Default) value for reduced noise and increased intelligibility. (default)
+      ; 1 - 3.3 kHz cutoff for increased high end, sibilance and brightness.
+      ; 2 - 3.5 kHz cutoff for even more high end, sibilance and brightness.
+
+rxhpf = 0     ; Receiver Audio High Pass Filter 0,1
+      ; 0 - 300 Hz cutoff. (Default) value to reduce sub-audible signals for retransmission and in the receiver speaker. (default)
+      ; 1 - 250 Hz cutoff for additional received and retransmitted bass response.
+      ; recommend using this filter with a CTCSS tone no higher than 186.2 Hz.
+
+txlpf = 0     ; Transmitter Audio Low Pass Filter 0,1
+      ; 0 - 3.0 kHz cutoff. (Default)
+      ; 1 - 3.3 kHz cutoff for increased high end, sibilance and brightness.
+
+txhpf = 0     ; Transmitter Audio High Pass Filter 0,1,2
+      ; 0 - 300 Hz cutoff Reduce interference between voice and sub-audible signaling tones and codes. (default)
+      ; 1 - 250 Hz cutoff Increase bass response in transmitted audio.
+      ; 2 - 120 Hz cutoff for special applications requiring additional bass response in transmitted audio.
+      ; Not recommended due to the increased possibility of voice energy interfering with sub-audible signaling." >> /etc/asterisk/usbradio.conf
+fi
 # set jbmaxsize in usbradio
 sed -i 's/jbmaxsize \= 500/jbmaxsize \= 250/' /etc/asterisk/usbradio*
 sed -i 's/jbmaxsize \= 200/jbmaxsize \= 250/' /etc/asterisk/usbradio*
