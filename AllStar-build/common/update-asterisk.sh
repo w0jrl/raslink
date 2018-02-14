@@ -23,6 +23,7 @@ status() {
         echo "Asterisk failed to install.
 Please see <https://jlappliedtechnologies.com/raslink/> for assistance."
         return 1
+        exit 1
     else
         return 0
     fi
