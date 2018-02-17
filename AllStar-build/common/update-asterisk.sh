@@ -55,28 +55,47 @@ sed -i '/app_sendtext.so/c\load \=> app_sendtext.so ;   Send Text Applications  
 # Add low pass and high pass filter configuration to usbradio
 filters=$(grep -ic 'rxlpf' /etc/asterisk/usbradio.conf)
 if [[ $filters = "0" ]]; then
-  echo "rxlpf = 0     ; Receiver Audio Low Pass Filter 0,1,2
-      ; 0 - 3.0 kHz cutoff (Default) value for reduced noise and increased intelligibility. (default)
-      ; 1 - 3.3 kHz cutoff for increased high end, sibilance and brightness.
-      ; 2 - 3.5 kHz cutoff for even more high end, sibilance and brightness.
-
-rxhpf = 0     ; Receiver Audio High Pass Filter 0,1
-      ; 0 - 300 Hz cutoff. (Default) value to reduce sub-audible signals for retransmission and in the receiver speaker. (default)
-      ; 1 - 250 Hz cutoff for additional received and retransmitted bass response.
-      ; recommend using this filter with a CTCSS tone no higher than 186.2 Hz.
-
-txlpf = 0     ; Transmitter Audio Low Pass Filter 0,1
-      ; 0 - 3.0 kHz cutoff. (Default)
-      ; 1 - 3.3 kHz cutoff for increased high end, sibilance and brightness.
-
-txhpf = 0     ; Transmitter Audio High Pass Filter 0,1,2
-      ; 0 - 300 Hz cutoff Reduce interference between voice and sub-audible signaling tones and codes. (default)
-      ; 1 - 250 Hz cutoff Increase bass response in transmitted audio.
-      ; 2 - 120 Hz cutoff for special applications requiring additional bass response in transmitted audio.
-      ; Not recommended due to the increased possibility of voice energy interfering with sub-audible signaling." >> /etc/asterisk/usbradio.conf
+  sed -i '/jblog \= no/a\
+\
+rxlpf = 0     ; Receiver Audio Low Pass Filter 0,1,2\
+      ; 0 - 3.0 kHz cutoff (Default) value for reduced noise and increased intelligibility. (default)\
+      ; 1 - 3.3 kHz cutoff for increased high end, sibilance and brightness.\
+      ; 2 - 3.5 kHz cutoff for even more high end, sibilance and brightness.\
+\
+rxhpf = 0     ; Receiver Audio High Pass Filter 0,1\
+      ; 0 - 300 Hz cutoff. (Default) value to reduce sub-audible signals for retransmission and in the receiver speaker. (default)\
+      ; 1 - 250 Hz cutoff for additional received and retransmitted bass response.\
+      ; recommend using this filter with a CTCSS tone no higher than 186.2 Hz.\
+\
+txlpf = 0     ; Transmitter Audio Low Pass Filter 0,1\
+      ; 0 - 3.0 kHz cutoff. (Default)\
+      ; 1 - 3.3 kHz cutoff for increased high end, sibilance and brightness.\
+\
+txhpf = 0     ; Transmitter Audio High Pass Filter 0,1,2\
+      ; 0 - 300 Hz cutoff Reduce interference between voice and sub-audible signaling tones and codes. (default)\
+      ; 1 - 250 Hz cutoff Increase bass response in transmitted audio.\
+      ; 2 - 120 Hz cutoff for special applications requiring additional bass response in transmitted audio.\
+      ; Not recommended due to the increased possibility of voice energy interfering with sub-audible signaling.' /etc/asterisk/usbradio.conf
 fi
 # set jbmaxsize in usbradio
 sed -i 's/jbmaxsize \= 500/jbmaxsize \= 250/' /etc/asterisk/usbradio*
 sed -i 's/jbmaxsize \= 200/jbmaxsize \= 250/' /etc/asterisk/usbradio*
+# Add g726aal2 codec to iax configuration
+sed -i 's/ulaw, alaw, GSM and ADPCM should only be used,/ulaw, GSM, g726aal2 and ADPCM should only be used,/' /etc/asterisk/iax.conf
+sed -i 's/The ulaw and alaw codecs have/The ulaw codec has/' /etc/asterisk/iax.conf
+sed -i 's/followed by ADPCM, and lastly GSM,/followed by ADPCM\/g726aal2, and lastly GSM./' /etc/asterisk/iax.conf
+sed -i 's/alaw\/ulaw/ulaw/' /etc/asterisk/iax.conf
+adpcm=$(grep -c 'allow = adpcm' /etc/asterisk/iax.conf)
+g726aal2=$(grep -c 'allow = g726aal2' /etc/asterisk/iax.conf)
+if [[ $g726aal2 = "0" ]]; then
+  sed -i '/ULAW          best                    87 kbps/a\
+     ; g726aal2         good                    55 kbps' /etc/asterisk/iax.conf
+  sed -i '/allow \= adpcm     ; good  55 kbps/i\
+allow \= g726aal2     ; good  55 kbps' /etc/asterisk/iax.conf
+  sed -i '/^allow \= ulaw$/ s:$:\nallow \= g726aal2:' /etc/asterisk/iax.conf
+fi
+if [[ $adpcm = "0" ]]; then
+  sed -i '/^allow \= g726aal2$/ s:$:\nallow \= adpcm:' /etc/asterisk/iax.conf
+fi
 echo "Done."
 exit 0
