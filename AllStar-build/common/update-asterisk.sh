@@ -88,13 +88,22 @@ sed -i 's/alaw\/ulaw/ulaw/' /etc/asterisk/iax.conf
 adpcm=$(grep -c 'allow = adpcm' /etc/asterisk/iax.conf)
 g726aal2=$(grep -c 'allow = g726aal2' /etc/asterisk/iax.conf)
 if [[ $g726aal2 = "0" ]]; then
+# both layouts
   sed -i '/ULAW          best                    87 kbps/a\
-     ; g726aal2         good                    55 kbps' /etc/asterisk/iax.conf
+; g726aal2         good                    55 kbps' /etc/asterisk/iax.conf
+# new layout
   sed -i '/allow \= adpcm     ; good  55 kbps/i\
 allow \= g726aal2     ; good  55 kbps' /etc/asterisk/iax.conf
+# old layout
+  sed -i 's/\t/ /g' /etc/asterisk/iax.conf
+  sed -i '/allow \= adpcm   ; good  55 kbps/i\
+allow \= g726aal2   ; good  55 kbps' /etc/asterisk/iax.conf
+# both layouts
   sed -i '/^allow \= ulaw$/ s:$:\nallow \= g726aal2:' /etc/asterisk/iax.conf
 fi
 if [[ $adpcm = "0" ]]; then
+  sed -i '/ULAW          best                    87 kbps/a\
+; g726aal2         good                    55 kbps' /etc/asterisk/iax.conf
   sed -i '/^allow \= g726aal2$/ s:$:\nallow \= adpcm:' /etc/asterisk/iax.conf
 fi
 echo "Done."
