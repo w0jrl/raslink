@@ -18,10 +18,17 @@
 #    along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 # Script Start
+# Make sure system-update runs in screen
+if [ -z "$STY" ]; then exec screen -S system-update /bin/bash "$0"; fi
 echo "Starting system update.
 This will take awhile.
+System-update is running in a screen session.
+If your session disconnects during the update,
+after reconnecting, run
+'screen -dr'
+to reconnect to the update screen.
 You can continue using your node during this process."
-sleep 1
+sleep 3
 # Get new sources
 echo "Updating source files for All Star..."
 cd /usr/src/utils/

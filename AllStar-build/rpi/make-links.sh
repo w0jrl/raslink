@@ -32,5 +32,7 @@ chmod +x /usr/src/utils/AllStar-build/common/end.sh
 ln -fs /usr/src/utils/AllStar-build/common/end.sh /usr/bin/end
 chmod +x /usr/src/utils/AllStar-build/common/nodenames.sh
 ln -fs /usr/src/utils/AllStar-build/common/nodenames.sh /usr/bin/nodenames
+chmod +x /usr/src/utils/AllStar-build/common/release-upgrade.sh
+ln -fs /usr/src/utils/AllStar-build/common/release-upgrade.sh /usr/bin/release-upgrade
 ln -fs /etc/network/if-up.d/ntpdate /etc/cron.hourly/ntpdate
 exit 0

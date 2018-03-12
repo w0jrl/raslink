@@ -18,6 +18,8 @@
 #    along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 # Script Start
+# Make sure system-update runs in screen
+if [ -z "$STY" ]; then exec screen -S system-update /bin/bash "$0"; fi
 status() {
     $@
     if [ $? -ne 0 ]; then
@@ -28,13 +30,22 @@ status() {
     fi
 }
 echo "Running update, stage two."
-echo "This will take awhile."
+echo "This will take awhile.
+System-update is running in a screen session.
+If your session disconnects during the update,
+after reconnecting, run
+'screen -dr'
+to reconnect to the update screen."
+sleep 3
 service asterisk stop &>/dev/null
 echo "You cannot use your node during this process.
 It has been disabled."
 sleep 1
 # Restore bashrc
 mv /root/.bashrc.orig /root/.bashrc
+# Check for release upgrade
+chmod +x /usr/src/utils/AllStar-build/common/release-upgrade.sh
+/usr/src/utils/AllStar-build/common/release-upgrade.sh
 # Check and update repository URL
 chmod +x /usr/src/utils/AllStar-build/common/remote-fetch.sh
 /usr/src/utils/AllStar-build/common/remote-fetch.sh
