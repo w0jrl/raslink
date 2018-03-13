@@ -53,7 +53,7 @@ check() {
 update() {
     sed -i "s/${prev}/${release}/" /etc/apt/sources.list /etc/apt/sources.list.d/*.list
     (apt-get update;apt-get upgrade -y;apt-get clean;apt-get autoclean)
-    (apt-get dist-upgrade;apt-get autoremove -y;apt-get clean;apt-get autoclean;hash -r)
+    (apt-get dist-upgrade -y;apt-get autoremove -y;apt-get clean;apt-get autoclean;hash -r)
     apt-get -qq install -y ssh
         sed -i '/PermitRootLogin/c\PermitRootLogin yes' /etc/ssh/sshd_config
 cd /root
