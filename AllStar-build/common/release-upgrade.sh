@@ -74,7 +74,6 @@ update() {
     echo "When your node reboots, you need to log in
 to finish the upgrade."
     sync
-    sleep 1
     sudo reboot
 }
 # Run the upgrade
