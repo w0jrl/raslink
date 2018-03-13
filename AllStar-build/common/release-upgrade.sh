@@ -52,11 +52,14 @@ check() {
 }
 update() {
     sed -i "s/${prev}/${release}/" /etc/apt/sources.list /etc/apt/sources.list.d/*.list
+    if [[ $platform = "Raspbian" ]]; then
+        umount /tmp &>/dev/null
+    fi
     (apt-get update;apt-get upgrade -y;apt-get clean;apt-get autoclean)
     (apt-get dist-upgrade -y;apt-get autoremove -y;apt-get clean;apt-get autoclean;hash -r)
-    apt-get -qq install -y ssh
-        sed -i '/PermitRootLogin/c\PermitRootLogin yes' /etc/ssh/sshd_config
-cd /root
+    apt-get -qq install -y ssh libpt-dev
+    sed -i '/PermitRootLogin/c\PermitRootLogin yes' /etc/ssh/sshd_config
+    cd /root
     mv .bashrc .bashrc.orig
     cat .bashrc.orig > .bashrc
     if [[ $platform = "Raspbian" ]]; then
@@ -68,6 +71,7 @@ cd /root
     echo "When your node reboots, you need to log in
 to finish the upgrade."
     sync
+    clear
     sudo reboot
 }
 # Run the upgrade
