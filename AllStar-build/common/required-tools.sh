@@ -22,7 +22,7 @@ distro=$(lsb_release -is)
 release=$(lsb_release -cs)
 apt-get -qq install -y ntpdate g++-4.8  g++ make build-essential automake git\
   sudo ca-certificates libusb-dev libnewt-dev libeditline-dev libedit-dev\
-  libncurses5-dev libncursesw5-dev bison libssl-dev libasound2-dev\
+  libncurses5-dev libncursesw5-dev bison libasound2-dev\
   libcurl4-openssl-dev libiksemel-dev libvorbis-dev\
   curl sox libsox-fmt-all usbutils libsqlite3-dev sqlite3 screen\
   fxload bc alsa-utils dnsutils libtool autoconf gawk\
@@ -30,9 +30,9 @@ apt-get -qq install -y ntpdate g++-4.8  g++ make build-essential automake git\
   libatomic-ops-dev libatomic1 irqbalance libresample-dev libgmime-2.6-dev libpt-dev
 apt-get -qq build-dep dahdi -y
 if [[ $release = "stretch" ]]; then
-  apt-get -qq install -y php-cli php-curl
+  apt-get -qq install -y php-cli php-curl libssl1.0-dev
 else
-  apt-get -qq install -y php5-cli php5-curl
+  apt-get -qq install -y php5-cli php5-curl libssl-dev
 fi
 if [[ $distro = "Raspbian" ]]; then
   apt-get -qq install -y i2c-tools libi2c-dev raspberrypi-kernel raspberrypi-kernel-headers fake-hwclock

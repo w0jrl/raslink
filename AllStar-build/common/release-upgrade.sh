@@ -54,6 +54,8 @@ update() {
     sed -i "s/${prev}/${release}/" /etc/apt/sources.list /etc/apt/sources.list.d/*.list
     if [[ $platform = "Raspbian" ]]; then
         umount /tmp &>/dev/null
+        umount /var/tmp &>/dev/null
+        systemctl disable tmpfs.service &>/dev/null
     fi
     (apt-get update;apt-get upgrade -y;apt-get clean;apt-get autoclean)
     (apt-get dist-upgrade -y;apt-get autoremove -y;apt-get clean;apt-get autoclean;hash -r)

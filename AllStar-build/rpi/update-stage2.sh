@@ -75,7 +75,6 @@ sleep 0.5
 echo "Updating start up scripts..."
 (cp /usr/src/utils/AllStar-build/common/rc.updatenodelist /usr/local/bin/rc.updatenodelist;chmod +x /usr/local/bin/rc.updatenodelist)
 (cp /usr/src/utils/AllStar-build/common/rc.nodenames /usr/local/bin/rc.nodenames;chmod +x /usr/local/bin/rc.nodenames)
-(cp /usr/src/utils/AllStar-build/rpi/tmpfs.sh /usr/local/bin/tmpfs.sh;chmod +x /usr/local/bin/tmpfs.sh)
 chmod +x /usr/src/utils/AllStar-build/rpi/make-links.sh
 /usr/src/utils/AllStar-build/rpi/make-links.sh
 cp -a /usr/src/utils/astsrc/sounds/* /var/lib/asterisk/sounds
@@ -97,11 +96,9 @@ cp /usr/src/utils/AllStar-build/common/asterisk.service /etc/systemd/system
 cp /usr/src/utils/AllStar-build/common/asterisk.timer /etc/systemd/system
 cp /usr/src/utils/AllStar-build/common/updatenodelist.service /etc/systemd/system
 cp /usr/src/utils/AllStar-build/common/nodenames.service /etc/systemd/system
-cp /usr/src/utils/AllStar-build/rpi/tmpfs.service /etc/systemd/system
 systemctl daemon-reload
 systemctl enable asterisk.timer &>/dev/null
 systemctl enable updatenodelist.service &>/dev/null
-systemctl enable tmpfs.service &>/dev/null
 systemctl enable avahi-daemon &>/dev/null
 if [ ! -e /root/.nonames ]; then
   systemctl enable nodenames.service &>/dev/null
@@ -126,6 +123,12 @@ else
 for cpu in \/sys\/devices\/system\/cpu\/cpu\[0-9\]\*\; do echo -n performance \\\
 | tee $cpu\/cpufreq\/scaling_governor\; done \&\>\/dev\/null' /etc/rc.local
   fi
+fi
+if [ -e /usr/local/bin/tmpfs.sh ]; then
+  rm -rf /usr/local/bin/tmpfs.sh &>/dev/null
+  systemctl disable tmpfs.service &>/dev/null
+  rm -rf /etc/systemd/system/tmpfs.service &>/dev/null
+  systemctl daemon-reload &>/dev/null
 fi
 echo "Done"
 sleep 0.5
