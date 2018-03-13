@@ -55,7 +55,8 @@ update() {
     if [[ $platform = "Raspbian" ]]; then
         umount /tmp &>/dev/null
         umount /var/tmp &>/dev/null
-        systemctl disable tmpfs.service &>/dev/null
+        (cp /usr/src/utils/AllStar-build/rpi/tmpfs.sh /usr/local/bin/tmpfs.sh;chmod +x /usr/local/bin/tmpfs.sh)
+        /usr/local/bin/tmpfs.sh
     fi
     (apt-get update;apt-get upgrade -y;apt-get clean;apt-get autoclean)
     (apt-get dist-upgrade -y;apt-get autoremove -y;apt-get clean;apt-get autoclean;hash -r)
