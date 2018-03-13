@@ -30,7 +30,7 @@ apt-get -qq install -y ntpdate g++-4.8  g++ make build-essential automake git\
   libatomic-ops-dev libatomic1 irqbalance libresample-dev libgmime-2.6-dev libpt-dev
 apt-get -qq build-dep dahdi -y
 if [[ $release = "stretch" ]]; then
-  apt-get -qq install -y php-cli php-curl libssl1.0-dev libneon27[gnutls-dev
+  apt-get -qq install -y php-cli php-curl libssl1.0-dev libneon27-gnutls-dev
 else
   apt-get -qq install -y php5-cli php5-curl libssl-dev libneon27-dev
 fi
