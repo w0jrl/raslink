@@ -21,7 +21,7 @@
 # Make sure system-update runs in screen
 if [ -z "$STY" ]; then exec screen -S system-update /bin/bash "$0"; fi
 echo "Starting system update.
-This will take awhile.
+This will take a while.
 System-update is running in a screen session.
 If your session disconnects during the update,
 after reconnecting, run

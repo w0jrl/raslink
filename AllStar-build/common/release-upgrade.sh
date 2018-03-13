@@ -52,8 +52,11 @@ check() {
 }
 update() {
     sed -i "s/${prev}/${release}/" /etc/apt/sources.list /etc/apt/sources.list.d/*.list
-    (apt-get update;apt-get dist-upgrade -y;apt-get autoremove --purge -y;apt-get clean;apt-get autoclean;hash -r)
-    cd /root
+    (apt-get update;apt-get upgrade -y;apt-get clean;apt-get autoclean)
+    (apt-get dist-upgrade;apt-get autoremove -y;apt-get clean;apt-get autoclean;hash -r)
+    apt-get -qq install -y ssh
+        sed -i '/PermitRootLogin/c\PermitRootLogin yes' /etc/ssh/sshd_config
+cd /root
     mv .bashrc .bashrc.orig
     cat .bashrc.orig > .bashrc
     if [[ $platform = "Raspbian" ]]; then
@@ -61,11 +64,9 @@ update() {
     else
         echo "/usr/src/utils/AllStar-build/debian/update-stage2.sh" >> .bashrc
     fi
-    sed -i '/PermitRootLogin/c\PermitRootLogin yes/' /etc/ssh/sshd_config
     echo "Rebooting to finish install"
     echo "When your node reboots, you need to log in
 to finish the upgrade."
-    sleep 2s
     sync
     sudo reboot
 }

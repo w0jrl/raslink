@@ -30,7 +30,7 @@ status() {
     fi
 }
 echo "Running update, stage two."
-echo "This will take awhile.
+echo "This will take a while.
 System-update is running in a screen session.
 If your session disconnects during the update,
 after reconnecting, run
