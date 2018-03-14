@@ -37,7 +37,7 @@ sleep 0.5
 echo "Done"
 # Update the system
 echo "Updating system software..."
-(umount /tmp &>/dev/null;apt-get update;apt-get dist-upgrade -y)
+(apt-get update;apt-get dist-upgrade -y)
 sleep 0.5
 echo "Done"
 # Clean the package database
