@@ -47,6 +47,7 @@ distro() {
 check() {
     if [[ $(grep -ic "${prev}" /etc/apt/sources.list) = "0" ]]; then
         echo "Already updated to ${name} ${release}"
+        sleep 3s
         exit 0
     fi
 }
