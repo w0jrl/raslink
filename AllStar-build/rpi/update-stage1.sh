@@ -51,6 +51,7 @@ mv .bashrc .bashrc.orig
 cat .bashrc.orig > .bashrc
 echo "/usr/src/utils/AllStar-build/rpi/update-stage2.sh" >> .bashrc
 systemctl disable asterisk.timer &>/dev/null
+systemctl disable asterisk.service &>/dev/null
 echo "Rebooting to finish install"
 echo "When your node reboots, you need to log in
 to finish the update."
