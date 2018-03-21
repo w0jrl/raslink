@@ -77,10 +77,10 @@ update() {
 to finish the upgrade."
     sync
     sudo reboot
+    exit
 }
 # Run the upgrade
   distro
   check
   prompt
   update
-exit 0

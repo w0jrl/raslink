@@ -39,6 +39,7 @@ if [[ $distro = "Raspbian" ]]; then
 else
   apt-get -qq install -y linux-headers-$(uname -r)
 fi
+(apt-get -qq autoremove --purge -y;apt-get -qq clean;apt-get -qq autoclean)
 # put the linker where Asterisk expects it
 ln -fs /bin/ln /usr/bin
 exit 0
