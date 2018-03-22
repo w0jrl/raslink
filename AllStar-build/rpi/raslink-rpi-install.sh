@@ -82,9 +82,6 @@ if [[ "$(grep -ic "/usr/bin/version" /root/.profile)" = "0" ]]; then
 fi
 service cron restart
 echo "Done"
-echo "Starting Asterisk..."
-service asterisk start
-echo "Done"
 echo "Cleaning up object files..."
 cd /usr/src/utils/
 (git clean -f;git checkout -f;rm -f 1) &>/dev/null
