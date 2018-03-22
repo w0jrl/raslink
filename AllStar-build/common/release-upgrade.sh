@@ -63,7 +63,6 @@ update() {
     (apt-get update;apt-get upgrade -y;apt-get clean;apt-get autoclean)
     (apt-get dist-upgrade -y;apt-get autoremove --purge -y;apt-get clean;apt-get autoclean;hash -r)
     apt-get -qq install -y ssh libpt-dev
-    dpkg --list | grep '^rc ' | awk '{ print $2 }' | xargs dpkg -P &>/dev/null
     sed -i '/PermitRootLogin/c\PermitRootLogin yes' /etc/ssh/sshd_config
     cd /root
     mv .bashrc .bashrc.orig
