@@ -73,21 +73,21 @@ cp /usr/src/utils/AllStar-build/rpi/tmpfs.service /etc/systemd/system
 systemctl daemon-reload
 systemctl enable asterisk.timer &>/dev/null
 systemctl enable updatenodelist.service &>/dev/null
-systemctl enable nodenames.service &>/dev/null
 systemctl enable tmpfs.service &>/dev/null
+systemctl enable nodenames.service &>/dev/null
 chmod +x /usr/src/utils/AllStar-build/rpi/make-links.sh
 /usr/src/utils/AllStar-build/rpi/make-links.sh
-service cron restart
-if [ "$(grep -ic "/usr/bin/version" /root/.profile) = "0" ]; then
+if [[ "$(grep -ic "/usr/bin/version" /root/.profile)" = "0" ]]; then
   echo "/usr/bin/version" >> /root/.profile
 fi
+service cron restart
 echo "Done"
 echo "Starting Asterisk..."
 service asterisk start
 echo "Done"
 echo "Cleaning up object files..."
 cd /usr/src/utils/
-(git clean -f;git checkout -f)
+(git clean -f;git checkout -f;rm -f 1) &>/dev/null
 echo "Done"
 echo "AllStar is now installed."
 date > /root/.lastupdate

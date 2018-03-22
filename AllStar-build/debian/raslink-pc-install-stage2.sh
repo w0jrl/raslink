@@ -70,12 +70,9 @@ systemctl enable nodenames.service &>/dev/null
 chmod +x /usr/src/utils/AllStar-build/debian/make-links.sh
 /usr/src/utils/AllStar-build/debian/make-links.sh
 service cron restart
-if [ "$(grep -ic "/usr/bin/version" /root/.profile)" == "0" ]; then
+if [[ "$(grep -ic "/usr/bin/version" /root/.profile)" = "0" ]]; then
   echo "/usr/bin/version" >> /root/.profile
 fi
-echo "Done"
-echo "Starting Asterisk..."
-service asterisk start
 echo "Done"
 echo "Cleaning up object files..."
 cd /usr/src/utils/
