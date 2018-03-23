@@ -27,6 +27,7 @@ if [ -e "$subversion" ]; then
 else
   echo "Subversion isn't installed; Skipping."
 fi
+apt-get -qq autoremove --purge libpt-dev -y
 echo "Checking required packages..."
 sourcesList=$( grep -ic "#deb-src" /etc/apt/sources.list )
 if [ "$sourcesList" == "1" ]; then

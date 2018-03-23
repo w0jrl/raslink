@@ -59,10 +59,10 @@ update() {
         (cp /usr/src/utils/AllStar-build/rpi/tmpfs.sh /usr/local/bin/tmpfs.sh;chmod +x /usr/local/bin/tmpfs.sh)
         /usr/local/bin/tmpfs.sh
     fi
-    apt-get -qq autoremove --purge apt-listchanges -y
+    apt-get -qq autoremove --purge apt-listchanges libpt-dev -y
     (apt-get update;apt-get upgrade -y;apt-get clean;apt-get autoclean)
     (apt-get dist-upgrade -y;apt-get autoremove --purge -y;apt-get clean;apt-get autoclean;hash -r)
-    apt-get -qq install -y ssh libpt-dev
+    apt-get -qq install -y ssh
     dpkg --list | grep '^rc ' | awk '{ print $2 }' | xargs dpkg -P 2>/dev/null
     sed -i '/PermitRootLogin/c\PermitRootLogin yes' /etc/ssh/sshd_config
     cd /root
