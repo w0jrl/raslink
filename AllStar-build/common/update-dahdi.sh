@@ -50,6 +50,7 @@ status patch -p0 < /usr/src/utils/AllStar-build/patches/patch-dahdi.rules
 # Build and install dahdi
 status make all
 status make install
+dahdi_genconf &>/dev/null
 if [ "$(grep -ic "dahdi" /etc/modules)" == "1" ]; then
   sed -i '/dahdi/d' /etc/modules
 fi
