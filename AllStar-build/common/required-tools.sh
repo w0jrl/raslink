@@ -40,7 +40,6 @@ else
   apt-get -qq install -y linux-headers-$(uname -r)
 fi
 (apt-get -qq autoremove --purge -y;apt-get -qq clean;apt-get -qq autoclean)
-dpkg --list | grep '^rc ' | awk '{ print $2 }' | xargs dpkg -P 2>/dev/null
 # put the linker where Asterisk expects it
 ln -fs /bin/ln /usr/bin
 exit 0

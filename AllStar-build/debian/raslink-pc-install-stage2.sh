@@ -30,6 +30,11 @@ status() {
     fi
 }
 echo "Running RasLink-pc install, stage two."
+echo "Setting up defaults for AllStar..."
+mkdir -p /etc/asterisk
+cd /etc/asterisk
+cp /usr/src/utils/AllStar-build/configs/* .
+echo "Done"
 chmod +x /usr/src/utils/AllStar-build/common/update-dahdi.sh
 status /usr/src/utils/AllStar-build/common/update-dahdi.sh
 chmod +x /usr/src/utils/AllStar-build/common/update-libpri.sh
@@ -38,11 +43,6 @@ chmod +x /usr/src/utils/AllStar-build/common/update-asterisk.sh
 status /usr/src/utils/AllStar-build/common/update-asterisk.sh
 chmod +x /usr/src/utils/AllStar-build/common/update-uridiag.sh
 status /usr/src/utils/AllStar-build/common/update-uridiag.sh
-echo "Setting up defaults for AllStar..."
-mkdir -p /etc/asterisk
-cd /etc/asterisk
-cp /usr/src/utils/AllStar-build/configs/* .
-echo "Done"
 echo "Installing default sound files..."
 cp -a /usr/src/utils/astsrc/sounds/* /var/lib/asterisk/sounds
 if [ "$(grep -ic "snd_bcm2835" /etc/modules)" == "1" ]; then
