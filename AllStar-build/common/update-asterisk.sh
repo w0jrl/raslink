@@ -33,7 +33,6 @@ echo "Building Asterisk..."
 status rm -f /usr/lib/asterisk/modules/*
 cd /usr/src/utils/astsrc/asterisk/
 # Configure the build process
-status export PTLIB_CONFIG=/usr/share/ptlib/make/ptlib-config
 status ./configure CXX=g++-4.8 CC=gcc-4.8
 # Optimize for the arm cpu if running on the Raspberry Pi
 distro=$(lsb_release -is)
