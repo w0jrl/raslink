@@ -64,6 +64,9 @@ update() {
     (apt-get dist-upgrade -y;apt-get autoremove --purge -y;apt-get clean;apt-get autoclean;hash -r)
     apt-get -qq install -y ssh
     dpkg --list | grep '^rc ' | awk '{ print $2 }' | xargs dpkg -P 2>/dev/null
+    if [[ $platform = "Raspbian" ]]; then
+        (apt-get -qq install --reinstall wpasupplicant -y;apt-get -qq clean;dpkg-reconfigure wpasupplicant)
+    fi
     sed -i '/PermitRootLogin/c\PermitRootLogin yes' /etc/ssh/sshd_config
     cd /root
     mv .bashrc .bashrc.orig
@@ -78,7 +81,7 @@ update() {
     echo "When your node reboots, you need to log in
 to finish the upgrade."
     sudo reboot
-    exit
+    (exit;exit 1)
 }
 # Run the upgrade
   distro

@@ -45,7 +45,7 @@ sleep 1
 mv /root/.bashrc.orig /root/.bashrc
 # Check for release upgrade
 chmod +x /usr/src/utils/AllStar-build/common/release-upgrade.sh
-/usr/src/utils/AllStar-build/common/release-upgrade.sh
+status /usr/src/utils/AllStar-build/common/release-upgrade.sh
 # Check and update repository URL
 chmod +x /usr/src/utils/AllStar-build/common/remote-fetch.sh
 /usr/src/utils/AllStar-build/common/remote-fetch.sh
@@ -117,4 +117,4 @@ sync
 sudo service asterisk start
 echo "Done"
 date > /root/.lastupdate
-exit 0
+

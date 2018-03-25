@@ -34,7 +34,7 @@ else
 fi
 sleep 0.5
 echo "Please enter the Wi-Fi card name from the list below:"
-ifconfig | grep wlan
+ifconfig | grep wlan | sed 's/flags\=.*//;s/://'
 read -e -p "[wlan0] : " wificard
 if [ "${wificard}" = "" ]; then
   wificard=wlan0
@@ -45,7 +45,7 @@ while [ "${scan}" == "1" ]; do
   echo "Scanning for networks..."
   echo "___________________________________"
   sleep 0.5
-  iwlist ${wificard} scan | grep "ESSID" | sed 's/ESSID://g;s/"//g;s/^ *//;s/ *$//'
+  iwlist ${wificard} scan | grep 'ESSID' | sed 's/ESSID://g;s/"//g;s/^ *//;s/ *$//'
   sleep 0.5
   echo "Scan complete"
   sleep 0.5
@@ -74,12 +74,11 @@ ifdown ${wificard} &>/dev/null
 sleep 0.5
 ifup ${wificard} &>/dev/null
 sleep 10
-if [[ $(ifconfig ${wificard} | grep -ic "inet addr") = "1" ]]; then
+if [[ $(ifconfig ${wificard} | grep -ic "inet addr") = "1" ]] || (( $(ifconfig ${wificard} | grep -ic 'inet') >= "1" )); then
   echo "***Connection Active***"
   sleep 0.5
   echo "displaying connection information"
-  ifconfig ${wificard} | grep "inet addr.*"
-  ifconfig ${wificard} | grep "inet6 addr.*"
+  ifconfig ${wificard} | grep 'inet'
 else
   echo "***Connection Failed***" >&2
   echo "See <https://jlappliedtechnologies.com/raslink/> if you need assistance." >&2
