@@ -34,7 +34,7 @@ DO NOT POWER OFF THE SYSTEM!"
     else
         echo "Not upgrading to ${name} ${release}.
 Run 'release-upgrade' when you are ready."
-sleep 2s
+sleep 3s
         exit 1
     fi
 }
@@ -63,7 +63,7 @@ update() {
     (apt-get update;apt-get upgrade -y;apt-get clean;apt-get autoclean)
     (apt-get dist-upgrade -y;apt-get autoremove --purge -y;apt-get clean;apt-get autoclean;hash -r)
     apt-get -qq install -y ssh
-    dpkg --list | grep '^rc ' | awk '{ print $2 }' | xargs dpkg -P 2>/dev/null
+    apt-get purge $(dpkg -l | awk '/^rc/ { print $2 }')
     if [[ $platform = "Raspbian" ]]; then
         (apt-get -qq install --reinstall wpasupplicant -y;apt-get -qq clean;dpkg-reconfigure wpasupplicant)
     fi
@@ -79,9 +79,7 @@ update() {
     sync
     echo "Rebooting to finish install"
     echo "When your node reboots, you need to log in
-to finish the upgrade."
-    exit
-    sudo reboot
+to finish the upgrade."; sudo reboot
 }
 # Run the upgrade
   distro
