@@ -76,10 +76,11 @@ update() {
     else
         echo "/usr/src/utils/AllStar-build/debian/update-stage2.sh" >> .bashrc
     fi
-    sync
     echo "Rebooting to finish install"
     echo "When your node reboots, you need to log in
-to finish the upgrade."; sudo reboot
+to finish the upgrade."
+    sync
+    sudo reboot -f
 }
 # Run the upgrade
   distro
