@@ -80,11 +80,12 @@ update() {
     echo "Rebooting to finish install"
     echo "When your node reboots, you need to log in
 to finish the upgrade."
+    exit
     sudo reboot
-    (exit;exit 1)
 }
 # Run the upgrade
   distro
   check
   prompt
   update
+exit 0
