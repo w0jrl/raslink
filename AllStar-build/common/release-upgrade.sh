@@ -63,7 +63,7 @@ update() {
     (apt-get update;apt-get upgrade -y;apt-get clean;apt-get autoclean)
     (apt-get dist-upgrade -y;apt-get autoremove --purge -y;apt-get clean;apt-get autoclean;hash -r)
     apt-get -qq install -y ssh
-    apt-get purge $(dpkg -l | awk '/^rc/ { print $2 }')
+    apt-get -qq purge $(dpkg -l | awk '/^rc/ { print $2 }')
     if [[ $platform = "Raspbian" ]]; then
         (apt-get -qq install --reinstall wpasupplicant -y;apt-get -qq clean;dpkg-reconfigure wpasupplicant)
     fi
