@@ -80,7 +80,7 @@ update() {
     echo "When your node reboots, you need to log in
 to finish the upgrade."
     sync
-    sudo reboot -f
+    sudo reboot
 }
 # Run the upgrade
   distro
