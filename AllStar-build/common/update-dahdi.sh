@@ -20,13 +20,10 @@
 status() {
     $@
     if [ $? -ne 0 ]; then
-        echo "Dahdi failed to install.
+        echo "***Dahdi failed to install***
 Please see <https://jlappliedtechnologies.com/raslink/> for assistance."
         sleep 5
-        return 1
-        exit 1
-    else
-        return 0
+        exit $?
     fi
 }
 echo "Downloading and unpacking Dahdi..."
