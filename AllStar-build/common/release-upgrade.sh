@@ -79,6 +79,7 @@ update() {
     echo "Rebooting to finish install"
     echo "When your node reboots, you need to log in
 to finish the upgrade."
+    sleep 3
     sync
     sudo reboot
 }
