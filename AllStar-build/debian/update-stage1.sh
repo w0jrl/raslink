@@ -43,7 +43,7 @@ echo "Done"
 # Clean the package database
 echo "Cleaning up unneeded software..."
 (apt-get -qq autoremove --purge -y;apt-get -qq clean;apt-get -qq autoclean)
-apt-get -qq purge $(dpkg -l | awk '/^rc/ { print $2 }')
+apt-get -qq purge -y $(dpkg -l | awk '/^rc/ { print $2 }')
 sleep 0.5
 echo "Done"
 # Setup for stage two
