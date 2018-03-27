@@ -87,4 +87,4 @@ to finish the upgrade."
   check
   prompt
   update
-exit 0
+exit 1
