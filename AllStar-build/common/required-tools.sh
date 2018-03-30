@@ -28,7 +28,7 @@ apt-get -qq install -y ntpdate g++-4.8  g++ make build-essential automake git\
   curl sox libsox-fmt-all usbutils libsqlite3-dev sqlite3 screen\
   fxload bc alsa-utils dnsutils libtool autoconf gawk\
   libical-dev libspandsp-dev libxml2-dev pkg-config libspeex-dev unixodbc unixodbc-dev uuid uuid-dev libsrtp0-dev dkms\
-  libatomic-ops-dev libatomic1 irqbalance libresample-dev libgmime-2.6-dev ssh libssl-dev libneon27-dev
+  libatomic-ops-dev libatomic1 irqbalance libresample-dev libgmime-2.6-dev ssh libssl-dev libneon27-dev debhelper libsnmp-dev
 apt-get -qq build-dep dahdi -y
 if [[ $release = "stretch" ]]; then
   apt-get -qq install -y php-cli php-curl
