@@ -50,7 +50,7 @@ while [ "${scan}" == "1" ]; do
   echo "Scan complete"
   sleep 0.5
   read -e -p "Do you want to scan again? [y/N]" YN
-  if [[ "${YN}" = "y" ]] || [[ "${YN" = "Y}" ]];  then
+  if [[ "${YN}" = "y" ]] || [[ "${YN}" = "Y}" ]];  then
    scan=1
   else
    scan=0

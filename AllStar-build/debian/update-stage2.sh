@@ -23,7 +23,8 @@ if [ -z "$STY" ]; then exec screen -S system-update /bin/bash "$0"; fi
 status() {
     $@
     if [ $? -ne 0 ]; then
-        exit $?
+        sleep 5
+        exit 1
     fi
 }
 echo "Running update, stage two."
@@ -41,8 +42,8 @@ sleep 1
 # Restore bashrc
 mv /root/.bashrc.orig /root/.bashrc
 # Check for release upgrade
-chmod +x /usr/src/utils/AllStar-build/common/release-upgrade.sh
-status /usr/src/utils/AllStar-build/common/release-upgrade.sh
+#chmod +x /usr/src/utils/AllStar-build/common/release-upgrade.sh
+#status /usr/src/utils/AllStar-build/common/release-upgrade.sh
 # Check and update repository URL
 chmod +x /usr/src/utils/AllStar-build/common/remote-fetch.sh
 /usr/src/utils/AllStar-build/common/remote-fetch.sh

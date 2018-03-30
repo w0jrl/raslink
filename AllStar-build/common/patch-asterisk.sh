@@ -50,6 +50,6 @@ if [ "$dirent" = "0" ] && [ "$libgen" = "0" ]; then
 #include <libgen.h>' ./channels/chan_usbradio.c
 fi
 # Make sure asterisk uses pthread
-sed -i 's/ASTCFLAGS+=-Wno-unused-result/ASTCFLAGS\+\=-lpthread -Wno-unused-result/' ./Makefile
+sed -i 's/ASTCFLAGS+=-lpthread -Wno-unused-result/ASTCFLAGS\+\=-pthread -Wno-unused-result/' ./Makefile
 echo "Done"
 exit 0

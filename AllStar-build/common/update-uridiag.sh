@@ -24,7 +24,7 @@ status() {
         echo "***Uridiag failed to install***
 Please see <https://jlappliedtechnologies.com/raslink/> for assistance."
         sleep 5
-        exit $?
+        exit 1
     fi
 }
 echo "Building Uridiag..."
