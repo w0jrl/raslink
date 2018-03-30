@@ -17,7 +17,6 @@
 #    along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 # Script Start
-apt-get -qq update
 apt-get -qq install -y lsb-release
 distro=$(lsb_release -is)
 release=$(lsb_release -cs)
