@@ -42,7 +42,7 @@ chmod +x /usr/src/utils/AllStar-build/rpi/chk-packages.sh
 chmod +x /usr/src/utils/AllStar-build/rpi/raslink-rpi-install.sh
 cpu=$(grep -ic 'for cpu' /etc/rc.local)
 governor=$(grep -ic 'scaling_governor' /etc/rc.local)
-if (( "$governor" >= "0" )) && [ "$cpu" = "0" ]; then
+if (( "$governor" >= "1" )) && [ "$cpu" = "0" ]; then
   sed -i '/scaling_governor/c\
 for cpu in \/sys\/devices\/system\/cpu\/cpu\[0-9\]\*\; do echo -n performance \\\
 | tee $cpu\/cpufreq\/scaling_governor\; done \&\>\/dev\/null' /etc/rc.local

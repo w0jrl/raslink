@@ -42,8 +42,6 @@ cp /usr/src/utils/AllStar-build/configs/* .
 echo "Done"
 chmod +x /usr/src/utils/AllStar-build/common/update-dahdi.sh
 status /usr/src/utils/AllStar-build/common/update-dahdi.sh
-chmod +x /usr/src/utils/AllStar-build/common/update-libpri.sh
-status /usr/src/utils/AllStar-build/common/update-libpri.sh
 chmod +x /usr/src/utils/AllStar-build/common/update-asterisk.sh
 status /usr/src/utils/AllStar-build/common/update-asterisk.sh
 chmod +x /usr/src/utils/AllStar-build/common/update-uridiag.sh

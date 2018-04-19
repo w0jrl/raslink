@@ -60,8 +60,8 @@ sleep 0.5
 chmod +x /usr/src/utils/AllStar-build/common/update-dahdi.sh
 status /usr/src/utils/AllStar-build/common/update-dahdi.sh
 sleep 0.5
-#chmod +x /usr/src/utils/AllStar-build/common/update-libpri.sh
-#status /usr/src/utils/AllStar-build/common/update-libpri.sh
+chmod +x /usr/src/utils/AllStar-build/common/update-libpri.sh
+status /usr/src/utils/AllStar-build/common/update-libpri.sh
 sleep 0.5
 chmod +x /usr/src/utils/AllStar-build/common/update-asterisk.sh
 status /usr/src/utils/AllStar-build/common/update-asterisk.sh

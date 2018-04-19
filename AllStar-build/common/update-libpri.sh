@@ -20,19 +20,24 @@
 status() {
     $@
     if [ $? -ne 0 ]; then
-        echo "***Libpri failed to install***
+        echo "***Libpri was not removed properly***
 Please see <https://jlappliedtechnologies.com/raslink/> for assistance."
         sleep 5
         exit 1
     fi
 }
 
-echo "Building Libpri..."
+echo "Looking for Libpri..."
 cd /usr/src/utils/astsrc/libpri/
 # Patch libpri for use with AllStar
-status patch </usr/src/utils/AllStar-build/patches/patch-libpri-makefile
+#status patch </usr/src/utils/AllStar-build/patches/patch-libpri-makefile
 # Build and install libpri
-status make all
-status make install
-echo "Done"
+#status make all
+if [ -e /usr/lib/libpri.so ]; then
+  echo "Removing Libpri..."
+  status make uninstall &>/dev/null
+  echo "Done"
+else
+  echo "Libpri isn't installed; Skipping."
+fi
 exit 0
