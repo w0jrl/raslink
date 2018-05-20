@@ -76,7 +76,7 @@ echo "Updating start up scripts..."
 (cp /usr/src/utils/AllStar-build/rpi/tmpfs.sh /usr/local/bin/tmpfs.sh;chmod +x /usr/local/bin/tmpfs.sh)
 chmod +x /usr/src/utils/AllStar-build/rpi/make-links.sh
 /usr/src/utils/AllStar-build/rpi/make-links.sh
-cp -a /usr/src/utils/astsrc/sounds/* /var/lib/asterisk/sounds
+cp -a /usr/src/utils/astsrc/allstar/sounds/* /var/lib/asterisk/sounds
 gsmcount=`ls -1 /var/lib/asterisk/sounds/rpt/*.gsm 2>/dev/null | wc -l`
 if [ "$gsmcount" != "0" ]; then
   rm -f /var/lib/asterisk/sounds/rpt/*.gsm

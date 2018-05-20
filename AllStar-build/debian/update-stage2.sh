@@ -75,7 +75,7 @@ echo "Updating start up scripts..."
 (cp /usr/src/utils/AllStar-build/common/rc.nodenames /usr/local/bin/rc.nodenames;chmod +x /usr/local/bin/rc.nodenames)
 chmod +x /usr/src/utils/AllStar-build/debian/make-links.sh
 /usr/src/utils/AllStar-build/debian/make-links.sh
-cp -a /usr/src/utils/astsrc/sounds/* /var/lib/asterisk/sounds
+cp -a /usr/src/utils/astsrc/allstar/sounds/* /var/lib/asterisk/sounds
 gsmcount=`ls -1 /var/lib/asterisk/sounds/rpt/*.gsm 2>/dev/null | wc -l`
 if [ "$gsmcount" != "0" ]; then
   rm -f /var/lib/asterisk/sounds/rpt/*.gsm
