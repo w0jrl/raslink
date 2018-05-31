@@ -36,6 +36,7 @@ else
 fi
 if [[ $distro = "Raspbian" ]]; then
   apt-get -qq install -y i2c-tools libi2c-dev raspberrypi-kernel raspberrypi-kernel-headers fake-hwclock
+  dpkg-reconfigure perl
 else
   apt-get -qq install -y linux-headers-$(uname -r)
 fi
