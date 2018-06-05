@@ -59,6 +59,13 @@ if [ "$(grep -ic "snd_pcm_oss" /etc/modules)" > "1" ]; then
   sed -i '/snd_pcm_oss/d' /etc/modules
   echo "snd_pcm_oss" >> /etc/modules
 fi
+if [ "$(grep -ic "snd_mixer_oss" /etc/modules)" == "0" ]; then
+  echo "snd_mixer_oss" >> /etc/modules
+fi
+if [ "$(grep -ic "snd_mixer_oss" /etc/modules)" > "1" ]; then
+  sed -i '/snd_mixer_oss/d' /etc/modules
+  echo "snd_mixer_oss" >> /etc/modules
+fi
 echo "Done"
 echo "Setting up startup scripts and system-update..."
 (cp /usr/src/utils/AllStar-build/common/rc.updatenodelist /usr/local/bin/rc.updatenodelist;chmod +x /usr/local/bin/rc.updatenodelist)
