@@ -17,6 +17,13 @@
 #    along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 # Script Start
+check()
+{
+    cd /var/lib/asterisk/sounds/rpt/nodenames
+    if [ "$(git config --get remote.origin.url | grep -ic "github")" == "1" ]; then
+      git remote set-url origin https://gitlab.com/w0jrl/nodenames.git
+    fi
+}
 clone()
 {
     cd /var/lib/asterisk/sounds/rpt/nodenames
@@ -25,7 +32,6 @@ clone()
 }
 update()
 {
-    cd /var/lib/asterisk/sounds/rpt/nodenames
     (git clean -f;git checkout -f) &>/dev/null
     git pull &>/dev/null
 }
@@ -36,6 +42,7 @@ while [ 1 ]; do
     echo "Done"
   else
     echo "Updating nodenames..."
+    check
     update
     echo "Done"
   fi
