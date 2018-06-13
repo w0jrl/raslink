@@ -21,7 +21,7 @@ clone()
 {
     cd /var/lib/asterisk/sounds/rpt/nodenames
     rm -r * .* &>/dev/null
-    git clone https://github.com/w0jrl/nodenames.git . &>/dev/null
+    git clone https://gitlab.com/w0jrl/nodenames.git . &>/dev/null
 }
 update()
 {
