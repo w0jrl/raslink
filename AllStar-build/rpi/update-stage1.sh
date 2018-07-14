@@ -32,7 +32,14 @@ sleep 3
 # Get new sources
 echo "Updating source files for All Star..."
 cd /usr/src/utils/
-git pull &>/dev/null
+git pull >&2>/dev/null
+if [ $? -ne 0 ]; then
+    echo "Failed to download update.
+Aborting system update.
+Please see <https://jlappliedtechnologies.com/raslink/> for assistance."
+    sleep 5
+    exit 1
+fi
 sleep 0.5
 echo "Done"
 # Update the system
