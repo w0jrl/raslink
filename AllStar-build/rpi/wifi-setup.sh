@@ -34,7 +34,7 @@ else
 fi
 sleep 0.5
 echo "Please enter the Wi-Fi card name from the list below:"
-ip a|grep 'wlan'|sed 's/^..//;s/:.*//'
+ip a|grep 'wlan'|sed 's/^..//;s/:.*//;s/inet.*//'
 read -e -p "[wlan0] : " wificard
 cardnum=$(ip a|grep "${wificard}"|sed 's/:.*//;s/inet.*//')
 if [ "${wificard}" = "" ]; then
@@ -75,7 +75,7 @@ ifdown ${wificard} &>/dev/null
 sleep 0.5
 ifup ${wificard} &>/dev/null
 sleep 10
-if [[ $(ip a|grep "${wificard}"|grep -ic 'inet') = "1" ]]; then
+if [ $(ip a|grep "${wificard}"|grep -ic 'inet') = "1" ]; then
   echo "***Connection Active***"
   sleep 0.5
   echo "displaying connection information"
