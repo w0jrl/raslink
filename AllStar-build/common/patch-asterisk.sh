@@ -38,7 +38,7 @@ sed -i 's/res \= sayphoneticstr/res \= saycharstr/' ./apps/app_rpt.c
 # Prevent reading false DTMF digits
 sed -i 's/26.0 : 42.0/32.0 : 42.0/' ./main/dsp.c
 # Set queue size in usbradio driver
-sed -i 's/define	QUEUE_SIZE	3/define	QUEUE_SIZE	4/' ./channels/chan_usbradio.c
+sed -i 's/define	QUEUE_SIZE	3/define	QUEUE_SIZE	5/' ./channels/chan_usbradio.c
 #Update include statements in usbradio driver
 dirent=$(grep -ic '#include <dirent.h>' ./channels/chan_usbradio.c)
 libgen=$(grep -ic '#include <libgen.h>' ./channels/chan_usbradio.c)
