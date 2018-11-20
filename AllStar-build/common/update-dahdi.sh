@@ -40,12 +40,6 @@ status rm -rf /usr/src/utils/*.tar.gz
 echo "Done"
 cd /usr/src/utils/astsrc/dahdi/
 echo "Building Dahdi..."
-# Patch dahdi for use with AllStar
-# https://allstarlink.org/dude-dahdi-2.10.0.1-patches-20150306
-status patch -p1 < /usr/src/utils/AllStar-build/patches/patch-dahdi-dude-current
-# Remove setting the owner to asterisk
-status patch -p0 < /usr/src/utils/AllStar-build/patches/patch-dahdi.rules
-# Build and install dahdi
 status make all
 status make install
 dahdi_genconf &>/dev/null
