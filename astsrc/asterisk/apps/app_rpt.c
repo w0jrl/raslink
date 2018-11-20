@@ -45,7 +45,7 @@
 /*! \file
  *
  * \brief Radio Repeater / Remote Base program
- *  version 18.11 11/01/2018
+ *  version 0.330 01/12/2018
  *
  * \author Jim Dixon, WB6NIL <jim@lambdatel.com>
  *
@@ -592,7 +592,7 @@ struct ast_flags config_flags = { CONFIG_FLAG_WITHCOMMENTS };
 
 /* Un-comment the following to include support for notch filters in the
    rx audio stream (using Tony Fisher's mknotch (mkfilter) implementation) */
-#include "rpt_notch.c"
+/* #include "rpt_notch.c" */
 
 
 #ifdef	__RPT_NOTCH
@@ -639,7 +639,7 @@ int ast_playtones_start(struct ast_channel *chan, int vol, const char* tonelist,
 /*! Stop the tones from playing */
 void ast_playtones_stop(struct ast_channel *chan);
 
-static  char *tdesc = "Radio Repeater / Remote Base  version 18.11 11/01/2018";
+static  char *tdesc = "Radio Repeater / Remote Base  version 0.327 11/24/2016";
 
 static char *app = "Rpt";
 
@@ -8459,13 +8459,13 @@ char	*val,fname[300],str[100];
 	if (tgn == 1)
 	{
 		if (myrpt->p.tannmode < 2) return res;
-		return(saycharstr(mychannel,str));
+		return(sayphoneticstr(mychannel,str));
 	}
 	if (name[0] != '3') return res;
 	if (myrpt->p.eannmode < 2) return res;
 	sprintf(str,"%d",atoi(name + 1));	
 	if (elink_db_get(str,'n',NULL,fname,NULL) < 1) return res;
-	res = saycharstr(mychannel,fname);
+	res = sayphoneticstr(mychannel,fname);
 	return res;
 }
 
@@ -12479,7 +12479,7 @@ static int function_cop(struct rpt *myrpt, char *param, char *digitbuf, int comm
 		case 2:
 			myrpt->p.s[myrpt->p.sysstate_cur].txdisable = 0;
 			rpt_telem_select(myrpt,command_source,mylink);
-			rpt_telemetry(myrpt, ARB_ALPHA, (void *) "TXENA");
+			rpt_telemetry(myrpt, ARB_ALPHA, (void *) "RPTENA");
 			return DC_COMPLETE;
 			
 		case 3:
