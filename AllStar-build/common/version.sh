@@ -21,6 +21,8 @@
 # Will run automaticly at root log in
 # Script Start
 cd /usr/src/utils
+clear
+echo "Welcome to RasLink"
 echo "Your software version is: $( git describe --always )."
 echo "Your last update was on: $( cat /root/.lastupdate )."
 echo "Checking for available updates..."
