@@ -1,6 +1,6 @@
 #! /bin/bash
 # rc.updatenodelist - Download the list of nodes from AllStar Link
-#    Copyright (C) 2018  AllStar Link
+#    Copyright (C) 2019  AllStar Link
 #    http://allstarlink.org
 #    Modified by Jeremy Lincicome (W0JRL)
 #    https://jlappliedtechnologies.com  admin@jlappliedtechnologies.com
