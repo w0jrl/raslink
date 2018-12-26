@@ -140,5 +140,5 @@ echo "You can run this tool at any time by typing 'system-update' at a root prom
 date > /root/.lastupdate
 echo "Rebooting to apply changes."
 sync
-sudo reboot
+reboot
 exit 0
