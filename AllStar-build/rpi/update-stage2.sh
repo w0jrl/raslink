@@ -1,7 +1,7 @@
 #!/bin/bash
 # update-stage2.sh - Update the system
 # Stage Two
-#    Copyright (C) 2018  Jeremy Lincicome (W0JRL)
+#    Copyright (C) 2019  Jeremy Lincicome (W0JRL)
 #    https://jlappliedtechnologies.com  admin@jlappliedtechnologies.com
 
 #    This program is free software: you can redistribute it and/or modify
@@ -140,5 +140,5 @@ echo "You can run this tool at any time by typing 'system-update' at a root prom
 date > /root/.lastupdate
 echo "Rebooting to apply changes."
 sync
-sudo reboot
+reboot
 exit 0

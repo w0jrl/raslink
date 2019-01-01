@@ -1,7 +1,7 @@
 #!/bin/bash
 # update-stage1.sh - Update the system
 # Stage One
-#    Copyright (C) 2018  Jeremy Lincicome (W0JRL)
+#    Copyright (C) 2019  Jeremy Lincicome (W0JRL)
 #    https://jlappliedtechnologies.com  admin@jlappliedtechnologies.com
 
 #    This program is free software: you can redistribute it and/or modify
@@ -59,11 +59,10 @@ cd /root
 mv .bashrc .bashrc.orig
 cat .bashrc.orig > .bashrc
 echo "/usr/src/utils/AllStar-build/rpi/update-stage2.sh" >> .bashrc
-systemctl disable asterisk.timer &>/dev/null
-systemctl disable asterisk.service &>/dev/null
+systemctl disable asterisk.timer asterisk.service nodenames.service updatenodelist.service &>/dev/null
 echo "Rebooting to finish install"
 echo "When your node reboots, you need to log in
 to finish the update."
 sync
-sudo reboot
+reboot
 exit 0

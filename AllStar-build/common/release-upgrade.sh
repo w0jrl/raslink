@@ -1,6 +1,6 @@
 #!/bin/bash
 # release-upgrade - Upgrade nodes to the next stable Debian/Raspbian version
-#    Copyright (C) 2018  Jeremy Lincicome (W0JRL)
+#    Copyright (C) 2019  Jeremy Lincicome (W0JRL)
 #    https://jlappliedtechnologies.com  admin@jlappliedtechnologies.com
 
 #    This program is free software: you can redistribute it and/or modify
