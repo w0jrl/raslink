@@ -54,7 +54,7 @@ if [[ "$install" = "y" ]] || [[ "$install" = "Y" ]]; then
   echo "After the system reboots, you need to log in as the root user to finish the installation."
   echo "Rebooting to finish install."
   sync
-  sudo reboot
+  reboot
   exit 0
 else
   echo "AllStar will not be installed."
