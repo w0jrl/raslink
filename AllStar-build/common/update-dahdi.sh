@@ -28,19 +28,19 @@ Please see <https://jlappliedtechnologies.com/raslink/> for assistance."
 }
 echo "Downloading and unpacking Dahdi..."
 cd /usr/src/utils/
-if [ -e /usr/src/utils/astsrc/dahdi* ]; then
-    status rm -rf /usr/src/utils/astsrc/dahdi*
+if [ -e /usr/src/utils/astsrc/dahdi ]; then
+    status rm -rf /usr/src/utils/astsrc/dahdi
 fi
 status wget http://downloads.asterisk.org/pub/telephony/dahdi-linux-complete/dahdi-linux-complete-current.tar.gz &>/dev/null
 cd /usr/src/utils/astsrc/
 status tar zxvf /usr/src/utils/dahdi-linux-complete-current.tar.gz &>/dev/null
-status mv dahdi* dahdi
+status mv dahdi-linux-* dahdi
 status rm -rf /usr/src/utils/*.tar.gz
 echo "Done"
 cd /usr/src/utils/astsrc/dahdi/
 echo "Building Dahdi..."
-status patch -p1 < ../dahdi-patches/patch-dahdi-dude-current
-status patch -p0 < ../dahdi-patches/patch-dahdi.rules
+status patch -p1 < /usr/src/utils/astsrc/dahdi-patches/patch-dahdi-dude-current
+status patch -p0 < /usr/src/utils/astsrc/dahdi-patches/patch-dahdi.rules
 status make all
 status make install
 if [ ! -e /dahdi/system.conf ]; then
