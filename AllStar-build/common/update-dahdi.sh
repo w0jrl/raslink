@@ -39,6 +39,9 @@ status rm -rf /usr/src/utils/*.tar.gz
 echo "Done"
 cd /usr/src/utils/astsrc/dahdi/
 echo "Building Dahdi..."
+patch -p1 < ../dahdi-patches/patch-dahdi-dude-current
+patch -p0 < ../dahdi-patches/patch-dahdi.rules
+
 status make all
 status make install
 if [ ! -e /dahdi/system.conf ]; then
