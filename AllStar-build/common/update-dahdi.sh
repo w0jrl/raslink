@@ -39,7 +39,7 @@ status rm -rf /usr/src/utils/*.tar.gz
 echo "Done"
 cd /usr/src/utils/astsrc/dahdi/
 echo "Building Dahdi..."
-status patch -p1 < /usr/src/utils/astsrc/dahdi-patches/patch-dahdi-dude-current
+status patch -p1 < /usr/src/utils/astsrc/dahdi-patches/patch-dahdi-no-pciradio
 status patch -p0 < /usr/src/utils/astsrc/dahdi-patches/patch-dahdi.rules
 status make all
 status make install
