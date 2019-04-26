@@ -35,10 +35,10 @@ help()
 {
 cat << _HELP_
 Usage: nodenames [OPTION]
-[on]      enable nodenames
-[off]       disable nodenames
-[status]        show status of nodenames
-[help]      show this help message
+[on]    Enable nodenames
+[off]   Disable nodenames
+[status]    Show status of nodenames
+[help]  Show this help message
 _HELP_
 }
 status()

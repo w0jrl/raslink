@@ -76,7 +76,7 @@ while [ 1 ]; do
         $RM -f /tmp/rpt_extnodes-temp			
         downloads=0
         retries=$((retries+1))
-                if [ $retries -gt 50 ]; then
+                if [ $retries -gt 100 ]; then
                   sleep 30m # doze for 30 min to lighten network load
                 else
                   sleep 30s
@@ -91,7 +91,7 @@ while [ 1 ]; do
         retries=$((retries+1))
     fi
     if [ $verbose -eq 0 ]; then
-        if [ $retries -gt 50 ]; then
+        if [ $retries -gt 100 ]; then
           sleep 30m # doze for 30 min to lighten network load
         else
           sleep 30s
