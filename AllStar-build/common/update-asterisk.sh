@@ -103,5 +103,7 @@ if [[ $adpcm = "0" ]]; then
 ; g726aal2         good                    55 kbps' /etc/asterisk/iax.conf
   sed -i '/^allow \= g726aal2$/ s:$:\nallow \= adpcm:' /etc/asterisk/iax.conf
 fi
+# Update URL for playing public IP using autopatch
+sed -i 's/http:\/\/myip.vg/https:\/\/ipinfo.io\/ip/' /etc/asterisk/extensions.conf
 echo "Done."
 exit 0
