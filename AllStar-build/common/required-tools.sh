@@ -21,15 +21,20 @@ apt-get -qq install -y lsb-release
 distro=$(lsb_release -is)
 release=$(lsb_release -cs)
 apt-get -qq install -y ntpdate g++-4.8  g++ make build-essential automake git\
-  sudo ca-certificates libusb-dev libnewt-dev libeditline-dev libedit-dev\
+  sudo ca-certificates libusb-dev libeditline-dev libedit-dev\
   libncurses5-dev libncursesw5-dev bison libasound2-dev\
   libcurl4-openssl-dev libiksemel-dev libvorbis-dev\
   curl sox libsox-fmt-all usbutils libsqlite3-dev sqlite3 screen\
   fxload bc alsa-utils dnsutils libtool autoconf gawk\
   libical-dev libspandsp-dev libxml2-dev pkg-config libspeex-dev unixodbc unixodbc-dev uuid uuid-dev libsrtp0-dev dkms\
   libatomic-ops-dev libatomic1 irqbalance libresample-dev libgmime-2.6-dev ssh libssl-dev libneon27-dev debhelper libsnmp-dev\
-  zlib1g-dev procps alsa-oss libpri-dev libpt-dev
-apt-get -qq build-dep dahdi -y
+  zlib1g-dev procps alsa-oss libpri-dev libpt-dev\
+  autoconf autotools-dev\
+  dh-autoreconf dh-strip-nondeterminism dwz groff intltool-debian\
+  libarchive-zip-perl libfile-stripnondeterminism-perl libice6 libnewt-dev\
+  libpng-dev libslang2-dev libsm6 libtool libusb-1.0-0-dev libxaw7\
+  libxml2-utils libxmu6 libxt6 m4 module-assistant po-debconf x11-common
+
 if [[ $release = "stretch" ]]; then
   apt-get -qq install -y php-cli php-curl
 else
@@ -41,7 +46,6 @@ if [[ $distro = "Raspbian" ]]; then
 else
   apt-get -qq install -y linux-headers-$(uname -r)
 fi
-(apt-get -qq autoremove --purge -y;apt-get -qq clean;apt-get -qq autoclean)
 # put the linker where Asterisk expects it
 ln -fs /bin/ln /usr/bin
 exit 0
