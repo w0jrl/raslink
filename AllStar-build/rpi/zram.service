@@ -1,5 +1,4 @@
-#!/bin/bash
-# remote-fetch.sh - Update git repository URL if needed
+# zram.service - Use zram for swap space on Raspberry Pi
 #    Copyright (C) 2019  Jeremy Lincicome (W0JRL)
 #    https://jlappliedtechnologies.com  admin@jlappliedtechnologies.com
 #
@@ -16,15 +15,11 @@
 #    You should have received a copy of the GNU General Public License
 #    along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #
-# Script Start
-cd /usr/src/utils
-echo "Checking repository URL..."
-if [ "$(git config --get remote.origin.url | grep -ic "github")" == "1" ]; then
-  echo "Updating repository URL and data..."
-  git remote set-url origin https://gitlab.com/w0jrl/raslink.git
-  git pull &>/dev/null
-  echo "Done\n"
-else
-  echo "The repository URL is up-to-date; Skipping.\n"
-fi
-exit 0
+# Service Start
+[Unit]
+Description=Create zram block devices for swap space
+[Service]
+Type=oneshot
+ExecStart=/usr/local/bin/zram.sh
+[Install]
+WantedBy=multi-user.target

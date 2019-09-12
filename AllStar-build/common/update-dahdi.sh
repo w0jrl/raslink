@@ -2,20 +2,20 @@
 # update-dahdi.sh - Build Dahdi for AllStar
 #    Copyright (C) 2019  Jeremy Lincicome (W0JRL)
 #    https://jlappliedtechnologies.com  admin@jlappliedtechnologies.com
-
+#
 #    This program is free software: you can redistribute it and/or modify
 #    it under the terms of the GNU General Public License as published by
 #    the Free Software Foundation, either version 3 of the License, or
 #    (at your option) any later version.
-
+#
 #    This program is distributed in the hope that it will be useful,
 #    but WITHOUT ANY WARRANTY; without even the implied warranty of
 #    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 #    GNU General Public License for more details.
-
+#
 #    You should have received a copy of the GNU General Public License
 #    along with this program.  If not, see <http://www.gnu.org/licenses/>.
-
+#
 # Script Start
 status() {
     $@
@@ -26,7 +26,7 @@ Please see <https://jlappliedtechnologies.com/raslink/> for assistance."
         exit 1
     fi
 }
-echo "Downloading and unpacking Dahdi..."
+echo "Downloading and unpacking Dahdi...\n"
 cd /usr/src/utils/
 if [ -e /usr/src/utils/astsrc/dahdi ]; then
     status rm -rf /usr/src/utils/astsrc/dahdi
@@ -36,17 +36,18 @@ cd /usr/src/utils/astsrc/
 status tar zxvf /usr/src/utils/dahdi-linux-complete-current.tar.gz &>/dev/null
 status mv dahdi-linux-* dahdi
 status rm -rf /usr/src/utils/*.tar.gz
-echo "Done"
+echo "Done\n"
 cd /usr/src/utils/astsrc/dahdi/
-echo "Building Dahdi..."
+echo "Building and installing Dahdi...\n"
 status patch -p1 < /usr/src/utils/astsrc/dahdi-patches/patch-dahdi-no-pciradio
 status patch -p0 < /usr/src/utils/astsrc/dahdi-patches/patch-dahdi.rules
 status make all
 status make install
-if [ ! -e /dahdi/system.conf ]; then
-    /usr/sbin/dahdi_genconf &>/dev/null
-    rm /etc/dahdi/*.bak &>/dev/null
-fi
+echo "Done\n"
+echo "Updating Dahdi configuration...\n"
+/sbin/modprobe dahdi
+/usr/sbin/dahdi_genconf &>/dev/null
+rm /etc/dahdi/*.bak /etc/asterisk/dahdi*.bak &>/dev/null
 if [ "$(grep -ic "dahdi" /etc/modules)" == "1" ]; then
     sed -i '/dahdi/d' /etc/modules
 fi
@@ -57,5 +58,5 @@ if [ -f /etc/init.d/dahdi ]; then
     rm -rf /etc/systemd/system/dahdi.timer
     systemctl daemon-reload
 fi
-echo "Done"
+echo "Done\n"
 exit 0

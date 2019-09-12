@@ -1,5 +1,5 @@
 #!/bin/bash
-# remote-fetch.sh - Update git repository URL if needed
+# zram.sh - Use zram for swap space on Raspberry Pi
 #    Copyright (C) 2019  Jeremy Lincicome (W0JRL)
 #    https://jlappliedtechnologies.com  admin@jlappliedtechnologies.com
 #
@@ -17,14 +17,24 @@
 #    along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #
 # Script Start
-cd /usr/src/utils
-echo "Checking repository URL..."
-if [ "$(git config --get remote.origin.url | grep -ic "github")" == "1" ]; then
-  echo "Updating repository URL and data..."
-  git remote set-url origin https://gitlab.com/w0jrl/raslink.git
-  git pull &>/dev/null
-  echo "Done\n"
-else
-  echo "The repository URL is up-to-date; Skipping.\n"
+loaded=$(lsmod|grep -ic 'zram)
+if [ ${loaded} >= "1" ]; then
+  echo "Zram is already loaded; exiting."
+  exit 0
 fi
-exit 0
+#
+cores=$(nproc --all)
+modprobe zram num_devices=${cores}
+#
+swapoff -a
+#
+totalmem=$(free | grep -e "^Mem:" | awk '{print $2}')
+mem=$(( ($totalmem / $cores)* 1024 ))
+#
+core=0
+while [ ${core} -lt ${cores} ]; do
+  echo ${mem} > /sys/block/zram${core}/disksize
+  mkswap /dev/zram${core}
+  swapon -p 5 /dev/zram${core}
+  let core=core+1
+done
