@@ -3,20 +3,20 @@
 # Stage Two
 #    Copyright (C) 2019  Jeremy Lincicome (W0JRL)
 #    https://jlappliedtechnologies.com  admin@jlappliedtechnologies.com
-
+#
 #    This program is free software: you can redistribute it and/or modify
 #    it under the terms of the GNU General Public License as published by
 #    the Free Software Foundation, either version 3 of the License, or
 #    (at your option) any later version.
-
+#
 #    This program is distributed in the hope that it will be useful,
 #    but WITHOUT ANY WARRANTY; without even the implied warranty of
 #    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 #    GNU General Public License for more details.
-
+#
 #    You should have received a copy of the GNU General Public License
 #    along with this program.  If not, see <http://www.gnu.org/licenses/>.
-
+#
 # Script Start
 clear
 # Make sure system-update runs in screen
@@ -28,17 +28,17 @@ status() {
         exit 1
     fi
 }
-echo "Running update, stage two."
+echo "RUNNING UPDATE; STAGE TWO"
 echo "This will take a while.
 System-update is running in a screen session.
 If your session disconnects during the update,
 after reconnecting, run
 'screen -dr'
-to reconnect to the update screen."
+to reconnect to the update screen.\n"
 sleep 3
 service asterisk stop &>/dev/null
-echo "You cannot use your node during this process.
-It has been disabled."
+echo "YOU CANNOT USE YOUR NODE DURING THIS PROCESS.
+It has been disabled.\n"
 sleep 1
 # Restore bashrc
 mv /root/.bashrc.orig /root/.bashrc
@@ -79,12 +79,12 @@ gsmcount=`ls -1 /var/lib/asterisk/sounds/rpt/*.gsm 2>/dev/null | wc -l`
 if [ "$gsmcount" != "0" ]; then
   rm -f /var/lib/asterisk/sounds/rpt/*.gsm
 fi
-echo "Done"
+echo "Done\n"
 sleep 0.5
 echo "Cleaning up object files..."
 cd /usr/src/utils
 (git clean -f;git checkout -f) &>/dev/null
-echo "Done"
+echo "Done\n"
 sleep 0.5
 echo "Updating system boot configuration..."
 cp /usr/src/utils/AllStar-build/common/asterisk.service /etc/systemd/system
@@ -95,9 +95,7 @@ systemctl daemon-reload
 systemctl enable asterisk.timer &>/dev/null
 systemctl enable updatenodelist.service &>/dev/null
 systemctl enable avahi-daemon &>/dev/null
-if [ "$(systemctl status avahi-daemon | grep -ic 'dead')" = "1" ]; then
-  systemctl start avahi-daemon
-fi
+systemctl enable tmpfs.service &>/dev/null
 if [ ! -e /root/.nonames ]; then
   systemctl enable nodenames.service &>/dev/null
 fi
@@ -118,13 +116,12 @@ if [ "$(grep -ic "snd_mixer_oss" /etc/modules)" > "1" ]; then
   sed -i '/snd_mixer_oss/d' /etc/modules
   echo "snd_mixer_oss" >> /etc/modules
 fi
-echo "Done"
+echo "Done\n"
 sleep 0.5
-echo "The update is complete."
+echo "UPDATE COMPLETE\n"
 echo "You can run this tool at any time by typing 'system-update' at a root prompt."
-echo "Re-enabling your node..."
-sync
-sudo service asterisk start
-echo "Done"
 date > /root/.lastupdate
+echo "REBOOTING TO APPLY CHANGES"
+sync
+reboot
 exit 0

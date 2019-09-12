@@ -2,20 +2,20 @@
 # update-asterisk.sh - Build asterisk for AllStar
 #    Copyright (C) 2019  Jeremy Lincicome (W0JRL)
 #    https://jlappliedtechnologies.com  admin@jlappliedtechnologies.com
-
+#
 #    This program is free software: you can redistribute it and/or modify
 #    it under the terms of the GNU General Public License as published by
 #    the Free Software Foundation, either version 3 of the License, or
 #    (at your option) any later version.
-
+#
 #    This program is distributed in the hope that it will be useful,
 #    but WITHOUT ANY WARRANTY; without even the implied warranty of
 #    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 #    GNU General Public License for more details.
-
+#
 #    You should have received a copy of the GNU General Public License
 #    along with this program.  If not, see <http://www.gnu.org/licenses/>.
-
+#
 # Script Start
 status() {
     $@
@@ -26,7 +26,7 @@ Please see <https://jlappliedtechnologies.com/raslink/> for assistance."
         exit 1
     fi
 }
-echo "Building Asterisk..."
+echo "Building and installing Asterisk...\n"
 # Remove modules
 status rm -f /usr/lib/asterisk/modules/*
 cd /usr/src/utils/astsrc/asterisk/
@@ -43,6 +43,8 @@ fi
 # Build and install Asterisk
 status make
 status make install
+echo "Done\n"
+echo "Updating Asterisk configuration files if required...\n"
 if [ -e /etc/init.d/asterisk ]; then
   (update-rc.d asterisk remove;rm /etc/init.d/asterisk)
 fi
@@ -108,5 +110,5 @@ if [[ $adpcm = "0" ]]; then
 fi
 # Update URL for playing public IP using autopatch
 sed -i 's/http:\/\/myip.vg/https:\/\/ipinfo.io\/ip/' /etc/asterisk/extensions.conf
-echo "Done."
+echo "Done.\n"
 exit 0

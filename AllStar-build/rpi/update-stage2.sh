@@ -3,20 +3,20 @@
 # Stage Two
 #    Copyright (C) 2019  Jeremy Lincicome (W0JRL)
 #    https://jlappliedtechnologies.com  admin@jlappliedtechnologies.com
-
+#
 #    This program is free software: you can redistribute it and/or modify
 #    it under the terms of the GNU General Public License as published by
 #    the Free Software Foundation, either version 3 of the License, or
 #    (at your option) any later version.
-
+#
 #    This program is distributed in the hope that it will be useful,
 #    but WITHOUT ANY WARRANTY; without even the implied warranty of
 #    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 #    GNU General Public License for more details.
-
+#
 #    You should have received a copy of the GNU General Public License
 #    along with this program.  If not, see <http://www.gnu.org/licenses/>.
-
+#
 # Script Start
 clear
 # Make sure system-update runs in screen
@@ -28,17 +28,17 @@ status() {
         exit 1
     fi
 }
-echo "Running update, stage two."
+echo "RUNNING UPDATE; STAGE TWO"
 echo "This will take a while.
 System-update is running in a screen session.
 If your session disconnects during the update,
 after reconnecting, run
 'screen -dr'
-to reconnect to the update screen."
+to reconnect to the update screen.\n"
 sleep 3
 service asterisk stop &>/dev/null
-echo "You cannot use your node during this process.
-It has been disabled."
+echo "YOU CANNOT USE YOUR NODE DURING THIS PROCESS.
+It has been disabled.\n"
 sleep 1
 # Restore bashrc
 mv /root/.bashrc.orig /root/.bashrc
@@ -68,7 +68,7 @@ chmod +x /usr/src/utils/AllStar-build/common/update-uridiag.sh
 status /usr/src/utils/AllStar-build/common/update-uridiag.sh
 sleep 0.5
 # Make sure configuration files and scripts are loaded
-echo "Updating start up scripts..."
+echo "Updating start up scripts...\n"
 (cp /usr/src/utils/AllStar-build/common/rc.updatenodelist /usr/local/bin/rc.updatenodelist;chmod +x /usr/local/bin/rc.updatenodelist)
 (cp /usr/src/utils/AllStar-build/common/rc.nodenames /usr/local/bin/rc.nodenames;chmod +x /usr/local/bin/rc.nodenames)
 (cp /usr/src/utils/AllStar-build/rpi/tmpfs.sh /usr/local/bin/tmpfs.sh;chmod +x /usr/local/bin/tmpfs.sh)
@@ -81,14 +81,14 @@ gsmcount=`ls -1 /var/lib/asterisk/sounds/rpt/*.gsm 2>/dev/null | wc -l`
 if [ "$gsmcount" != "0" ]; then
   rm -f /var/lib/asterisk/sounds/rpt/*.gsm
 fi
-echo "Done"
+echo "Done\n"
 sleep 0.5
-echo "Cleaning up object files..."
+echo "Cleaning up object files...\n"
 cd /usr/src/utils
 (git clean -f;git checkout -f) &>/dev/null
-echo "Done"
+echo "Done\n"
 sleep 0.5
-echo "Updating system boot configuration..."
+echo "Updating system boot configuration...\n"
 cp /usr/src/utils/AllStar-build/rpi/boot-config.txt /boot/config.txt
 cp /usr/src/utils/AllStar-build/rpi/etc-asound.conf /etc/asound.conf
 cp /usr/src/utils/AllStar-build/common/asterisk.service /etc/systemd/system
@@ -137,12 +137,12 @@ for cpu in \/sys\/devices\/system\/cpu\/cpu\[0-9\]\*\; do echo -n performance \\
 | tee $cpu\/cpufreq\/scaling_governor\; done \&\>\/dev\/null' /etc/rc.local
   fi
 fi
-echo "Done"
+echo "Done\n"
 sleep 0.5
-echo "The update is complete."
+echo "The update is complete.\n"
 echo "You can run this tool at any time by typing 'system-update' at a root prompt."
 date > /root/.lastupdate
-echo "Rebooting to apply changes."
+echo "REBOOTING TO APPLY CHANGES"
 sync
 reboot
 exit 0
