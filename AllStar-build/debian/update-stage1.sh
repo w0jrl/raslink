@@ -21,7 +21,7 @@
 clear
 # Make sure system-update runs in screen
 if [ -z "$STY" ]; then exec screen -S system-update /bin/bash "$0"; fi
-echo -e"STARTING SYSTEM UPDATE\nThis will take a while.\nSystem-update is running in a screen session.\nIf your session disconnects during the update,\nafter reconnecting, run\n'screen -dr'\nto reconnect to the update screen.\nYou can continue using your node during this process.\n"
+echo -e "STARTING SYSTEM UPDATE\nThis will take a while.\nSystem-update is running in a screen session.\nIf your session disconnects during the update,\nafter reconnecting, run\n'screen -dr'\nto reconnect to the update screen.\nYou can continue using your node during this process.\n"
 sleep 3
 # Get new sources
 echo "Updating source files for All Star..."
