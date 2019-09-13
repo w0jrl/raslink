@@ -34,7 +34,7 @@ status wget http://downloads.asterisk.org/pub/telephony/dahdi-linux-complete/dah
 cd /usr/src/utils/astsrc/
 status tar zxvf /usr/src/utils/dahdi-linux-complete-current.tar.gz &>/dev/null
 status mv dahdi-linux-* dahdi
-status rm -rf /usr/src/utils/*.tar.gz
+status rm -rf /usr/src/utils/dahdi*.tar.gz
 echo -e "Done\n"
 cd /usr/src/utils/astsrc/dahdi/
 echo "Building and installing Dahdi..."
@@ -46,7 +46,7 @@ echo -e"Done\n"
 echo "Updating Dahdi configuration..."
 /sbin/modprobe dahdi
 /usr/sbin/dahdi_genconf &>/dev/null
-rm /etc/dahdi/*.bak /etc/asterisk/dahdi*.bak &>/dev/null
+rm /etc/dahdi/*.bak /etc/asterisk/dahdi*.bak /usr/src/utils/1 &>/dev/null
 if [ "$(grep -ic "dahdi" /etc/modules)" == "1" ]; then
     sed -i '/dahdi/d' /etc/modules
 fi
