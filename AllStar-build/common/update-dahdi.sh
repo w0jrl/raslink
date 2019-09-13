@@ -1,4 +1,4 @@
-#! /bin/bash
+#!/bin/bash
 # update-dahdi.sh - Build Dahdi for AllStar
 #    Copyright (C) 2019  Jeremy Lincicome (W0JRL)
 #    https://jlappliedtechnologies.com  admin@jlappliedtechnologies.com
@@ -42,7 +42,7 @@ status patch -p1 < /usr/src/utils/astsrc/dahdi-patches/patch-dahdi-no-pciradio
 status patch -p0 < /usr/src/utils/astsrc/dahdi-patches/patch-dahdi.rules
 status make all
 status make install
-echo -e"Done\n"
+echo -e "Done\n"
 echo "Updating Dahdi configuration..."
 /sbin/modprobe dahdi
 /usr/sbin/dahdi_genconf &>/dev/null
