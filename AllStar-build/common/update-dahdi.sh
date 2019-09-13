@@ -20,13 +20,12 @@
 status() {
     $@
     if [ $? -ne 0 ]; then
-        echo "***Dahdi failed to install***
-Please see <https://jlappliedtechnologies.com/raslink/> for assistance."
+        echo -e "***DAHDI FAILED TO INSTALL***\nPlease see <https://jlappliedtechnologies.com/raslink/> for assistance."
         sleep 5
         exit 1
     fi
 }
-echo "Downloading and unpacking Dahdi...\n"
+echo "Downloading and unpacking Dahdi..."
 cd /usr/src/utils/
 if [ -e /usr/src/utils/astsrc/dahdi ]; then
     status rm -rf /usr/src/utils/astsrc/dahdi
@@ -36,15 +35,15 @@ cd /usr/src/utils/astsrc/
 status tar zxvf /usr/src/utils/dahdi-linux-complete-current.tar.gz &>/dev/null
 status mv dahdi-linux-* dahdi
 status rm -rf /usr/src/utils/*.tar.gz
-echo "Done\n"
+echo -e "Done\n"
 cd /usr/src/utils/astsrc/dahdi/
-echo "Building and installing Dahdi...\n"
+echo "Building and installing Dahdi..."
 status patch -p1 < /usr/src/utils/astsrc/dahdi-patches/patch-dahdi-no-pciradio
 status patch -p0 < /usr/src/utils/astsrc/dahdi-patches/patch-dahdi.rules
 status make all
 status make install
-echo "Done\n"
-echo "Updating Dahdi configuration...\n"
+echo -e"Done\n"
+echo "Updating Dahdi configuration..."
 /sbin/modprobe dahdi
 /usr/sbin/dahdi_genconf &>/dev/null
 rm /etc/dahdi/*.bak /etc/asterisk/dahdi*.bak &>/dev/null
@@ -58,5 +57,5 @@ if [ -f /etc/init.d/dahdi ]; then
     rm -rf /etc/systemd/system/dahdi.timer
     systemctl daemon-reload
 fi
-echo "Done\n"
+echo -e "Done\n"
 exit 0

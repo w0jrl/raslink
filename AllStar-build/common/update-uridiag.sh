@@ -21,15 +21,14 @@
 status() {
     $@
     if [ $? -ne 0 ]; then
-        echo "***Uridiag failed to install***
-Please see <https://jlappliedtechnologies.com/raslink/> for assistance."
+        echo -e "***URIDIAG FAILED TO INSTALL***\nPlease see <https://jlappliedtechnologies.com/raslink/> for assistance."
         sleep 5
         exit 1
     fi
 }
-echo "Building and installing Uridiag...\n"
+echo "Building and installing Uridiag..."
 cd /usr/src/utils/astsrc/uridiag/
 status make
 status make install
-echo "Done\n"
+echo -e "Done\n"
 exit 0

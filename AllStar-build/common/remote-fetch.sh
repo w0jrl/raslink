@@ -23,8 +23,8 @@ if [ "$(git config --get remote.origin.url | grep -ic "github")" == "1" ]; then
   echo "Updating repository URL and data..."
   git remote set-url origin https://gitlab.com/w0jrl/raslink.git
   git pull &>/dev/null
-  echo "Done\n"
+  echo -e "Done\n"
 else
-  echo "The repository URL is up-to-date; Skipping.\n"
+  echo -e "The repository URL is up-to-date; Skipping.\n"
 fi
 exit 0

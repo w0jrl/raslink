@@ -29,16 +29,10 @@ status() {
     fi
 }
 echo "RUNNING UPDATE; STAGE TWO"
-echo "This will take a while.
-System-update is running in a screen session.
-If your session disconnects during the update,
-after reconnecting, run
-'screen -dr'
-to reconnect to the update screen.\n"
+echo -e "This will take a while.\nSystem-update is running in a screen session.\nIf your session disconnects during the update,\nafter reconnecting, run\n'screen -dr'\nto reconnect to\nthe update screen.\n"
 sleep 3
 service asterisk stop &>/dev/null
-echo "YOU CANNOT USE YOUR NODE DURING THIS PROCESS.
-It has been disabled.\n"
+echo -e "YOU CANNOT USE YOUR NODE DURING THIS PROCESS.\nIt has been disabled.\n"
 sleep 1
 # Restore bashrc
 mv /root/.bashrc.orig /root/.bashrc
@@ -79,12 +73,12 @@ gsmcount=`ls -1 /var/lib/asterisk/sounds/rpt/*.gsm 2>/dev/null | wc -l`
 if [ "$gsmcount" != "0" ]; then
   rm -f /var/lib/asterisk/sounds/rpt/*.gsm
 fi
-echo "Done\n"
+echo -e "Done\n"
 sleep 0.5
 echo "Cleaning up object files..."
 cd /usr/src/utils
 (git clean -f;git checkout -f) &>/dev/null
-echo "Done\n"
+echo -e "Done\n"
 sleep 0.5
 echo "Updating system boot configuration..."
 cp /usr/src/utils/AllStar-build/common/asterisk.service /etc/systemd/system
@@ -95,7 +89,6 @@ systemctl daemon-reload
 systemctl enable asterisk.timer &>/dev/null
 systemctl enable updatenodelist.service &>/dev/null
 systemctl enable avahi-daemon &>/dev/null
-systemctl enable tmpfs.service &>/dev/null
 if [ ! -e /root/.nonames ]; then
   systemctl enable nodenames.service &>/dev/null
 fi
@@ -116,10 +109,9 @@ if [ "$(grep -ic "snd_mixer_oss" /etc/modules)" > "1" ]; then
   sed -i '/snd_mixer_oss/d' /etc/modules
   echo "snd_mixer_oss" >> /etc/modules
 fi
-echo "Done\n"
+echo -e "Done\n"
 sleep 0.5
-echo "UPDATE COMPLETE\n"
-echo "You can run this tool at any time by typing 'system-update' at a root prompt."
+echo -e "UPDATE COMPLETE\nYou can run this tool at any time by typing 'system-update' at a root prompt."
 date > /root/.lastupdate
 echo "REBOOTING TO APPLY CHANGES"
 sync
