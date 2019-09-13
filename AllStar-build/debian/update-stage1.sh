@@ -21,48 +21,37 @@
 clear
 # Make sure system-update runs in screen
 if [ -z "$STY" ]; then exec screen -S system-update /bin/bash "$0"; fi
-echo "STARTING SYSTEM UPDATE\n"
-echo "This will take a while.
-System-update is running in a screen session.
-If your session disconnects during the update,
-after reconnecting, run
-'screen -dr'
-to reconnect to the update screen.
-You can continue using your node during this process.\n"
+echo -e"STARTING SYSTEM UPDATE\nThis will take a while.\nSystem-update is running in a screen session.\nIf your session disconnects during the update,\nafter reconnecting, run\n'screen -dr'\nto reconnect to the update screen.\nYou can continue using your node during this process.\n"
 sleep 3
 # Get new sources
 echo "Updating source files for All Star..."
 cd /usr/src/utils/
 git pull >&2>/dev/null
 if [ $? -ne 0 ]; then
-    echo "Failed to download update.
-Aborting system update.
-Please see <https://jlappliedtechnologies.com/raslink/> for assistance."
+    echo -e "FAILED TO DOWNLOAD UPDATE\nABORTING SYSTEM UPDATE\nPlease see <https://jlappliedtechnologies.com/raslink/> for assistance."
     sleep 5
     exit 1
 fi
 sleep 0.5
-echo "Done\n"
+echo -e "Done\n"
 # Update the system
 echo "Updating system software..."
 (apt-get update;apt-get dist-upgrade -y)
 sleep 0.5
-echo "Done\n"
+echo -e "Done\n"
 # Clean the package database
 echo "Cleaning up unneeded software..."
 (apt-get -qq autoremove --purge -y;apt-get -qq clean;apt-get -qq autoclean)
 apt-get -qq purge -y $(dpkg -l | awk '/^rc/ { print $2 }')
 sleep 0.5
-echo "Done\n"
+echo -e "Done\n"
 # Setup for stage two
 cd /root
 mv .bashrc .bashrc.orig
 cat .bashrc.orig > .bashrc
 echo "/usr/src/utils/AllStar-build/debian/update-stage2.sh" >> .bashrc
 systemctl disable asterisk.timer asterisk.service nodenames.service updatenodelist.service &>/dev/null
-echo "REBOOTING TO FINISH INSTALL\n"
-echo "When your node reboots, you need to log in
-to finish the update."
+echo -e "REBOOTING TO FINISH INSTALL\nWhen your node reboots, you need to log in\nto finish the update."
 sync
 reboot
 exit 0

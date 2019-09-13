@@ -29,16 +29,10 @@ status() {
     fi
 }
 echo "RUNNING UPDATE; STAGE TWO"
-echo "This will take a while.
-System-update is running in a screen session.
-If your session disconnects during the update,
-after reconnecting, run
-'screen -dr'
-to reconnect to the update screen.\n"
+echo -e "This will take a while.\nSystem-update is running in a screen session.\nIf your session disconnects during the update,\nafter reconnecting, run\n'screen -dr'\nto reconnect to\nthe update screen.\n"
 sleep 3
 service asterisk stop &>/dev/null
-echo "YOU CANNOT USE YOUR NODE DURING THIS PROCESS.
-It has been disabled.\n"
+echo -e "YOU CANNOT USE YOUR NODE DURING THIS PROCESS.\nIt has been disabled.\n"
 sleep 1
 # Restore bashrc
 mv /root/.bashrc.orig /root/.bashrc
@@ -68,7 +62,7 @@ chmod +x /usr/src/utils/AllStar-build/common/update-uridiag.sh
 status /usr/src/utils/AllStar-build/common/update-uridiag.sh
 sleep 0.5
 # Make sure configuration files and scripts are loaded
-echo "Updating start up scripts...\n"
+echo "Updating start up scripts..."
 (cp /usr/src/utils/AllStar-build/common/rc.updatenodelist /usr/local/bin/rc.updatenodelist;chmod +x /usr/local/bin/rc.updatenodelist)
 (cp /usr/src/utils/AllStar-build/common/rc.nodenames /usr/local/bin/rc.nodenames;chmod +x /usr/local/bin/rc.nodenames)
 (cp /usr/src/utils/AllStar-build/rpi/tmpfs.sh /usr/local/bin/tmpfs.sh;chmod +x /usr/local/bin/tmpfs.sh)
@@ -81,14 +75,14 @@ gsmcount=`ls -1 /var/lib/asterisk/sounds/rpt/*.gsm 2>/dev/null | wc -l`
 if [ "$gsmcount" != "0" ]; then
   rm -f /var/lib/asterisk/sounds/rpt/*.gsm
 fi
-echo "Done\n"
+echo -e "Done\n"
 sleep 0.5
-echo "Cleaning up object files...\n"
+echo "Cleaning up object files..."
 cd /usr/src/utils
 (git clean -f;git checkout -f) &>/dev/null
-echo "Done\n"
+echo -e "Done\n"
 sleep 0.5
-echo "Updating system boot configuration...\n"
+echo "Updating system boot configuration..."
 cp /usr/src/utils/AllStar-build/rpi/boot-config.txt /boot/config.txt
 cp /usr/src/utils/AllStar-build/rpi/etc-asound.conf /etc/asound.conf
 cp /usr/src/utils/AllStar-build/common/asterisk.service /etc/systemd/system
@@ -137,10 +131,9 @@ for cpu in \/sys\/devices\/system\/cpu\/cpu\[0-9\]\*\; do echo -n performance \\
 | tee $cpu\/cpufreq\/scaling_governor\; done \&\>\/dev\/null' /etc/rc.local
   fi
 fi
-echo "Done\n"
+echo -e "Done\n"
 sleep 0.5
-echo "The update is complete.\n"
-echo "You can run this tool at any time by typing 'system-update' at a root prompt."
+echo -e "UPDATE COMPLETE\nYou can run this tool at any time by typing 'system-update' at a root prompt."
 date > /root/.lastupdate
 echo "REBOOTING TO APPLY CHANGES"
 sync

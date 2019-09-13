@@ -20,13 +20,12 @@
 status() {
     $@
     if [ $? -ne 0 ]; then
-        echo "***Asterisk failed to install***
-Please see <https://jlappliedtechnologies.com/raslink/> for assistance."
+        echo -e "***ASTERISK FAILED TO INSTALL***\nPlease see <https://jlappliedtechnologies.com/raslink/> for assistance."
         sleep 5
         exit 1
     fi
 }
-echo "Building and installing Asterisk...\n"
+echo "Building and installing Asterisk..."
 # Remove modules
 status rm -f /usr/lib/asterisk/modules/*
 cd /usr/src/utils/astsrc/asterisk/
@@ -43,8 +42,8 @@ fi
 # Build and install Asterisk
 status make
 status make install
-echo "Done\n"
-echo "Updating Asterisk configuration files if required...\n"
+echo -e "Done\n"
+echo "Updating Asterisk configuration files if required..."
 if [ -e /etc/init.d/asterisk ]; then
   (update-rc.d asterisk remove;rm /etc/init.d/asterisk)
 fi
@@ -110,5 +109,5 @@ if [[ $adpcm = "0" ]]; then
 fi
 # Update URL for playing public IP using autopatch
 sed -i 's/http:\/\/myip.vg/https:\/\/ipinfo.io\/ip/' /etc/asterisk/extensions.conf
-echo "Done.\n"
+echo -e "Done.\n"
 exit 0

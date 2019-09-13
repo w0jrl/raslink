@@ -23,9 +23,9 @@ if [ -e "$subversion" ]; then
   echo "Removing Subversion; No longer needed for AllStar."
   apt-get autoremove --purge -y subversion
   rm -rf /root/.subversion
-  echo "Done\n"
+  echo -e "Done\n"
 else
-  echo "Subversion isn't installed; Skipping.\n"
+  echo -e "Subversion isn't installed; Skipping.\n"
 fi
 echo "Checking required packages..."
 sourcesList=$( grep -ic "#deb-src" /etc/apt/sources.list )
@@ -34,7 +34,7 @@ if [ "$sourcesList" == "1" ]; then
 fi
 chmod +x /usr/src/utils/AllStar-build/common/required-tools.sh
 /usr/src/utils/AllStar-build/common/required-tools.sh
-echo "Done\n"
+echo -e "Done\n"
 echo "checking Logrotate status..."
 fstab=$(grep -ic "/var/log tmpfs defaults,noatime,nosuid,mode=0755,size=64m 0 0" /etc/fstab )
 if [ "$fstab" == "1" ]; then
@@ -43,7 +43,7 @@ if [ "$fstab" == "1" ]; then
   echo "Done"
 fi
 if [[ -e /etc/logrotate.d/asterisk ]] && [[ "$(grep -ic "compress" /etc/logrotate.d/asterisk)" == "1" ]]; then
-  echo "Logrotate parameters are already up to date; Skipping.\n"
+  echo -e "Logrotate parameters are already up to date; Skipping.\n"
 else
   echo "updating Logrotate parameters..."
   sed -i '/tmpfs \/var\/log tmpfs defaults,noatime,nosuid,mode=0755,size=100m 0 0/d' /etc/fstab
@@ -53,6 +53,6 @@ else
   chmod +x /usr/src/utils/AllStar-build/common/mk-logrotate-asterisk.sh
   /usr/src/utils/AllStar-build/common/mk-logrotate-asterisk.sh
   echo "Logs will be rotated once a month."
-  echo "Done\n"
+  echo -e "Done\n"
 fi
 exit 0
