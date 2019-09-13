@@ -30,7 +30,7 @@ status() {
 }
 echo "RUNNING UPDATE; STAGE TWO"
 echo -e "This will take a while.\nSystem-update is running in a screen session.\nIf your session disconnects during the update,\nafter reconnecting, run\n'screen -dr'\nto reconnect to\nthe update screen.\n"
-sleep 3
+sleep 5
 service asterisk stop &>/dev/null
 echo -e "YOU CANNOT USE YOUR NODE DURING THIS PROCESS.\nIt has been disabled.\n"
 sleep 1
