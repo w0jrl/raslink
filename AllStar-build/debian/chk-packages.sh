@@ -17,6 +17,7 @@
 #    along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #
 # Script Start
+echo -e "Removing unneeded packages and data\n"
 subversion=/usr/bin/svn
 echo "Checking Subversion..."
 if [ -e "$subversion" ]; then
@@ -31,6 +32,7 @@ echo "Checking required packages..."
 sourcesList=$( grep -ic "#deb-src" /etc/apt/sources.list )
 if [ "$sourcesList" == "1" ]; then
   sed -i 's/#deb-src/deb-src/' /etc/apt/sources.list
+  apt-get -qq update
 fi
 chmod +x /usr/src/utils/AllStar-build/common/required-tools.sh
 /usr/src/utils/AllStar-build/common/required-tools.sh
