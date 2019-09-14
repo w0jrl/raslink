@@ -44,9 +44,13 @@ status make all
 status make install
 echo -e "Done\n"
 echo "Updating Dahdi configuration..."
-/sbin/modprobe dahdi
+/sbin/modprobe dahdi &>/dev/null
+/usr/sbin/dahdi_span_assignments auto &>/dev/null
 /usr/sbin/dahdi_genconf &>/dev/null
 rm /etc/dahdi/*.bak /etc/asterisk/dahdi*.bak /usr/src/utils/1 &>/dev/null
+if [ "$(grep -ic '#include dahdi-channels.conf' /etc/asterisk/chan_dahdi.conf)" == "0" ]; then
+    echo '#include dahdi-channels.conf' >> /etc/asterisk/chan_dahdi.conf
+fi
 if [ "$(grep -ic "dahdi" /etc/modules)" == "1" ]; then
     sed -i '/dahdi/d' /etc/modules
 fi
