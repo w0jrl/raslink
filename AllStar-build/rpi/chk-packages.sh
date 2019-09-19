@@ -17,13 +17,13 @@
 #    along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #
 # Script Start
-echo -e "Removing unneeded packages and sources.\n"
+echo -e "Removing unneeded packages and data\n"
 echo "Looking for Wolfram Engine..."
 if [ -e /usr/bin/wolfram ]; then
   echo "Uninstalling Wolfram Engine; Not needed for AllStar."
   apt-get purge -y wolfram-engine &>/dev/null
   echo "Cleaning the database..."
-  (apt-get autoremove --purge -y;apt-get clean;apt-get autoclean) &>/dev/null
+  (apt-get autoremove --purge -y;apt-get clean;apt-get -qq autoclean) &>/dev/null
   echo "Removing Wolfram Engine data..."
   rm -rf /opt/Wolfram &>/dev/null
   echo -e "Done\n"
@@ -66,6 +66,7 @@ echo "Checking required packages..."
 sourcesList=$( grep -ic "#deb-src" /etc/apt/sources.list )
 if [ "$sourcesList" == "1" ]; then
   sed -i 's/#deb-src/deb-src/' /etc/apt/sources.list
+  apt-get -qq update
 fi
 chmod +x /usr/src/utils/AllStar-build/common/required-tools.sh
 /usr/src/utils/AllStar-build/common/required-tools.sh
