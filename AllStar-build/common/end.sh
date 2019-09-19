@@ -2,20 +2,20 @@
 # end.sh - Disconnect links from AllStar
 #    Copyright (C) 2019  Jeremy Lincicome (W0JRL)
 #    https://jlappliedtechnologies.com  admin@jlappliedtechnologies.com
-
+#
 #    This program is free software: you can redistribute it and/or modify
 #    it under the terms of the GNU General Public License as published by
 #    the Free Software Foundation, either version 3 of the License, or
 #    (at your option) any later version.
-
+#
 #    This program is distributed in the hope that it will be useful,
 #    but WITHOUT ANY WARRANTY; without even the implied warranty of
 #    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 #    GNU General Public License for more details.
-
+#
 #    You should have received a copy of the GNU General Public License
 #    along with this program.  If not, see <http://www.gnu.org/licenses/>.
-
+#
 # Script Start
 /usr/sbin/asterisk -rx "rpt localnodes" > /tmp/localnodes
 remove()
@@ -48,13 +48,11 @@ if [[ "$1" = "" ]] || [[ "$1" = "0" ]]; then
     help 
     exit 1
   elif [ "$1" != "$( grep $1 /tmp/localnodes )" ]; then
-    echo "You cannot control $1.
-$1 doesn't exist on this server."
+    echo -e "You cannot control $1.\n$1 doesn't exist on this server."
     remove
     exit 2
   elif [[ "$2" = "0" ]] || [[ "$2" = "$1" ]]; then
-    echo "You cannot disconnect a node from itself.
-Try again."
+    echo -e "You cannot disconnect a node from itself.\nTry again."
     remove
     exit 2
   elif [ "$2" != "" ]; then
