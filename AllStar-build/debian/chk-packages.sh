@@ -17,18 +17,18 @@
 #    along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #
 # Script Start
-echo -e "Removing unneeded packages and data\n"
+echo "Removing unneeded packages and data"
 subversion=/usr/bin/svn
 echo "Checking Subversion..."
 if [ -e "$subversion" ]; then
   echo "Removing Subversion; No longer needed for AllStar."
-  apt-get autoremove --purge -y subversion
-  rm -rf /root/.subversion
-  echo -e "Done\n"
+  apt-get -qq autoremove --purge -y subversion
+  rm -rf /root/.subversion &>/dev/null
 else
-  echo -e "Subversion isn't installed; Skipping.\n"
+  echo "Subversion isn't installed; Skipping."
 fi
-echo "Checking required packages..."
+echo -e "Done\n"
+echo "Checking and installing required packages..."
 sourcesList=$( grep -ic "#deb-src" /etc/apt/sources.list )
 if [ "$sourcesList" == "1" ]; then
   sed -i 's/#deb-src/deb-src/' /etc/apt/sources.list
