@@ -17,28 +17,26 @@
 #    along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #
 # Script Start
-echo -e "Removing unneeded packages and data\n"
+echo "Removing unneeded packages and data"
 echo "Looking for Wolfram Engine..."
 if [ -e /usr/bin/wolfram ]; then
   echo "Uninstalling Wolfram Engine; Not needed for AllStar."
-  apt-get purge -y wolfram-engine &>/dev/null
-  echo "Cleaning the database..."
-  (apt-get autoremove --purge -y;apt-get clean;apt-get -qq autoclean) &>/dev/null
-  echo "Removing Wolfram Engine data..."
+  apt-get -qq purge -y wolfram-engine &>/dev/null
+  echo "Cleaning the database"
+  (apt-get autoremove --purge -y;apt-get clean;apt-get autoclean) &>/dev/null
+  echo "Removing Wolfram Engine data"
   rm -rf /opt/Wolfram &>/dev/null
-  echo -e "Done\n"
 else
-  echo -e "Wolfram Engine isn't installed; Skipping.\n"
+  echo "Wolfram Engine isn't installed; Skipping."
 fi
 echo "Looking for Minecraft..."
 if [ -e /usr/bin/minecraft-pi ]; then
   echo "Uninstalling Minecraft; Not needed for AllStar."
-  apt-get purge -y minecraft-pi &>/dev/null
-  echo "Cleaning the database..."
+  apt-get -qq purge -y minecraft-pi &>/dev/null
+  echo "Cleaning the database"
   (apt-get autoremove --purge -y;apt-get clean;apt-get autoclean) &>/dev/null
-  echo -e "Done\n"
 else
-  echo -e "Minecraft isn't installed; Skipping.\n"
+  echo "Minecraft isn't installed; Skipping."
 fi
 chmod +x /usr/src/utils/AllStar-build/rpi/rm-pi.sh
 /usr/src/utils/AllStar-build/rpi/rm-pi.sh
@@ -46,23 +44,22 @@ echo "Looking for RPI Update..."
 if [ -e /usr/bin/rpi-update ]; then
   echo "Uninstalling RPI Update; No longer needed for AllStar."
   apt-get purge -y rpi-update &>/dev/null
-  echo "Cleaning the database..."
+  echo "Cleaning the database"
   (apt-get autoremove --purge -y;apt-get clean;apt-get autoclean) &>/dev/null
-  echo -e "Done\n"
 else
-  echo -e "RPI Update isn't installed; Skipping.\n"
+  echo "RPI Update isn't installed; Skipping."
 fi
 subversion=/usr/bin/svn
 echo "Checking Subversion..."
 if [ -e "$subversion" ]; then
   echo "Removing Subversion; No longer needed for AllStar."
-  apt-get autoremove --purge -y subversion &>/dev/null
+  apt-get -qq autoremove --purge -y subversion
   rm -rf /root/.subversion &>/dev/null
-  echo -e "Done\n"
 else
-  echo -e "Subversion isn't installed; Skipping.\n"
+  echo "Subversion isn't installed; Skipping."
 fi
-echo "Checking required packages..."
+echo -e "Done\n"
+echo "Checking and installing required packages..."
 sourcesList=$( grep -ic "#deb-src" /etc/apt/sources.list )
 if [ "$sourcesList" == "1" ]; then
   sed -i 's/#deb-src/deb-src/' /etc/apt/sources.list

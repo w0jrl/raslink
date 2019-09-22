@@ -93,5 +93,5 @@ cd /usr/src/utils/
 (git clean -f;git checkout -f;rm -f 1) &>/dev/null
 echo "Done"
 echo "AllStar is now installed."
-date > /root/.lastupdate
+date +'%A, %B %d, %Y%t%t%T %Z' > /root/.lastupdate
 exit 0

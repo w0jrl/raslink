@@ -20,10 +20,9 @@
 echo "Looking for the pi user..."
 user=$( grep -ic "pi" /etc/passwd )
 if [ "$user" == "1" ]; then
-  echo "Removing the pi user; Not needed for AllStar."
+  echo -e "Removing the pi user; Not needed for AllStar\n."
   deluser -remove-home pi
-  echo "Done\n"
 else
-  echo "The pi user doesn't exist; Skipping.\n"
+  echo -e "The pi user doesn't exist; Skipping.\n"
 fi
 exit 0
