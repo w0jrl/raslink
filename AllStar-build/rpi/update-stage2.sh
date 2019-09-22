@@ -134,7 +134,7 @@ fi
 echo -e "Done\n"
 sleep 0.5
 echo -e "UPDATE COMPLETE\nYou can run this tool at any time by typing 'system-update' at a root prompt."
-date > /root/.lastupdate
+date +'%A, %B %d, %Y%t%t%T %Z' > /root/.lastupdate
 echo "REBOOTING TO APPLY CHANGES"
 sync
 reboot

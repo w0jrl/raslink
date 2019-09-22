@@ -92,5 +92,5 @@ echo "EchoLink is disabled by default."
 echo "All files are located in /etc/asterisk."
 echo "After editing files, reboot to get your node online."
 echo "Enjoy AllStar on Debian!"
-date > /root/.lastupdate
+date +'%A, %B %d, %Y%t%t%T %Z' > /root/.lastupdate
 exit 0
