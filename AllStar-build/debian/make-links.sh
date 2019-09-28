@@ -33,5 +33,5 @@ ln -fs /usr/src/utils/AllStar-build/common/nodenames.sh /usr/bin/nodenames
 #chmod +x /usr/src/utils/AllStar-build/common/release-upgrade.sh
 #ln -fs /usr/src/utils/AllStar-build/common/release-upgrade.sh /usr/bin/release-upgrade
 unlink /usr/bin/release-upgrade &>/dev/null
-ln -fs /etc/network/if-up.d/ntpdate /etc/cron.hourly/ntpdate
+unlink /etc/cron.hourly/ntpdate &>/dev/null
 exit 0
