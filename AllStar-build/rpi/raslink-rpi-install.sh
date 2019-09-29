@@ -69,17 +69,21 @@ echo "Setting up startup scripts and system-update..."
 (cp /usr/src/utils/AllStar-build/common/rc.nodenames /usr/local/bin/rc.nodenames;chmod +x /usr/local/bin/rc.nodenames)
 (cp /usr/src/utils/AllStar-build/rpi/tmpfs.sh /usr/local/bin/tmpfs.sh;chmod +x /usr/local/bin/tmpfs.sh)
 (cp /usr/src/utils/AllStar-build/common/timesync.hourly /usr/local/bin/timesync.hourly;chmod +x /usr/local/bin/timesync.hourly)
+(cp /usr/src/utils/AllStar-build/rpi/zram.sh /usr/local/bin/zram.sh;chmod +x /usr/local/bin/zram.sh)
 cp /usr/src/utils/AllStar-build/common/asterisk.service /etc/systemd/system
 cp /usr/src/utils/AllStar-build/common/asterisk.timer /etc/systemd/system
 cp /usr/src/utils/AllStar-build/common/updatenodelist.service /etc/systemd/system
 cp /usr/src/utils/AllStar-build/common/nodenames.service /etc/systemd/system
+cp /usr/src/utils/AllStar-build/common/timesync.service /etc/systemd/system
 cp /usr/src/utils/AllStar-build/rpi/tmpfs.service /etc/systemd/system
+cp /usr/src/utils/AllStar-build/rpi/zram.service /etc/systemd/system
 systemctl daemon-reload
 systemctl enable asterisk.timer &>/dev/null
 systemctl enable updatenodelist.service &>/dev/null
 systemctl enable tmpfs.service &>/dev/null
 systemctl enable nodenames.service &>/dev/null
 systemctl enable timesync.service &>/dev/null
+systemctl enable zram.service &>/dev/null
 chmod +x /usr/src/utils/AllStar-build/rpi/make-links.sh
 /usr/src/utils/AllStar-build/rpi/make-links.sh
 if [[ "$(grep -ic "/usr/bin/version" /root/.profile)" = "0" ]]; then
