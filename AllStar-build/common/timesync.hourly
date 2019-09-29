@@ -1,4 +1,5 @@
-# asterisk.service - Load Dahdi and Asterisk on system boot
+#!/bin/bash
+# timesync.hourly - Sync time from NTP servers
 #    Copyright (C) 2019  Jeremy Lincicome (W0JRL)
 #    https://jlappliedtechnologies.com  admin@jlappliedtechnologies.com
 #
@@ -15,27 +16,31 @@
 #    You should have received a copy of the GNU General Public License
 #    along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #
-# Service Start
-[Unit]
-Description=Asterisk PBX and telephony daemon
-Documentation=man:asterisk(8)
-Wants=network.target
-After=network.target
-#
-[Service]
-Type=simple
-StandardOutput=null
-ExecStartPre=/sbin/modprobe dahdi_dummy
-ExecStartPre=/usr/sbin/dahdi_cfg
-ExecStartPre=/usr/local/bin/dsp.startup
-ExecStart=/usr/sbin/asterisk -f -C /etc/asterisk/asterisk.conf
-ExecStartPost=-/usr/sbin/asterisk -rx 'module load chan_echolink.so'
-ExecStop=/usr/sbin/asterisk -rx 'stop now'
-ExecStopPost=-/sbin/modprobe -r dahdi_dummy
-ExecReload=/usr/sbin/asterisk -rx 'module reload'
-#
-# safe_asterisk emulation
-Restart=always
-RestartSec=10
-[Install]
-WantedBy=multi-user.target
+# Script Start
+online=1
+ntp=$(which ntpdate)
+server=pool.ntp.org
+netcheck() {
+    wget -q --spider http://1.1.1.1
+    if [ $? -eq 1 ]; then
+        online=0
+        sleep 5s
+    else
+        online=1
+    fi
+}
+timesync() {
+	   ${ntp} ${server}
+    if [ $? -eq 1 ]; then
+        sleep 30s
+    else
+        sleep 1h
+    fi
+}
+while netcheck; do
+    if [[ ${online} = "1" ]]; then
+        timesync
+    else 
+        break
+    fi
+done

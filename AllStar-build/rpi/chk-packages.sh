@@ -18,6 +18,16 @@
 #
 # Script Start
 echo "Removing unneeded packages and data"
+ntp=$(which ntpd)
+echo "Checking NTP..."
+if [ -e "${ntp}" ]; then
+    echo "Removing NTP; No longer needed for AllStar."
+    apt-get -qq autoremove --purge -y ntp
+    echo "Cleaning the database"
+    (apt-get clean;apt-get autoclean) &>/dev/null
+else
+    echo "NTP isn't installed; Skipping."
+fi
 echo "Looking for Wolfram Engine..."
 if [ -e /usr/bin/wolfram ]; then
     echo "Uninstalling Wolfram Engine; Not needed for AllStar."
@@ -51,10 +61,12 @@ else
 fi
 subversion=/usr/bin/svn
 echo "Checking Subversion..."
-if [ -e "$subversion" ]; then
+if [ -e "${subversion}" ]; then
     echo "Removing Subversion; No longer needed for AllStar."
     apt-get -qq autoremove --purge -y subversion
     rm -rf /root/.subversion &>/dev/null
+    echo "Cleaning the database"
+    (apt-get clean;apt-get autoclean) &>/dev/null
 else
     echo "Subversion isn't installed; Skipping."
 fi

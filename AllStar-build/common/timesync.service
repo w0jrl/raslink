@@ -1,4 +1,4 @@
-# asterisk.service - Load Dahdi and Asterisk on system boot
+# timesync.service - Sync time from NTP servers
 #    Copyright (C) 2019  Jeremy Lincicome (W0JRL)
 #    https://jlappliedtechnologies.com  admin@jlappliedtechnologies.com
 #
@@ -17,24 +17,17 @@
 #
 # Service Start
 [Unit]
-Description=Asterisk PBX and telephony daemon
-Documentation=man:asterisk(8)
+Description=Time sync utility 
 Wants=network.target
-After=network.target
+After=network-online.target
 #
 [Service]
 Type=simple
 StandardOutput=null
-ExecStartPre=/sbin/modprobe dahdi_dummy
-ExecStartPre=/usr/sbin/dahdi_cfg
-ExecStartPre=/usr/local/bin/dsp.startup
-ExecStart=/usr/sbin/asterisk -f -C /etc/asterisk/asterisk.conf
-ExecStartPost=-/usr/sbin/asterisk -rx 'module load chan_echolink.so'
-ExecStop=/usr/sbin/asterisk -rx 'stop now'
-ExecStopPost=-/sbin/modprobe -r dahdi_dummy
-ExecReload=/usr/sbin/asterisk -rx 'module reload'
+ExecStart=/usr/local/bin/timesync.hourly &
+ExecStop=/usr/bin/killall -9 timesync.hourly
 #
-# safe_asterisk emulation
+# safe_emulation
 Restart=always
 RestartSec=10
 [Install]
