@@ -26,9 +26,5 @@ Type=simple
 StandardOutput=null
 ExecStart=/usr/local/bin/timesync.hourly &
 ExecStop=/usr/bin/killall -9 timesync.hourly
-#
-# safe_emulation
-Restart=always
-RestartSec=10
 [Install]
 WantedBy=multi-user.target
