@@ -21,22 +21,21 @@ Description=Asterisk PBX and telephony daemon
 Documentation=man:asterisk(8)
 Wants=network.target
 After=network.target
-
+#
 [Service]
 Type=simple
 StandardOutput=null
-ExecStartPre=/sbin/modprobe dahdi
+ExecStartPre=/sbin/modprobe dahdi_dummy
 ExecStartPre=/usr/sbin/dahdi_cfg
 ExecStartPre=/usr/local/bin/dsp.startup
 ExecStart=/usr/sbin/asterisk -f -C /etc/asterisk/asterisk.conf
 ExecStartPost=-/usr/sbin/asterisk -rx 'module load chan_echolink.so'
 ExecStop=/usr/sbin/asterisk -rx 'stop now'
-ExecStopPost=-/sbin/modprobe -r dahdi
+ExecStopPost=-/sbin/modprobe -r dahdi_dummy
 ExecReload=/usr/sbin/asterisk -rx 'module reload'
-
+#
 # safe_asterisk emulation
 Restart=always
 RestartSec=10
-
 [Install]
 WantedBy=multi-user.target

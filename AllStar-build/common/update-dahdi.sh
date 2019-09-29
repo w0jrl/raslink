@@ -40,11 +40,12 @@ cd /usr/src/utils/astsrc/dahdi/
 echo "Building and installing Dahdi..."
 status patch -p1 < /usr/src/utils/astsrc/dahdi-patches/patch-dahdi-no-pciradio
 status patch -p0 < /usr/src/utils/astsrc/dahdi-patches/patch-dahdi.rules
+export MODULES_EXTRA='dahdi_dummy'
 status make all
 status make install
 echo -e "Done\n"
 echo "Updating Dahdi configuration..."
-/sbin/modprobe dahdi &>/dev/null
+/sbin/modprobe dahdi_dummy &>/dev/null
 /usr/sbin/dahdi_span_assignments auto &>/dev/null
 /usr/sbin/dahdi_genconf &>/dev/null
 rm /etc/dahdi/*.bak /etc/asterisk/dahdi*.bak /usr/src/utils/1 &>/dev/null
