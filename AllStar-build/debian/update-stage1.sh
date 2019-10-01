@@ -36,7 +36,7 @@ sleep 0.5
 echo -e "Done\n"
 # Update the system
 echo "Updating system software..."
-(apt-get update;apt-get dist-upgrade -y)
+(apt-get update;apt-get --fix-missing --fix-broken dist-upgrade -y)
 sleep 0.5
 echo -e "Done\n"
 # Clean the package database
