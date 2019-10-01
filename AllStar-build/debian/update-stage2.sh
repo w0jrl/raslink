@@ -78,10 +78,7 @@ echo -e "Done\n"
 sleep 0.5
 echo "Cleaning up object files..."
 cd /usr/src/utils
-git clean -f &>/dev/null
-if [ -e /usr/src/utils/1 ]; then
-    rm -f /usr/src/utils/1
-fi
+(git clean -f;git checkout -f) &>/dev/null
 echo -e "Done\n"
 sleep 0.5
 echo "Updating system boot configuration..."
