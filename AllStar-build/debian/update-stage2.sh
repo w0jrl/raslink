@@ -78,10 +78,7 @@ echo -e "Done\n"
 sleep 0.5
 echo "Cleaning up object files..."
 cd /usr/src/utils
-git clean -f &>/dev/null
-if [ -e /usr/src/utils/1 ]; then
-    rm -f /usr/src/utils/1
-fi
+(git clean -f;git checkout -f;rm -f 1) &>/dev/null
 echo -e "Done\n"
 sleep 0.5
 echo "Updating system boot configuration..."
@@ -111,7 +108,7 @@ fi
 if [ "$(grep -ic "snd_mixer_oss" /etc/modules)" == "0" ]; then
   echo "snd_mixer_oss" >> /etc/modules
 fi
-if [ "$(grep -ic "snd_mixer_oss" /etc/modules)" > "1" ]; then
+if [[ "$(grep -ic "snd_mixer_oss" /etc/modules)" > "1" ]]; then
   sed -i '/snd_mixer_oss/d' /etc/modules
   echo "snd_mixer_oss" >> /etc/modules
 fi

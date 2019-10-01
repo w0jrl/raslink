@@ -52,14 +52,14 @@ fi
 if [ "$(grep -ic "snd_pcm_oss" /etc/modules)" == "0" ]; then
   echo "snd_pcm_oss" >> /etc/modules
 fi
-if [ "$(grep -ic "snd_pcm_oss" /etc/modules)" > "1" ]; then
+if [[ "$(grep -ic "snd_pcm_oss" /etc/modules)" > "1" ]]; then
   sed -i '/snd_pcm_oss/d' /etc/modules
   echo "snd_pcm_oss" >> /etc/modules
 fi
 if [ "$(grep -ic "snd_mixer_oss" /etc/modules)" == "0" ]; then
   echo "snd_mixer_oss" >> /etc/modules
 fi
-if [ "$(grep -ic "snd_mixer_oss" /etc/modules)" > "1" ]; then
+if [[ "$(grep -ic "snd_mixer_oss" /etc/modules)" > "1" ]]; then
   sed -i '/snd_mixer_oss/d' /etc/modules
   echo "snd_mixer_oss" >> /etc/modules
 fi
@@ -93,10 +93,7 @@ fi
 echo "Done"
 echo "Cleaning up object files..."
 cd /usr/src/utils/
-git clean -f &>/dev/null
-if [ -e /usr/src/utils/1 ]; then
-    rm -f /usr/src/utils/1
-fi
+(git clean -f;git checkout -f;rm -f 1) &>/dev/null
 echo "Done"
 echo "AllStar is now installed."
 date +'%A, %B %d, %Y%t%t%T %Z' > /root/.lastupdate
