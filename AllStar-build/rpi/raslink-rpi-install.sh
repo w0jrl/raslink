@@ -52,14 +52,14 @@ fi
 if [ "$(grep -ic "snd_pcm_oss" /etc/modules)" == "0" ]; then
   echo "snd_pcm_oss" >> /etc/modules
 fi
-if [ "$(grep -ic "snd_pcm_oss" /etc/modules)" > "1" ]; then
+if [[ "$(grep -ic "snd_pcm_oss" /etc/modules)" > "1" ]]; then
   sed -i '/snd_pcm_oss/d' /etc/modules
   echo "snd_pcm_oss" >> /etc/modules
 fi
 if [ "$(grep -ic "snd_mixer_oss" /etc/modules)" == "0" ]; then
   echo "snd_mixer_oss" >> /etc/modules
 fi
-if [ "$(grep -ic "snd_mixer_oss" /etc/modules)" > "1" ]; then
+if [[ "$(grep -ic "snd_mixer_oss" /etc/modules)" > "1" ]]; then
   sed -i '/snd_mixer_oss/d' /etc/modules
   echo "snd_mixer_oss" >> /etc/modules
 fi
