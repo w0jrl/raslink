@@ -40,7 +40,7 @@ else
     echo "Subversion isn't installed; Skipping."
 fi
 if [ -f /etc/motd ]; then
-    rm -rf /etc/motd*
+    find /etc/ -name "*motd*" -exec rm -rf {} +
 fi
 echo -e "Done\n"
 echo "Checking and installing required packages..."
