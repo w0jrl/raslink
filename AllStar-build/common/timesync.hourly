@@ -17,12 +17,12 @@
 #    along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #
 # Script Start
-online=1
+online=0
 ntp=$(which ntpdate)
 server=pool.ntp.org
 netcheck() {
     wget -q --spider http://1.1.1.1
-    if [ $? -eq 1 ]; then
+    if [[ "$?" > "0" ]]; then
         online=0
         sleep 5s
     else
@@ -30,9 +30,9 @@ netcheck() {
     fi
 }
 timesync() {
-	   ${ntp} ${server}
-    if [ $? -eq 1 ]; then
-        sleep 30s
+    ${ntp} ${server}
+    if [[ "$?" = "1" ]]; then
+        online=0
     else
         sleep 1h
     fi
@@ -40,7 +40,5 @@ timesync() {
 while netcheck; do
     if [[ ${online} = "1" ]]; then
         timesync
-    else 
-        break
     fi
 done

@@ -20,7 +20,6 @@
 Description=Time sync utility 
 Wants=network.target
 After=network-online.target
-#
 [Service]
 Type=simple
 StandardOutput=null
