@@ -711,7 +711,7 @@ DOT
 WGET
 FETCH
 DOWNLOAD
-SOXMIX
+SOX
 acx_pthread_config
 PTHREAD_CC
 PTHREAD_LIBS
@@ -7194,15 +7194,15 @@ fi
 
 
 if test -n "$ac_tool_prefix"; then
-  # Extract the first word of "${ac_tool_prefix}soxmix", so it can be a program name with args.
-set dummy ${ac_tool_prefix}soxmix; ac_word=$2
+  # Extract the first word of "${ac_tool_prefix}sox", so it can be a program name with args.
+set dummy ${ac_tool_prefix}sox; ac_word=$2
 { echo "$as_me:$LINENO: checking for $ac_word" >&5
 echo $ECHO_N "checking for $ac_word... $ECHO_C" >&6; }
-if test "${ac_cv_prog_SOXMIX+set}" = set; then
+if test "${ac_cv_prog_SOX+set}" = set; then
   echo $ECHO_N "(cached) $ECHO_C" >&6
 else
-  if test -n "$SOXMIX"; then
-  ac_cv_prog_SOXMIX="$SOXMIX" # Let the user override the test.
+  if test -n "$SOX"; then
+  ac_cv_prog_SOX="$SOX" # Let the user override the test.
 else
 as_save_IFS=$IFS; IFS=$PATH_SEPARATOR
 for as_dir in $PATH
@@ -7211,7 +7211,7 @@ do
   test -z "$as_dir" && as_dir=.
   for ac_exec_ext in '' $ac_executable_extensions; do
   if { test -f "$as_dir/$ac_word$ac_exec_ext" && $as_test_x "$as_dir/$ac_word$ac_exec_ext"; }; then
-    ac_cv_prog_SOXMIX="${ac_tool_prefix}soxmix"
+    ac_cv_prog_SOX="${ac_tool_prefix}sox"
     echo "$as_me:$LINENO: found $as_dir/$ac_word$ac_exec_ext" >&5
     break 2
   fi
@@ -7221,10 +7221,10 @@ IFS=$as_save_IFS
 
 fi
 fi
-SOXMIX=$ac_cv_prog_SOXMIX
-if test -n "$SOXMIX"; then
-  { echo "$as_me:$LINENO: result: $SOXMIX" >&5
-echo "${ECHO_T}$SOXMIX" >&6; }
+SOX=$ac_cv_prog_SOX
+if test -n "$SOX"; then
+  { echo "$as_me:$LINENO: result: $SOX" >&5
+echo "${ECHO_T}$SOX" >&6; }
 else
   { echo "$as_me:$LINENO: result: no" >&5
 echo "${ECHO_T}no" >&6; }
@@ -7232,17 +7232,17 @@ fi
 
 
 fi
-if test -z "$ac_cv_prog_SOXMIX"; then
-  ac_ct_SOXMIX=$SOXMIX
-  # Extract the first word of "soxmix", so it can be a program name with args.
-set dummy soxmix; ac_word=$2
+if test -z "$ac_cv_prog_SOX"; then
+  ac_ct_SOX=$SOX
+  # Extract the first word of "sox", so it can be a program name with args.
+set dummy sox; ac_word=$2
 { echo "$as_me:$LINENO: checking for $ac_word" >&5
 echo $ECHO_N "checking for $ac_word... $ECHO_C" >&6; }
-if test "${ac_cv_prog_ac_ct_SOXMIX+set}" = set; then
+if test "${ac_cv_prog_ac_ct_SOX+set}" = set; then
   echo $ECHO_N "(cached) $ECHO_C" >&6
 else
-  if test -n "$ac_ct_SOXMIX"; then
-  ac_cv_prog_ac_ct_SOXMIX="$ac_ct_SOXMIX" # Let the user override the test.
+  if test -n "$ac_ct_SOX"; then
+  ac_cv_prog_ac_ct_SOX="$ac_ct_SOX" # Let the user override the test.
 else
 as_save_IFS=$IFS; IFS=$PATH_SEPARATOR
 for as_dir in $PATH
@@ -7251,7 +7251,7 @@ do
   test -z "$as_dir" && as_dir=.
   for ac_exec_ext in '' $ac_executable_extensions; do
   if { test -f "$as_dir/$ac_word$ac_exec_ext" && $as_test_x "$as_dir/$ac_word$ac_exec_ext"; }; then
-    ac_cv_prog_ac_ct_SOXMIX="soxmix"
+    ac_cv_prog_ac_ct_SOX="sox"
     echo "$as_me:$LINENO: found $as_dir/$ac_word$ac_exec_ext" >&5
     break 2
   fi
@@ -7261,17 +7261,17 @@ IFS=$as_save_IFS
 
 fi
 fi
-ac_ct_SOXMIX=$ac_cv_prog_ac_ct_SOXMIX
-if test -n "$ac_ct_SOXMIX"; then
-  { echo "$as_me:$LINENO: result: $ac_ct_SOXMIX" >&5
-echo "${ECHO_T}$ac_ct_SOXMIX" >&6; }
+ac_ct_SOX=$ac_cv_prog_ac_ct_SOX
+if test -n "$ac_ct_SOX"; then
+  { echo "$as_me:$LINENO: result: $ac_ct_SOX" >&5
+echo "${ECHO_T}$ac_ct_SOX" >&6; }
 else
   { echo "$as_me:$LINENO: result: no" >&5
 echo "${ECHO_T}no" >&6; }
 fi
 
-  if test "x$ac_ct_SOXMIX" = x; then
-    SOXMIX=":"
+  if test "x$ac_ct_SOX" = x; then
+    SOX=":"
   else
     case $cross_compiling:$ac_tool_warned in
 yes:)
@@ -7283,16 +7283,16 @@ whose name does not start with the host triplet.  If you think this
 configuration is useful to you, please write to autoconf@gnu.org." >&2;}
 ac_tool_warned=yes ;;
 esac
-    SOXMIX=$ac_ct_SOXMIX
+    SOX=$ac_ct_SOX
   fi
 else
-  SOXMIX="$ac_cv_prog_SOXMIX"
+  SOX="$ac_cv_prog_SOX"
 fi
 
-if test "${SOXMIX}" != ":" ; then
+if test "${SOX}" != ":" ; then
 
 cat >>confdefs.h <<\_ACEOF
-#define HAVE_SOXMIX 1
+#define HAVE_SOX 1
 _ACEOF
 
 fi
@@ -32224,7 +32224,7 @@ DOT!$DOT$ac_delim
 WGET!$WGET$ac_delim
 FETCH!$FETCH$ac_delim
 DOWNLOAD!$DOWNLOAD$ac_delim
-SOXMIX!$SOXMIX$ac_delim
+SOX!$SOX$ac_delim
 acx_pthread_config!$acx_pthread_config$ac_delim
 PTHREAD_CC!$PTHREAD_CC$ac_delim
 PTHREAD_LIBS!$PTHREAD_LIBS$ac_delim

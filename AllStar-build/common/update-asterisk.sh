@@ -31,9 +31,9 @@ status rm -f /usr/lib/asterisk/modules/*
 cd /usr/src/utils/astsrc/asterisk/
 # Configure the build process
 export PTLIB_CONFIG=/usr/share/ptlib/make/ptlib-config
-status ./configure CC=gcc-4.8 CPP=cpp-4.8
-export CC=gcc-4.8
-export CPP=cpp-4.8
+status ./configure CC=gcc CPP=cpp
+export CC=gcc
+export CPP=cpp
 # Optimize for the arm cpu if running on the Raspberry Pi
 distro=$(lsb_release -is)
 if [[ $distro = "Raspbian" ]]; then
