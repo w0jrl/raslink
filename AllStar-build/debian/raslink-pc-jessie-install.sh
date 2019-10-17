@@ -50,7 +50,7 @@ if [[ "$install" = "y" ]] || [[ "$install" = "Y" ]]; then
   mv .bashrc .bashrc.orig
   cat .bashrc.orig > .bashrc
   chmod +x /usr/src/utils/AllStar-build/debian/raslink-pc-install-stage2.sh
-  echo "/usr/src/utils/AllStar-build/debian/raslink-pc-install-stage2.sh" >> .bashrc
+  echo "/usr/src/utils/AllStar-build/debian/raslink-pc-jessie-install-stage2.sh" >> .bashrc
   echo "After the system reboots, you need to log in as the root user to finish the installation."
   echo "Rebooting to finish install."
   sync
