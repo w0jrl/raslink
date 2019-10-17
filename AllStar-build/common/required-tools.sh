@@ -35,9 +35,9 @@ apt-get -qq --fix-missing --fix-broken install -y ntpdate g++ gcc make build-ess
   libpng-dev libslang2-dev libsm6 libtool libusb-1.0-0-dev libxaw7 libpopt-dev\
   libxml2-utils libxmu6 libxt6 m4 module-assistant po-debconf x11-common freetds-dev freetds-common freetds-bin binutils binutils-dev libcap-dev libpq-dev
 if [[ $release = "stretch" ]]; then
-  apt-get -qq --fix-missing --fix-broken install -y php-cli php-curl libssl1.0-dev libssl-dev- libssl-doc- libpt-dev libneon27-gnutls-dev default-libmysqlclient-dev libneon27-dev- libneon27-
+  apt-get -qq --fix-missing --fix-broken install -y php-cli php-curl libssl1.0-dev libpt-dev libneon27-gnutls-dev libneon27-gnutls default-libmysqlclient-dev libneon27-dev- libneon27- libssl-dev- libssl-doc-
 else
-  apt-get -qq --fix-missing --fix-broken install -y php5-cli php5-curl libssl-dev libpt-dev libneon27-gnutls-dev libmysqlclient-dev libneon27-dev- libneon27-
+  apt-get -qq --fix-missing --fix-broken install -y php5-cli php5-curl libssl-dev libpt-dev libneon27-gnutls libneon27-gnutls-dev libmysqlclient-dev libneon27-dev- libneon27-
 fi
 if [[ $distro = "Raspbian" ]]; then
   apt-get -qq --fix-missing --fix-broken install -y i2c-tools libi2c-dev raspberrypi-kernel raspberrypi-kernel-headers fake-hwclock
