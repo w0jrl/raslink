@@ -153,9 +153,9 @@ else
 fi
 AC_SUBST(DOWNLOAD)
 
-AC_CHECK_TOOL([SOXMIX], [soxmix], [:])
-if test "${SOXMIX}" != ":" ; then
-	AC_DEFINE([HAVE_SOXMIX], 1, [Define to 1 if your system has soxmix application.])
+AC_CHECK_TOOL([SOX], [sox], [:])
+if test "${SOX}" != ":" ; then
+	AC_DEFINE([HAVE_SOX], 1, [Define to 1 if your system has sox application.])
 fi
 
 ACX_PTHREAD
