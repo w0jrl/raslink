@@ -22,7 +22,7 @@ clear
 # Make sure system-update runs in screen
 if [ -z "$STY" ]; then exec screen -S system-update /bin/bash "$0"; fi
 status() {
-    $@
+    "$@"
     if [ $? -ne 0 ]; then
         sleep 5
         exit 1
@@ -62,7 +62,7 @@ chmod +x /usr/src/utils/AllStar-build/common/update-uridiag.sh
 status /usr/src/utils/AllStar-build/common/update-uridiag.sh
 sleep 0.5
 # Make sure configuration files and scripts are loaded
-echo "Updating start up scripts..."
+echo "Updating start up scripts.."
 (cp /usr/src/utils/AllStar-build/common/rc.updatenodelist /usr/local/bin/rc.updatenodelist;chmod +x /usr/local/bin/rc.updatenodelist)
 (cp /usr/src/utils/AllStar-build/common/rc.nodenames /usr/local/bin/rc.nodenames;chmod +x /usr/local/bin/rc.nodenames)
 (cp /usr/src/utils/AllStar-build/common/dsp.startup /usr/local/bin/dsp.startup;chmod +x /usr/local/bin/dsp.startup)
@@ -70,8 +70,8 @@ echo "Updating start up scripts..."
 chmod +x /usr/src/utils/AllStar-build/debian/make-links.sh
 /usr/src/utils/AllStar-build/debian/make-links.sh
 cp -a /usr/src/utils/astsrc/allstar/sounds/* /var/lib/asterisk/sounds
-gsmcount=`ls -1 /var/lib/asterisk/sounds/rpt/*.gsm 2>/dev/null | wc -l`
-if [ "$gsmcount" != "0" ]; then
+gsmcount=$(find /var/lib/asterisk/sounds/rpt/ -maxdepth 1 -type f -name '*.gsm' -printf x | wc -c)
+if [ "$gsmcount" -ne "0" ]; then
   rm -f /var/lib/asterisk/sounds/rpt/*.gsm
 fi
 echo -e "Done\n"
@@ -90,8 +90,8 @@ cp /usr/src/utils/AllStar-build/common/timesync.service /etc/systemd/system
 systemctl daemon-reload
 systemctl enable asterisk.timer &>/dev/null
 systemctl enable updatenodelist.service &>/dev/null
-systemctl enable timesync.service &>/dev/null
 systemctl enable avahi-daemon &>/dev/null
+systemctl enable timesync.service &>/dev/null
 if [ ! -e /root/.nonames ]; then
   systemctl enable nodenames.service &>/dev/null
 fi
@@ -101,14 +101,14 @@ fi
 if [ "$(grep -ic "snd_pcm_oss" /etc/modules)" == "0" ]; then
   echo "snd_pcm_oss" >> /etc/modules
 fi
-if [[ "$(grep -ic "snd_pcm_oss" /etc/modules)" > "1" ]]; then
+if [[ "$(grep -ic "snd_pcm_oss" /etc/modules)" -gt "1" ]]; then
   sed -i '/snd_pcm_oss/d' /etc/modules
   echo "snd_pcm_oss" >> /etc/modules
 fi
 if [ "$(grep -ic "snd_mixer_oss" /etc/modules)" == "0" ]; then
   echo "snd_mixer_oss" >> /etc/modules
 fi
-if [[ "$(grep -ic "snd_mixer_oss" /etc/modules)" > "1" ]]; then
+if [[ "$(grep -ic "snd_mixer_oss" /etc/modules)" -gt "1" ]]; then
   sed -i '/snd_mixer_oss/d' /etc/modules
   echo "snd_mixer_oss" >> /etc/modules
 fi

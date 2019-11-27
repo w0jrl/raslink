@@ -22,7 +22,7 @@ clear
 # Make sure system-update runs in screen
 if [ -z "$STY" ]; then exec screen -S system-update /bin/bash "$0"; fi
 status() {
-    $@
+    "$@"
     if [ $? -ne 0 ]; then
         sleep 5
         exit 1
@@ -72,8 +72,8 @@ echo "Updating start up scripts.."
 chmod +x /usr/src/utils/AllStar-build/rpi/make-links.sh
 /usr/src/utils/AllStar-build/rpi/make-links.sh
 cp -a /usr/src/utils/astsrc/allstar/sounds/* /var/lib/asterisk/sounds
-gsmcount=`ls -1 /var/lib/asterisk/sounds/rpt/*.gsm 2>/dev/null | wc -l`
-if [ "$gsmcount" != "0" ]; then
+gsmcount=$(find /var/lib/asterisk/sounds/rpt/ -maxdepth 1 -type f -name '*.gsm' -printf x | wc -c)
+if [ "$gsmcount" -ne "0" ]; then
   rm -f /var/lib/asterisk/sounds/rpt/*.gsm
 fi
 echo -e "Done\n"
@@ -109,14 +109,14 @@ fi
 if [ "$(grep -ic "snd_pcm_oss" /etc/modules)" == "0" ]; then
   echo "snd_pcm_oss" >> /etc/modules
 fi
-if [[ "$(grep -ic "snd_pcm_oss" /etc/modules)" > "1" ]]; then
+if [[ "$(grep -ic "snd_pcm_oss" /etc/modules)" -gt "1" ]]; then
   sed -i '/snd_pcm_oss/d' /etc/modules
   echo "snd_pcm_oss" >> /etc/modules
 fi
 if [ "$(grep -ic "snd_mixer_oss" /etc/modules)" == "0" ]; then
   echo "snd_mixer_oss" >> /etc/modules
 fi
-if [[ "$(grep -ic "snd_mixer_oss" /etc/modules)" > "1" ]]; then
+if [[ "$(grep -ic "snd_mixer_oss" /etc/modules)" -gt "1" ]]; then
   sed -i '/snd_mixer_oss/d' /etc/modules
   echo "snd_mixer_oss" >> /etc/modules
 fi
