@@ -27,7 +27,7 @@ sleep 5
 echo "Updating source files for All Star..."
 cd /usr/src/utils/
 git pull >&2>/dev/null
-if [ $? -ne 0 ]; then
+if [ "$?" -ne "0" ]; then
     echo -e "FAILED TO DOWNLOAD UPDATE\nABORTING SYSTEM UPDATE\nPlease see <https://jlappliedtechnologies.com/raslink/> for assistance."
     sleep 5
     exit 1
