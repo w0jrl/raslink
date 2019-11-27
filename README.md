@@ -14,7 +14,7 @@ To switch to the testing version, do the following:
 After the update finishes, you'll be on the bleeding-edge!
 Please report bugs over at:
 
-https://jlappliedtechnologies.com/groups/all-star/
+https://jlappliedtechnologies.com/groups/raslink/
 
 When you file your bug, please mention that you are using the testing branch. Bugs in the master branch that are critical will always get
 fixed first, but the testing branch will always have the latest toys!
