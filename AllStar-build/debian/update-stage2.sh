@@ -1,7 +1,7 @@
 #!/bin/bash
 # update-stage2.sh - Update the system
 # Stage Two
-#    Copyright (C) 2019  Jeremy Lincicome (W0JRL)
+#    Copyright (C) 2020  Jeremy Lincicome (W0JRL)
 #    https://jlappliedtechnologies.com  admin@jlappliedtechnologies.com
 #
 #    This program is free software: you can redistribute it and/or modify
