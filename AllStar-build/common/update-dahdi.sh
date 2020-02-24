@@ -40,8 +40,8 @@ echo "Building and installing Dahdi..."
 status patch -p1 < /usr/src/utils/astsrc/dahdi-patches/patch-dahdi-no-pciradio
 status patch -p0 < /usr/src/utils/astsrc/dahdi-patches/patch-dahdi.rules
 export MODULES_EXTRA='dahdi_dummy'
-status make all
-status make install
+status make -j $(nproc) all
+status make -j $(nproc) install
 echo -e "Done\n"
 echo "Updating Dahdi configuration..."
 /sbin/modprobe dahdi_dummy &>/dev/null
