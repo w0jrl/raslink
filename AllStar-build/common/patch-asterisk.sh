@@ -1,6 +1,6 @@
 #!/bin/bash
 # patch-asterisk.sh - Add customizations to Asterisk
-#    Copyright (C) 2020  Jeremy Lincicome (W0JRL)
+#    Copyright (C) 2030  Jeremy Lincicome (W0JRL)
 #    https://jlappliedtechnologies.com  admin@jlappliedtechnologies.com
 #
 #    This program is free software: you can redistribute it and/or modify
@@ -30,8 +30,8 @@ sed -i 's/\/\* #include "mdc_encode.c" \*\//#include "mdc_encode.c"/' ./apps/app
 # Set on demand telemetry timer
 sed -i '/#define\tTELEM_HANG_TIME 120000/c\#define\tTELEM_HANG_TIME 15000' ./apps/app_rpt.c
 # Update app_rpt version information
-sed -i '/ \*  version/c\ \*  version 20.02 02\/01\/2020' ./apps/app_rpt.c
-sed -i '/static  char \*tdesc \= "Radio Repeater \/ Remote Base  version/c\static  char \*tdesc \= "Radio Repeater \/ Remote Base  version 20.02 02\/01\/2020";' ./apps/app_rpt.c
+sed -i '/ \*  version/c\ \*  version 20.03 03\/01\/2020' ./apps/app_rpt.c
+sed -i '/static  char \*tdesc \= "Radio Repeater \/ Remote Base  version/c\static  char \*tdesc \= "Radio Repeater \/ Remote Base  version 20.03 03\/01\/2020";' ./apps/app_rpt.c
 # Change TX enabled message
 sed -i 's/"RPTENA"/"TXENA"/' ./apps/app_rpt.c
 # Make EchoLink call signs use normal characters
