@@ -20,7 +20,7 @@
 apt-get -qq install -y lsb-release
 distro=$(lsb_release -is)
 release=$(lsb_release -cs)
-apt-get -qq --fix-missing --fix-broken install -y -ntpdate g++ gcc make build-essential automake git screen ssh\
+apt-get -qq --fix-missing --fix-broken install -y ntpdate- g++ gcc make build-essential automake git screen ssh\
   sudo ca-certificates libusb-dev libeditline-dev libreadline-dev libedit-dev libgsm1-dev\
   libncurses5-dev libncursesw5-dev bison libasound2-dev\
   libcurl4-openssl-dev libiksemel-dev libvorbis-dev libjack-dev libss7-dev\
