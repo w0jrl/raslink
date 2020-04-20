@@ -61,18 +61,15 @@ echo "Done"
 echo "Setting up startup scripts and system-update..."
 (cp /usr/src/utils/AllStar-build/common/rc.updatenodelist /usr/local/bin/rc.updatenodelist;chmod +x /usr/local/bin/rc.updatenodelist)
 (cp /usr/src/utils/AllStar-build/common/rc.nodenames /usr/local/bin/rc.nodenames;chmod +x /usr/local/bin/rc.nodenames)
-(cp /usr/src/utils/AllStar-build/common/timesync.hourly /usr/local/bin/timesync.hourly;chmod +x /usr/local/bin/timesync.hourly)
 (cp /usr/src/utils/AllStar-build/common/dsp.startup /usr/local/bin/dsp.startup;chmod +x /usr/local/bin/dsp.startup)
 cp /usr/src/utils/AllStar-build/common/asterisk.service /etc/systemd/system
 cp /usr/src/utils/AllStar-build/common/asterisk.timer /etc/systemd/system
 cp /usr/src/utils/AllStar-build/common/updatenodelist.service /etc/systemd/system
 cp /usr/src/utils/AllStar-build/common/nodenames.service /etc/systemd/system
-cp /usr/src/utils/AllStar-build/common/timesync.service /etc/systemd/system
 systemctl daemon-reload
 systemctl enable asterisk.timer &>/dev/null
 systemctl enable updatenodelist.service &>/dev/null
 systemctl enable nodenames.service &>/dev/null
-systemctl enable timesync.service &>/dev/null
 chmod +x /usr/src/utils/AllStar-build/debian/make-links.sh
 /usr/src/utils/AllStar-build/debian/make-links.sh
 if [[ "$(grep -ic "/usr/bin/version" /root/.profile)" = "0" ]]; then
