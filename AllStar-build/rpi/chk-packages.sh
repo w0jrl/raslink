@@ -32,13 +32,14 @@ fi
 echo "Checking Timesync..."
 if [ -e "${timesync}" ]; then
     echo "Removing Timesync; No longer needed for AllStar."
-    $(which systemctl) stop timesync
+    $(which systemctl) stop timesync &>/dev/null
     apt-get -qq autoremove --purge -y ntpdate
     echo "Cleaning the database"
     (apt-get clean;apt-get autoclean) &>/dev/null
     $(which systemctl) disable timesync &>/dev/null
     rm -rf /etc/systemd/system/timesync.service
     $(which systemctl) daemon-reload
+    rm -rf ${timesync}
     $(which timedatectl) set-ntp on
 else
     echo "Timesync isn't installed; Skipping."
