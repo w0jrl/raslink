@@ -89,17 +89,17 @@ sed -i 's/alaw\/ulaw/ulaw/' /etc/asterisk/iax.conf
 adpcm=$(grep -c 'allow = adpcm' /etc/asterisk/iax.conf)
 g726aal2=$(grep -c 'allow = g726aal2' /etc/asterisk/iax.conf)
 if [[ $g726aal2 = "0" ]]; then
-# both layouts
+  # both layouts
   sed -i '/ULAW          best                    87 kbps/a\
 ; g726aal2         good                    55 kbps' /etc/asterisk/iax.conf
-# new layout
+  # new layout
   sed -i '/allow \= adpcm     ; good  55 kbps/i\
 allow \= g726aal2     ; good  55 kbps' /etc/asterisk/iax.conf
-# old layout
+  # old layout
   sed -i 's/\t/ /g' /etc/asterisk/iax.conf
   sed -i '/allow \= adpcm   ; good  55 kbps/i\
 allow \= g726aal2   ; good  55 kbps' /etc/asterisk/iax.conf
-# both layouts
+  # both layouts
   sed -i '/^allow \= ulaw$/ s:$:\nallow \= g726aal2:' /etc/asterisk/iax.conf
 fi
 if [[ $adpcm = "0" ]]; then
@@ -109,5 +109,14 @@ if [[ $adpcm = "0" ]]; then
 fi
 # Update URL for playing public IP using autopatch
 sed -i 's/http:\/\/myip.vg/https:\/\/ipinfo.io\/ip/' /etc/asterisk/extensions.conf
+# Add telemetry ducking to rpt.conf
+telemnomdb=$(grep -c 'telemnomdb' /etc/asterisk/rpt.conf)
+telemduckdb=$(grep -c 'telemduckdb' /etc/asterisk/rpt.conf)
+if [[ $telemnomdb = "0" ]] && [[ $telemduckdb = "0" ]]; then
+  sed -i '/beaconing/i\
+telemnomdb = 0     ; Set the default telemetry level. (default = 0)\
+telemduckdb = -9     ; Reduce telemetry level when ducking (default = -9)\
+;' /etc/asterisk/rpt*
+fi
 echo -e "Done.\n"
 exit 0
