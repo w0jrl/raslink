@@ -39,7 +39,7 @@ status /usr/src/utils/AllStar-build/common/update-asterisk.sh
 chmod +x /usr/src/utils/AllStar-build/common/update-uridiag.sh
 status /usr/src/utils/AllStar-build/common/update-uridiag.sh
 echo "Installing default sound files..."
-cp -a /usr/src/utils/astsrc/allstar/sounds/* /var/lib/asterisk/sounds
+cp -a /usr/src/utils/astsrc/sounds/* /var/lib/asterisk/sounds
 if [ "$(grep -ic "snd_bcm2835" /etc/modules)" == "1" ]; then
   sed -i '/snd_bcm2835/d' /etc/modules
 fi
