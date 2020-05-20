@@ -25,8 +25,8 @@ sed -i '/#define\tTELEM_HANG_TIME 120000/c\#define\tTELEM_HANG_TIME 15000' ./app
 # Update app_rpt version information
 sed -i '/ \*  version/c\ \*  version 20.05 05\/01\/2020' ./apps/app_rpt.c
 sed -i '/static  char \*tdesc \= "Radio Repeater \/ Remote Base  version/c\static  char \*tdesc \= "Radio Repeater \/ Remote Base  version 20.05 05\/01\/2020";' ./apps/app_rpt.c
-sed -i '/note ported by Michael Zingman, N4IRR/a\
- \* \\note modified by Jeremy Lincicome, W0JRL' ./apps/app_rpt.c
+#sed -i '/note ported by Michael Zingman, N4IRR/a\
+# \* \\note modified by Jeremy Lincicome, W0JRL' ./apps/app_rpt.c
 # Change TX enabled message
 sed -i 's/"RPTENA"/"TXENA"/' ./apps/app_rpt.c
 # Make EchoLink call signs use normal characters
@@ -35,7 +35,7 @@ sed -i 's/res \= sayphoneticstr/res \= saycharstr/' ./apps/app_rpt.c
 # Prevent reading false DTMF digits
 sed -i 's/26.0 : 42.0/32.0 : 42.0/' ./main/dsp.c
 # Set queue size in usbradio driver
-sed -i 's/define	QUEUE_SIZE	3/define	QUEUE_SIZE	4/' ./channels/chan_usbradio.c
+sed -i 's/define	QUEUE_SIZE	2/define	QUEUE_SIZE	4/' ./channels/chan_usbradio.c
 #Update include statements in usbradio driver
 dirent=$(grep -ic '#include <dirent.h>' ./channels/chan_usbradio.c)
 libgen=$(grep -ic '#include <libgen.h>' ./channels/chan_usbradio.c)
