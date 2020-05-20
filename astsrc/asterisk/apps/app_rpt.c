@@ -84,7 +84,6 @@
  * \note ported by Adam Paul, KC1KCC
  * \note ported by Michael Zingman, N4IRR
  * \note modified by Jeremy Lincicome, W0JRL
- * \note modified by Jeremy Lincicome, W0JRL
  *
  * See http://www.zapatatelephony.org/app_rpt.html
  *
