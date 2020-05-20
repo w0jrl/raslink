@@ -19,19 +19,14 @@
 # Script Start
 cd ../../astsrc/asterisk/
 echo "Patching Asterisk files..."
-# Add the notch option
-cp ../extras/notch/rpt_notch.c ./apps
-sed -i 's/\/\* #include "rpt_notch.c" \*\//#include "rpt_notch.c"/' ./apps/app_rpt.c
-# Add mdc1200 support
-cp ../extras/mdc1200/*.c ./apps
-cp ../extras/mdc1200/*.h ./apps
-sed -i 's/\/\* #include "mdc_decode.c" \*\//#include "mdc_decode.c"/' ./apps/app_rpt.c
-sed -i 's/\/\* #include "mdc_encode.c" \*\//#include "mdc_encode.c"/' ./apps/app_rpt.c
+#
 # Set on demand telemetry timer
 sed -i '/#define\tTELEM_HANG_TIME 120000/c\#define\tTELEM_HANG_TIME 15000' ./apps/app_rpt.c
 # Update app_rpt version information
 sed -i '/ \*  version/c\ \*  version 20.05 05\/01\/2020' ./apps/app_rpt.c
 sed -i '/static  char \*tdesc \= "Radio Repeater \/ Remote Base  version/c\static  char \*tdesc \= "Radio Repeater \/ Remote Base  version 20.05 05\/01\/2020";' ./apps/app_rpt.c
+sed -i '/note ported by Michael Zingman, N4IRR/a\
+ \* \\note modified by Jeremy Lincicome, W0JRL' ./apps/app_rpt.c
 # Change TX enabled message
 sed -i 's/"RPTENA"/"TXENA"/' ./apps/app_rpt.c
 # Make EchoLink call signs use normal characters

@@ -33,7 +33,7 @@ apt-get -qq --fix-missing --fix-broken install -y ntpdate- g++ gcc make build-es
   dh-autoreconf dh-strip-nondeterminism dwz groff intltool-debian\
   libarchive-zip-perl libfile-stripnondeterminism-perl libice6 libnewt-dev\
   libpng-dev libslang2-dev libsm6 libtool libusb-1.0-0-dev libxaw7 libpopt-dev\
-  libxml2-utils libxmu6 libxt6 m4 module-assistant po-debconf x11-common freetds-dev freetds-common freetds-bin binutils binutils-dev libcap-dev libpq-dev
+  libxml2-utils libxmu6 libxt6 m4 module-assistant po-debconf x11-common freetds-dev freetds-common freetds-bin binutils binutils-dev libcap-dev libpq-dev libblkid-dev
 if [[ $release = "stretch" ]]; then
   apt-get -qq --fix-missing --fix-broken install -y php-cli php-curl libssl1.0-dev libpt-dev libneon27-gnutls-dev libneon27-gnutls default-libmysqlclient-dev libneon27-dev- libneon27- libssl-dev- libssl-doc-
 else
