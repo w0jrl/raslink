@@ -30,6 +30,8 @@ echo "Building and installing Asterisk..."
 status rm -f /usr/lib/asterisk/modules/*
 cd /usr/src/utils/astsrc/asterisk/
 # Configure the build process
+chmod +x ./bootstrap.sh
+status ./bootstrap.sh
 export PTLIB_CONFIG=/usr/share/ptlib/make/ptlib-config
 status ./configure CC=gcc CPP=cpp
 export CC=gcc
@@ -37,7 +39,7 @@ export CPP=cpp
 # Optimize for the arm cpu if running on the Raspberry Pi
 distro=$(lsb_release -is)
 if [[ $distro = "Raspbian" ]]; then
-  sed -i '/PROC\=/c\PROC\=arm' ./makeopts.in
+    sed -i '/PROC\=/c\PROC\=arm' ./makeopts.in
 fi
 # Build and install Asterisk
 status make
@@ -45,7 +47,7 @@ status make install
 echo -e "Done\n"
 echo "Updating Asterisk configuration files if required..."
 if [ -e /etc/init.d/asterisk ]; then
-  (update-rc.d asterisk remove;rm /etc/init.d/asterisk)
+    (update-rc.d asterisk remove;rm /etc/init.d/asterisk)
 fi
 # Fix comment in rpt.conf
 sed -i 's/Say phonetic call sign/Say call sign/' /etc/asterisk/rpt* | sed -i 's/say phonetic call sign/Say call sign/' /etc/asterisk/rpt*
@@ -56,7 +58,7 @@ sed -i '/app_sendtext.so/c\load \=> app_sendtext.so ;   Send Text Applications  
 # Add low pass and high pass filter configuration to usbradio
 filters=$(grep -ic 'rxlpf' /etc/asterisk/usbradio.conf)
 if [[ $filters = "0" ]]; then
-  sed -i '/jblog \= no/a\
+    sed -i '/jblog \= no/a\
 ;\
 rxlpf = 0     ; Receiver Audio Low Pass Filter 0,1,2\
       ; 0 - 3.0 kHz cutoff (Default) value for reduced noise and increased intelligibility. (default)\
@@ -89,23 +91,23 @@ sed -i 's/alaw\/ulaw/ulaw/' /etc/asterisk/iax.conf
 adpcm=$(grep -c 'allow = adpcm' /etc/asterisk/iax.conf)
 g726aal2=$(grep -c 'allow = g726aal2' /etc/asterisk/iax.conf)
 if [[ $g726aal2 = "0" ]]; then
-  # both layouts
-  sed -i '/ULAW          best                    87 kbps/a\
+    # both layouts
+    sed -i '/ULAW          best                    87 kbps/a\
 ; g726aal2         good                    55 kbps' /etc/asterisk/iax.conf
-  # new layout
-  sed -i '/allow \= adpcm     ; good  55 kbps/i\
+    # new layout
+    sed -i '/allow \= adpcm     ; good  55 kbps/i\
 allow \= g726aal2     ; good  55 kbps' /etc/asterisk/iax.conf
-  # old layout
-  sed -i 's/\t/ /g' /etc/asterisk/iax.conf
-  sed -i '/allow \= adpcm   ; good  55 kbps/i\
+    # old layout
+    sed -i 's/\t/ /g' /etc/asterisk/iax.conf
+    sed -i '/allow \= adpcm   ; good  55 kbps/i\
 allow \= g726aal2   ; good  55 kbps' /etc/asterisk/iax.conf
-  # both layouts
-  sed -i '/^allow \= ulaw$/ s:$:\nallow \= g726aal2:' /etc/asterisk/iax.conf
+    # both layouts
+    sed -i '/^allow \= ulaw$/ s:$:\nallow \= g726aal2:' /etc/asterisk/iax.conf
 fi
 if [[ $adpcm = "0" ]]; then
-  sed -i '/ULAW          best                    87 kbps/a\
+    sed -i '/ULAW          best                    87 kbps/a\
 ; g726aal2         good                    55 kbps' /etc/asterisk/iax.conf
-  sed -i '/^allow \= g726aal2$/ s:$:\nallow \= adpcm:' /etc/asterisk/iax.conf
+    sed -i '/^allow \= g726aal2$/ s:$:\nallow \= adpcm:' /etc/asterisk/iax.conf
 fi
 # Update URL for playing public IP using autopatch
 sed -i 's/http:\/\/myip.vg/https:\/\/ipinfo.io\/ip/' /etc/asterisk/extensions.conf
@@ -113,7 +115,7 @@ sed -i 's/http:\/\/myip.vg/https:\/\/ipinfo.io\/ip/' /etc/asterisk/extensions.co
 telemnomdb=$(grep -c 'telemnomdb' /etc/asterisk/rpt.conf)
 telemduckdb=$(grep -c 'telemduckdb' /etc/asterisk/rpt.conf)
 if [[ $telemnomdb = "0" ]] && [[ $telemduckdb = "0" ]]; then
-  sed -i '/beaconing/i\
+    sed -i '/beaconing/i\
 telemnomdb = 0     ; Set the default telemetry level. (default = 0)\
 telemduckdb = -9     ; Reduce telemetry level when ducking (default = -9)\
 ;' /etc/asterisk/rpt*
