@@ -79,7 +79,7 @@ echo -e "Done\n"
 sleep 0.5
 echo "Cleaning up object files..."
 cd /usr/src/utils
-(git clean -f;git checkout -f;rm -f 1) &>/dev/null
+(git checkout -f;git clean -f;rm -f 1) &>/dev/null
 echo -e "Done\n"
 sleep 0.5
 echo "Updating system boot configuration..."

@@ -90,7 +90,7 @@ fi
 echo "Done"
 echo "Cleaning up object files..."
 cd /usr/src/utils/
-(git clean -f;git checkout -f;rm -f 1) &>/dev/null
+(git checkout -f;git clean -f;rm -f 1) &>/dev/null
 $(which timedatectl) set-ntp on
 echo "Done"
 echo "AllStar is now installed."
