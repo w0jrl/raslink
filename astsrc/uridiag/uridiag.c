@@ -1,10 +1,31 @@
 /* Diagnostic program for DMK Engineering URI USB Radio Interface 
  *
- * Copyright (c) 2007-2009, Jim Dixon <jim@lambdatel.com>. All rights
- * reserved.
+ * Copyright (c) 2007-2015, Jim Dixon <jim@lambdatel.com>
+ * Copyright (c) 2018-2019, AllStarLink, Inc. <admin@allstarlink.org>
+ * 
+ * All Rights Reserved
+ * Licensed under GNU GPL v2 (see below)
  *
+ * Changes:
+ * 08/22/2009 - DMK
  * Analog test levels changed from 700/150 to 610/130 
- * (passband/stopband) by DMK 8/22/2009.
+ * (passband/stopband)
+ *
+ * 01/30/2019 - Stacy Olivas <kg7qin@arrl.net>
+ * Fixed CM119 chipset and added CM119A/B chipset detection
+ * Fixed initialization/error messages at startup
+ * Added ability to adjust levels per chipset type
+ *
+ * 02/11/2019 - David Kramer <dkramer@dmkeng.com>
+ * Lowered #define C119B_ADJUST to compensate for lower 'B' version
+ * chip output. 
+ *
+ * 05/08/2019 - David Kramer <dkramer@dmkeng.com>
+ * Raised #define C119B_ADJUST to compensate for "fixed" B versions
+ *   
+ * 05/10/2019 - David Kramer
+ * Fudged passband levels for 700Hz when mixed with 5khz.  Readings are 
+ * too high for some strange reason, but URIs seem to work ok.
  * 
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -45,10 +66,19 @@
 #include <soundcard.h>
 #endif
 
-#define C108_VENDOR_ID   0x0d8c
-#define C108_PRODUCT_ID  0x000c 
-#define C108A_PRODUCT_ID  0x013c
-#define C119_PRODUCT_ID 0x013a
+#define C108_VENDOR_ID   	0x0d8c
+#define C108_PRODUCT_ID  	0x000c 
+#define C108A_PRODUCT_ID 	0x013c
+#define C119_PRODUCT_ID		0x0008
+#define C119A_PRODUCT_ID 	0x013a
+#define C119B_PRODUCT_ID	0x0013
+
+#define DEFAULT_ADJUST		1000
+#define C108_ADJUST		1000
+#define C108AH_ADJUST		1000
+#define C119_ADJUST		1000
+#define C119A_ADJUST		1000
+#define C119B_ADJUST		1000 // was 870 then 825
 
 #define HID_REPORT_GET 0x01
 #define HID_REPORT_SET 0x09
@@ -88,8 +118,9 @@
 #define EEPROM_TXCTCSSADJ       15
 #define EEPROM_RXSQUELCHADJ     16
 
-#define PASSBAND_LEVEL		550.0
-#define STOPBAND_LEVEL		117.0
+#define PASSBAND_LEVEL		1200.0	 // was 550.0
+#define STOPBAND_LEVEL		210.0 	// was 117.0
+#define PASSBAND_5KHZ_LEVEL	1800.0
 
 struct tonevars
 {
@@ -97,9 +128,9 @@ float	mycr;
 float	myci;
 } ;
 
-enum {DEV_C108,DEV_C108AH,DEV_C119};
+enum {DEV_C108,DEV_C108AH,DEV_C119,DEV_C119A,DEV_C119B};
 
-char *devtypestrs[] = {"CM108","CM108AH","CM119"} ;
+char *devtypestrs[] = {"CM108","CM108AH","CM119", "CM119A", "CM119B"} ;
 
 void cdft(int, int, double *, int *, double *);
 
@@ -224,7 +255,9 @@ static void setout(struct usb_dev_handle *usb_handle,unsigned char c)
 unsigned char buf[4];
 
 	buf[0] = buf[3] = 0;
-	if (devtype == DEV_C119) buf[2] = 0x3d; /* set GPIO 1,3,4,5,6 as output */
+	if ( (devtype == DEV_C119) ||	/* check for all C119 chip types */
+		(devtype == DEV_C119A) ||
+		(devtype == DEV_C119B)) buf[2] = 0x3d; /* set GPIO 1,3,4,5,6 as output */
 	else buf[2] = 0xd; /* set GPIO 1,3,4 as output */
 	buf[1] = c; /* set GPIO 1,3,4 (5,7) outputs appropriately */
 	set_outputs(usb_handle,buf);
@@ -252,7 +285,9 @@ unsigned short c;
 	get_inputs(usb_handle,buf);
 	c = buf[1] & 0xf;
 	c += (buf[0] & 3) << 4;
-	if (devtype == DEV_C119) c += buf[1] & 0xc0;
+	if ( (devtype == DEV_C119) ||
+		(devtype == DEV_C119A) ||
+		(devtype == DEV_C119B))  c += buf[1] & 0xc0;
 	/* in the AH part, the HOOK comes in on buf[0] bit 4, undocumentedly */
 	if (devtype == DEV_C108AH)
 	{
@@ -308,6 +343,7 @@ int     i;
 unsigned short cs;
 
         cs = 0xffff;
+	buf[EEPROM_MAGIC_ADDR] = EEPROM_MAGIC;  /* N4IRS Magic Number write */
         for(i = EEPROM_START_ADDR; i < EEPROM_CS_ADDR; i++)
         {
                 write_eeprom(handle,i,buf[i]);
@@ -317,6 +353,14 @@ unsigned short cs;
         write_eeprom(handle,i,buf[EEPROM_CS_ADDR]);
 }
 
+static void erase_eeprom(struct usb_dev_handle *handle)
+{
+int	i;
+	for (i = 0; i < EEPROM_END_ADDR; i++)
+	{
+		write_eeprom(handle, i, 0xff);
+	}
+}
 
 static struct usb_device *device_init(void)
 {
@@ -341,7 +385,11 @@ static struct usb_device *device_init(void)
 	              == C108_PRODUCT_ID) ||
 		     (dev->descriptor.idProduct
 	              == C119_PRODUCT_ID) ||
-	            (dev->descriptor.idProduct
+		     (dev->descriptor.idProduct 
+		      == C119A_PRODUCT_ID) ||
+		     (dev->descriptor.idProduct
+		      == C119B_PRODUCT_ID) ||
+	             (dev->descriptor.idProduct
 	              == C108A_PRODUCT_ID)))
 		{
 	                    sprintf(devstr,"%s/%s", usb_bus->dirname,dev->filename);
@@ -379,7 +427,11 @@ static struct usb_device *device_init(void)
 			if (dev->descriptor.idProduct
 		              == C108A_PRODUCT_ID) devtype = DEV_C108AH;
 			else if (dev->descriptor.idProduct
-		              == C119_PRODUCT_ID) devtype = DEV_C119;
+		              == C119_PRODUCT_ID)  devtype = DEV_C119;
+			else if (dev->descriptor.idProduct
+			      == C119A_PRODUCT_ID) devtype = DEV_C119A;
+			else if (dev->descriptor.idProduct
+			      == C119B_PRODUCT_ID) devtype = DEV_C119B;
 			printf("Found %s USB Radio Interface at %s\n",
 				devtypestrs[devtype],devstr);
 			devnum = i;
@@ -447,7 +499,9 @@ static float get_tonesample(struct tonevars *tvars,float ddr,float ddi)
 	tvars->mycr*=t;
 	tvars->myci*=t;
 	if ((devtype == DEV_C108AH) || 
-		(devtype == DEV_C119)) return tvars->mycr;
+		(devtype == DEV_C119) || 
+		(devtype == DEV_C119A) ||
+		(devtype == DEV_C119B)) return tvars->mycr;
 	return tvars->mycr * 0.9092;
 }
 
@@ -560,6 +614,9 @@ char	device[200];
 void *soundthread(void *this)
 {
 int fd,micmax,spkrmax;
+int adjust;
+int micparam1 = 0;
+int micparam2 = 0;
 char newname = 0;
 	
 	fd = soundopen(devnum);
@@ -576,9 +633,31 @@ char newname = 0;
 	setamixer(devnum,MIXER_PARAM_MIC_PLAYBACK_VOL,0,0);
 	setamixer(devnum,(newname) ? MIXER_PARAM_SPKR_PLAYBACK_SW_NEW : MIXER_PARAM_SPKR_PLAYBACK_SW,1,0);
 	setamixer(devnum,(newname) ? MIXER_PARAM_SPKR_PLAYBACK_VOL_NEW : MIXER_PARAM_SPKR_PLAYBACK_VOL,spkrmax,spkrmax);
+	switch (devtype)
+	{
+		case DEV_C108:
+			adjust = C108_ADJUST;
+			break;
+		case DEV_C108AH:
+			adjust = C108AH_ADJUST;
+			break;
+		case DEV_C119:
+			adjust = C119_ADJUST;
+			break;
+		case DEV_C119A:
+			adjust = C119A_ADJUST;
+			break;
+		case DEV_C119B:
+			adjust = C119B_ADJUST;
+			micparam1 = 1;
+			break;
+		default:
+			adjust = DEFAULT_ADJUST;
+	}
+	 
 	setamixer(devnum,MIXER_PARAM_MIC_CAPTURE_VOL,
-			AUDIO_IN_SETTING * micmax / 1000,0);
-	setamixer(devnum,MIXER_PARAM_MIC_BOOST,0,0);
+			AUDIO_IN_SETTING * micmax / adjust,0);
+	setamixer(devnum,MIXER_PARAM_MIC_BOOST,micparam1,micparam2);
 	setamixer(devnum,MIXER_PARAM_MIC_CAPTURE_SW,1,0);
 
 	while(!shutdown)
@@ -619,7 +698,10 @@ char newname = 0;
 			}
 			memset(afft,0,sizeof(double) * 2 * (NFFT + 1));
 			gfac = 1.0;
-			if ((devtype == DEV_C108AH) || (devtype == DEV_C119)) gfac = 0.7499;
+			if ((devtype == DEV_C108AH) || 
+				(devtype == DEV_C119) ||
+				(devtype == DEV_C119A) ||
+				(devtype == DEV_C119B) ) gfac = 0.7499;
 			for(i = 0; i < res / 2; i++)
 			{
 				sbuf[i] = (int) (((float)sbuf[i] + 32768) * gfac) - 32768;
@@ -670,7 +752,9 @@ int	nerror = 0;
 	nerror += testio(usb_handle,9,2); /* GPIO1 -> GPIO2 */
 	nerror += testio(usb_handle,0xc,0x10); /* GPIO3/PTT -> CTCSS */
 	nerror += testio(usb_handle,0,0x20); /* GPIO4 -> COR */
-	if (devtype == DEV_C119)
+	if ( (devtype == DEV_C119) ||
+		(devtype == DEV_C119A) ||
+		(devtype == DEV_C119B) )
 	{
 		nerror += testio(usb_handle,0x18,0x40); /* GPIO5 -> GPIO7 */
 		nerror += testio(usb_handle,0x28,0x80); /* GPIO6 -> GPIO8 */
@@ -692,12 +776,14 @@ static int analog_test_one(float freq1,float freq2,float dlev1, float dlev2,int 
 	{
 		printf("Analog level on left channel for %.1f Hz (%.1f) is out of range!!\n",freq1,lev1);
 		printf("Must be between %.1f and %.1f\n",dlev1 * .8, dlev1 * 1.2);
+		printf("Right channel level ok %.1f Hz at %.1f\n", freq2, lev2);
 		nerror++;
 	} else if (v) printf("Left channel level %.1f OK at %.1f Hz\n",lev1,freq1);
 	if (fabs(lev2 - dlev2) > (dlev2 * 0.2))
 	{
 		printf("Analog level on right channel for %.1f Hz (%.1f) is out of range!!\n",freq2,lev2);
 		printf("Must be between %.1f and %.1f\n",dlev2 * .8, dlev2 * 1.2);
+		printf("Left channel level ok %.1f Hz at %.1f\n", freq1, lev1);
 		nerror++;
 	} else if (v) printf("Right channel level %.1f OK at %.1f Hz\n",lev2,freq2);
 	return(nerror);
@@ -707,18 +793,19 @@ static int analog_test(int v)
 {
 int	nerror = 0;
 
+	printf("Passband level (200Hz - 3KHz) = %.0f +/- 20%%, Stopband level (> 4KHz) = %.0f +/- 20%%\n", PASSBAND_LEVEL, STOPBAND_LEVEL); 
 	nerror += analog_test_one(204.0,700.0,PASSBAND_LEVEL,PASSBAND_LEVEL,v);
 	nerror += analog_test_one(504.0,700.0,PASSBAND_LEVEL,PASSBAND_LEVEL,v);
 	nerror += analog_test_one(1004.0,700.0,PASSBAND_LEVEL,PASSBAND_LEVEL,v);
 	nerror += analog_test_one(2004.0,700.0,PASSBAND_LEVEL,PASSBAND_LEVEL,v);
 	nerror += analog_test_one(3004.0,700.0,PASSBAND_LEVEL,PASSBAND_LEVEL,v);
-	nerror += analog_test_one(5004.0,700.0,STOPBAND_LEVEL,PASSBAND_LEVEL,v);
+	nerror += analog_test_one(5004.0,700.0,STOPBAND_LEVEL,PASSBAND_5KHZ_LEVEL,v);	// this a fudge to make this work with CM119B chips and EEPROMs, not sure why
 	nerror += analog_test_one(700.0,204.0,PASSBAND_LEVEL,PASSBAND_LEVEL,v);
 	nerror += analog_test_one(700.0,504.0,PASSBAND_LEVEL,PASSBAND_LEVEL,v);
 	nerror += analog_test_one(700.0,1004.0,PASSBAND_LEVEL,PASSBAND_LEVEL,v);
 	nerror += analog_test_one(700.0,2004.0,PASSBAND_LEVEL,PASSBAND_LEVEL,v);
 	nerror += analog_test_one(700.0,3004.0,PASSBAND_LEVEL,PASSBAND_LEVEL,v);
-	nerror += analog_test_one(700.0,5004.0,PASSBAND_LEVEL,STOPBAND_LEVEL,v);
+	nerror += analog_test_one(700.0,5004.0,PASSBAND_5KHZ_LEVEL,STOPBAND_LEVEL,v);
 	if (!nerror) printf("Analog Test Passed!!\n");
 	return(nerror);
 }
@@ -775,6 +862,26 @@ float	f;
 	return(0);
 }
 
+static void eeprom_dump(struct usb_dev_handle *usb_handle)
+{
+unsigned short sbuf[64];
+int i, j;
+
+	for (i = 0; i < EEPROM_END_ADDR; i++)
+                sbuf[i] = read_eeprom(usb_handle,i);
+
+	//get_eeprom(usb_handle, sbuf);
+	for (i = 0; i < 8; i++)
+	{
+		printf("addr %2d: ", i * 8);
+		for (j = 0; j < 8; j++)
+		{
+			printf("0x%04x  ", sbuf[i * 8 + j]);
+		}
+		printf("\n");
+	}
+}
+
 static void eeprom_init(struct usb_dev_handle *usb_handle)
 {
 unsigned short sbuf[64];
@@ -794,29 +901,42 @@ pthread_attr_t attr;
 struct termios t,t0;
 float myfreq;
 
-	printf("URIDiag, diagnostic program for the DMK Engineering URI\n");
-	printf("USB Radio Interface, version 0.9, 08/14/15\n\n");
+	printf("\n\n"
+               "URIDiag, diagnostic program for the DMK Engineering URIxB <www.dmkeng.com>\n" 
+               "USB Radio Interface, version 1.02, 05/10/2019\n" 
+	       "-------------------------------------------------------\n" 
+	       "Copyright (c) 2007-2015, Jim Dixon <jim@lambdatel.com>\n" 
+	       "Copyright (c) 2018-2019, AllStarLink, Inc. <admin@allstarlink.org>\n" 
+	       "All rights reserved\n"
+	       "\n"
+	       "This is free software, with components licensed under the GNU General Public\n" 
+	       "License version 2 and other licenses; you are welcome to redistribute it under\n" 
+	       "certain conditions.  Type 'Z' for details. \n\n");
 
 	usb_dev = device_init();
 	if (usb_dev == NULL) {
-		fprintf(stderr, "Device not found\n");
+		fprintf(stderr, ">>> ERROR: Device not found\n\n");
 		exit(255);
 	}
 	usb_handle = usb_open(usb_dev);
 	if (usb_handle == NULL) {
-		fprintf(stderr,"Not able to open USB device\n");
+		fprintf(stderr,"\n\n>>> FATAL ERROR: Not able to open USB device\n");
+		retval = 2;
 		goto exit;
 	}
 	if (usb_claim_interface(usb_handle,3) < 0)
 	{
 		if (usb_detach_kernel_driver_np(usb_handle,3) < 0) {
+			fprintf(stderr,"\n\n>>> FATAL ERROR: usb_detach_kernel_driver_np > 0!\n");
+			retval = 2;
 			goto exit;
 		}
 		if (usb_claim_interface(usb_handle,3) < 0) {
+			fprintf(stderr,"\n\n>>> FATAL ERROR: usb_claim_interface > 0!\n");
+			retval = 2;
 			goto exit;
 		}
 	}
-
 	setout(usb_handle,8);
 	pthread_attr_init(&attr);
 	pthread_attr_setdetachstate(&attr, PTHREAD_CREATE_DETACHED);
@@ -844,10 +964,13 @@ float myfreq;
 		printf("Tests, etc.\n");
 		printf("t - test normal operation (use uppercase 'T' for verbose output)\n");
 		printf("i - test digital signals only (COR,TONE,PTT,GPIO)\n");
-		printf("e - test EEPROM, E - Initialize EEPROM\n");
+		printf("e - test EEPROM, E - Initialize EEPROM (not recommended)\n");
 		printf("l - list EEPROM contents\n");
+		printf("d - dump all EEPROM contents\n");
+		printf("r - erase EEPROM\n");
 		printf("c - show test (loopback) connector pinout\n");
-		printf("q,x - exit program\r\n\n");
+		printf("q,x - exit program\n");
+		printf("Z - show program GNU GPL v2 license\r\n\n\n");
 		printf("Enter your selection:");
 		fflush(stdout);
 		fgets(str,sizeof(str) - 1,stdin);
@@ -857,7 +980,7 @@ float myfreq;
 		{
 		    case 'x':
 		    case 'q':
-			goto exit;
+			goto pt_exit;
 		    case '1': 
 			myfreq = 1004.0;
 			break;
@@ -922,6 +1045,16 @@ float myfreq;
 			else printf("%d Error(s) found during operaton!!!!\n",errs);
 			printf("\n");
 			continue;
+		    case 'd':
+		    case 'D':
+			printf("\nEEPROM contents:\n");
+			eeprom_dump(usb_handle);
+			continue;
+		    case 'r':
+		    case 'R':
+			erase_eeprom(usb_handle);
+			printf("\nEEPROM is erased\n");
+			continue;
 		    case 'c': /* show test cable pinout */
 			printf("Special Test Cable Pinout:\n\n");
 			printf("25 pin D-shell connector\n");
@@ -934,10 +1067,29 @@ float myfreq;
 			printf("     Pin 11 to Pin 24\n");
 			printf("  10K Resistor between Pins 21 & 22\n");
 			printf("  10K Resistor between Pins 21 & 23\n");
-			printf("  For URIx (CM119), also include the following:\n");
+			printf("  For URIx (CM119, CM119A, CM119B), also include the following:\n");
 			printf("  Pin 5 to Pin 10\n");
 			printf("  Pin 6 to Pin 11\n");
 			printf("  Do *NOT* include these for the standard URI!!\n\n");
+			continue;
+		    case 'z': /* show GNU GPL v2 license */
+		    case 'Z': 
+			printf("\n\nThis program is free software; you can redistribute it and/or modify\n"
+			      "it under the terms of the GNU General Public License as published by\n"
+			      "the Free Software Foundation; either version 2 of the License, or\n"
+			      "(at your option) any later version.\n"
+			      "\n"
+			      "This program is distributed in the hope that it will be useful,\n"
+			      "but WITHOUT ANY WARRANTY; without even the implied warranty of\n"
+			      "MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the\n"
+			      "GNU General Public License for more details.\n"
+			      "\n"
+			      "You should have received a copy of the GNU General Public License\n"
+			      "along with this program; if not, write to the Free Software\n"
+			      "Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307 USA\n"
+			      "\n"
+			      " >>> PRESS ANY KEY TO CONTINUE <<<\n");
+			fgets(str,sizeof(str) - 1,stdin);
 			continue;
 		    default:
 			continue;
@@ -957,9 +1109,22 @@ float myfreq;
 			printf("Level at %.1f Hz: %.1f mV (RMS) %.1f mV (P-P)\r\n",myfreq,lev,lev * 2.828);
 		}
 	}
-exit:
-	shutdown = 1;
+
+
+pt_exit:	/* only run if we made it past the initilization stage */
 	pthread_join(sthread,NULL);
+
+exit:		/* goodbye */
+	if(retval == 2) 
+	{
+		fprintf(stderr,"\n*** Error opening usb device.  Aborting.\n\n");
+	}
+	else
+	{
+		fprintf(stderr,"\nExiting\n\n");
+	}
+
+	shutdown = 1;
 	usb_close(usb_handle);
 	return retval;
 }

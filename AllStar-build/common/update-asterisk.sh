@@ -48,7 +48,6 @@ if [ -e /etc/init.d/asterisk ]; then
     (update-rc.d asterisk remove;rm /etc/init.d/asterisk)
 fi
 echo -e "Done\n"
-
 chmod +x /usr/src/utils/AllStar-build/common/asterisk-config-check.sh
 status /usr/src/utils/AllStar-build/common/asterisk-config-check.sh
 exit 0
