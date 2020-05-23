@@ -34,13 +34,6 @@ chmod +x ./bootstrap.sh
 status ./bootstrap.sh
 export PTLIB_CONFIG=/usr/share/ptlib/make/ptlib-config
 status ./configure CC=gcc CPP=cpp
-export CC=gcc
-export CPP=cpp
-# Optimize for the arm cpu if running on the Raspberry Pi
-distro=$(lsb_release -is)
-if [[ $distro = "Raspbian" ]]; then
-    sed -i '/PROC\=/c\PROC\=arm' ./makeopts.in
-fi
 # Build and install Asterisk
 status make
 status make install
