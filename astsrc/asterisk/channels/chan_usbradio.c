@@ -89,8 +89,6 @@ ASTERISK_FILE_VERSION(__FILE__, "$Revision: 200511 $")
 #include <errno.h>
 #include <usb.h>
 #include <search.h>
-#include <dirent.h>
-#include <libgen.h>
 #include <linux/ppdev.h>
 #include <linux/parport.h>
 #include <linux/version.h>
@@ -1163,7 +1161,7 @@ static struct usb_device *hid_device_init(char *desired_device)
 				if (desdev[strlen(desdev) - 1] == '\n')
 			        	desdev[strlen(desdev) -1 ] = 0;
 				if (strcasecmp(desdev,devstr)) continue;
-#if (LINUX_VERSION_CODE >= KERNEL_VERSION(2,6,20))
+#if (LINUX_VERSION_CODE >= KERNEL_VERSION(2,6,20)) && !defined(AST_BUILDOPT_LIMEY)
 				sprintf(str,"/sys/class/sound/card%d/device",i);
 				memset(desdev,0,sizeof(desdev));
 				if (readlink(str,desdev,sizeof(desdev) - 1) == -1) continue;
@@ -1249,7 +1247,7 @@ static int hid_device_mklist(void)
 				if (desdev[strlen(desdev) - 1] == '\n')
 			        	desdev[strlen(desdev) -1 ] = 0;
 				if (strcasecmp(desdev,devstr)) continue;
-#if (LINUX_VERSION_CODE >= KERNEL_VERSION(2,6,20))
+#if (LINUX_VERSION_CODE >= KERNEL_VERSION(2,6,20)) && !defined(AST_BUILDOPT_LIMEY)
 				sprintf(str,"/sys/class/sound/card%d/device",i);
 				memset(desdev,0,sizeof(desdev));
 				if (readlink(str,desdev,sizeof(desdev) - 1) == -1) continue;
@@ -1311,7 +1309,7 @@ char	str[200],desdev[200],*cp;
 
 	for(i = 0;i < 32; i++)
 	{
-#if (LINUX_VERSION_CODE >= KERNEL_VERSION(2,6,20))
+#if (LINUX_VERSION_CODE >= KERNEL_VERSION(2,6,20)) && !defined(AST_BUILDOPT_LIMEY)
 		sprintf(str,"/sys/class/sound/card%d/device",i);
 		memset(desdev,0,sizeof(desdev));
 		if (readlink(str,desdev,sizeof(desdev) - 1) == -1) continue;
