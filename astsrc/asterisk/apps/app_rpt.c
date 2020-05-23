@@ -465,7 +465,7 @@
 
 #define	REQUIRED_ZAPTEL_VERSION 'A'
 
-#define	STATPOST_PROGRAM "/usr/bin/wget,-q,--output-document=/dev/null,--no-check-certificate"
+#define	STATPOST_PROGRAM "/usr/bin/wget,-q,--timeout=10,--output-document=/dev/null,--no-check-certificate"
 
 //Define noop equivalent
 #define noop ((void)0)
