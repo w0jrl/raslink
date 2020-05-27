@@ -4515,8 +4515,8 @@ int	nonlocals;
         {
                 while(tlist != &myrpt->tele)
 		{
-                        //if ((tlist->mode == PLAYBACK) || 
-                        if ((tlist->mode == LOCALPLAY) || 
+                        if ((tlist->mode == PLAYBACK) || 
+                        //if ((tlist->mode == LOCALPLAY) || 
 			    (tlist->mode == STATS_GPS_LEGACY) ||
 			      (tlist->mode == ID1) || 
 				(tlist->mode == TEST_TONE)) nonlocals++;
