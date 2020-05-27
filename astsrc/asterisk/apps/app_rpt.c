@@ -10113,8 +10113,7 @@ struct sched_param      rpttele_sched;
 	/* If the telemetry is only intended for a local audience, */
 	/* only connect the ID audio to the local tx conference so */
 	/* linked systems can't hear it */
-	//ci.confno = (((mytele->mode == ID1) || (mytele->mode == PLAYBACK) || (mytele->mode == ALPHANUM_LOCAL) ||
-	ci.confno = (((mytele->mode == ID1) || (mytele->mode == LOCALPLAY) || (mytele->mode == ALPHANUM_LOCAL) ||
+	ci.confno = (((mytele->mode == ID1) || (mytele->mode == PLAYBACK) || (mytele->mode == ALPHANUM_LOCAL) ||
 	    (mytele->mode == TEST_TONE) || (mytele->mode == STATS_GPS_LEGACY)) ? 
 		myrpt->conf : myrpt->teleconf);
 	ci.confmode = DAHDI_CONF_CONFANN;
