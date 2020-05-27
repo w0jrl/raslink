@@ -107,7 +107,7 @@ mdcdecode = 1     ; 0=off\/ 1=on\
 ;noremotemdc = 0     ; 0=off\/ 1=on\
 ;nocdrpost = 0     ; 0=off\/ 1=on\
 ;mdcsay = 0     ; 0=off\/ 1=on\
-;linkclip = 0     ; 0=off\/ 1=on\
+linkclip = 1     ; 0=off\/ 1=on\
 ;zoption = 0     ; 0=off\/ 1=on\
 ;alttune = 0     ; 0=off\/ 1=on\
 ;linkdtmf = 0     ; 0=off\/ 1=on\
