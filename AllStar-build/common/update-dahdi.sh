@@ -21,7 +21,6 @@ status() {
     $@
     if [ $? -ne 0 ]; then
         echo -e "***DAHDI FAILED TO INSTALL***\nPlease see <https://jlappliedtechnologies.com/raslink/> for assistance."
-        sleep 5
         exit 1
     fi
 }

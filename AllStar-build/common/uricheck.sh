@@ -28,7 +28,7 @@ if [[ "$answer" = "y" ]] || [[ "$answer" = "Y" ]]; then
   echo "Done"
   echo "Please follow the on-screen instructions".
   echo "When done, press q then enter to quit."
-  sleep 2
+  sleep 1
   /usr/bin/uridiag
   sleep 0.5
   echo "Re-enabling your node..."

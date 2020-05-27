@@ -22,29 +22,28 @@ clear
 # Make sure system-update runs in screen
 if [ -z "$STY" ]; then exec screen -S system-update /bin/bash "$0"; fi
 echo -e "STARTING SYSTEM UPDATE\nThis will take a while.\nSystem-update is running in a screen session.\nIf your session disconnects during the update,\nafter reconnecting, run\n'screen -dr'\nto reconnect to the update screen.\nYou can continue using your node during this process.\n"
-sleep 5
+sleep 1
 # Get new sources
 echo "Updating source files for All Star..."
 cd /usr/src/utils/
 git pull >&2>/dev/null
 if [ "$?" -ne "0" ]; then
     echo -e "FAILED TO DOWNLOAD UPDATE\nABORTING SYSTEM UPDATE\nPlease see <https://jlappliedtechnologies.com/raslink/> for assistance."
-    sleep 5
     exit 1
 fi
-sleep 0.5
 echo -e "Done\n"
+sleep 0.5
 # Update the system
 echo "Updating system software..."
 (apt-get update;apt-get --fix-missing --fix-broken dist-upgrade -y)
-sleep 0.5
 echo -e "Done\n"
+sleep 0.5
 # Clean the package database
 echo "Cleaning up unneeded software..."
 (apt-get -qq autoremove --purge -y;apt-get -qq clean;apt-get -qq autoclean)
 apt-get -qq purge -y $(dpkg -l | awk '/^rc/ { print $2 }')
-sleep 0.5
 echo -e "Done\n"
+sleep 0.5
 # Setup for stage two
 cd /root
 mv .bashrc .bashrc.orig
