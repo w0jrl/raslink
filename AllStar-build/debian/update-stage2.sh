@@ -24,16 +24,15 @@ if [ -z "$STY" ]; then exec screen -S system-update /bin/bash "$0"; fi
 status() {
     "$@"
     if [ $? -ne 0 ]; then
-        sleep 5
         exit 1
     fi
 }
 echo "RUNNING UPDATE; STAGE TWO"
 echo -e "This will take a while.\nSystem-update is running in a screen session.\nIf your session disconnects during the update,\nafter reconnecting, run\n'screen -dr'\nto reconnect to\nthe update screen.\n"
-sleep 5
+sleep 1
 service asterisk stop &>/dev/null
 echo -e "YOU CANNOT USE YOUR NODE DURING THIS PROCESS.\nIt has been disabled.\n"
-sleep 1
+sleep 0.5
 # Restore bashrc
 mv /root/.bashrc.orig /root/.bashrc
 # Check for release upgrade
