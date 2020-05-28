@@ -19,7 +19,6 @@
 # Script Start
 echo "Removing unneeded packages and data"
 ntp=$(which ntpd)
-timesync=$(which timesync.hourly)
 echo "Checking NTP..."
 if [ -e "${ntp}" ]; then
     echo "Removing NTP; No longer needed for AllStar."
@@ -28,21 +27,6 @@ if [ -e "${ntp}" ]; then
     (apt-get clean;apt-get autoclean) &>/dev/null
 else
     echo "NTP isn't installed; Skipping."
-fi
-echo "Checking Timesync..."
-if [ -e "${timesync}" ]; then
-    echo "Removing Timesync; No longer needed for AllStar."
-    $(which systemctl) stop timesync &>/dev/null
-    apt-get -qq autoremove --purge -y ntpdate
-    echo "Cleaning the database"
-    (apt-get clean;apt-get autoclean) &>/dev/null
-    $(which systemctl) disable timesync &>/dev/null
-    rm -rf /etc/systemd/system/timesync.service
-    $(which systemctl) daemon-reload
-    rm -rf ${timesync}
-    $(which timedatectl) set-ntp on
-else
-    echo "Timesync isn't installed; Skipping."
 fi
 echo "Looking for Wolfram Engine..."
 if [ -e /usr/bin/wolfram ]; then
