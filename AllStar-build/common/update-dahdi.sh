@@ -18,7 +18,7 @@
 #
 # Script Start
 status() {
-    $@
+    "$@"
     if [ $? -ne 0 ]; then
         echo -e "***DAHDI FAILED TO INSTALL***\nPlease see <https://jlappliedtechnologies.com/raslink/> for assistance."
         exit 1

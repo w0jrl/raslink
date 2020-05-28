@@ -19,7 +19,7 @@
 # Needed for Uricheck to work
 # Script Start
 status() {
-    $@
+    "$@"
     if [ $? -ne 0 ]; then
         echo -e "***URIDIAG FAILED TO INSTALL***\nPlease see <https://jlappliedtechnologies.com/raslink/> for assistance."
         exit 1

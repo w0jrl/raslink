@@ -29,6 +29,8 @@ cd /usr/src/utils/
 git pull >&2>/dev/null
 if [ "$?" -ne "0" ]; then
     echo -e "FAILED TO DOWNLOAD UPDATE\nABORTING SYSTEM UPDATE\nPlease see <https://jlappliedtechnologies.com/raslink/> for assistance."
+    echo "PRESS ENTER TO EXIT"
+    read
     exit 1
 fi
 echo -e "Done\n"
