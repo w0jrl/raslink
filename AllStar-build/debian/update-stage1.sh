@@ -52,7 +52,9 @@ mv .bashrc .bashrc.orig
 cat .bashrc.orig > .bashrc
 echo "/usr/src/utils/AllStar-build/debian/update-stage2.sh" >> .bashrc
 systemctl disable asterisk.timer asterisk.service nodenames.service updatenodelist.service &>/dev/null
-echo -e "REBOOTING TO FINISH INSTALL\nWhen your node reboots, you need to log in\nto finish the update."
+echo -e "REBOOT TO FINISH INSTALL\nWhen your node reboots, you need to log in\nto finish the update."
+echo "PRESS ENTER TO REBOOT"
+read
 sync
 reboot
 exit 0
