@@ -1,3 +1,5 @@
+w0jrl - 2020-05-27: RasLink_CHANGELOG: Reformat the log so that hashes are stript
+
 w0jrl - 2020-05-27: Update timers in scripts
 Some users have reported that system-update is too slow.
 
@@ -73,8 +75,6 @@ w0jrl - 2020-05-20: Required-tools: Add libblkid-dev
 w0jrl - 2020-05-20: Asterisk: Update modules from AllStarLink
 
 w0jrl - 2020-04-27: Update version to RasLink-20.05
-
-w0jrl - 2020-04-26: Merge branch 'feature/telemetry_ducking' into RasLink-20.05
 
 w0jrl - 2020-04-26: App_rpt: Fix bad patch
 
@@ -248,8 +248,6 @@ w0jrl - 2019-07-24: Update Skyler's callsign in comments for wifi-setup
 
 w0jrl - 2019-07-22: Update version to 19.08
 
-w0jrl - 2019-07-08: Merge branch 'build-asterisk' into update-19.08
-
 w0jrl - 2019-07-08: Stop removing libpt-dev
  * Needed for Asterisk to build properly
 
@@ -257,8 +255,6 @@ w0jrl - 2019-07-08: Add exports required for libpt to update-asterisk
 
 w0jrl - 2019-07-08: Add libpt-dev to required-tools
  *Used with gcc
-
-w0jrl - 2019-06-30: Merge branch 'update-19.07'
 
 w0jrl - 2019-06-30: Update version number to 19.07
 
@@ -270,8 +266,6 @@ w0jrl - 2019-06-01: Update version number to 19.06
 
 w0jrl - 2019-05-23: Set permissions for dsp device at system boot
 
-w0jrl - 2019-04-30: Merge branch 'update-19.05'
-
 w0jrl - 2019-04-30: Bump version to 19.05
 
 w0jrl - 2019-04-26: Update help text in nodenames control script
@@ -280,13 +274,7 @@ w0jrl - 2019-04-26: Update retry count in rc.updatenodelist
 
 w0jrl - 2019-04-26: Reduce Asterisk startup timer by 15 seconds
 
-w0jrl - 2019-03-31: Merge branch 'update-19.04'
-
 w0jrl - 2019-03-31: Update RasLink to 19.04
-
-w0jrl - 2019-03-20: Merge branch 'queue_size' into update-19.04
-
-w0jrl - 2019-03-20: Merge branch 'dahdi-patches' into update-19.04
 
 w0jrl - 2019-03-20: Remove pciradio patch
  No longer supported in dahdi.
@@ -300,11 +288,7 @@ w0jrl - 2019-03-20: Add Dahdi patches from AllStar Link
 
 w0jrl - 2019-03-09: Update usbradio queue_size to 4
 
-w0jrl - 2019-03-01: Merge branch 'update-19.03'
-
 w0jrl - 2019-02-27: Update to version 19.03
-
-w0jrl - 2019-02-01: Merge branch 'update-19.02'
 
 w0jrl - 2019-01-28: Update version to 19.02
 
@@ -322,8 +306,6 @@ w0jrl - 2019-01-28: Remove blank line from end of rpt template
 
 w0jrl - 2019-01-28: Remove sudo from raslink-pc-install
  Not needed.
-
-w0jrl - 2018-12-31: Merge branch 'update-19.01'
 
 w0jrl - 2018-12-25: Remove sudo from reboot command in rpi update-stage2
  No need, the script already runs as root.
@@ -350,8 +332,6 @@ w0jrl - 2018-12-25: Update copyright in scripts and service units
 
 w0jrl - 2018-12-25: Update license file from upstream
 
-w0jrl - 2018-11-30: Merge branch 'update-18.12'
-
 w0jrl - 2018-11-30: Remove fixed-dahdi-patches directory
  No longer needed.
 
@@ -372,17 +352,11 @@ w0jrl - 2018-11-19: Update version.sh
 
 w0jrl - 2018-11-19: Update Asterisk components from upstream
 
-w0jrl - 2018-10-25: Merge branch 'update-18.11'
-
 w0jrl - 2018-10-25: Update 18.11
 
 w0jrl - 2018-09-17: Update RasLink to version 18.10
 
-w0jrl - 2018-08-31: Merge branch 'update-18.09'
-
 w0jrl - 2018-08-31: Update RasLink to 18.09
-
-w0jrl - 2018-08-24: Merge branch 'wifi-update'
 
 w0jrl - 2018-08-24: Filter Wi-Fi card listso only the card name is output
  The card name is used in the wificard variable.
@@ -392,17 +366,11 @@ as failed.
 w0jrl - 2018-08-24: Use ip command to setup connection
  Ifconfig is deprecated.
 
-w0jrl - 2018-08-08: Merge branch 'hotfix-remove-dvswitch'
-
 w0jrl - 2018-08-08: Stop downloading ASL-sounds
  Causes build errors on some hosts.
 The required files already exist in the repository.
 
-w0jrl - 2018-07-16: Merge branch 'update-18.08'
-
 w0jrl - 2018-07-16: Update app_rpt to version 18.08
-
-w0jrl - 2018-07-16: Merge branch 'error-checking'
 
 w0jrl - 2018-07-13: Check for failed download during stage 1 of system-update
  Abort update if download fails.
@@ -410,8 +378,6 @@ w0jrl - 2018-07-13: Check for failed download during stage 1 of system-update
 w0jrl - 2018-06-13: Update nodenames from Gitlab
 
 w0jrl - 2018-06-13: Move RasLink to Gitlab
-
-w0jrl - 2018-06-12: Merge branch 'update-18.07'
 
 w0jrl - 2018-06-12: Update RasLink to version 18.07
 
@@ -1029,8 +995,6 @@ w0jrl - 2016-07-26: Update Debian install script
 
 w0jrl - 2016-07-26: Keep Dahdi from printing useless error messages to the Asterisk log file
 
-w0jrl - 2016-07-26: Fix commits
-
 w0jrl - 2016-07-26: Update README
 
 w0jrl - 2016-07-26: Keep Dahdi from printing useless error messages to the Asterisk log file
@@ -1073,10 +1037,6 @@ w0jrl - 2016-06-06: Fix audio module loading on rpi
 		This caused multiple copies of 'snd_pcm_oss' to be added to
 		/etc/modules.
 
-w0jrl - 2016-06-01: Merge branch 'master' into testing
-
-w0jrl - 2016-06-01: Fix 'debian/update-stage2.sh'
-
 w0jrl - 2016-06-01: Clean up the update scripts
 
 w0jrl - 2016-06-01: Clean up the update scripts
@@ -1094,27 +1054,17 @@ w0jrl - 2016-05-27: Update sources and scripts
 
 w0jrl - 2016-05-19: Change update scripts to use git clean
 
-w0jrl - 2016-05-19: Sync commits
-
 w0jrl - 2016-05-19: Update Asterisk and Libpri
 
 w0jrl - 2016-05-19: Update source version number
 
-w0jrl - 2016-05-19: Merge branch 'testing'
-
 w0jrl - 2016-05-19: Update Asterisk source
-
-w0jrl - 2016-05-19: Modify 'common/update-asterisk.sh' to update svn version
-
-w0jrl - 2016-05-19: Modify 'common/update-asterisk.sh' to update svn version
 
 w0jrl - 2016-05-19: Modify 'common/update-asterisk.sh' to update the svn version
 
 w0jrl - 2016-05-19: Update Asterisk and Libpri
 
 w0jrl - 2016-05-19: Add make-links script for Debian, and modify 'debian/update-stage2.sh'
-
-w0jrl - 2016-05-19: Merge branch 'sources' into testing
 
 w0jrl - 2016-05-19: Update Asterisk and Libpri
 
@@ -1138,8 +1088,6 @@ w0jrl - 2016-05-15: Remove old kernel headers while 'rpi-update-kernel.sh' is ru
 
 w0jrl - 2016-05-15: Remove old kernel headers while 'rpi-update-kernel.sh' is running
 
-w0jrl - 2016-05-15: Merge changes to 'update-dahdi.sh'
-
 w0jrl - 2016-05-15: Add wildcard to 'update-dahdi.sh'
 
 w0jrl - 2016-05-15: Change 'update-dahdi.sh'
@@ -1149,8 +1097,6 @@ w0jrl - 2016-05-15: Replace README.md after merge
 w0jrl - 2016-05-15: Add fxload as required package in build scripts
 
 w0jrl - 2016-05-15: Create new build process
-
-w0jrl - 2016-05-15: Sync files
 
 w0jrl - 2016-05-15: Change dahdi path in build scripts
 
@@ -1214,11 +1160,7 @@ w0jrl - 2016-05-13: Update sourcecode
 
 w0jrl - 2016-05-13: Update README for the testing branch
 
-w0jrl - 2016-05-13: Add script to remove pi user
-
 w0jrl - 2016-05-13: Add script to remove pi user; Not needed for AllStar
-
-w0jrl - 2016-05-13: Synchronize commits
 
 w0jrl - 2016-05-13: Remove trailing whitespace after website name
 
@@ -1234,23 +1176,13 @@ w0jrl - 2016-05-13: Update boot configuration for RPI
 * added script that should be run before system-update
  to update kernel headers
 
-w0jrl - 2016-05-13: Update scripts to install automake1.9
-
 w0jrl - 2016-05-09: Update README.md
-
-w0jrl - 2016-05-13: Merge branch 'master' of https://github.com/w0jrl/AllStar-raspbian
 
 w0jrl - 2016-05-09: Update README.md
 
 w0jrl - 2016-05-13: Update scripts to install automake1.9
 
 w0jrl - 2016-05-09: Update README.md
-
-w0jrl - 2016-05-09: Update startup configuration
-The startup process no longer uses rc.local.
-Systemd timers are used instead.
-This allows users to run there own applications on startup from rc.local,
-without being clobbered by the update process.
 
 w0jrl - 2016-05-09: Update Asterisk sources
 
@@ -1263,8 +1195,6 @@ w0jrl - 2016-05-06: Update .gitignore
 w0jrl - 2016-05-06: Update .gitignore
 
 w0jrl - 2016-05-06: Modify 'update-stage2.sh' to disable timers; all platforms
-
-w0jrl - 2016-05-06: Merge branch 'testing' of https://github.com/w0jrl/AllStar-raspbian into startup
 
 w0jrl - 2016-05-06: Add startup timer for dahdi
 
@@ -1281,8 +1211,6 @@ w0jrl - 2016-05-05: Add updatenodelist.service and asterisk.timer
 w0jrl - 2016-05-03: Replace README for the 'testing' branch
 I broke it when I did a rebase!
 
-w0jrl - 2016-05-03: Merge branch 'testing' of https://github.com/w0jrl/AllStar-raspbian into testing
-
 w0jrl - 2016-05-03: Modify 'rpi/build-asterisk.sh' to change RPTENA message in app_rpt.c
 
 w0jrl - 2016-05-03: Modify 'rpi/build-asterisk.sh' to change RPTENA message in app_rpt.c
@@ -1292,9 +1220,6 @@ w0jrl - 2016-05-03: Move restore bashrc lines to end of file 'update-stage2.sh';
 w0jrl - 2016-05-03: Modify 'rpi/build-asterisk.sh' to change RPTENA message in app_rpt.c
 
 w0jrl - 2016-05-03: Move restore bashrc lines to end of file 'update-stage2.sh'; both platforms
-
-w0jrl - 2016-05-03: Merge branch 'testing' of https://github.com/w0jrl/AllStar-raspbian
-Make app_rpt say "TXENA" when the transmitter is enabled.
 
 w0jrl - 2016-05-03: Update app_rpt.c to say "TXENA when TX enabled
 
@@ -1303,15 +1228,9 @@ w0jrl - 2016-05-03: Merge build scripts
 w0jrl - 2016-05-03: Remove build scripts for refactoring
 A bad merge caused the wrong scripts to get added.
 
-w0jrl - 2016-05-03: Merge branch 'master' of https://github.com/w0jrl/AllStar-raspbian
-
 w0jrl - 2016-05-03: Revert "Merge branch 'testing' of https://github.com/w0jrl/AllStar-raspbian"
 This reverts commit e7f1770d2d7387b8a689035a7578ffee06bcd7b5, reversing
 changes made to 5f4c3259e0f06be344f82367ead9e0b3eff9c369.
-
-w0jrl - 2016-05-03: Update Dahdi and Build scripts
-
-w0jrl - 2016-05-03: Merge branch 'testing'
 
 w0jrl - 2016-05-03: Revert "Revert "Merge branch 'testing' of https://github.com/w0jrl/AllStar-raspbian""
 This reverts commit e8152e63421136fa9a86bf4c2564abe8759e5000.
@@ -1334,9 +1253,6 @@ w0jrl - 2016-05-03: Revert "Merge branch 'testing' of https://github.com/w0jrl/A
 This reverts commit e7f1770d2d7387b8a689035a7578ffee06bcd7b5, reversing
 changes made to 5f4c3259e0f06be344f82367ead9e0b3eff9c369.
 
-w0jrl - 2016-05-03: Merge branch 'testing' of https://github.com/w0jrl/AllStar-raspbian
-Update Dahdi and build scripts
-
 w0jrl - 2016-05-03: Update Dahdi and build scripts
 
 w0jrl - 2016-05-02: Change uridiag install method
@@ -1347,24 +1263,13 @@ w0jrl - 2016-05-02: Fix scripts and uricheck execution
  * Update scripts to prevent printing not found messages
  * Fix uricheck soft links
 
-w0jrl - 2016-05-02: Update uricheck installation commands
-
 w0jrl - 2016-05-02: Update uricheck install scripts; all platforms
 Makes sure that uricheck installs properly on a clean build of Debian and
 Raspbian.
 
-w0jrl - 2016-05-02: Update uricheck execution bit; all platforms
-
 w0jrl - 2016-05-02: Set uricheck execution bit
 
-w0jrl - 2016-05-02: Fix rpi/chk-packages.sh
-Forgot to add a quote in an echo statement for the logrotate check.
-
 w0jrl - 2016-05-02: Update rpi/chk-packages.sh
-
-w0jrl - 2016-05-02: Update Logrotate settings
-Logs will no longer refresh on boot of the rpi.
-Instead, they will be rotated once a month by logrotate.
 
 w0jrl - 2016-05-02: Add logrotate parameter check to AllStar-build/rpi/chkpackages.sh
 
@@ -1377,8 +1282,6 @@ w0jrl - 2016-05-02: Update 'rpi/rpi-image-prep.sh'
 Change log rotate method
 
 w0jrl - 2016-05-02: Move 'mk-logrotate-asterisk.sh' from debian to common, and update 'debian-allstar-install.sh' to reflect the change
-
-w0jrl - 2016-05-01: Update Asterisk configuration templates
 
 w0jrl - 2016-05-01: Fix alignment in sip.conf template
 
@@ -1395,23 +1298,13 @@ w0jrl - 2016-05-01: Fix alignment in dnsmgr.conf template
 
 w0jrl - 2016-05-01: Fix alignment in usbradio.conf and rpt.conf templates
 
-w0jrl - 2016-04-24: Merge branch 'testing'
-
 w0jrl - 2016-04-24: Add patches to install Screen
 
-w0jrl - 2016-04-20: Merge branch 'testing'
-
 w0jrl - 2016-04-20: Remove 'killall rc.updatenodelist' from update-stage2
-
-w0jrl - 2016-04-20: Merge branch 'testing'
-Fix kludgy patch for 'update-stage2.sh'
 
 w0jrl - 2016-04-20: Fix the kludgy patch to 'update-stage2.sh'
 Making the script wait for 30 seconds would make the update take too long.
 Running killall rc.local before the build process fixes the problem.
-
-w0jrl - 2016-04-20: Merge branch 'testing'
- *Fix stage 2 of the update process
 
 w0jrl - 2016-04-20: Fix 'update-stage2.sh' on both platforms
 I forgot to factor in the startup timer!
@@ -1423,9 +1316,6 @@ before other system services are up fully
 on both platforms
 No longer needed
 
-w0jrl - 2016-04-20: Merge branch 'testing'
- * Update system boot configuration for both platforms
-
 w0jrl - 2016-04-20: Update system boot configuration
  * Add timer to rc.local to keep asterisk from starting
 before other system services are up fully
@@ -1435,9 +1325,6 @@ No longer needed
 
 w0jrl - 2016-04-19: Update README
 Add information about how to switch back to master.
-
-w0jrl - 2016-04-19: Merge branch 'testing'
-* Add uridiag (URI diagnostic tool), and update scripts to support it
 
 w0jrl - 2016-04-19: Update 'AllStar-build/rpi/build-asterisk.sh'
 
@@ -1450,13 +1337,6 @@ w0jrl - 2016-04-19: Update README
 w0jrl - 2016-04-19: Update README
 
 w0jrl - 2016-04-19: Add URI diagnostic tool
-
-w0jrl - 2016-04-09: Merge branch 'testing'
-* Fix spelling errors in configuration templates
-* Add notch filter
-* add mdc1200 support
-* Change directory structure
-* Update build scripts
 
 w0jrl - 2016-04-09: Fix spelling errors in configuration templates
 
@@ -1474,8 +1354,6 @@ Add notch filter
 Add mdc1200 support
 Fix configuration files that will live in /etc/asterisk; They were a mess!
 
-w0jrl - 2016-04-08: Merge branch 'testing' of https://github.com/w0jrl/AllStar-raspbian into testing
-
 w0jrl - 2016-04-08: Create new directory structure
 This will make it easier to tell what platform each file is part of.
 Scripts for Raspbian and Debian have been changed to work with the new directories.
@@ -1485,26 +1363,7 @@ w0jrl - 2016-04-08: Create new directory structure
 This will make it easier to tell what platform each file is part of.
 Scripts for Raspbian and Debian have been changed to work with the new directories.
 
-w0jrl - 2016-04-07: Merge branch 'testing' of https://github.com/w0jrl/AllStar-raspbian into testing
-
-w0jrl - 2016-04-07: Merge branch 'testing' of https://github.com/w0jrl/AllStar-raspbian into testing
-Update rc.allstar and asterisk.service
-
-w0jrl - 2016-04-07: Merge branch 'testing' of https://github.com/w0jrl/AllStar-raspbian into testing
-
 w0jrl - 2016-04-07: Update 'system/rc.allstar' and 'system/asterisk.service'
-
-w0jrl - 2016-04-07: Merge branch 'master' of https://github.com/w0jrl/AllStar-raspbian
-
-w0jrl - 2016-04-02: Merge branch 'testing'
-
-w0jrl - 2016-04-07: Merge branch 'master' of https://github.com/w0jrl/AllStar-raspbian
-
-w0jrl - 2016-04-07: Merge branch 'testing'
-Update boot configuration for both platforms
-Update 'debian/update-stage2.sh'
-
-w0jrl - 2016-04-07: Merge branch 'testing' Updated boot configuration for both platforms Updated 'debian/update-stage2.sh'
 
 w0jrl - 2016-04-07: Updated 'system/rc.allstar' and 'system/asterisk.service'
 
@@ -1512,15 +1371,9 @@ w0jrl - 2016-04-07: Updated 'debian/update-stage2.sh'
 
 w0jrl - 2016-04-07: Tweaked boot configuration files
 
-w0jrl - 2016-04-02: Merge branch 'testing'
-
 w0jrl - 2016-04-02: Update-stage2 script changed
 
-w0jrl - 2016-04-02: Merge branch 'testing' Updated Asterisk sources Tweaked update scripts Removed 'rebuild.sh'; No longer needed Updated 'rc.local'
-
 w0jrl - 2016-04-02: Updated system-update
-
-w0jrl - 2016-04-02: Merge branch 'testing' Updated Asterisk sources
 
 w0jrl - 2016-04-02: Changed attributes file
 
@@ -1530,23 +1383,15 @@ w0jrl - 2016-04-02: Removed attributes file; Not needed
 
 w0jrl - 2016-04-02: Updated build scripts
 
-w0jrl - 2016-04-02: Merge branch 'master' into testing
-
 w0jrl - 2016-04-02: Updated build scripts
 
 w0jrl - 2016-04-02: Updated build scripts
-
-w0jrl - 2016-04-02: Merge branch 'testing' Removed references to  rpi-update, as well as the rpi-update package
 
 w0jrl - 2016-04-02: Removed rpi-update
-
-w0jrl - 2016-04-02: Merge branch 'testing' Updated boot configuration
 
 w0jrl - 2016-04-02: Updated boot parameters
 
 w0jrl - 2016-04-02: Code clean up
-
-w0jrl - 2016-04-02: Merge branch 'testing'
 
 w0jrl - 2016-04-02: Modified attributes file
 
@@ -1556,8 +1401,6 @@ w0jrl - 2016-04-02: Merged changes from testing to master
 
 w0jrl - 2016-04-02: Added gitignore file
 
-w0jrl - 2016-03-29: Merge branch 'master' into testing
-
 w0jrl - 2016-03-29: Updated merge settings
 
 w0jrl - 2016-03-29: Updated merge settings
@@ -1566,15 +1409,11 @@ w0jrl - 2016-03-29: Fixed broken README
 
 w0jrl - 2016-03-29: Removed unneeded file
 
-w0jrl - 2016-03-29: Merge branch 'testing'
-
 w0jrl - 2016-03-29: Tweaked usbradio template
 
 w0jrl - 2016-03-29: Updated merge settings
 
 w0jrl - 2016-03-29: updated merge settings
-
-w0jrl - 2016-03-29: Merge branch 'testing'
 
 w0jrl - 2016-03-28: Tweaked usbradio template
 
@@ -1591,8 +1430,6 @@ w0jrl - 2016-03-27: Updated README. Rebuilt system-update scripts to use testing
 w0jrl - 2016-03-27: Created README. It will be updated soon.
 
 w0jrl - 2016-03-27: Updated README
-
-w0jrl - 2016-03-27: Merge branch 'master' of https://github.com/w0jrl/AllStar-raspbian
 
 w0jrl - 2016-03-27: Updated the usbradio.conf template
 
