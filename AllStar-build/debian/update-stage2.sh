@@ -108,7 +108,7 @@ if [[ "$(grep -ic "snd_mixer_oss" /etc/modules)" -gt "1" ]]; then
   sed -i '/snd_mixer_oss/d' /etc/modules
   echo "snd_mixer_oss" >> /etc/modules
 fi
-$(which timedatectl) set-ntp on
+$(which timedatectl) set-ntp off
 echo -e "Done\n"
 sleep 0.5
 echo -e "UPDATE COMPLETE\nYou can run this tool at any time by typing 'system-update' at a root prompt."
