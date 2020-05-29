@@ -24,7 +24,7 @@ if [ -z "$STY" ]; then exec screen -S system-update /bin/bash "$0"; fi
 status() {
     "$@"
     if [ $? -ne 0 ]; then
-        echo ?PRESS ENTER TO EXIT"
+        echo "PRESS ENTER TO EXIT"
         exit 1
     fi
 }
