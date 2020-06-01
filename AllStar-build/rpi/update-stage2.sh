@@ -25,6 +25,7 @@ status() {
     "$@"
     if [ $? -ne 0 ]; then
         echo "PRESS ENTER TO EXIT"
+        read
         exit 1
     fi
 }
