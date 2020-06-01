@@ -1,3 +1,7 @@
+w0jrl - Mon Jun 1 09:31:59 2020 -0600: System-update: Make sure stage 2 prompts the user on error
+
+w0jrl - Thu May 28 19:13:01 2020 -0600: RasLink_CHANGELOG: CHANGELOG RL-20.06
+
 w0jrl - Thu May 28 17:37:46 2020 -0600: System-update: Users need to acknowledge the reboot message in stage-1
 
 w0jrl - Thu May 28 17:02:48 2020 -0600: System-update: Don't exit on errors
