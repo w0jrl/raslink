@@ -113,6 +113,7 @@ if [[ "$(grep -ic "snd_mixer_oss" /etc/modules)" -gt "1" ]]; then
   echo "snd_mixer_oss" >> /etc/modules
 fi
 $(which timedatectl) set-ntp off
+(cp /usr/src/utils/AllStar-build/common/irqbalance.daily /etc/cron.daily/irqbalance;chmod +x /etc/cron.daily/irqbalance)
 echo -e "Done\n"
 sleep 0.5
 echo -e "UPDATE COMPLETE\nYou can run this tool at any time by typing 'system-update' at a root prompt."
