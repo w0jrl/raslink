@@ -465,7 +465,7 @@
 
 #define	REQUIRED_ZAPTEL_VERSION 'A'
 
-#define	STATPOST_PROGRAM "/usr/bin/wget,-q,--output-document=/dev/null,--no-check-certificate"
+#define	STATPOST_PROGRAM "/usr/bin/wget,-q,--timeout=1,--waitretry=0,--tries=2,--retry-connrefused,--output-document=/dev/null,--no-check-certificate"
 
 //Define noop equivalent
 #define noop ((void)0)
@@ -477,11 +477,11 @@
 #define	DEFAULT_LITZ_TIME 3000
 #define	DEFAULT_LITZ_CHAR "0"
 
-#define TELETHREAD_PRI		40
-#define RPTTHREAD_PRI		70
+#define TELETHREAD_PRI		80
+#define RPTTHREAD_PRI		60
 #define RPTCALLTHREAD_PRI	80
 #define RPTMASTERTHREAD_PRI	60
-#define SCHED_POLICY		SCHED_RR
+#define SCHED_POLICY		SCHED_FIFO
 
 
 /*
