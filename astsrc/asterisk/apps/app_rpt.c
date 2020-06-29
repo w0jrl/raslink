@@ -477,11 +477,11 @@
 #define	DEFAULT_LITZ_TIME 3000
 #define	DEFAULT_LITZ_CHAR "0"
 
-#define TELETHREAD_PRI		70
-#define RPTTHREAD_PRI		40
-#define RPTCALLTHREAD_PRI	70
-#define RPTMASTERTHREAD_PRI	40
-#define SCHED_POLICY		SCHED_FIFO
+#define TELETHREAD_PRI		40
+#define RPTTHREAD_PRI		70
+#define RPTCALLTHREAD_PRI	80
+#define RPTMASTERTHREAD_PRI	60
+#define SCHED_POLICY		SCHED_RR
 
 
 /*
@@ -586,6 +586,7 @@ enum{DAQ_TYPE_UCHAMELEON};
 ASTERISK_FILE_VERSION(__FILE__, "$Revision 200511")
 // ASTERISK_FILE_VERSION(__FILE__, "$"ASTERISK_VERSION" $")
 
+#include <pthread.h>
 #include <signal.h>
 #include <stdio.h>
 #include <unistd.h>

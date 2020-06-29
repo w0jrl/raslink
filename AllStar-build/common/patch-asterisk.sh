@@ -36,7 +36,5 @@ sed -i 's/res \= sayphoneticstr/res \= saycharstr/' ./apps/app_rpt.c
 sed -i 's/26.0 : 42.0/32.0 : 42.0/' ./main/dsp.c
 # Set queue size in usbradio driver
 sed -i 's/define	QUEUE_SIZE	2/define	QUEUE_SIZE	4/' ./channels/chan_usbradio.c
-# Make sure asterisk uses pthread
-sed -i 's/ASTCFLAGS+=-lpthread -Wno-unused-result/ASTCFLAGS\+\=-pthread -Wno-unused-result/' ./Makefile
 echo "Done"
 exit 0

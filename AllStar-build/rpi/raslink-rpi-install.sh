@@ -85,6 +85,7 @@ systemctl enable tmpfs.service &>/dev/null
 systemctl enable nodenames.service &>/dev/null
 systemctl enable zram.service &>/dev/null
 systemctl enable timesync.service &>/dev/null
+(cp /usr/src/utils/AllStar-build/common/irqbalance.daily /etc/cron.daily/irqbalance;chmod +x /etc/cron.daily/irqbalance)
 chmod +x /usr/src/utils/AllStar-build/rpi/make-links.sh
 /usr/src/utils/AllStar-build/rpi/make-links.sh
 if [[ "$(grep -ic "/usr/bin/version" /root/.profile)" = "0" ]]; then
