@@ -36,5 +36,14 @@ sed -i 's/res \= sayphoneticstr/res \= saycharstr/' ./apps/app_rpt.c
 sed -i 's/26.0 : 42.0/32.0 : 42.0/' ./main/dsp.c
 # Set queue size in usbradio driver
 sed -i 's/define	QUEUE_SIZE	2/define	QUEUE_SIZE	4/' ./channels/chan_usbradio.c
+# Include pthread.h in sources
+if [ "$(grep -ic 'pthread.h' ./channels/chan_usbradio.c)" = "0" ];then
+    sed -i '/stdio.h/i\
+#include <pthread.h>' ./channels/chan_usbradio.c
+fi
+if [ "$(grep -ic 'pthread.h' ./channels/chan_simpleusb.c)" = "0" ];then
+    sed -i '/stdio.h/i\
+#include <pthread.h>' ./channels/chan_simpleusb.c
+fi
 echo "Done"
 exit 0
