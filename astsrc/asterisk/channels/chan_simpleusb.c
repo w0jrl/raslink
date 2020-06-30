@@ -82,6 +82,7 @@
 
 ASTERISK_FILE_VERSION(__FILE__, "$Revision: 20511 $")
 
+#include <pthread.h>
 #include <stdio.h>
 #include <ctype.h>
 #include <math.h>
