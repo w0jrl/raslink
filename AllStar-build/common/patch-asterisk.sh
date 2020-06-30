@@ -45,5 +45,9 @@ if [ "$(grep -ic 'pthread.h' ./channels/chan_simpleusb.c)" = "0" ];then
     sed -i '/stdio.h/i\
 #include <pthread.h>' ./channels/chan_simpleusb.c
 fi
+if [ "$(grep -ic 'pthread.h' ./apps/app_rpt.c)" = "0" ];then
+    sed -i '/signal.h/i\
+#include <pthread.h>' ./apps/app_rpt.c
+fi
 echo "Done"
 exit 0
