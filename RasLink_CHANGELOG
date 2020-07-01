@@ -1,3 +1,36 @@
+w0jrl - Mon Jun 29 21:43:09 2020 -0600: Patch-asterisk: Make sure pthread.h is included in future updates to app_rpt.c
+
+w0jrl - Mon Jun 29 20:47:56 2020 -0600: Patch-asterisk: Include pthread.h in sources where needed
+
+w0jrl - Mon Jun 29 15:06:18 2020 -0600: App_rpt: Add tries and timeout to STATPOST_PROGRAM
+
+w0jrl - Mon Jun 29 10:31:13 2020 -0600: Irqbalance: Reload daily to prevent memory leaks
+
+w0jrl - Mon Jun 29 10:14:01 2020 -0600: LICENSE_RasLink: Update text
+
+w0jrl - Mon Jun 29 10:09:09 2020 -0600: Asterisk-Makefile: Remove pthread patch
+
+w0jrl - Mon Jun 29 10:01:05 2020 -0600: App_rpt: Adjust pthreads
+* Change priority values
+
+* Include pthread.h
+
+w0jrl - Sun Jun 21 15:07:12 2020 -0600: App_rpt: Revert tries in STATPOST_PROGRAM
+* Causes  the transmitter to hang if unable to connect to the stats server
+
+w0jrl - Sun Jun 21 14:35:42 2020 -0600: App_rpt: Set tries to 5 in STATPOST_PROGRAM
+
+w0jrl - Sun Jun 21 13:57:01 2020 -0600: App_rpt: Add tries to STATPOST_PROGRAM
+
+w0jrl - Sat Jun 20 12:57:13 2020 -0600: Usbradio: Readd RasLink patches
+
+w0jrl - Sat Jun 20 12:25:49 2020 -0600: Usbradio: Revert changes to CM119B code made by AllStar Link
+* Caused issues withCM119A chips
+
+w0jrl - Sat Jun 20 10:47:56 2020 -0600: App_rpt: Update version number to 20.07
+
+w0jrl - Mon Jun 1 09:34:59 2020 -0600: RasLink_CHANGELOG: CHANGELOG RL-20.06.1
+
 w0jrl - Mon Jun 1 09:31:59 2020 -0600: System-update: Make sure stage 2 prompts the user on error
 
 w0jrl - Thu May 28 19:13:01 2020 -0600: RasLink_CHANGELOG: CHANGELOG RL-20.06
