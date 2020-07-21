@@ -465,7 +465,7 @@
 
 #define	REQUIRED_ZAPTEL_VERSION 'A'
 
-#define	STATPOST_PROGRAM "/usr/bin/wget,-q,--timeout=1,--waitretry=0,--tries=2,--retry-connrefused,--output-document=/dev/null,--no-check-certificate"
+#define STATPOST_PROGRAM "/usr/bin/wget,-q,--no-http-keep-alive,--timeout=1,--waitretry=0,--tries=2,--retry-connrefused,--output-document=/dev/null,--no-check-certificate"
 
 //Define noop equivalent
 #define noop ((void)0)
@@ -511,7 +511,7 @@ enum {LINKMODE_OFF,LINKMODE_ON,LINKMODE_FOLLOW,LINKMODE_DEMAND,
 	LINKMODE_GUI,LINKMODE_PHONE,LINKMODE_ECHOLINK,LINKMODE_TLB};
 
 enum{ID,PROC,TERM,COMPLETE,UNKEY,REMDISC,REMALREADY,REMNOTFOUND,REMGO,
-	CONNECTED,CONNFAIL,STATUS,TIMEOUT,ID1, STATS_TIME, PLAYBACK,
+CONNECTED,CONNFAIL,STATUS,TIMEOUT,ID1, STATS_TIME, PLAYBACK,
 	LOCALPLAY, STATS_VERSION, IDTALKOVER, ARB_ALPHA, TEST_TONE, REV_PATCH,
 	TAILMSG, MACRO_NOTFOUND, MACRO_BUSY, LASTNODEKEY, FULLSTATUS,
 	MEMNOTFOUND, INVFREQ, REMMODE, REMLOGIN, REMXXX, REMSHORTSTATUS,
@@ -1498,7 +1498,7 @@ struct rpt_globals_pvt {
 	char net_if[50];	// Network interface to report in status 22 messages
 } __attribute__((aligned));
 
-#define ASL_STATPOST_URL "http://stats.allstarlink.org/uhandler.php"
+#define ASL_STATPOST_URL "http://stats-mco.allstarlink.org/uhandler.php"
 #define	REMOTEIP_URL	 "http://ifconfig.me/ip"
 
 static struct rpt_globals_pvt rpt_globals = {
@@ -1528,6 +1528,7 @@ struct sysinfo_pvt {
 	char myip[50];
 	char sysid[66];
 	char ssysid[26];
+	char agent[150];
 } __attribute__((aligned));
 
 static struct sysinfo_pvt sysinfo = { 
@@ -2004,7 +2005,7 @@ int	ms;
 struct MemoryStruct {
         char *memory;
         size_t size;
-};
+} __attribute__((aligned));
 
 static void *myrealloc(void *ptr, size_t size)
 {
@@ -2043,10 +2044,7 @@ AST_THREADSTORAGE_CUSTOM(curl_instance, curl_instance_init, curl_instance_cleanu
 
 static int curl_internal(struct MemoryStruct *chunk, char *url, char *post)
 {
-	const char crl_agnt[] = "asterisk-libcurl-agent/1.0";
-	char curl_agent_string[150]="";
-        int ret, vmajor, vminor;
-        char *skzy;
+        int ret;
         CURL **curl;
 
         if (!(curl = ast_threadstorage_get(&curl_instance, sizeof(*curl))))
@@ -2057,17 +2055,11 @@ static int curl_internal(struct MemoryStruct *chunk, char *url, char *post)
                 if (!(*curl = curl_easy_init()))
                         return -1;
 
-		skzy = strstr(tdesc, "version");
-		sprintf(curl_agent_string, "%s (-; Linux %s)(ID:%s)",crl_agnt,sysinfo.cvers,sysinfo.ssysid); 
-                if(skzy) 
-                	if(sscanf(skzy, "version %d.%d", &vmajor, &vminor) == 2) 
-				sprintf(curl_agent_string, "%s (app_rpt v%d.%d; Linux %s)(ID:%s)",crl_agnt,vmajor,vminor,sysinfo.cvers,sysinfo.ssysid);
-
 		curl_easy_setopt(*curl, CURLOPT_NOSIGNAL, 1);
 
 		curl_easy_setopt(*curl, CURLOPT_TIMEOUT, 30);
 	        curl_easy_setopt(*curl, CURLOPT_WRITEFUNCTION, WriteMemoryCallback);
-	        curl_easy_setopt(*curl, CURLOPT_USERAGENT, curl_agent_string);
+	        curl_easy_setopt(*curl, CURLOPT_USERAGENT, sysinfo.agent);
 	        curl_easy_setopt(*curl, CURLOPT_SSL_VERIFYHOST, 0);
         	curl_easy_setopt(*curl, CURLOPT_SSL_VERIFYPEER, 0);
         }
@@ -2087,7 +2079,6 @@ static int curl_internal(struct MemoryStruct *chunk, char *url, char *post)
 
         return ret ? -1 : 0;
 }
-
 
 /*
 * CLI extensions
@@ -4525,8 +4516,7 @@ int	nonlocals;
         {
                 while(tlist != &myrpt->tele)
 		{
-                        //if ((tlist->mode == PLAYBACK) || 
-                        if ((tlist->mode == LOCALPLAY) || 
+if ((tlist->mode == PLAYBACK) || 
 			    (tlist->mode == STATS_GPS_LEGACY) ||
 			      (tlist->mode == ID1) || 
 				(tlist->mode == TEST_TONE)) nonlocals++;
@@ -5837,7 +5827,7 @@ int	i;
 /*
  * Send node telemetry status to stats server using libcurl
  */
-static void statpost(struct rpt *myrpt,char *pairs)
+static void statpost(struct rpt *myrpt, struct ast_channel *chan, char *pairs)
 {
 char str[300],astr[300],bstr[300];
 char result[20]="";
@@ -5845,7 +5835,7 @@ int success = 0;
 time_t	now;
 unsigned int seq;
 struct MemoryStruct chunk = { NULL, 0 };
-
+struct ast_module_user *u;
 
 	switch(rpt_globals.statpost) {
 		case 0:  // Globally we are disabled, how about on a per node basis?
@@ -5979,11 +5969,17 @@ struct MemoryStruct chunk = { NULL, 0 };
 		AST_APP_ARG(url);
 		AST_APP_ARG(postdata););
 
+	u = ast_module_user_add(chan);
+	if (u) noop;
+
 	sprintf(bstr,"%s%s", astr, str);
 
 	AST_STANDARD_APP_ARGS(args, bstr);
 	if(debug >= 64)
 		ast_log(LOG_NOTICE, "Performing statpost update for node %s. URL %s  Telem Data: %s\n\n", myrpt->name, astr, str);
+
+	if (chan)
+		ast_autoservice_start(chan);
 
 	success=0;
 	if(!curl_internal(&chunk,args.url,args.postdata ))
@@ -6006,6 +6002,11 @@ struct MemoryStruct chunk = { NULL, 0 };
 		ast_log(LOG_ERROR, "[!] URL: %s\n", astr);
 		ast_log(LOG_ERROR, "[!] Telem data: %s\n\n", str);
 	}
+
+	if (chan)
+		ast_autoservice_stop(chan);
+
+	ast_module_user_remove(u);
 	return;
 }
 
@@ -6710,7 +6711,7 @@ static char *cs_keywords[] = {"rptena","rptdis","apena","apdis","lnkena","lnkdis
 	else rpt_vars[n].p.litztime = DEFAULT_LITZ_TIME;
 	val = (char *) ast_variable_retrieve(cfg,this,"litzchar");
 	if (!val) val = DEFAULT_LITZ_CHAR;
-	rpt_vars[n].p.litzchar = ast_strdup(val);
+	else rpt_vars[n].p.litzchar = ast_strdup(val);
 	val = (char *) ast_variable_retrieve(cfg,this,"litzcmd");
 	rpt_vars[n].p.litzcmd = ast_strdup(val);
 	val = (char *) ast_variable_retrieve(cfg,this,"itxctcss");
@@ -7094,11 +7095,13 @@ static const char *public_ip( char *ip)
 static void get_sys_info (void)
 {
 
-	int i = 0;
+	int i,vmajor,vminor;
 	char tmp1[200];
 	char tmp2[200];
-	char buf[65]="";
+	char buf[65];
 	const char *devname = NULL, *uuid = NULL;
+	const char crl_agnt[] = "asterisk-libcurl-agent/1.0";
+	char curl_agent[150],*skzy;
 	unsigned char hash[SHA256_DIGEST_LENGTH];	
 	SHA256_CTX sha256;
 
@@ -7165,6 +7168,13 @@ static void get_sys_info (void)
 	strncpy(sysinfo.sysid, buf, 65);
 	sprintf(sysinfo.ssysid, "%.12s-%s", buf, &(buf[52]));
 	blkid_free_probe(mp);
+
+        skzy = strstr(tdesc, "version");
+        sprintf(curl_agent, "%s (solivagant; Linux %s; ID:%s)",crl_agnt,sysinfo.cvers,sysinfo.ssysid);
+      	if(skzy)
+               	if(sscanf(skzy, "version %d.%d", &vmajor, &vminor) == 2)
+                       	sprintf(curl_agent, "%s (app_rpt v%d.%d; Linux %s; ID:%s)",crl_agnt,vmajor,vminor,sysinfo.cvers,sysinfo.ssysid);
+        strncpy(sysinfo.agent,curl_agent,149);
 	return;
 }
 
@@ -10104,8 +10114,7 @@ struct sched_param      rpttele_sched;
 	/* If the telemetry is only intended for a local audience, */
 	/* only connect the ID audio to the local tx conference so */
 	/* linked systems can't hear it */
-	//ci.confno = (((mytele->mode == ID1) || (mytele->mode == PLAYBACK) || (mytele->mode == ALPHANUM_LOCAL) ||
-	ci.confno = (((mytele->mode == ID1) || (mytele->mode == LOCALPLAY) || (mytele->mode == ALPHANUM_LOCAL) ||
+	ci.confno = (((mytele->mode == ID1) || (mytele->mode == PLAYBACK) || (mytele->mode == ALPHANUM_LOCAL) ||
 	    (mytele->mode == TEST_TONE) || (mytele->mode == STATS_GPS_LEGACY)) ? 
 		myrpt->conf : myrpt->teleconf);
 	ci.confmode = DAHDI_CONF_CONFANN;
@@ -11482,6 +11491,7 @@ treataslocal:
 	    case REMIP_LOCAL:
                 if (wait_interval(myrpt, DLY_TELEM, mychannel) == -1) break;
 		res = telem_lookup(myrpt, mychannel, myrpt->name, "remip");
+	        public_ip(myip);
         	strncpy(sysinfo.myip,myip,20);
 		if(strlen(myip)>0) {
 	        	ast_log(LOG_NOTICE, "[*] Public IP address is %s\n\n", sysinfo.myip);
@@ -14228,7 +14238,7 @@ static int collect_function_digits(struct rpt *myrpt, char *digits,
 static void handle_link_data(struct rpt *myrpt, struct rpt_link *mylink,
 	char *str)
 {
-char	tmp[512],tmp1[512],cmd[300] = "",dest[300] = "",src[300] = "",c;
+char	tmp[1024],tmp1[1024],cmd[300],dest[300],src[300],c;
 int	i,seq, res, ts, rest;
 struct rpt_link *l;
 struct	ast_frame wf;
@@ -21698,7 +21708,7 @@ struct sched_param      rpt_sched;
 			myrpt->totalkerchunks,myrpt->totalkeyups,(int) myrpt->totaltxtime/1000,
 			myrpt->timeouts,myrpt->totalexecdcommands);
 			rpt_mutex_unlock(&myrpt->lock);
-			statpost(myrpt,str);
+			statpost(myrpt,l->chan,str);
 			rpt_mutex_lock(&myrpt->lock);
 			ast_free(str);
 		}
@@ -21726,7 +21736,7 @@ struct sched_param      rpt_sched;
 			}
 			sprintf(str,"keyed=%d&keytime=%d",myrpt->keyed,n);
 			rpt_mutex_unlock(&myrpt->lock);
-			statpost(myrpt,str);
+			statpost(myrpt,l->chan,str);
 			rpt_mutex_lock(&myrpt->lock);
 		}
 		if(totx){
