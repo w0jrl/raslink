@@ -49,5 +49,7 @@ if [ "$(grep -ic 'pthread.h' ./apps/app_rpt.c)" = "0" ];then
     sed -i '/signal.h/i\
 #include <pthread.h>' ./apps/app_rpt.c
 fi
+# Make sure asterisk core uses pthread
+sed -i 's/ASTCFLAGS+=-lpthread -Wno-unused-result/ASTCFLAGS\+\=-pthread -Wno-unused-result/' ./Makefile
 echo "Done"
 exit 0
