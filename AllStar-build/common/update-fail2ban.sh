@@ -1,5 +1,5 @@
 #!/bin/bash
-Update-fail2ban.sh -- Build Fail2Ban for RasLink
+# update-fail2ban.sh -- Build Fail2Ban for RasLink
 #    Copyright (C) 2020  Jeremy Lincicome (W0JRL)
 #    https://jlappliedtechnologies.com  admin@jlappliedtechnologies.com
 #
@@ -26,7 +26,7 @@ status() {
 }
 clone() {
     cd /usr/src/utils/astsrc/
-    git clone https://github.com/fail2ban/fail2ban.git . &>/dev/null
+    git clone https://github.com/fail2ban/fail2ban.git &>/dev/null
 }
 update() {
     cd /usr/src/utils/astsrc/fail2ban/
@@ -54,13 +54,15 @@ echo "Done"
 sleep 0.5s
 # If no configuration files are available, install them
 if [ ! -e /etc/fail2ban/fail2ban.local ] || [ ! -e /etc/fail2ban/jail.local ]; then
-    Echo " Installing Fail2Ban configuration..."
+    echo "Installing Fail2Ban configuration..."
     status cp /usr/src/utils/AllStar-build/common/fail2ban-files/*.local /etc/fail2ban/
     status cp /usr/src/utils/AllStar-build/common/fail2ban-files/fail2ban.rotate /etc/logrotate.d/fail2ban
     status touch /var/log/fail2ban.log
     status cp /usr/src/utils/AllStar-build/common/fail2ban-files/fail2ban.service /etc/systemd/system/
-    echo "Done
+    echo "Done"
 else
+    echo "Checking Fail2Ban configuration..."
     echo "Your Fail2Ban configuration is up-to-date."
+    echo "Done"
 fi
 exit 0

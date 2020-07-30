@@ -305,13 +305,13 @@ logpath  = %(auditd_log)s
 #
 
 [apache-auth]
-enabled = true
+
 port     = http,https
 logpath  = %(apache_error_log)s
 
 
 [apache-badbots]
-enabled = true
+
 # Ban hosts which agent identifies spammer robots crawling the web
 # for email addresses. The mail outputs are buffered.
 port     = http,https
@@ -321,34 +321,34 @@ maxretry = 1
 
 
 [apache-noscript]
-enabled = true
+
 port     = http,https
 logpath  = %(apache_error_log)s
 
 
 [apache-overflows]
-enabled = true
+
 port     = http,https
 logpath  = %(apache_error_log)s
 maxretry = 2
 
 
 [apache-nohome]
-enabled = true
+
 port     = http,https
 logpath  = %(apache_error_log)s
 maxretry = 2
 
 
 [apache-botsearch]
-enabled = true
+
 port     = http,https
 logpath  = %(apache_error_log)s
 maxretry = 2
 
 
 [apache-fakegooglebot]
-enabled = true
+
 port     = http,https
 logpath  = %(apache_access_log)s
 maxretry = 1
@@ -356,14 +356,14 @@ ignorecommand = %(ignorecommands_dir)s/apache-fakegooglebot <ip>
 
 
 [apache-modsecurity]
-enabled = true
+
 port     = http,https
 logpath  = %(apache_error_log)s
 maxretry = 2
 
 
 [apache-shellshock]
-enabled = true
+
 port    = http,https
 logpath = %(apache_error_log)s
 maxretry = 1
@@ -401,7 +401,7 @@ maxretry = 2
 # of usage in production environments.
 
 [php-url-fopen]
-enabled = true
+#enabled = true
 port    = http,https
 logpath = %(nginx_access_log)s
           %(apache_access_log)s
