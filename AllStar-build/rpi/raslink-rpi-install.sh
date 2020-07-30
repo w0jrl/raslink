@@ -43,6 +43,8 @@ chmod +x /usr/src/utils/AllStar-build/common/update-asterisk.sh
 status /usr/src/utils/AllStar-build/common/update-asterisk.sh
 chmod +x /usr/src/utils/AllStar-build/common/update-uridiag.sh
 status /usr/src/utils/AllStar-build/common/update-uridiag.sh
+chmod +x /usr/src/utils/AllStar-build/common/update-fail2ban.sh
+status /usr/src/utils/AllStar-build/common/update-fail2ban.sh
 echo "Done"
 echo "Installing default sound files..."
 cp -a /usr/src/utils/astsrc/sounds/* /var/lib/asterisk/sounds
@@ -85,6 +87,7 @@ systemctl enable tmpfs.service &>/dev/null
 systemctl enable nodenames.service &>/dev/null
 systemctl enable zram.service &>/dev/null
 systemctl enable timesync.service &>/dev/null
+systemctl enable fail2ban.service &>/dev/null
 (cp /usr/src/utils/AllStar-build/common/irqbalance.daily /etc/cron.daily/irqbalance;chmod +x /etc/cron.daily/irqbalance)
 chmod +x /usr/src/utils/AllStar-build/rpi/make-links.sh
 /usr/src/utils/AllStar-build/rpi/make-links.sh
