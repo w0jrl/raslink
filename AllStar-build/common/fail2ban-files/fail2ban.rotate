@@ -1,0 +1,9 @@
+/var/log/fail2ban.log {
+    missingok
+    notifempty
+    compress
+    delaycompress
+    postrotate
+        /usr/bin/fail2ban-client flushlogs >/dev/null || true
+    endscript
+}
