@@ -61,6 +61,9 @@ sleep 0.5
 chmod +x /usr/src/utils/AllStar-build/common/update-uridiag.sh
 status /usr/src/utils/AllStar-build/common/update-uridiag.sh
 sleep 0.5
+chmod +x /usr/src/utils/AllStar-build/common/update-fail2ban.sh
+status /usr/src/utils/AllStar-build/common/update-fail2ban.sh
+sleep 0.5
 # Make sure configuration files and scripts are loaded
 echo "Updating start up scripts..."
 (cp /usr/src/utils/AllStar-build/common/rc.updatenodelist /usr/local/bin/rc.updatenodelist;chmod +x /usr/local/bin/rc.updatenodelist)
@@ -102,6 +105,9 @@ systemctl enable zram.service &>/dev/null
 systemctl enable timesync.service &>/dev/null
 if [ ! -e /root/.nonames ]; then
   systemctl enable nodenames.service &>/dev/null
+fi
+if [ -e /etc/systemd/system/fail2ban.service ]; then
+  systemctl enable fail2ban.service &>/dev/null
 fi
 if [[ "$(grep -ic "snd_bcm2835" /etc/modules)" = "1" ]]; then
   sed -i '/snd_bcm2835/d' /etc/modules
