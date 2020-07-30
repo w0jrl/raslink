@@ -38,19 +38,19 @@ update() {
 if [ ! -e /usr/src/utils/astsrc/fail2ban/.git ]; then
     echo "Downloading Fail2Ban sources..."
     status clone
-    echo "Done"
+    echo -e "Done\n"
 else
     # If they do exist, pull the latest version
     echo "Updating Fail2Ban sources..."
     status update
-    echo "Done"
+    echo -e "Done\n"
 fi
 sleep 0.5s
 # Install from the fetched sources
 cd /usr/src/utils/astsrc/fail2ban/
 echo "Building and installing Fail2Ban..."
 status ./setup.py install
-echo "Done"
+echo -e "Done\n"
 sleep 0.5s
 # If no configuration files are available, install them
 if [ ! -e /etc/fail2ban/fail2ban.local ] || [ ! -e /etc/fail2ban/jail.local ]; then
@@ -59,10 +59,10 @@ if [ ! -e /etc/fail2ban/fail2ban.local ] || [ ! -e /etc/fail2ban/jail.local ]; t
     status cp /usr/src/utils/AllStar-build/common/fail2ban-files/fail2ban.rotate /etc/logrotate.d/fail2ban
     status touch /var/log/fail2ban.log
     status cp /usr/src/utils/AllStar-build/common/fail2ban-files/fail2ban.service /etc/systemd/system/
-    echo "Done"
+    echo -e "Done\n"
 else
     echo "Checking Fail2Ban configuration..."
     echo "Your Fail2Ban configuration is up-to-date."
-    echo "Done"
+    echo -e "Done\n"
 fi
 exit 0
