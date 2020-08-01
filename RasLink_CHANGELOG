@@ -1,3 +1,30 @@
+w0jrl - Thu Jul 30 21:20:01 2020 -0600: Asterisk: Update app_rpt version to 20.08
+
+w0jrl - Thu Jul 30 14:57:52 2020 -0600: Security: Add Fail2Ban
+Fail2Ban is used to block brute force attackers from gaining access to RasLink.
+Users have 6 (six) attempts to send the correct login information to RasLink.
+If the user doesn't send the correct login information within 6 (six) attempts, the user will be banned for 2 (two) hours.
+After 2 (two) hours, if repeated failed login attempts continue from the same IP address, the user/attacker will be banned for up to 1 (one) week.
+To regain access to RasLink if the user gets banned, the user should fill in the 'Contact Us' form, located at:
+https://jlappliedtechnologies.com/contact-us/
+When filling in the form, the user should request to have their IP address unbanned.
+
+w0jrl - Thu Jul 30 11:59:59 2020 -0600: Required-tools: Add build tools for Fail2Ban
+
+w0jrl - Sun Jul 26 15:27:17 2020 -0600: Required-tools: Add preload
+Preload is used to load applications that are used the most into ram faster.
+
+w0jrl - Mon Jul 20 23:05:48 2020 -0600: Asterisk-modules: Use pthread instead of lpthread
+
+w0jrl - Mon Jul 20 22:51:04 2020 -0600: App_rpt: Update status posting functions
+* Update wget switches in STATPOST_PROGRAM
+
+* Adjust thread priorities
+
+* Update url in ASL_STATPOST_URL
+
+w0jrl - Wed Jul 1 09:55:36 2020 -0600: RasLink_CHANGELOG: CHANGELOG RL-20.07
+
 w0jrl - Mon Jun 29 21:43:09 2020 -0600: Patch-asterisk: Make sure pthread.h is included in future updates to app_rpt.c
 
 w0jrl - Mon Jun 29 20:47:56 2020 -0600: Patch-asterisk: Include pthread.h in sources where needed
