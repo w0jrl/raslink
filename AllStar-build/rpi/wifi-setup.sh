@@ -75,17 +75,18 @@ ifdown ${wificard} &>/dev/null
 sleep 0.5
 ifup ${wificard} &>/dev/null
 sleep 10
-if [ $(ip a|grep "${wificard}"|grep -ic 'inet') = "1" ]; then
-  echo "***Connection Active***"
-  sleep 0.5
-  echo "displaying connection information"
-  (ip a|grep "${wificard}"|sed 's/^..//';ip a|grep "${cardnum}:"|grep 'inet6')
+if [ "$(ip a|grep "${wificard}"|grep -ic 'inet')" = "1" ]; then
+    echo "***Connection Active***"
+    sleep 0.5s
+    echo "displaying connection information"
+    sleep 0.5s
+    (ip a|grep "${wificard}"|sed 's/^..//';ip a|grep "${cardnum}:"|grep 'inet6')
 else
-  echo "***Connection Failed***" >&2
-  echo "See <https://jlappliedtechnologies.com/raslink/> if you need assistance." >&2
-  exit 1
+    echo "***Connection Failed***" >&2
+    echo "See <https://jlappliedtechnologies.com/raslink/> if you need assistance." >&2
+    exit 1
 fi
-sleep 0.5
+sleep 0.5s
 echo "If you want to setup another connection, run wifi-setup again."
 echo "To remove a network, edit /etc/wpa_supplicant/wpa_supplicant.conf."
 echo "See <https://jlappliedtechnologies.com/raslink/> if you need assistance." 
