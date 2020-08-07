@@ -46,8 +46,8 @@ echo -e "Done\n"
 echo "Checking and installing required packages..."
 sourcesList=$( grep -ic "#deb-src" /etc/apt/sources.list )
 if [ "$sourcesList" == "1" ]; then
-  sed -i 's/#deb-src/deb-src/' /etc/apt/sources.list
-  apt-get -qq update
+    sed -i 's/#deb-src/deb-src/' /etc/apt/sources.list
+    apt-get -qq update
 fi
 chmod +x /usr/src/utils/AllStar-build/common/required-tools.sh
 /usr/src/utils/AllStar-build/common/required-tools.sh
