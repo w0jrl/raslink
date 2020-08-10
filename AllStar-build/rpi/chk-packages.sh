@@ -100,7 +100,7 @@ else
     fi
     chmod +x /usr/src/utils/AllStar-build/common/mk-logrotate-asterisk.sh
     /usr/src/utils/AllStar-build/common/mk-logrotate-asterisk.sh
-    echo "Logs will be rotated once a month."
+    echo "Logs will be rotated once a week."
     echo -e "Done\n"
 fi
 if [ "$( grep -ic "i2c-dev" /etc/modules )" == "0" ]; then
