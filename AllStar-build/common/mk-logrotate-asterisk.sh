@@ -21,6 +21,7 @@ echo "/var/log/asterisk/messages /var/log/asterisk/*log {" >>/etc/logrotate.d/as
 echo "    rotate 2" >>/etc/logrotate.d/asterisk
 echo "    weekly" >>/etc/logrotate.d/asterisk
 echo "    compress" >> /etc/logrotate.d/asterisk
+echo "    maxage 60" >> /etc/logrotate.d/asterisk
 echo "    missingok" >>/etc/logrotate.d/asterisk
 echo "    notifempty" >>/etc/logrotate.d/asterisk
 echo "    sharedscripts" >>/etc/logrotate.d/asterisk
