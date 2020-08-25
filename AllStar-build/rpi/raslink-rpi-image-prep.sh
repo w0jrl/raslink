@@ -24,7 +24,7 @@
 # You have been warned!
 #
 # Script Start
-# Rotate logs monthly
+# Rotate logs weekly
 chmod +x /usr/src/utils/AllStar-build/common/mk-logrotate-asterisk.sh
 /usr/src/utils/AllStar-build/common/mk-logrotate-asterisk.sh
 # Make sure we are running the latest and greatest
