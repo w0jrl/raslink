@@ -35,7 +35,7 @@ if [[ "$install" = "y" ]] || [[ "$install" = "Y" ]]; then
   echo "Done"
   sleep 0.5
   echo "Setting up log rotate..."
-  echo "Logs will be rotated once a month."
+  echo "Logs will be rotated once a week."
   chmod +x /usr/src/utils/AllStar-build/common/mk-logrotate-asterisk.sh
   /usr/src/utils/AllStar-build/common/mk-logrotate-asterisk.sh
   echo "Done"
