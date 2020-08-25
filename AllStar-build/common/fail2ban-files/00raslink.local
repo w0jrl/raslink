@@ -265,7 +265,7 @@ action_abuseipdb = abuseipdb
 # Choose default action.  To change, just override value of 'action' with the
 # interpolation to the chosen action shortcut (e.g.  action_mw, action_mwl, etc) in jail.local
 # globally (section [DEFAULT]) or per specific section
-action = %(action_)s
+action = %(banaction_allports)s
 
 
 #
@@ -758,7 +758,7 @@ logpath = /var/log/nsd.log
 
 [asterisk]
 enabled = true
-port     = asterisk
+port     = iax,sip,sip-tls
 action_  = %(default/action_)s[name=%(__name__)s-tcp, protocol="tcp"]
            %(default/action_)s[name=%(__name__)s-udp, protocol="udp"]
 logpath  = /var/log/asterisk/messages
