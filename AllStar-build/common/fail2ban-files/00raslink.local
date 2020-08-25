@@ -793,7 +793,7 @@ logpath  = /var/lib/znc/moddata/adminlog/znc.log
 # [mysqld]
 # log-error=/var/log/mysqld.log
 [mysqld-auth]
-enabled = true
+
 port     = 3306
 logpath  = %(mysql_log)s
 backend  = %(mysql_backend)s
