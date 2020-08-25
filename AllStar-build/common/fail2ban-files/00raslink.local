@@ -1,16 +1,10 @@
-#
-# WARNING: heavily refactored in 0.9.0 release.  Please review and
-#          customize settings for your setup.
-#
-# Changes:  in most of the cases you should not modify this
-#           file, but provide customizations in jail.local file,
-#           or separate .conf files under jail.d/ directory, e.g.:
+# 00raslink.local - Default rules for Fail2Ban
 #
 # HOW TO ACTIVATE JAILS:
 #
 # YOU SHOULD NOT MODIFY THIS FILE.
 #
-# It will probably be overwritten or improved in a distribution update.
+# It will probably be overwritten or improved in a RasLink update.
 #
 # Provide customizations in a jail.local file or a jail.d/customisation.local.
 # For example to change the default bantime for all jails and to enable the
