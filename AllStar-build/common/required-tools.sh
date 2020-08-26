@@ -20,6 +20,11 @@
 apt-get -qq install -y lsb-release
 distro=$(lsb_release -is)
 release=$(lsb_release -cs)
+sourcesList=$(grep -riIho --include="*.list*" "#deb-src\|# deb-src" /etc/apt/ | wc -l)
+if (( "$sourcesList" >= "1" )); then
+    grep -riIl --include="*.list*" "#deb-src\|# deb-src" /etc/apt/ | xargs sed -i 's/#deb-src/deb-src/g; s/# deb-src/deb-src/g'
+    apt-get -qq update
+fi
 apt-get -qqy build-dep fail2ban
 apt-get -qqy --fix-missing --fix-broken install\
     preload ntpdate g++ gcc make build-essential automake git screen ssh\
