@@ -1,0 +1,96 @@
+# jail.local - User customizable rules for Fail2Ban
+#
+# USER DEFINED JAILS SHOULD BE PLACED IN THIS FILE.
+# This file will not be overwritten by system-update.
+# For help configuring Fail2Ban, see
+# <https://github.com/fail2ban/fail2ban/wiki/>.
+# To see which jails are loaded, run 'fail2ban-client status'.
+# To check the status of a loaded jail, run 'fail2ban-client status <jail_name>'.
+# Example: fail2ban-client status sshd
+# To activate jails (after configuring this file), run 'fail2ban-client reload'.
+#
+# Comments: use '#' for comment lines and ';' (following a space) for inline comments
+#
+# The following example jails (with 'enabled = true' uncommented) are useful for Allmon users.
+#
+
+[apache-auth]
+# enabled = true
+port     = http,https
+logpath  = %(apache_error_log)s
+
+
+[apache-badbots]
+# enabled = true
+# Ban hosts which agent identifies spammer robots crawling the web
+# for email addresses. The mail outputs are buffered.
+port     = http,https
+logpath  = %(apache_access_log)s
+bantime  = 48h
+maxretry = 1
+
+
+[apache-noscript]
+# enabled = true
+port     = http,https
+logpath  = %(apache_error_log)s
+
+
+[apache-overflows]
+# enabled = true
+port     = http,https
+logpath  = %(apache_error_log)s
+maxretry = 2
+
+
+[apache-nohome]
+# enabled = true
+port     = http,https
+logpath  = %(apache_error_log)s
+maxretry = 2
+
+
+[apache-botsearch]
+# enabled = true
+port     = http,https
+logpath  = %(apache_error_log)s
+maxretry = 2
+
+
+[apache-fakegooglebot]
+# enabled = true
+port     = http,https
+logpath  = %(apache_access_log)s
+maxretry = 1
+ignorecommand = %(ignorecommands_dir)s/apache-fakegooglebot <ip>
+
+
+[apache-modsecurity]
+# enabled = true
+port     = http,https
+logpath  = %(apache_error_log)s
+maxretry = 2
+
+
+[apache-shellshock]
+# enabled = true
+port    = http,https
+logpath = %(apache_error_log)s
+maxretry = 1
+
+
+[php-url-fopen]
+#enabled = true
+port    = http,https
+logpath = %(nginx_access_log)s
+          %(apache_access_log)s
+
+
+[mysqld-auth]
+#enabled = true
+port     = 3306
+logpath  = %(mysql_log)s
+backend  = %(mysql_backend)s
+
+
+
