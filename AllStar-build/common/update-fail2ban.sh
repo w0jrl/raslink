@@ -55,7 +55,7 @@ sleep 0.5s
 # If no configuration files are available, install them
 if [ ! -e /etc/fail2ban/fail2ban.local ] || [ ! -e /etc/fail2ban/jail.d/00raslink.local ]; then
     echo "Installing Fail2Ban configuration..."
-    status (cp /usr/src/utils/AllStar-build/common/fail2ban-files/*.local /etc/fail2ban/;mv /etc/fail2ban/00raslink.local /etc/fail2ban/jail.d/)
+    (status cp /usr/src/utils/AllStar-build/common/fail2ban-files/*.local /etc/fail2ban/;status mv /etc/fail2ban/00raslink.local /etc/fail2ban/jail.d/)
     status cp /usr/src/utils/AllStar-build/common/fail2ban-files/fail2ban.rotate /etc/logrotate.d/fail2ban
     status touch /var/log/fail2ban.log
     status cp /usr/src/utils/AllStar-build/common/fail2ban-files/fail2ban.service /etc/systemd/system/
