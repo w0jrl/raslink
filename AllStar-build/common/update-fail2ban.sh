@@ -60,8 +60,8 @@ if [ ! -e /etc/fail2ban/fail2ban.local ] || [ ! -e /etc/fail2ban/jail.d/00raslin
     status touch /var/log/fail2ban.log
     status cp /usr/src/utils/AllStar-build/common/fail2ban-files/fail2ban.service /etc/systemd/system/
     echo -e "Done\n"
-    isF2bRunning=$(ps aux | grep 'fail2ban' | wc-l)
-    if (( "$isF2bRunning" > "1" )); then
+    isF2bRunning=$(ps aux | grep 'fail2ban' | wc -l)
+    if [[ "$isF2bRunning" > "1" ]]; then
         echo "Loading Fail2Ban rules..."
         $(which fail2ban-client) reload
     else
