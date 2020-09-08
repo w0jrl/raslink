@@ -1,5 +1,15 @@
+## feature(app_rpt): Add the rpt lookup function
+>Mon Oct 19 16:20:41 2020 -0600
+
+>Author: Adam Paul(adamjpaul@gmail.com)
+
+Contributed-by: Adam Paul <adamjpaul@gmail.com>
+edited-by: Stacy Olivas <kg7qin@arrl.net>
+Signed-off-by: Jeremy Lincicome [W0JRL] <admin@jlappliedtechnologies.com>
+
+
 ## rewrite(app_rpt): Set "ASL_STATPOST_URL" to <http://stats.allstarlink.org/uhandler.php>
->Mon Oct 19 03:42:42 2020 -0600
+>Mon Oct 19 14:24:16 2020 -0600
 
 >Author: Jeremy Lincicome [W0JRL](admin@jlappliedtechnologies.com)
 
