@@ -18,5 +18,5 @@
 #
 # Script Start
 cd ../../
-git log --no-merges --pretty=format:"%an - %ad: %s%n%b" > ./RasLinkCHANGELOG
+git log --no-merges --pretty=format:"%ad: %s%n%b" > ./RasLinkCHANGELOG
 exit 0
