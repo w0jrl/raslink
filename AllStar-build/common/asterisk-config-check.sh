@@ -141,5 +141,15 @@ sed -i '/rxondelay/,/!/ {
     s/following the/regardless if the/
     s/release of PTT/PTT is keyed/
     }' ./usbradio*
+# Add txoffdelay to usbradio
+txoffdelay=$(grep -RiIl 'txoffdelay' --include="usbradio*"| wc -w)
+if [[ $txoffdelay = "0" ]]; then
+    sed -i -e '/interfering\ with\ sub-audible\ signaling/a\
+;\
+;txoffdelay = 0    ; Ignore the reciever for a specified number of 20 millisecond\
+        ; intervals after the transmitter unkeys.\
+        ; This is useful when setting up a half-duplex link with an existing\
+        ; repeater\, where you need to ignore the repeater'\''s hangtime.' ./usbradio*
+fi
 echo -e "Done.\n"
 exit 0
