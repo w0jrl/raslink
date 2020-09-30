@@ -19,7 +19,7 @@
 # Script Start
 cd /etc/asterisk/
 echo "Updating Asterisk configuration files if required..."
-# Fix comment in rpt
+# Fix EchoLink comment in rpt
 sed -i 's/Say phonetic call sign/Say call sign/' ./rpt* | sed -i 's/say phonetic call sign/Say call sign/' ./rpt*
 # Load res_crypto module
 sed -i '/res_crypto.so/c\load \=> res_crypto.so ;   Cryptographic Digital Signatures                  ' ./modules*
@@ -136,5 +136,10 @@ if [[ $stpost = "0" ]]; then
     sed -i -e "/For ACID and Debian/{N;N;N;d}" ./rpt*
     sed -i -e "/For Limey Linux/{N;N;N;d}" ./rpt*
 fi
+# Fix rxondelay comment in usbradio
+sed -i '/rxondelay/,/!/ {
+    s/following the/regardless if the/
+    s/release of PTT/PTT is keyed/
+    }' ./usbradio*
 echo -e "Done.\n"
 exit 0
