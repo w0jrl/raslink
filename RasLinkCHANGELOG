@@ -1,3 +1,12 @@
+###fix(chk-packages): Prevent rewriting the logrotate script if the parameters are already up-to-date
+>Thu, 8 Oct 2020 02:42:42 -0600
+
+>Author: Jeremy Lincicome [W0JRL](admin@jlappliedtechnologies.com)
+
+Signed-off-by: Jeremy Lincicome [W0JRL] <admin@jlappliedtechnologies.com>
+
+
+
 ###rewrite(changelog-generator): Update output formatting
 >Wed, 7 Oct 2020 21:09:46 -0600
 
