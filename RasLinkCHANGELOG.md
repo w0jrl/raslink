@@ -1,3 +1,11 @@
+###rewrite(version): Add the .md extension to the RasLinkCHANGELOG file name
+>Thu Oct 8 05:32:40 2020 -0600
+
+>Author: Jeremy Lincicome [W0JRL](admin@jlappliedtechnologies.com)
+
+Signed-off-by: Jeremy Lincicome [W0JRL] <admin@jlappliedtechnologies.com>
+
+
 ###update(changelog-generator): Add .md extension to the output file name
 >Thu Oct 8 05:27:17 2020 -0600
 
