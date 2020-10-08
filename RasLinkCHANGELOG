@@ -1,19 +1,64 @@
-Wed Sep 30 21:03:48 2020 -0600: RL-20.10
+###rewrite(changelog-generator): Update output formatting
+>Wed, 7 Oct 2020 21:09:46 -0600
+
+>Author: Jeremy Lincicome [W0JRL](admin@jlappliedtechnologies.com)
+
+feature: Add author name variable
+
+style: Use markdown
+This makes the log look nice on GitLab and GitHub.
+
 Signed-off-by: Jeremy Lincicome [W0JRL] <admin@jlappliedtechnologies.com>
 
-Wed Sep 30 02:30:10 2020 -0600: asterisk-usbradio: Add "txoffdelay" to usbradio configuration
+
+
+###RasLinkCHANGELOG: RL-20.10
+>Wed, 30 Sep 2020 21:11:10 -0600
+
+>Author: Jeremy Lincicome [W0JRL](admin@jlappliedtechnologies.com)
+
+Signed-off-by: Jeremy Lincicome [W0JRL] <admin@jlappliedtechnologies.com>
+
+
+
+###RL-20.10
+>Wed, 30 Sep 2020 21:03:48 -0600
+
+>Author: Jeremy Lincicome [W0JRL](admin@jlappliedtechnologies.com)
+
+Signed-off-by: Jeremy Lincicome [W0JRL] <admin@jlappliedtechnologies.com>
+
+
+
+###asterisk-usbradio: Add "txoffdelay" to usbradio configuration
+>Wed, 30 Sep 2020 02:30:10 -0600
+
+>Author: Jeremy Lincicome [W0JRL](admin@jlappliedtechnologies.com)
+
 If "txoffdelay" doesn't exist, it will be added by 'system-update'
 Documentation for "txoffdelay" can be found in </etc/asterisk/usbradio.conf>
 
 Signed-off-by: Jeremy Lincicome [W0JRL] <admin@jlappliedtechnologies.com>
 
-Tue Sep 29 20:09:52 2020 -0600: documentation-fix: asterisk-usbradio: Fix "rxondelay" comment
+
+
+###documentation-fix: asterisk-usbradio: Fix "rxondelay" comment
+>Tue, 29 Sep 2020 20:09:52 -0600
+
+>Author: Jeremy Lincicome [W0JRL](admin@jlappliedtechnologies.com)
+
 "rxondelay" doesn't follow the PTT.
 "rxondelay" ignores the receiver, regardless if the PTT is keyed.
 
 Signed-off-by: Jeremy Lincicome [W0JRL] <admin@jlappliedtechnologies.com>
 
-Tue Sep 29 17:24:30 2020 -0600: asterisk-config-check: Add low-pass and high-pass filters (in enabled state) for older installs
+
+
+###asterisk-config-check: Add low-pass and high-pass filters (in enabled state) for older installs
+>Tue, 29 Sep 2020 17:24:30 -0600
+
+>Author: Jeremy Lincicome [W0JRL](admin@jlappliedtechnologies.com)
+
 If the configuration for the filters is not detected,
 the filters will be added and enabled.
 This doesn't affect installs where the
@@ -21,19 +66,37 @@ filters are detected, but set to "0".
 
 Signed-off-by: Jeremy Lincicome [W0JRL] <admin@jlappliedtechnologies.com>
 
-Tue Sep 29 16:50:43 2020 -0600: asterisk-usbradio: Enable low-pass and high-pass filters in usbradio.conf template
+
+
+###asterisk-usbradio: Enable low-pass and high-pass filters in usbradio.conf template
+>Tue, 29 Sep 2020 16:50:43 -0600
+
+>Author: Jeremy Lincicome [W0JRL](admin@jlappliedtechnologies.com)
+
 * Will be used by new installs
 
 Documentation is available in the file.
 
 Signed-off-by: Jeremy Lincicome [W0JRL] <admin@jlappliedtechnologies.com>
 
-Tue Sep 29 13:43:17 2020 -0600: asterisk-usbradio: Update formatting in usbradio.conf template
+
+
+###asterisk-usbradio: Update formatting in usbradio.conf template
+>Tue, 29 Sep 2020 13:43:17 -0600
+
+>Author: Jeremy Lincicome [W0JRL](admin@jlappliedtechnologies.com)
+
 * Will be used by new installs
 
 Signed-off-by: Jeremy Lincicome [W0JRL] <admin@jlappliedtechnologies.com>
 
-Sat Sep 19 19:13:00 2020 -0600: changelog-generator: Remove author name from the front of log lines
+
+
+###changelog-generator: Remove author name from the front of log lines
+>Sat, 19 Sep 2020 19:13:00 -0600
+
+>Author: Jeremy Lincicome [W0JRL](admin@jlappliedtechnologies.com)
+
 Future commits/log-notes will be signed-off by contributors/maintainers of RasLink.
 If the author name is different from the committer name, a trailer will be added to the log notes.
 
@@ -41,7 +104,13 @@ Unless noted in the ChangeLog messages below, all changes were committed to the 
 
 Signed-off-by: Jeremy Lincicome [W0JRL] <admin@jlappliedtechnologies.com>
 
-Tue Sep 15 17:24:26 2020 -0600: asterisk-chan_usbradio: Add txoffdelay
+
+
+###asterisk-chan_usbradio: Add txoffdelay
+>Tue, 15 Sep 2020 17:24:26 -0600
+
+>Author: w0jrl(admin@jlappliedtechnologies.com)
+
 "txoffdelay" ignores the reciever for a specified number of 20 millisecond
 intervals after the transmitter unkeys.
 This is useful when setting up a half-duplex link with an existing
@@ -50,32 +119,86 @@ repeater, where you need to ignore the repeater's hangtime.
 Contributed-by: Skyler [W0SKY]
 Signed-off-by: Jeremy Lincicome [W0JRL] <admin@jlappliedtechnologies.com>
 
-Sun Aug 30 20:11:58 2020 -0600: RasLinkCHANGELOG: RL-20.09
 
-Sun Aug 30 19:41:07 2020 -0600: update-fail2ban: Check for "fail2ban-server" as the running process name
 
-Sun Aug 30 13:52:04 2020 -0600: update-fail2ban: Make sure the default RasLink rules are loaded from'00raslink.local'
+###RasLinkCHANGELOG: RL-20.09
+>Sun, 30 Aug 2020 20:11:58 -0600
+
+>Author: w0jrl(admin@jlappliedtechnologies.com)
+
+
+
+
+###update-fail2ban: Check for "fail2ban-server" as the running process name
+>Sun, 30 Aug 2020 19:41:07 -0600
+
+>Author: w0jrl(admin@jlappliedtechnologies.com)
+
+
+
+
+###update-fail2ban: Make sure the default RasLink rules are loaded from'00raslink.local'
+>Sun, 30 Aug 2020 13:52:04 -0600
+
+>Author: w0jrl(admin@jlappliedtechnologies.com)
+
 If Fail2ban isn't running after the new rules are installed, it will be started.
 
-Sun Aug 30 11:39:16 2020 -0600: asterisk-app_rpt: Bump module version to 20.09
 
-Wed Aug 26 02:36:44 2020 -0600: bugfix: required-tools: Make sure "deb-src" sources are available
+
+###asterisk-app_rpt: Bump module version to 20.09
+>Sun, 30 Aug 2020 11:39:16 -0600
+
+>Author: w0jrl(admin@jlappliedtechnologies.com)
+
+
+
+
+###bugfix: required-tools: Make sure "deb-src" sources are available
+>Wed, 26 Aug 2020 02:36:44 -0600
+
+>Author: w0jrl(admin@jlappliedtechnologies.com)
+
 If a user tried to install RasLink on a Debian-based system (such as Ubuntu), the "deb-src" source repositories were not always loaded properly by 'required-tools'.
 
-Tue Aug 25 21:21:22 2020 -0600: fail2ban: Add 'jail.local'
+
+
+###fail2ban: Add 'jail.local'
+>Tue, 25 Aug 2020 21:21:22 -0600
+
+>Author: w0jrl(admin@jlappliedtechnologies.com)
+
 'jail.local' is used to load user customizable rules for Fail2Ban.
 Users can add jails to this file that are not already loaded by </etc/fail2ban/jail.d/00raslink.local>.
 'jail.local' includes examples useful for users of Allmon.
 
-Tue Aug 25 15:10:51 2020 -0600: fail2ban: Add comment describing how '00raslink.local' is used
 
-Tue Aug 25 14:17:13 2020 -0600: fail2ban: Disable '[mysqld-auth]' jail
+
+###fail2ban: Add comment describing how '00raslink.local' is used
+>Tue, 25 Aug 2020 15:10:51 -0600
+
+>Author: w0jrl(admin@jlappliedtechnologies.com)
+
+
+
+
+###fail2ban: Disable '[mysqld-auth]' jail
+>Tue, 25 Aug 2020 14:17:13 -0600
+
+>Author: w0jrl(admin@jlappliedtechnologies.com)
+
 By default, RasLink doesn't use any mysql databases.
 The '[mysqld-auth]' jail is used to block attacks against the mysql server.
 If a user installes Allmon, and wants to enable '[mysqld-auth]', the user should edit
 </etc/fail2ban/jail.local>.
 
-Tue Aug 25 12:53:26 2020 -0600: fail2ban: Use 'banaction_allports' for the action to take when banning
+
+
+###fail2ban: Use 'banaction_allports' for the action to take when banning
+>Tue, 25 Aug 2020 12:53:26 -0600
+
+>Author: w0jrl(admin@jlappliedtechnologies.com)
+
 When an attacker is banned, they should be banned on all ports,
 not just the port they tried to access.
 If the ssh port is changed from the default (22),
@@ -83,7 +206,13 @@ the RasLink Fail2Ban rules should not assume that the active ssh port will
 always be the port defined in
 </etc/services>.
 
-Tue Aug 25 12:08:23 2020 -0600: fail2ban: Rename 'jail.local' to '00raslink.local'
+
+
+###fail2ban: Rename 'jail.local' to '00raslink.local'
+>Tue, 25 Aug 2020 12:08:23 -0600
+
+>Author: w0jrl(admin@jlappliedtechnologies.com)
+
 The default RasLink rules for Fail2Ban are loaded from this file.
 Users should not edit this file.
 Users can activate custom jails in
@@ -91,43 +220,139 @@ Users can activate custom jails in
 '00raslink.local' is stored in and loaded from
 </etc/fail2ban/jail.d>.
 
-Tue Aug 25 11:30:11 2020 -0600: asterisk-logrotate: Add 'delaycompress' to logrotate script
+
+
+###asterisk-logrotate: Add 'delaycompress' to logrotate script
+>Tue, 25 Aug 2020 11:30:11 -0600
+
+>Author: w0jrl(admin@jlappliedtechnologies.com)
+
 If 'delaycompress' doesn't exist, 'system-update' will add it.
 
-Tue Aug 25 11:13:06 2020 -0600: asterisk-logrotate: Fix messages and comments in install scripts
+
+
+###asterisk-logrotate: Fix messages and comments in install scripts
+>Tue, 25 Aug 2020 11:13:06 -0600
+
+>Author: w0jrl(admin@jlappliedtechnologies.com)
+
 * Replace 'monthly' with 'weekly'
 
-Mon Aug 10 01:04:57 2020 -0600: chk-packages: Update the time between log rotations for Asterisk in the rotation message
+
+
+###chk-packages: Update the time between log rotations for Asterisk in the rotation message
+>Mon, 10 Aug 2020 01:04:57 -0600
+
+>Author: w0jrl(admin@jlappliedtechnologies.com)
+
 The logs will be rotated once a week.
 
-Mon Aug 10 00:39:01 2020 -0600: chk-packages: Update existing logrotate parameters for Asterisk
 
-Sun Aug 9 23:58:04 2020 -0600: mk-logrotate-asterisk: Don't keep rotated logs for more than two months
 
-Sun Aug 9 23:43:54 2020 -0600: mk-logrotate-asterisk: Remove rotated logs every two weeks
+###chk-packages: Update existing logrotate parameters for Asterisk
+>Mon, 10 Aug 2020 00:39:01 -0600
 
-Fri Aug 7 14:52:49 2020 -0600: version: Update the changelog file location
+>Author: w0jrl(admin@jlappliedtechnologies.com)
 
-Fri Aug 7 14:29:04 2020 -0600: Add changelog generator
+
+
+
+###mk-logrotate-asterisk: Don't keep rotated logs for more than two months
+>Sun, 9 Aug 2020 23:58:04 -0600
+
+>Author: w0jrl(admin@jlappliedtechnologies.com)
+
+
+
+
+###mk-logrotate-asterisk: Remove rotated logs every two weeks
+>Sun, 9 Aug 2020 23:43:54 -0600
+
+>Author: w0jrl(admin@jlappliedtechnologies.com)
+
+
+
+
+###version: Update the changelog file location
+>Fri, 7 Aug 2020 14:52:49 -0600
+
+>Author: w0jrl(admin@jlappliedtechnologies.com)
+
+
+
+
+###Add changelog generator
+>Fri, 7 Aug 2020 14:29:04 -0600
+
+>Author: w0jrl(admin@jlappliedtechnologies.com)
+
 The changelog generator is used to create the changelog file for RasLink. Users should not run this program.
 It is included for source code completeness.
 
-Fri Aug 7 14:02:44 2020 -0600: Rename RasLink_CHANGELOG to RasLinkCHANGELOG
 
-Fri Aug 7 01:40:34 2020 -0600: Wifi-setup: Fix connection detection
+
+###Rename RasLink_CHANGELOG to RasLinkCHANGELOG
+>Fri, 7 Aug 2020 14:02:44 -0600
+
+>Author: w0jrl(admin@jlappliedtechnologies.com)
+
+
+
+
+###Wifi-setup: Fix connection detection
+>Fri, 7 Aug 2020 01:40:34 -0600
+
+>Author: w0jrl(admin@jlappliedtechnologies.com)
+
 Wifi-setup would sometimes report that a connection had failed, even though the connection was active.
 
-Fri Aug 7 01:17:41 2020 -0600: Version: Display the locations of the changelog and license
 
-Thu Aug 6 20:26:13 2020 -0600: chk-packages: Fix sources list code for Debian
 
-Thu Aug 6 20:10:42 2020 -0600: LICENSE_RasLink: Update text and formatting
+###Version: Display the locations of the changelog and license
+>Fri, 7 Aug 2020 01:17:41 -0600
 
-Fri Jul 31 22:04:05 2020 -0600: RasLink_CHANGELOG: CHANGELOG RL-20.08
+>Author: w0jrl(admin@jlappliedtechnologies.com)
 
-Thu Jul 30 21:20:01 2020 -0600: Asterisk: Update app_rpt version to 20.08
 
-Thu Jul 30 14:57:52 2020 -0600: Security: Add Fail2Ban
+
+
+###chk-packages: Fix sources list code for Debian
+>Thu, 6 Aug 2020 20:26:13 -0600
+
+>Author: w0jrl(admin@jlappliedtechnologies.com)
+
+
+
+
+###LICENSE_RasLink: Update text and formatting
+>Thu, 6 Aug 2020 20:10:42 -0600
+
+>Author: w0jrl(admin@jlappliedtechnologies.com)
+
+
+
+
+###RasLink_CHANGELOG: CHANGELOG RL-20.08
+>Fri, 31 Jul 2020 22:04:05 -0600
+
+>Author: w0jrl(admin@jlappliedtechnologies.com)
+
+
+
+
+###Asterisk: Update app_rpt version to 20.08
+>Thu, 30 Jul 2020 21:20:01 -0600
+
+>Author: w0jrl(admin@jlappliedtechnologies.com)
+
+
+
+
+###Security: Add Fail2Ban
+>Thu, 30 Jul 2020 14:57:52 -0600
+
+>Author: w0jrl(admin@jlappliedtechnologies.com)
+
 Fail2Ban is used to block brute force attackers from gaining access to RasLink.
 Users have 6 (six) attempts to send the correct login information to RasLink.
 If the user doesn't send the correct login information within 6 (six) attempts, the user will be banned for 2 (two) hours.
@@ -136,378 +361,1284 @@ To regain access to RasLink if the user gets banned, the user should fill in the
 https://jlappliedtechnologies.com/contact-us/
 When filling in the form, the user should request to have their IP address unbanned.
 
-Thu Jul 30 11:59:59 2020 -0600: Required-tools: Add build tools for Fail2Ban
 
-Sun Jul 26 15:27:17 2020 -0600: Required-tools: Add preload
+
+###Required-tools: Add build tools for Fail2Ban
+>Thu, 30 Jul 2020 11:59:59 -0600
+
+>Author: w0jrl(admin@jlappliedtechnologies.com)
+
+
+
+
+###Required-tools: Add preload
+>Sun, 26 Jul 2020 15:27:17 -0600
+
+>Author: w0jrl(admin@jlappliedtechnologies.com)
+
 Preload is used to load applications that are used the most into ram faster.
 
-Mon Jul 20 23:05:48 2020 -0600: Asterisk-modules: Use pthread instead of lpthread
 
-Mon Jul 20 22:51:04 2020 -0600: App_rpt: Update status posting functions
+
+###Asterisk-modules: Use pthread instead of lpthread
+>Mon, 20 Jul 2020 23:05:48 -0600
+
+>Author: w0jrl(admin@jlappliedtechnologies.com)
+
+
+
+
+###App_rpt: Update status posting functions
+>Mon, 20 Jul 2020 22:51:04 -0600
+
+>Author: w0jrl(admin@jlappliedtechnologies.com)
+
 * Update wget switches in STATPOST_PROGRAM
 
 * Adjust thread priorities
 
 * Update url in ASL_STATPOST_URL
 
-Wed Jul 1 09:55:36 2020 -0600: RasLink_CHANGELOG: CHANGELOG RL-20.07
 
-Mon Jun 29 21:43:09 2020 -0600: Patch-asterisk: Make sure pthread.h is included in future updates to app_rpt.c
 
-Mon Jun 29 20:47:56 2020 -0600: Patch-asterisk: Include pthread.h in sources where needed
+###RasLink_CHANGELOG: CHANGELOG RL-20.07
+>Wed, 1 Jul 2020 09:55:36 -0600
 
-Mon Jun 29 15:06:18 2020 -0600: App_rpt: Add tries and timeout to STATPOST_PROGRAM
+>Author: w0jrl(admin@jlappliedtechnologies.com)
 
-Mon Jun 29 10:31:13 2020 -0600: Irqbalance: Reload daily to prevent memory leaks
 
-Mon Jun 29 10:14:01 2020 -0600: LICENSE_RasLink: Update text
 
-Mon Jun 29 10:09:09 2020 -0600: Asterisk-Makefile: Remove pthread patch
 
-Mon Jun 29 10:01:05 2020 -0600: App_rpt: Adjust pthreads
+###Patch-asterisk: Make sure pthread.h is included in future updates to app_rpt.c
+>Mon, 29 Jun 2020 21:43:09 -0600
+
+>Author: w0jrl(admin@jlappliedtechnologies.com)
+
+
+
+
+###Patch-asterisk: Include pthread.h in sources where needed
+>Mon, 29 Jun 2020 20:47:56 -0600
+
+>Author: w0jrl(admin@jlappliedtechnologies.com)
+
+
+
+
+###App_rpt: Add tries and timeout to STATPOST_PROGRAM
+>Mon, 29 Jun 2020 15:06:18 -0600
+
+>Author: w0jrl(admin@jlappliedtechnologies.com)
+
+
+
+
+###Irqbalance: Reload daily to prevent memory leaks
+>Mon, 29 Jun 2020 10:31:13 -0600
+
+>Author: w0jrl(admin@jlappliedtechnologies.com)
+
+
+
+
+###LICENSE_RasLink: Update text
+>Mon, 29 Jun 2020 10:14:01 -0600
+
+>Author: w0jrl(admin@jlappliedtechnologies.com)
+
+
+
+
+###Asterisk-Makefile: Remove pthread patch
+>Mon, 29 Jun 2020 10:09:09 -0600
+
+>Author: w0jrl(admin@jlappliedtechnologies.com)
+
+
+
+
+###App_rpt: Adjust pthreads
+>Mon, 29 Jun 2020 10:01:05 -0600
+
+>Author: w0jrl(admin@jlappliedtechnologies.com)
+
 * Change priority values
 
 * Include pthread.h
 
-Sun Jun 21 15:07:12 2020 -0600: App_rpt: Revert tries in STATPOST_PROGRAM
+
+
+###App_rpt: Revert tries in STATPOST_PROGRAM
+>Sun, 21 Jun 2020 15:07:12 -0600
+
+>Author: w0jrl(admin@jlappliedtechnologies.com)
+
 * Causes  the transmitter to hang if unable to connect to the stats server
 
-Sun Jun 21 14:35:42 2020 -0600: App_rpt: Set tries to 5 in STATPOST_PROGRAM
 
-Sun Jun 21 13:57:01 2020 -0600: App_rpt: Add tries to STATPOST_PROGRAM
 
-Sat Jun 20 12:57:13 2020 -0600: Usbradio: Readd RasLink patches
+###App_rpt: Set tries to 5 in STATPOST_PROGRAM
+>Sun, 21 Jun 2020 14:35:42 -0600
 
-Sat Jun 20 12:25:49 2020 -0600: Usbradio: Revert changes to CM119B code made by AllStar Link
+>Author: w0jrl(admin@jlappliedtechnologies.com)
+
+
+
+
+###App_rpt: Add tries to STATPOST_PROGRAM
+>Sun, 21 Jun 2020 13:57:01 -0600
+
+>Author: w0jrl(admin@jlappliedtechnologies.com)
+
+
+
+
+###Usbradio: Readd RasLink patches
+>Sat, 20 Jun 2020 12:57:13 -0600
+
+>Author: w0jrl(admin@jlappliedtechnologies.com)
+
+
+
+
+###Usbradio: Revert changes to CM119B code made by AllStar Link
+>Sat, 20 Jun 2020 12:25:49 -0600
+
+>Author: w0jrl(admin@jlappliedtechnologies.com)
+
 * Caused issues withCM119A chips
 
-Sat Jun 20 10:47:56 2020 -0600: App_rpt: Update version number to 20.07
 
-Mon Jun 1 09:34:59 2020 -0600: RasLink_CHANGELOG: CHANGELOG RL-20.06.1
 
-Mon Jun 1 09:31:59 2020 -0600: System-update: Make sure stage 2 prompts the user on error
+###App_rpt: Update version number to 20.07
+>Sat, 20 Jun 2020 10:47:56 -0600
 
-Thu May 28 19:13:01 2020 -0600: RasLink_CHANGELOG: CHANGELOG RL-20.06
+>Author: w0jrl(admin@jlappliedtechnologies.com)
 
-Thu May 28 17:37:46 2020 -0600: System-update: Users need to acknowledge the reboot message in stage-1
 
-Thu May 28 17:02:48 2020 -0600: System-update: Don't exit on errors
+
+
+###RasLink_CHANGELOG: CHANGELOG RL-20.06.1
+>Mon, 1 Jun 2020 09:34:59 -0600
+
+>Author: w0jrl(admin@jlappliedtechnologies.com)
+
+
+
+
+###System-update: Make sure stage 2 prompts the user on error
+>Mon, 1 Jun 2020 09:31:59 -0600
+
+>Author: w0jrl(admin@jlappliedtechnologies.com)
+
+
+
+
+###RasLink_CHANGELOG: CHANGELOG RL-20.06
+>Thu, 28 May 2020 19:13:01 -0600
+
+>Author: w0jrl(admin@jlappliedtechnologies.com)
+
+
+
+
+###System-update: Users need to acknowledge the reboot message in stage-1
+>Thu, 28 May 2020 17:37:46 -0600
+
+>Author: w0jrl(admin@jlappliedtechnologies.com)
+
+
+
+
+###System-update: Don't exit on errors
+>Thu, 28 May 2020 17:02:48 -0600
+
+>Author: w0jrl(admin@jlappliedtechnologies.com)
+
 Error messages will be displayed until the user presses Enter.
 
-Thu May 28 15:29:01 2020 -0600: System-update: Users must acknowledge the session reconnect procedure in both stages
 
-Thu May 28 12:59:36 2020 -0600: Chk-packages: Don't remove ntp-date and control scripts needed for timesync
 
-Thu May 28 02:21:14 2020 -0600: Timesync: Synchronize time from ntp server using Ntp-date
+###System-update: Users must acknowledge the session reconnect procedure in both stages
+>Thu, 28 May 2020 15:29:01 -0600
+
+>Author: w0jrl(admin@jlappliedtechnologies.com)
+
+
+
+
+###Chk-packages: Don't remove ntp-date and control scripts needed for timesync
+>Thu, 28 May 2020 12:59:36 -0600
+
+>Author: w0jrl(admin@jlappliedtechnologies.com)
+
+
+
+
+###Timesync: Synchronize time from ntp server using Ntp-date
+>Thu, 28 May 2020 02:21:14 -0600
+
+>Author: w0jrl(admin@jlappliedtechnologies.com)
+
 * ntp-date is controlled by timesync.hourly
 * timesync.hourly is started by timesync.service on boot
 
-Thu May 28 01:05:58 2020 -0600: Timesync: Stop using timedatectl for updates from time servers
+
+
+###Timesync: Stop using timedatectl for updates from time servers
+>Thu, 28 May 2020 01:05:58 -0600
+
+>Author: w0jrl(admin@jlappliedtechnologies.com)
+
 The random time intervals between synchronization seems to cause USB IO timing issues.
 
-Thu May 28 12:10:41 2020 -0600: Version: Use release tags instead of commit hash to display version number
 
-Thu May 28 12:06:40 2020 -0600: App_rpt: Bump version to 20.06
 
-Wed May 27 21:03:46 2020 -0600: RasLink_CHANGELOG: Remove merge commit messages
+###Version: Use release tags instead of commit hash to display version number
+>Thu, 28 May 2020 12:10:41 -0600
 
-Wed May 27 20:29:34 2020 -0600: RasLink_CHANGELOG: Reformat the log so that hashes are stript
+>Author: w0jrl(admin@jlappliedtechnologies.com)
 
-Wed May 27 16:09:17 2020 -0600: Update timers in scripts
+
+
+
+###App_rpt: Bump version to 20.06
+>Thu, 28 May 2020 12:06:40 -0600
+
+>Author: w0jrl(admin@jlappliedtechnologies.com)
+
+
+
+
+###RasLink_CHANGELOG: Remove merge commit messages
+>Wed, 27 May 2020 21:03:46 -0600
+
+>Author: w0jrl(admin@jlappliedtechnologies.com)
+
+
+
+
+###RasLink_CHANGELOG: Reformat the log so that hashes are stript
+>Wed, 27 May 2020 20:29:34 -0600
+
+>Author: w0jrl(admin@jlappliedtechnologies.com)
+
+
+
+
+###Update timers in scripts
+>Wed, 27 May 2020 16:09:17 -0600
+
+>Author: w0jrl(admin@jlappliedtechnologies.com)
+
 Some users have reported that system-update is too slow.
 
-Wed May 27 13:13:54 2020 -0600: Asterisk-config-check: Set linkclip to 1 in active config and rpt template
+
+
+###Asterisk-config-check: Set linkclip to 1 in active config and rpt template
+>Wed, 27 May 2020 13:13:54 -0600
+
+>Author: w0jrl(admin@jlappliedtechnologies.com)
+
 * Prevents the first word received by the local radio from getting cut off
 
-Wed May 27 02:08:01 2020 -0600: Add CHANGELOG
 
-Wed May 27 02:01:56 2020 -0600: Add RasLink license
 
-Tue May 26 21:20:24 2020 -0600: App_rpt: Use PLAYBACK in ci.confno variable
+###Add CHANGELOG
+>Wed, 27 May 2020 02:08:01 -0600
 
-Tue May 26 20:55:26 2020 -0600: App_rpt: Use PLAYBACK function from RasLink master
+>Author: w0jrl(admin@jlappliedtechnologies.com)
 
-Tue May 26 19:04:08 2020 -0600: App_rpt: Swap playback and localplay in tlist->mode
+
+
+
+###Add RasLink license
+>Wed, 27 May 2020 02:01:56 -0600
+
+>Author: w0jrl(admin@jlappliedtechnologies.com)
+
+
+
+
+###App_rpt: Use PLAYBACK in ci.confno variable
+>Tue, 26 May 2020 21:20:24 -0600
+
+>Author: w0jrl(admin@jlappliedtechnologies.com)
+
+
+
+
+###App_rpt: Use PLAYBACK function from RasLink master
+>Tue, 26 May 2020 20:55:26 -0600
+
+>Author: w0jrl(admin@jlappliedtechnologies.com)
+
+
+
+
+###App_rpt: Swap playback and localplay in tlist->mode
+>Tue, 26 May 2020 19:04:08 -0600
+
+>Author: w0jrl(admin@jlappliedtechnologies.com)
+
 If LOCALPLAY is used, audio files definedin custom user scripts that should play only on the local node,
 end up playing on all connected nodes as well.
 Not Cool!
 
-Sun May 24 12:30:20 2020 -0600: Required-tools: Add libcurlpp0 and libcurlpp-dev
 
-Sat May 23 16:51:35 2020 -0600: Revert "App_rpt: Add timeout to statpost"
+
+###Required-tools: Add libcurlpp0 and libcurlpp-dev
+>Sun, 24 May 2020 12:30:20 -0600
+
+>Author: w0jrl(admin@jlappliedtechnologies.com)
+
+
+
+
+###Revert "App_rpt: Add timeout to statpost"
+>Sat, 23 May 2020 16:51:35 -0600
+
+>Author: w0jrl(admin@jlappliedtechnologies.com)
+
 Useless! Made no difference.
 This reverts commit 8d1315eb36fe191b38b1a48fcceb9b43599fc319
 
-Sat May 23 16:19:08 2020 -0600: App_rpt: Add timeout to statpost
 
-Sat May 23 14:43:53 2020 -0600: Revert "Asterisk: Test for false DTMF decode"
+
+###App_rpt: Add timeout to statpost
+>Sat, 23 May 2020 16:19:08 -0600
+
+>Author: w0jrl(admin@jlappliedtechnologies.com)
+
+
+
+
+###Revert "Asterisk: Test for false DTMF decode"
+>Sat, 23 May 2020 14:43:53 -0600
+
+>Author: w0jrl(admin@jlappliedtechnologies.com)
+
 This reverts commit 21cffd9f002ddf1b928e53331d2acae14e03950c.
 
-Sat May 23 14:16:49 2020 -0600: Asterisk: Test for false DTMF decode
 
-Sat May 23 12:43:05 2020 -0600: Usbradio: Remove custom includes
 
-Sat May 23 01:05:40 2020 -0600: Update-asterisk: Remove ARM CPU check
+###Asterisk: Test for false DTMF decode
+>Sat, 23 May 2020 14:16:49 -0600
 
-Fri May 22 23:04:32 2020 -0600: Revert "Asterisk: Remove auto generated code"
+>Author: w0jrl(admin@jlappliedtechnologies.com)
+
+
+
+
+###Usbradio: Remove custom includes
+>Sat, 23 May 2020 12:43:05 -0600
+
+>Author: w0jrl(admin@jlappliedtechnologies.com)
+
+
+
+
+###Update-asterisk: Remove ARM CPU check
+>Sat, 23 May 2020 01:05:40 -0600
+
+>Author: w0jrl(admin@jlappliedtechnologies.com)
+
+
+
+
+###Revert "Asterisk: Remove auto generated code"
+>Fri, 22 May 2020 23:04:32 -0600
+
+>Author: w0jrl(admin@jlappliedtechnologies.com)
+
 * Causes Asterisk to not build
 Oops... Maybe some of that stuff wasn't so random after all!
 This reverts commit bfdd2c6684548b65c73e9993db9773e144f4b89f.
 
-Fri May 22 22:36:22 2020 -0600: Asterisk: Remove auto generated code
+
+
+###Asterisk: Remove auto generated code
+>Fri, 22 May 2020 22:36:22 -0600
+
+>Author: w0jrl(admin@jlappliedtechnologies.com)
+
 * Will be rebuilt at compile time
 
-Fri May 22 21:22:41 2020 -0600: Remove duplicate *.md files
 
-Fri May 22 16:16:58 2020 -0600: Uridiag: Update from DMK Engineering 20200522
 
-Fri May 22 15:10:15 2020 -0600: System-update/install: Adjust object cleanup
+###Remove duplicate *.md files
+>Fri, 22 May 2020 21:22:41 -0600
+
+>Author: w0jrl(admin@jlappliedtechnologies.com)
+
+
+
+
+###Uridiag: Update from DMK Engineering 20200522
+>Fri, 22 May 2020 16:16:58 -0600
+
+>Author: w0jrl(admin@jlappliedtechnologies.com)
+
+
+
+
+###System-update/install: Adjust object cleanup
+>Fri, 22 May 2020 15:10:15 -0600
+
+>Author: w0jrl(admin@jlappliedtechnologies.com)
+
 * Checkout before cleanup
 
-Fri May 22 14:39:53 2020 -0600: Asterisk-menuselect: Make sure radio_relax is used
+
+
+###Asterisk-menuselect: Make sure radio_relax is used
+>Fri, 22 May 2020 14:39:53 -0600
+
+>Author: w0jrl(admin@jlappliedtechnologies.com)
+
 * Needed for some simplex nodes to decode dtmf properly
 
-Fri May 22 00:34:04 2020 -0600: App_rpt: Update from AllStarLink repository 20200522
 
-Thu May 21 23:27:57 2020 -0600: Update-asterisk: Update active configuration file checking and rpt template
+
+###App_rpt: Update from AllStarLink repository 20200522
+>Fri, 22 May 2020 00:34:04 -0600
+
+>Author: w0jrl(admin@jlappliedtechnologies.com)
+
+
+
+
+###Update-asterisk: Update active configuration file checking and rpt template
+>Thu, 21 May 2020 23:27:57 -0600
+
+>Author: w0jrl(admin@jlappliedtechnologies.com)
+
 * Move config file checking to its own script (Called from update-asterisk.sh)
 * Add [globals] section to existing user config and rpt template
 * Modify Status Reporting section in existing user config and rpt template
 
-Wed May 20 12:24:44 2020 -0600: Usbradio: Fix QUEUE_SIZE
 
-Wed May 20 11:15:42 2020 -0600: Asterisk-bootstrap: Fix find command
+
+###Usbradio: Fix QUEUE_SIZE
+>Wed, 20 May 2020 12:24:44 -0600
+
+>Author: w0jrl(admin@jlappliedtechnologies.com)
+
+
+
+
+###Asterisk-bootstrap: Fix find command
+>Wed, 20 May 2020 11:15:42 -0600
+
+>Author: w0jrl(admin@jlappliedtechnologies.com)
+
 * 'third-party' is required, even though it's not found.
 
-Wed May 20 09:55:55 2020 -0600: Sounds: Copy Asterisk sounds from src during build
 
-Wed May 20 09:15:47 2020 -0600: Update-asterisk: Run bootstrap before configure
 
-Wed May 20 09:04:46 2020 -0600: Required-tools: Add libblkid-dev
+###Sounds: Copy Asterisk sounds from src during build
+>Wed, 20 May 2020 09:55:55 -0600
 
-Wed May 20 02:49:18 2020 -0600: Asterisk: Update modules from AllStarLink
+>Author: w0jrl(admin@jlappliedtechnologies.com)
 
-Mon Apr 27 13:06:25 2020 -0600: Update version to RasLink-20.05
 
-Sun Apr 26 21:16:48 2020 -0600: App_rpt: Fix bad patch
 
-Sun Apr 26 20:29:29 2020 -0600: Telemetry: Add telemetry ducking
+
+###Update-asterisk: Run bootstrap before configure
+>Wed, 20 May 2020 09:15:47 -0600
+
+>Author: w0jrl(admin@jlappliedtechnologies.com)
+
+
+
+
+###Required-tools: Add libblkid-dev
+>Wed, 20 May 2020 09:04:46 -0600
+
+>Author: w0jrl(admin@jlappliedtechnologies.com)
+
+
+
+
+###Asterisk: Update modules from AllStarLink
+>Wed, 20 May 2020 02:49:18 -0600
+
+>Author: w0jrl(admin@jlappliedtechnologies.com)
+
+
+
+
+###Update version to RasLink-20.05
+>Mon, 27 Apr 2020 13:06:25 -0600
+
+>Author: w0jrl(admin@jlappliedtechnologies.com)
+
+
+
+
+###App_rpt: Fix bad patch
+>Sun, 26 Apr 2020 21:16:48 -0600
+
+>Author: w0jrl(admin@jlappliedtechnologies.com)
+
+
+
+
+###Telemetry: Add telemetry ducking
+>Sun, 26 Apr 2020 20:29:29 -0600
+
+>Author: w0jrl(admin@jlappliedtechnologies.com)
+
 * Will be added to user's rpt.conf automaticly
 * 'telemnomdb' should be left at 0.
 * 'telemduckdb' is adjustable.
 A negative value makes telemetry quieter, and a positive value  makes it louder.
 
-Mon Apr 20 12:44:12 2020 -0600: Install: Make sure timedatectl runs after RasLink is installed on new systems
 
-Mon Apr 20 12:38:16 2020 -0600: Install: Remove timesync from install scripts
 
-Mon Apr 20 12:30:09 2020 -0600: Timesync: Make sure timedatectl runs on boot
+###Install: Make sure timedatectl runs after RasLink is installed on new systems
+>Mon, 20 Apr 2020 12:44:12 -0600
 
-Mon Apr 20 02:24:42 2020 -0600: Timesync: Make sure timesync.hourly is removed from the user's node
+>Author: w0jrl(admin@jlappliedtechnologies.com)
 
-Mon Apr 20 02:05:17 2020 -0600: Required-tools: remove the ntpdate package...The right way!
 
-Mon Apr 20 01:53:21 2020 -0600: Revert "Required-tools: Make sure ntpdate package is removed"
+
+
+###Install: Remove timesync from install scripts
+>Mon, 20 Apr 2020 12:38:16 -0600
+
+>Author: w0jrl(admin@jlappliedtechnologies.com)
+
+
+
+
+###Timesync: Make sure timedatectl runs on boot
+>Mon, 20 Apr 2020 12:30:09 -0600
+
+>Author: w0jrl(admin@jlappliedtechnologies.com)
+
+
+
+
+###Timesync: Make sure timesync.hourly is removed from the user's node
+>Mon, 20 Apr 2020 02:24:42 -0600
+
+>Author: w0jrl(admin@jlappliedtechnologies.com)
+
+
+
+
+###Required-tools: remove the ntpdate package...The right way!
+>Mon, 20 Apr 2020 02:05:17 -0600
+
+>Author: w0jrl(admin@jlappliedtechnologies.com)
+
+
+
+
+###Revert "Required-tools: Make sure ntpdate package is removed"
+>Mon, 20 Apr 2020 01:53:21 -0600
+
+>Author: w0jrl(admin@jlappliedtechnologies.com)
+
 Apt-get treats the dash before the N in nptdate as an invalid command.
 We don't want this behavior.
 This reverts commit 88f08c0934bac81771b6a209caefb5381d3b6d69.
 
-Mon Apr 20 01:30:25 2020 -0600: Required-tools: Make sure ntpdate package is removed
 
-Mon Apr 20 01:13:28 2020 -0600: Timesync: Use timedatectl to sync with NTP servers
+
+###Required-tools: Make sure ntpdate package is removed
+>Mon, 20 Apr 2020 01:30:25 -0600
+
+>Author: w0jrl(admin@jlappliedtechnologies.com)
+
+
+
+
+###Timesync: Use timedatectl to sync with NTP servers
+>Mon, 20 Apr 2020 01:13:28 -0600
+
+>Author: w0jrl(admin@jlappliedtechnologies.com)
+
 * Removes timesync.hourly and timesync.service
 
-Fri Mar 27 14:37:35 2020 -0600: Update version to RasLink-20.04
 
-Fri Mar 27 14:31:02 2020 -0600: Template: Update comments in rpt.conf
 
-Mon Feb 24 15:32:47 2020 -0700: Bump version to RasLink- 20.03
+###Update version to RasLink-20.04
+>Fri, 27 Mar 2020 14:37:35 -0600
 
-Mon Feb 24 14:53:19 2020 -0700: Update-dahdi: Make Dahdi compile faster
+>Author: w0jrl(admin@jlappliedtechnologies.com)
+
+
+
+
+###Template: Update comments in rpt.conf
+>Fri, 27 Mar 2020 14:31:02 -0600
+
+>Author: w0jrl(admin@jlappliedtechnologies.com)
+
+
+
+
+###Bump version to RasLink- 20.03
+>Mon, 24 Feb 2020 15:32:47 -0700
+
+>Author: w0jrl(admin@jlappliedtechnologies.com)
+
+
+
+
+###Update-dahdi: Make Dahdi compile faster
+>Mon, 24 Feb 2020 14:53:19 -0700
+
+>Author: w0jrl(admin@jlappliedtechnologies.com)
+
 Use all available cores to build the Dahdi driver.
 By default, the compiler only uses one core, which is slow.
 
-Sat Feb 1 01:45:14 2020 -0700: Update version to 20.02
 
-Fri Jan 24 12:38:34 2020 -0700: App_rpt: Set on demand telemetry timer to 15 seconds
+
+###Update version to 20.02
+>Sat, 1 Feb 2020 01:45:14 -0700
+
+>Author: w0jrl(admin@jlappliedtechnologies.com)
+
+
+
+
+###App_rpt: Set on demand telemetry timer to 15 seconds
+>Fri, 24 Jan 2020 12:38:34 -0700
+
+>Author: w0jrl(admin@jlappliedtechnologies.com)
+
  When a user sets telemetry to on demand (cop,35), AllStar will stop reporting
 all telemetry after 15 seconds. This timer used to be set at 2 minutes.
 This helps to reduce unnecessary background chatter for the user.
 
-Tue Dec 31 14:36:12 2019 -0700: Update version number to 20.01
 
-Tue Dec 31 14:30:14 2019 -0700: Update copyright notices
 
-Wed Nov 27 17:18:53 2019 -0700: Update version number to 19.12
+###Update version number to 20.01
+>Tue, 31 Dec 2019 14:36:12 -0700
 
-Wed Nov 27 17:11:38 2019 -0700: system-update: Fix startup scripts comment
+>Author: w0jrl(admin@jlappliedtechnologies.com)
 
-Wed Nov 27 16:35:30 2019 -0700: system-update: Fix string comparisons for gsmcount and error handling
 
-Wed Oct 30 15:43:39 2019 -0600: Update version to 19.11
 
-Wed Oct 30 15:35:54 2019 -0600: configure.ac: Update the test condition for sox
+
+###Update copyright notices
+>Tue, 31 Dec 2019 14:30:14 -0700
+
+>Author: w0jrl(admin@jlappliedtechnologies.com)
+
+
+
+
+###Update version number to 19.12
+>Wed, 27 Nov 2019 17:18:53 -0700
+
+>Author: w0jrl(admin@jlappliedtechnologies.com)
+
+
+
+
+###system-update: Fix startup scripts comment
+>Wed, 27 Nov 2019 17:11:38 -0700
+
+>Author: w0jrl(admin@jlappliedtechnologies.com)
+
+
+
+
+###system-update: Fix string comparisons for gsmcount and error handling
+>Wed, 27 Nov 2019 16:35:30 -0700
+
+>Author: w0jrl(admin@jlappliedtechnologies.com)
+
+
+
+
+###Update version to 19.11
+>Wed, 30 Oct 2019 15:43:39 -0600
+
+>Author: w0jrl(admin@jlappliedtechnologies.com)
+
+
+
+
+###configure.ac: Update the test condition for sox
+>Wed, 30 Oct 2019 15:35:54 -0600
+
+>Author: w0jrl(admin@jlappliedtechnologies.com)
+
  * The program is no longer called soxmix.
 
-Thu Oct 17 15:14:32 2019 -0600: Revert "Debian-install: Rename raslink-pc-install"
+
+
+###Revert "Debian-install: Rename raslink-pc-install"
+>Thu, 17 Oct 2019 15:14:32 -0600
+
+>Author: w0jrl(admin@jlappliedtechnologies.com)
+
 This reverts commit 857cafcf0df9f9fdfda66a9e0cc3212bab2429ea.
 
-Thu Oct 17 15:13:14 2019 -0600: Revert "Debian-install: Fix chmod command in stage1"
+
+
+###Revert "Debian-install: Fix chmod command in stage1"
+>Thu, 17 Oct 2019 15:13:14 -0600
+
+>Author: w0jrl(admin@jlappliedtechnologies.com)
+
 This reverts commit 0dc0d75aeb624eec145f7b4098571ff04cdee192.
 
-Thu Oct 17 13:09:32 2019 -0600: Debian-install: Fix chmod command in stage1
 
-Thu Oct 17 04:27:21 2019 -0600: Debian-install: Rename raslink-pc-install
+
+###Debian-install: Fix chmod command in stage1
+>Thu, 17 Oct 2019 13:09:32 -0600
+
+>Author: w0jrl(admin@jlappliedtechnologies.com)
+
+
+
+
+###Debian-install: Rename raslink-pc-install
+>Thu, 17 Oct 2019 04:27:21 -0600
+
+>Author: w0jrl(admin@jlappliedtechnologies.com)
+
  Users must be running Debian Jessie for the script to work.
 
-Thu Oct 17 01:05:32 2019 -0600: Required-tools: Make sure libneon27-gnutls is installed
 
-Wed Oct 16 16:48:31 2019 -0600: Install: Update sounds directory in installer files
 
-Mon Oct 14 20:56:58 2019 -0600: Update-asterisk: Don't assume that gcc-4.8 is installed
+###Required-tools: Make sure libneon27-gnutls is installed
+>Thu, 17 Oct 2019 01:05:32 -0600
 
-Mon Oct 14 20:53:16 2019 -0600: Required-tools: Update the list of packages
+>Author: w0jrl(admin@jlappliedtechnologies.com)
 
-Mon Oct 14 20:49:52 2019 -0600: Asterisk: Look for sox instead of soxmix
 
-Wed Oct 9 11:29:57 2019 -0600: motd: Make sure all motd related files are removed
 
-Wed Oct 9 10:08:25 2019 -0600: Timesync: Don't assume the system is online when it isn't
 
-Mon Sep 30 21:41:02 2019 -0600: Fix statements that caused the junk file to be created
+###Install: Update sounds directory in installer files
+>Wed, 16 Oct 2019 16:48:31 -0600
 
-Mon Sep 30 20:18:38 2019 -0600: Revert "Update object cleanup routine"
+>Author: w0jrl(admin@jlappliedtechnologies.com)
+
+
+
+
+###Update-asterisk: Don't assume that gcc-4.8 is installed
+>Mon, 14 Oct 2019 20:56:58 -0600
+
+>Author: w0jrl(admin@jlappliedtechnologies.com)
+
+
+
+
+###Required-tools: Update the list of packages
+>Mon, 14 Oct 2019 20:53:16 -0600
+
+>Author: w0jrl(admin@jlappliedtechnologies.com)
+
+
+
+
+###Asterisk: Look for sox instead of soxmix
+>Mon, 14 Oct 2019 20:49:52 -0600
+
+>Author: w0jrl(admin@jlappliedtechnologies.com)
+
+
+
+
+###motd: Make sure all motd related files are removed
+>Wed, 9 Oct 2019 11:29:57 -0600
+
+>Author: w0jrl(admin@jlappliedtechnologies.com)
+
+
+
+
+###Timesync: Don't assume the system is online when it isn't
+>Wed, 9 Oct 2019 10:08:25 -0600
+
+>Author: w0jrl(admin@jlappliedtechnologies.com)
+
+
+
+
+###Fix statements that caused the junk file to be created
+>Mon, 30 Sep 2019 21:41:02 -0600
+
+>Author: w0jrl(admin@jlappliedtechnologies.com)
+
+
+
+
+###Revert "Update object cleanup routine"
+>Mon, 30 Sep 2019 20:18:38 -0600
+
+>Author: w0jrl(admin@jlappliedtechnologies.com)
+
  * Not the cause of the junk file
 This reverts commit 21013d9f6c7618a5827be57b8f940c748dabd43c.
 
-Mon Sep 30 19:22:44 2019 -0600: Update object cleanup routine
+
+
+###Update object cleanup routine
+>Mon, 30 Sep 2019 19:22:44 -0600
+
+>Author: w0jrl(admin@jlappliedtechnologies.com)
+
  * Stop-gap mesure to clean up junk files, until the cause can be found.
 * Doesn't affect the build process
 
-Mon Sep 30 18:32:41 2019 -0600: Fix broken packages if detected
 
-Mon Sep 30 16:01:09 2019 -0600: Update version number to 19.10
 
-Sat Sep 28 21:49:03 2019 -0600: Make sure timesync is loaded at boot time
+###Fix broken packages if detected
+>Mon, 30 Sep 2019 18:32:41 -0600
 
-Sat Sep 28 19:26:41 2019 -0600: Use dahdi_dummy as timing source for asterisk
+>Author: w0jrl(admin@jlappliedtechnologies.com)
 
-Sat Sep 28 18:41:05 2019 -0600: Add zram to rpi installer
 
-Sat Sep 28 17:57:59 2019 -0600: Use ntpdate to sync time
 
-Sat Sep 28 00:55:47 2019 -0600: Revert "Adjust Asterisk startup timer to 60 seconds"
+
+###Update version number to 19.10
+>Mon, 30 Sep 2019 16:01:09 -0600
+
+>Author: w0jrl(admin@jlappliedtechnologies.com)
+
+
+
+
+###Make sure timesync is loaded at boot time
+>Sat, 28 Sep 2019 21:49:03 -0600
+
+>Author: w0jrl(admin@jlappliedtechnologies.com)
+
+
+
+
+###Use dahdi_dummy as timing source for asterisk
+>Sat, 28 Sep 2019 19:26:41 -0600
+
+>Author: w0jrl(admin@jlappliedtechnologies.com)
+
+
+
+
+###Add zram to rpi installer
+>Sat, 28 Sep 2019 18:41:05 -0600
+
+>Author: w0jrl(admin@jlappliedtechnologies.com)
+
+
+
+
+###Use ntpdate to sync time
+>Sat, 28 Sep 2019 17:57:59 -0600
+
+>Author: w0jrl(admin@jlappliedtechnologies.com)
+
+
+
+
+###Revert "Adjust Asterisk startup timer to 60 seconds"
+>Sat, 28 Sep 2019 00:55:47 -0600
+
+>Author: w0jrl(admin@jlappliedtechnologies.com)
+
 This reverts commit 6d560b59a8733e8948411589882980a4dfeebb94.
 
-Sat Sep 28 00:52:28 2019 -0600: Remove ntpd
+
+
+###Remove ntpd
+>Sat, 28 Sep 2019 00:52:28 -0600
+
+>Author: w0jrl(admin@jlappliedtechnologies.com)
+
  * Causes timing issues with USB sound cards
 
-Thu Sep 26 14:02:46 2019 -0600: Reformat nodenames scripts
 
-Sun Sep 22 09:24:17 2019 -0600: Make the version command more screen reader friendly
 
-Sun Sep 22 09:07:18 2019 -0600: Remove useless motd file
+###Reformat nodenames scripts
+>Thu, 26 Sep 2019 14:02:46 -0600
+
+>Author: w0jrl(admin@jlappliedtechnologies.com)
+
+
+
+
+###Make the version command more screen reader friendly
+>Sun, 22 Sep 2019 09:24:17 -0600
+
+>Author: w0jrl(admin@jlappliedtechnologies.com)
+
+
+
+
+###Remove useless motd file
+>Sun, 22 Sep 2019 09:07:18 -0600
+
+>Author: w0jrl(admin@jlappliedtechnologies.com)
+
  Screen reader users were getting spammed on log in by a message
 that sighted users couldn't see.
 
-Sun Sep 22 06:40:27 2019 -0600: Update date format used by version command
 
-Thu Sep 19 18:12:40 2019 -0600: Reformat chk-packages
 
-Thu Sep 19 13:46:59 2019 -0600: Comment blank lines in service units and scripts
+###Update date format used by version command
+>Sun, 22 Sep 2019 06:40:27 -0600
 
-Sat Sep 14 13:05:28 2019 -0600: Update package database if sources list is changed
+>Author: w0jrl(admin@jlappliedtechnologies.com)
 
-Sat Sep 14 12:36:29 2019 -0600: Update Dahdi template files
 
-Sat Sep 14 10:41:43 2019 -0600: Auto assign spans during Dahdi configuration
 
-Fri Sep 13 02:57:27 2019 -0600: Stop update-dahdi from creating junk files, and remove any junk files already on the system
 
-Fri Sep 13 01:28:55 2019 -0600: Update Dahdi build process
+###Reformat chk-packages
+>Thu, 19 Sep 2019 18:12:40 -0600
+
+>Author: w0jrl(admin@jlappliedtechnologies.com)
+
+
+
+
+###Comment blank lines in service units and scripts
+>Thu, 19 Sep 2019 13:46:59 -0600
+
+>Author: w0jrl(admin@jlappliedtechnologies.com)
+
+
+
+
+###Update package database if sources list is changed
+>Sat, 14 Sep 2019 13:05:28 -0600
+
+>Author: w0jrl(admin@jlappliedtechnologies.com)
+
+
+
+
+###Update Dahdi template files
+>Sat, 14 Sep 2019 12:36:29 -0600
+
+>Author: w0jrl(admin@jlappliedtechnologies.com)
+
+
+
+
+###Auto assign spans during Dahdi configuration
+>Sat, 14 Sep 2019 10:41:43 -0600
+
+>Author: w0jrl(admin@jlappliedtechnologies.com)
+
+
+
+
+###Stop update-dahdi from creating junk files, and remove any junk files already on the system
+>Fri, 13 Sep 2019 02:57:27 -0600
+
+>Author: w0jrl(admin@jlappliedtechnologies.com)
+
+
+
+
+###Update Dahdi build process
+>Fri, 13 Sep 2019 01:28:55 -0600
+
+>Author: w0jrl(admin@jlappliedtechnologies.com)
+
  Make sure we remove any junk files that the build process leaves behind.
 
-Fri Sep 13 01:06:12 2019 -0600: Update license comments in service units
 
-Thu Sep 12 22:35:54 2019 -0600: Adjust Asterisk startup timer to 60 seconds
+
+###Update license comments in service units
+>Fri, 13 Sep 2019 01:06:12 -0600
+
+>Author: w0jrl(admin@jlappliedtechnologies.com)
+
+
+
+
+###Adjust Asterisk startup timer to 60 seconds
+>Thu, 12 Sep 2019 22:35:54 -0600
+
+>Author: w0jrl(admin@jlappliedtechnologies.com)
+
  * Gives time for all other services to start properly
 
-Thu Sep 12 22:32:51 2019 -0600: Increase prompt timers for system update to 5 seconds
 
-Thu Sep 12 21:26:09 2019 -0600: Fix prompts
+
+###Increase prompt timers for system update to 5 seconds
+>Thu, 12 Sep 2019 22:32:51 -0600
+
+>Author: w0jrl(admin@jlappliedtechnologies.com)
+
+
+
+
+###Fix prompts
+>Thu, 12 Sep 2019 21:26:09 -0600
+
+>Author: w0jrl(admin@jlappliedtechnologies.com)
+
  A space is required in echo statements after
 the -e expression, but before the quote.
 
-Thu Sep 12 20:48:45 2019 -0600: Update status messages, echo statements, and comments in build scripts
 
-Thu Sep 12 18:34:41 2019 -0600: Fix loaded variable for zram
 
-Thu Sep 12 17:37:10 2019 -0600: Make update and version scripts more user-friendly
+###Update status messages, echo statements, and comments in build scripts
+>Thu, 12 Sep 2019 20:48:45 -0600
 
-Thu Sep 12 14:39:41 2019 -0600: Add zram to Raspberry Pi
+>Author: w0jrl(admin@jlappliedtechnologies.com)
+
+
+
+
+###Fix loaded variable for zram
+>Thu, 12 Sep 2019 18:34:41 -0600
+
+>Author: w0jrl(admin@jlappliedtechnologies.com)
+
+
+
+
+###Make update and version scripts more user-friendly
+>Thu, 12 Sep 2019 17:37:10 -0600
+
+>Author: w0jrl(admin@jlappliedtechnologies.com)
+
+
+
+
+###Add zram to Raspberry Pi
+>Thu, 12 Sep 2019 14:39:41 -0600
+
+>Author: w0jrl(admin@jlappliedtechnologies.com)
+
  If the Pi needs to swap,
 zram will be used,
 instead of touching the SD card.
 
-Thu Sep 12 13:39:33 2019 -0600: Change dynamic memory split on Raspberry Pi
 
-Sat Aug 31 12:01:17 2019 -0600: Update version to 19.09
 
-Sat Aug 31 11:09:07 2019 -0600: Update timers for node list retrieval
+###Change dynamic memory split on Raspberry Pi
+>Thu, 12 Sep 2019 13:39:33 -0600
 
-Wed Jul 24 21:19:34 2019 -0600: Update required-tools
+>Author: w0jrl(admin@jlappliedtechnologies.com)
 
-Wed Jul 24 18:10:27 2019 -0600: Update Skyler's callsign in comments for wifi-setup
 
-Mon Jul 22 11:54:21 2019 -0600: Update version to 19.08
 
-Mon Jul 8 13:08:23 2019 -0600: Stop removing libpt-dev
+
+###Update version to 19.09
+>Sat, 31 Aug 2019 12:01:17 -0600
+
+>Author: w0jrl(admin@jlappliedtechnologies.com)
+
+
+
+
+###Update timers for node list retrieval
+>Sat, 31 Aug 2019 11:09:07 -0600
+
+>Author: w0jrl(admin@jlappliedtechnologies.com)
+
+
+
+
+###Update required-tools
+>Wed, 24 Jul 2019 21:19:34 -0600
+
+>Author: w0jrl(admin@jlappliedtechnologies.com)
+
+
+
+
+###Update Skyler's callsign in comments for wifi-setup
+>Wed, 24 Jul 2019 18:10:27 -0600
+
+>Author: w0jrl(admin@jlappliedtechnologies.com)
+
+
+
+
+###Update version to 19.08
+>Mon, 22 Jul 2019 11:54:21 -0600
+
+>Author: w0jrl(admin@jlappliedtechnologies.com)
+
+
+
+
+###Stop removing libpt-dev
+>Mon, 8 Jul 2019 13:08:23 -0600
+
+>Author: w0jrl(admin@jlappliedtechnologies.com)
+
  * Needed for Asterisk to build properly
 
-Mon Jul 8 12:49:10 2019 -0600: Add exports required for libpt to update-asterisk
 
-Mon Jul 8 12:38:13 2019 -0600: Add libpt-dev to required-tools
+
+###Add exports required for libpt to update-asterisk
+>Mon, 8 Jul 2019 12:49:10 -0600
+
+>Author: w0jrl(admin@jlappliedtechnologies.com)
+
+
+
+
+###Add libpt-dev to required-tools
+>Mon, 8 Jul 2019 12:38:13 -0600
+
+>Author: w0jrl(admin@jlappliedtechnologies.com)
+
  *Used with gcc
 
-Sun Jun 30 14:33:42 2019 -0600: Update version number to 19.07
 
-Sun Jun 30 13:59:07 2019 -0600: Make public IP address playable using autopatch
+
+###Update version number to 19.07
+>Sun, 30 Jun 2019 14:33:42 -0600
+
+>Author: w0jrl(admin@jlappliedtechnologies.com)
+
+
+
+
+###Make public IP address playable using autopatch
+>Sun, 30 Jun 2019 13:59:07 -0600
+
+>Author: w0jrl(admin@jlappliedtechnologies.com)
+
  Users can use the autopatch up command + 00 to hear their public IP
 spoken by AllStar.
 
-Sat Jun 1 09:42:30 2019 -0600: Update version number to 19.06
 
-Thu May 23 13:30:48 2019 -0600: Set permissions for dsp device at system boot
 
-Tue Apr 30 14:39:17 2019 -0600: Bump version to 19.05
+###Update version number to 19.06
+>Sat, 1 Jun 2019 09:42:30 -0600
 
-Fri Apr 26 10:11:46 2019 -0600: Update help text in nodenames control script
+>Author: w0jrl(admin@jlappliedtechnologies.com)
 
-Fri Apr 26 09:55:47 2019 -0600: Update retry count in rc.updatenodelist
 
-Fri Apr 26 09:23:08 2019 -0600: Reduce Asterisk startup timer by 15 seconds
 
-Sun Mar 31 19:11:22 2019 -0600: Update RasLink to 19.04
 
-Wed Mar 20 11:16:41 2019 -0600: Remove pciradio patch
+###Set permissions for dsp device at system boot
+>Thu, 23 May 2019 13:30:48 -0600
+
+>Author: w0jrl(admin@jlappliedtechnologies.com)
+
+
+
+
+###Bump version to 19.05
+>Tue, 30 Apr 2019 14:39:17 -0600
+
+>Author: w0jrl(admin@jlappliedtechnologies.com)
+
+
+
+
+###Update help text in nodenames control script
+>Fri, 26 Apr 2019 10:11:46 -0600
+
+>Author: w0jrl(admin@jlappliedtechnologies.com)
+
+
+
+
+###Update retry count in rc.updatenodelist
+>Fri, 26 Apr 2019 09:55:47 -0600
+
+>Author: w0jrl(admin@jlappliedtechnologies.com)
+
+
+
+
+###Reduce Asterisk startup timer by 15 seconds
+>Fri, 26 Apr 2019 09:23:08 -0600
+
+>Author: w0jrl(admin@jlappliedtechnologies.com)
+
+
+
+
+###Update RasLink to 19.04
+>Sun, 31 Mar 2019 19:11:22 -0600
+
+>Author: w0jrl(admin@jlappliedtechnologies.com)
+
+
+
+
+###Remove pciradio patch
+>Wed, 20 Mar 2019 11:16:41 -0600
+
+>Author: w0jrl(admin@jlappliedtechnologies.com)
+
  No longer supported in dahdi.
 
-Wed Mar 20 10:50:34 2019 -0600: Fix directory paths
 
-Wed Mar 20 10:30:40 2019 -0600: Add error checking to patch commands
 
-Wed Mar 20 10:16:16 2019 -0600: Add Dahdi patches from AllStar Link
+###Fix directory paths
+>Wed, 20 Mar 2019 10:50:34 -0600
+
+>Author: w0jrl(admin@jlappliedtechnologies.com)
+
+
+
+
+###Add error checking to patch commands
+>Wed, 20 Mar 2019 10:30:40 -0600
+
+>Author: w0jrl(admin@jlappliedtechnologies.com)
+
+
+
+
+###Add Dahdi patches from AllStar Link
+>Wed, 20 Mar 2019 10:16:16 -0600
+
+>Author: w0jrl(admin@jlappliedtechnologies.com)
+
  Needed for autopatch service.
 
-Sat Mar 9 00:06:38 2019 -0700: Update usbradio queue_size to 4
 
-Wed Feb 27 23:27:14 2019 -0700: Update to version 19.03
 
-Mon Jan 28 21:47:18 2019 -0700: Update version to 19.02
+###Update usbradio queue_size to 4
+>Sat, 9 Mar 2019 00:06:38 -0700
 
-Mon Jan 28 21:38:09 2019 -0700: Use semicolons instead of blank lines if audio filters need to be added to usbradio configuration while running update-asterisk
+>Author: w0jrl(admin@jlappliedtechnologies.com)
 
-Mon Jan 28 20:53:28 2019 -0700: Add pointers to the AllStar Wiki for most config templates
+
+
+
+###Update to version 19.03
+>Wed, 27 Feb 2019 23:27:14 -0700
+
+>Author: w0jrl(admin@jlappliedtechnologies.com)
+
+
+
+
+###Update version to 19.02
+>Mon, 28 Jan 2019 21:47:18 -0700
+
+>Author: w0jrl(admin@jlappliedtechnologies.com)
+
+
+
+
+###Use semicolons instead of blank lines if audio filters need to be added to usbradio configuration while running update-asterisk
+>Mon, 28 Jan 2019 21:38:09 -0700
+
+>Author: w0jrl(admin@jlappliedtechnologies.com)
+
+
+
+
+###Add pointers to the AllStar Wiki for most config templates
+>Mon, 28 Jan 2019 20:53:28 -0700
+
+>Author: w0jrl(admin@jlappliedtechnologies.com)
+
  Should make setting up a new node easier.
 
 Remove blank lines from templates
@@ -515,15 +1646,39 @@ Remove blank lines from templates
  Looks cleaner, and follows the format of non AllStar Asterisk
 configuration files.
 
-Mon Jan 28 15:01:09 2019 -0700: Remove blank line from end of rpt template
 
-Mon Jan 28 14:50:44 2019 -0700: Remove sudo from raslink-pc-install
+
+###Remove blank line from end of rpt template
+>Mon, 28 Jan 2019 15:01:09 -0700
+
+>Author: w0jrl(admin@jlappliedtechnologies.com)
+
+
+
+
+###Remove sudo from raslink-pc-install
+>Mon, 28 Jan 2019 14:50:44 -0700
+
+>Author: w0jrl(admin@jlappliedtechnologies.com)
+
  Not needed.
 
-Tue Dec 25 18:10:53 2018 -0700: Remove sudo from reboot command in rpi update-stage2
+
+
+###Remove sudo from reboot command in rpi update-stage2
+>Tue, 25 Dec 2018 18:10:53 -0700
+
+>Author: w0jrl(admin@jlappliedtechnologies.com)
+
  No need, the script already runs as root.
 
-Tue Dec 25 17:34:29 2018 -0700: Fix bugs in update-stage1
+
+
+###Fix bugs in update-stage1
+>Tue, 25 Dec 2018 17:34:29 -0700
+
+>Author: w0jrl(admin@jlappliedtechnologies.com)
+
  * Remove sudo from the reboot command
  * Make sure that allAllStar related services are disabled before rebooting
 Services such as updatenodelist and nodenames will force Asterisk to start,
@@ -532,716 +1687,2468 @@ Although there is a check in update-stage2 that will force all AllStar
 related services to stop if needed, this should be done in stage1,
 before reboot.
 
-Tue Dec 25 15:46:32 2018 -0700: Update wifi-setup to include Skyler's new callsign
 
-Tue Dec 25 15:38:43 2018 -0700: Update version number to 19.01
 
-Tue Dec 25 15:24:45 2018 -0700: Update rpt.conf template
+###Update wifi-setup to include Skyler's new callsign
+>Tue, 25 Dec 2018 15:46:32 -0700
+
+>Author: w0jrl(admin@jlappliedtechnologies.com)
+
+
+
+
+###Update version number to 19.01
+>Tue, 25 Dec 2018 15:38:43 -0700
+
+>Author: w0jrl(admin@jlappliedtechnologies.com)
+
+
+
+
+###Update rpt.conf template
+>Tue, 25 Dec 2018 15:24:45 -0700
+
+>Author: w0jrl(admin@jlappliedtechnologies.com)
+
  * Add comments to explain how to set up a half-duplex RF link
 to a repeater.
  * Make comments more readable.
 
-Tue Dec 25 12:21:28 2018 -0700: Update copyright in scripts and service units
 
-Tue Dec 25 12:06:45 2018 -0700: Update license file from upstream
 
-Fri Nov 30 20:55:53 2018 -0700: Remove fixed-dahdi-patches directory
+###Update copyright in scripts and service units
+>Tue, 25 Dec 2018 12:21:28 -0700
+
+>Author: w0jrl(admin@jlappliedtechnologies.com)
+
+
+
+
+###Update license file from upstream
+>Tue, 25 Dec 2018 12:06:45 -0700
+
+>Author: w0jrl(admin@jlappliedtechnologies.com)
+
+
+
+
+###Remove fixed-dahdi-patches directory
+>Fri, 30 Nov 2018 20:55:53 -0700
+
+>Author: w0jrl(admin@jlappliedtechnologies.com)
+
  No longer needed.
 
-Mon Nov 19 22:03:13 2018 -0700: Clear output before running system update
 
-Mon Nov 19 21:14:11 2018 -0700: Make sure Dahdi configuration is generated
+
+###Clear output before running system update
+>Mon, 19 Nov 2018 22:03:13 -0700
+
+>Author: w0jrl(admin@jlappliedtechnologies.com)
+
+
+
+
+###Make sure Dahdi configuration is generated
+>Mon, 19 Nov 2018 21:14:11 -0700
+
+>Author: w0jrl(admin@jlappliedtechnologies.com)
+
  If the Dahdi configuration files are not available,
 the Asterisk service will not start.
 
-Mon Nov 19 19:59:22 2018 -0700: Remove Dahdi patches
+
+
+###Remove Dahdi patches
+>Mon, 19 Nov 2018 19:59:22 -0700
+
+>Author: w0jrl(admin@jlappliedtechnologies.com)
+
  No longer needed
 
-Mon Nov 19 19:06:34 2018 -0700: Update RasLink software version to 18.12
 
-Mon Nov 19 18:45:07 2018 -0700: Update version.sh
+
+###Update RasLink software version to 18.12
+>Mon, 19 Nov 2018 19:06:34 -0700
+
+>Author: w0jrl(admin@jlappliedtechnologies.com)
+
+
+
+
+###Update version.sh
+>Mon, 19 Nov 2018 18:45:07 -0700
+
+>Author: w0jrl(admin@jlappliedtechnologies.com)
+
  * Clear output before displaying information
 * Add welcome message
 
-Mon Nov 19 18:11:38 2018 -0700: Update Asterisk components from upstream
 
-Thu Oct 25 11:27:54 2018 -0600: Update 18.11
 
-Mon Sep 17 15:02:51 2018 -0600: Update RasLink to version 18.10
+###Update Asterisk components from upstream
+>Mon, 19 Nov 2018 18:11:38 -0700
 
-Fri Aug 31 20:38:01 2018 -0600: Update RasLink to 18.09
+>Author: w0jrl(admin@jlappliedtechnologies.com)
 
-Fri Aug 24 15:25:03 2018 -0600: Filter Wi-Fi card listso only the card name is output
+
+
+
+###Update 18.11
+>Thu, 25 Oct 2018 11:27:54 -0600
+
+>Author: w0jrl(admin@jlappliedtechnologies.com)
+
+
+
+
+###Update RasLink to version 18.10
+>Mon, 17 Sep 2018 15:02:51 -0600
+
+>Author: w0jrl(admin@jlappliedtechnologies.com)
+
+
+
+
+###Update RasLink to 18.09
+>Fri, 31 Aug 2018 20:38:01 -0600
+
+>Author: w0jrl(admin@jlappliedtechnologies.com)
+
+
+
+
+###Filter Wi-Fi card listso only the card name is output
+>Fri, 24 Aug 2018 15:25:03 -0600
+
+>Author: w0jrl(admin@jlappliedtechnologies.com)
+
  The card name is used in the wificard variable.
 The extra information output was causing active connections to be treated
 as failed.
 
-Fri Aug 24 14:26:07 2018 -0600: Use ip command to setup connection
+
+
+###Use ip command to setup connection
+>Fri, 24 Aug 2018 14:26:07 -0600
+
+>Author: w0jrl(admin@jlappliedtechnologies.com)
+
  Ifconfig is deprecated.
 
-Wed Aug 8 14:37:54 2018 -0600: Stop downloading ASL-sounds
+
+
+###Stop downloading ASL-sounds
+>Wed, 8 Aug 2018 14:37:54 -0600
+
+>Author: w0jrl(admin@jlappliedtechnologies.com)
+
  Causes build errors on some hosts.
 The required files already exist in the repository.
 
-Mon Jul 16 14:12:56 2018 -0600: Update app_rpt to version 18.08
 
-Fri Jul 13 19:09:54 2018 -0600: Check for failed download during stage 1 of system-update
+
+###Update app_rpt to version 18.08
+>Mon, 16 Jul 2018 14:12:56 -0600
+
+>Author: w0jrl(admin@jlappliedtechnologies.com)
+
+
+
+
+###Check for failed download during stage 1 of system-update
+>Fri, 13 Jul 2018 19:09:54 -0600
+
+>Author: w0jrl(admin@jlappliedtechnologies.com)
+
  Abort update if download fails.
 
-Wed Jun 13 15:28:50 2018 -0600: Update nodenames from Gitlab
 
-Wed Jun 13 13:32:13 2018 -0600: Move RasLink to Gitlab
 
-Tue Jun 12 12:50:16 2018 -0600: Update RasLink to version 18.07
+###Update nodenames from Gitlab
+>Wed, 13 Jun 2018 15:28:50 -0600
 
-Tue Jun 5 17:08:54 2018 -0600: Add snd_mixer_oss as required kernel module
+>Author: w0jrl(admin@jlappliedtechnologies.com)
 
-Tue Jun 5 16:37:18 2018 -0600: Update libpri using apt-get,  and add alsa-oss as required package
 
-Tue Jun 5 16:23:27 2018 -0600: Remove Libpri directory structure and hooks
 
-Wed May 30 21:40:33 2018 -0600: Make sure Perl is configured correctly on Raspberry Pi
+
+###Move RasLink to Gitlab
+>Wed, 13 Jun 2018 13:32:13 -0600
+
+>Author: w0jrl(admin@jlappliedtechnologies.com)
+
+
+
+
+###Update RasLink to version 18.07
+>Tue, 12 Jun 2018 12:50:16 -0600
+
+>Author: w0jrl(admin@jlappliedtechnologies.com)
+
+
+
+
+###Add snd_mixer_oss as required kernel module
+>Tue, 5 Jun 2018 17:08:54 -0600
+
+>Author: w0jrl(admin@jlappliedtechnologies.com)
+
+
+
+
+###Update libpri using apt-get,  and add alsa-oss as required package
+>Tue, 5 Jun 2018 16:37:18 -0600
+
+>Author: w0jrl(admin@jlappliedtechnologies.com)
+
+
+
+
+###Remove Libpri directory structure and hooks
+>Tue, 5 Jun 2018 16:23:27 -0600
+
+>Author: w0jrl(admin@jlappliedtechnologies.com)
+
+
+
+
+###Make sure Perl is configured correctly on Raspberry Pi
+>Wed, 30 May 2018 21:40:33 -0600
+
+>Author: w0jrl(admin@jlappliedtechnologies.com)
+
  The tmpfs script prevented Perl from updating correctly.
 
-Wed May 30 21:31:33 2018 -0600: Remove noexec option from tmpfs  script on Raspberry Pi
+
+
+###Remove noexec option from tmpfs  script on Raspberry Pi
+>Wed, 30 May 2018 21:31:33 -0600
+
+>Author: w0jrl(admin@jlappliedtechnologies.com)
+
  Noexec prevented some packages from updating properly.
 
-Sat May 19 19:09:09 2018 -0600: Cleanup directory structure
 
-Sat May 19 16:44:22 2018 -0600: Update statpost comment in rpt template
 
-Sat May 19 15:35:03 2018 -0600: Update RasLink to version 18.06
+###Cleanup directory structure
+>Sat, 19 May 2018 19:09:09 -0600
 
-Sat May 19 15:19:30 2018 -0600: Disable statpost lines in rpt template
+>Author: w0jrl(admin@jlappliedtechnologies.com)
+
+
+
+
+###Update statpost comment in rpt template
+>Sat, 19 May 2018 16:44:22 -0600
+
+>Author: w0jrl(admin@jlappliedtechnologies.com)
+
+
+
+
+###Update RasLink to version 18.06
+>Sat, 19 May 2018 15:35:03 -0600
+
+>Author: w0jrl(admin@jlappliedtechnologies.com)
+
+
+
+
+###Disable statpost lines in rpt template
+>Sat, 19 May 2018 15:19:30 -0600
+
+>Author: w0jrl(admin@jlappliedtechnologies.com)
+
  Users who are setting up a public node will need to uncomment them.
 
-Thu Apr 19 11:06:24 2018 -0600: Uninstall Libpri
 
-Thu Apr 19 10:00:41 2018 -0600: Update Asterisk from AllStarLink
 
-Fri Mar 30 12:33:50 2018 -0600: Remove update from required-tools
+###Uninstall Libpri
+>Thu, 19 Apr 2018 11:06:24 -0600
 
-Fri Mar 30 12:27:37 2018 -0600: Update package requirements
+>Author: w0jrl(admin@jlappliedtechnologies.com)
 
-Fri Mar 30 02:35:59 2018 -0600: Revert Stretch upgrade
+
+
+
+###Update Asterisk from AllStarLink
+>Thu, 19 Apr 2018 10:00:41 -0600
+
+>Author: w0jrl(admin@jlappliedtechnologies.com)
+
+
+
+
+###Remove update from required-tools
+>Fri, 30 Mar 2018 12:33:50 -0600
+
+>Author: w0jrl(admin@jlappliedtechnologies.com)
+
+
+
+
+###Update package requirements
+>Fri, 30 Mar 2018 12:27:37 -0600
+
+>Author: w0jrl(admin@jlappliedtechnologies.com)
+
+
+
+
+###Revert Stretch upgrade
+>Fri, 30 Mar 2018 02:35:59 -0600
+
+>Author: w0jrl(admin@jlappliedtechnologies.com)
+
  As of the latest update for stretch on the Raspberry Pi,
 Dahdi isn't building properly.
 
-Tue Mar 27 10:55:35 2018 -0600: Update purge command in package cleanup
 
-Tue Mar 27 05:38:52 2018 -0600: Update error messages
 
-Tue Mar 27 02:34:08 2018 -0600: Sleep 5 seconds if errors detected during system update
+###Update purge command in package cleanup
+>Tue, 27 Mar 2018 10:55:35 -0600
 
-Tue Mar 27 02:12:56 2018 -0600: Increase sleep time to 5 seconds after instructions in release-upgrade
+>Author: w0jrl(admin@jlappliedtechnologies.com)
+
+
+
+
+###Update error messages
+>Tue, 27 Mar 2018 05:38:52 -0600
+
+>Author: w0jrl(admin@jlappliedtechnologies.com)
+
+
+
+
+###Sleep 5 seconds if errors detected during system update
+>Tue, 27 Mar 2018 02:34:08 -0600
+
+>Author: w0jrl(admin@jlappliedtechnologies.com)
+
+
+
+
+###Increase sleep time to 5 seconds after instructions in release-upgrade
+>Tue, 27 Mar 2018 02:12:56 -0600
+
+>Author: w0jrl(admin@jlappliedtechnologies.com)
+
  Helpful for screen readers.
 
-Mon Mar 26 22:44:45 2018 -0600: Sleep 3 seconds after instructions in release-upgrade
 
-Mon Mar 26 18:52:41 2018 -0600: Update error checking in build and update scripts
 
-Mon Mar 26 15:17:57 2018 -0600: Remove force switch from reboot command in release-upgrade
+###Sleep 3 seconds after instructions in release-upgrade
+>Mon, 26 Mar 2018 22:44:45 -0600
+
+>Author: w0jrl(admin@jlappliedtechnologies.com)
+
+
+
+
+###Update error checking in build and update scripts
+>Mon, 26 Mar 2018 18:52:41 -0600
+
+>Author: w0jrl(admin@jlappliedtechnologies.com)
+
+
+
+
+###Remove force switch from reboot command in release-upgrade
+>Mon, 26 Mar 2018 15:17:57 -0600
+
+>Author: w0jrl(admin@jlappliedtechnologies.com)
+
  The force switch keeps ssh terminals from closing properly.
 
-Mon Mar 26 15:08:28 2018 -0600: Move sync command, and update reboot command in release-upgrade
 
-Mon Mar 26 00:42:00 2018 -0600: Update release-upgrade purge command for old packages
 
-Mon Mar 26 00:14:09 2018 -0600: Update sleep times  for release-upgrade
+###Move sync command, and update reboot command in release-upgrade
+>Mon, 26 Mar 2018 15:08:28 -0600
 
-Sun Mar 25 20:04:53 2018 -0600: Fix exit status in release-upgrade
+>Author: w0jrl(admin@jlappliedtechnologies.com)
 
-Sun Mar 25 16:55:52 2018 -0600: Make sure release-upgrade and wifi-setup exit properly
 
-Fri Mar 23 18:05:15 2018 -0600: Remove ptlib export from Asterisk build
 
-Fri Mar 23 17:31:31 2018 -0600: Remove libpt-dev
 
-Fri Mar 23 14:51:45 2018 -0600: Add ssh to required-tools
+###Update release-upgrade purge command for old packages
+>Mon, 26 Mar 2018 00:42:00 -0600
 
-Fri Mar 23 05:32:16 2018 -0600: Copy AllStar configurations before building Asterisk during RasLink install
+>Author: w0jrl(admin@jlappliedtechnologies.com)
 
-Fri Mar 23 03:00:34 2018 -0600: Generate Dahdi system configuration after building
 
-Fri Mar 23 00:45:06 2018 -0600: Update EchoLink template
 
-Thu Mar 22 17:50:23 2018 -0600: Add Radio_relax to Asterisk menuselect
 
-Thu Mar 22 14:13:23 2018 -0600: Make sure Asterisk doesn't start during raslink-rpi-install
+###Update sleep times  for release-upgrade
+>Mon, 26 Mar 2018 00:14:09 -0600
 
-Thu Mar 22 14:06:16 2018 -0600: Update version check in Debian and RPi install scripts
+>Author: w0jrl(admin@jlappliedtechnologies.com)
 
-Thu Mar 22 10:12:50 2018 -0600: Update license comments in RPi install scripts
 
-Wed Mar 21 22:51:00 2018 -0600: Clean up trash from uninstalled packages
 
-Wed Mar 21 21:06:09 2018 -0600: Revert "Remove unused configurations for old packages"
+
+###Fix exit status in release-upgrade
+>Sun, 25 Mar 2018 20:04:53 -0600
+
+>Author: w0jrl(admin@jlappliedtechnologies.com)
+
+
+
+
+###Make sure release-upgrade and wifi-setup exit properly
+>Sun, 25 Mar 2018 16:55:52 -0600
+
+>Author: w0jrl(admin@jlappliedtechnologies.com)
+
+
+
+
+###Remove ptlib export from Asterisk build
+>Fri, 23 Mar 2018 18:05:15 -0600
+
+>Author: w0jrl(admin@jlappliedtechnologies.com)
+
+
+
+
+###Remove libpt-dev
+>Fri, 23 Mar 2018 17:31:31 -0600
+
+>Author: w0jrl(admin@jlappliedtechnologies.com)
+
+
+
+
+###Add ssh to required-tools
+>Fri, 23 Mar 2018 14:51:45 -0600
+
+>Author: w0jrl(admin@jlappliedtechnologies.com)
+
+
+
+
+###Copy AllStar configurations before building Asterisk during RasLink install
+>Fri, 23 Mar 2018 05:32:16 -0600
+
+>Author: w0jrl(admin@jlappliedtechnologies.com)
+
+
+
+
+###Generate Dahdi system configuration after building
+>Fri, 23 Mar 2018 03:00:34 -0600
+
+>Author: w0jrl(admin@jlappliedtechnologies.com)
+
+
+
+
+###Update EchoLink template
+>Fri, 23 Mar 2018 00:45:06 -0600
+
+>Author: w0jrl(admin@jlappliedtechnologies.com)
+
+
+
+
+###Add Radio_relax to Asterisk menuselect
+>Thu, 22 Mar 2018 17:50:23 -0600
+
+>Author: w0jrl(admin@jlappliedtechnologies.com)
+
+
+
+
+###Make sure Asterisk doesn't start during raslink-rpi-install
+>Thu, 22 Mar 2018 14:13:23 -0600
+
+>Author: w0jrl(admin@jlappliedtechnologies.com)
+
+
+
+
+###Update version check in Debian and RPi install scripts
+>Thu, 22 Mar 2018 14:06:16 -0600
+
+>Author: w0jrl(admin@jlappliedtechnologies.com)
+
+
+
+
+###Update license comments in RPi install scripts
+>Thu, 22 Mar 2018 10:12:50 -0600
+
+>Author: w0jrl(admin@jlappliedtechnologies.com)
+
+
+
+
+###Clean up trash from uninstalled packages
+>Wed, 21 Mar 2018 22:51:00 -0600
+
+>Author: w0jrl(admin@jlappliedtechnologies.com)
+
+
+
+
+###Revert "Remove unused configurations for old packages"
+>Wed, 21 Mar 2018 21:06:09 -0600
+
+>Author: w0jrl(admin@jlappliedtechnologies.com)
+
 This reverts commit b4c14f3e05a897cd5bfd4a59f890db760837aed1.
 
-Wed Mar 21 20:58:47 2018 -0600: Remove unused configurations for old packages
 
-Tue Mar 20 22:33:16 2018 -0600: Add package clean up to required-tools
 
-Wed Mar 14 04:30:38 2018 -0600: Remove apt-listchanges  during release-upgrade
+###Remove unused configurations for old packages
+>Wed, 21 Mar 2018 20:58:47 -0600
 
-Wed Mar 14 01:04:14 2018 -0600: Make sure the Asterisk service is disabled before running stage2 of system-update
+>Author: w0jrl(admin@jlappliedtechnologies.com)
 
-Wed Mar 14 00:16:06 2018 -0600: Sleep 3 seconds after telling user they're already running Stretch
+
+
+
+###Add package clean up to required-tools
+>Tue, 20 Mar 2018 22:33:16 -0600
+
+>Author: w0jrl(admin@jlappliedtechnologies.com)
+
+
+
+
+###Remove apt-listchanges  during release-upgrade
+>Wed, 14 Mar 2018 04:30:38 -0600
+
+>Author: w0jrl(admin@jlappliedtechnologies.com)
+
+
+
+
+###Make sure the Asterisk service is disabled before running stage2 of system-update
+>Wed, 14 Mar 2018 01:04:14 -0600
+
+>Author: w0jrl(admin@jlappliedtechnologies.com)
+
+
+
+
+###Sleep 3 seconds after telling user they're already running Stretch
+>Wed, 14 Mar 2018 00:16:06 -0600
+
+>Author: w0jrl(admin@jlappliedtechnologies.com)
+
  If a user tries to run release-upgrade manually,
 screen will terminate too quickly,
 and no output will be displayed.
 
-Tue Mar 13 05:50:15 2018 -0600: Remove sleep command from release-upgrade
+
+
+###Remove sleep command from release-upgrade
+>Tue, 13 Mar 2018 05:50:15 -0600
+
+>Author: w0jrl(admin@jlappliedtechnologies.com)
+
  Not needed.
 
-Tue Mar 13 04:57:14 2018 -0600: Readd tmpfs, and set permissions
 
-Tue Mar 13 03:34:39 2018 -0600: Make release-upgrade sleep after sync
 
-Tue Mar 13 01:37:57 2018 -0600: Fix libneon27-gnutls-dev package name  I had [ in the name. It should be -.
+###Readd tmpfs, and set permissions
+>Tue, 13 Mar 2018 04:57:14 -0600
 
-Tue Mar 13 01:33:16 2018 -0600: Update libneon27 requirement for stretch
+>Author: w0jrl(admin@jlappliedtechnologies.com)
 
-Tue Mar 13 00:34:45 2018 -0600: Remove tmpfs from RPi, and update libssl requirement
 
-Mon Mar 12 23:06:19 2018 -0600: Make sure /tmp is unmounted during system-update on RPi
+
+
+###Make release-upgrade sleep after sync
+>Tue, 13 Mar 2018 03:34:39 -0600
+
+>Author: w0jrl(admin@jlappliedtechnologies.com)
+
+
+
+
+###Fix libneon27-gnutls-dev package name  I had [ in the name. It should be -.
+>Tue, 13 Mar 2018 01:37:57 -0600
+
+>Author: w0jrl(admin@jlappliedtechnologies.com)
+
+
+
+
+###Update libneon27 requirement for stretch
+>Tue, 13 Mar 2018 01:33:16 -0600
+
+>Author: w0jrl(admin@jlappliedtechnologies.com)
+
+
+
+
+###Remove tmpfs from RPi, and update libssl requirement
+>Tue, 13 Mar 2018 00:34:45 -0600
+
+>Author: w0jrl(admin@jlappliedtechnologies.com)
+
+
+
+
+###Make sure /tmp is unmounted during system-update on RPi
+>Mon, 12 Mar 2018 23:06:19 -0600
+
+>Author: w0jrl(admin@jlappliedtechnologies.com)
+
  Package signatures won't verify if tmp is mounted as a RAM file system.
 
-Mon Mar 12 19:51:21 2018 -0600: Fix dist-upgrade command in release-upgrade script
 
-Mon Mar 12 18:00:37 2018 -0600: Split release-upgrade update function into two sections
 
-Mon Mar 12 15:37:58 2018 -0600: Upgrade nodes to Stretch
+###Fix dist-upgrade command in release-upgrade script
+>Mon, 12 Mar 2018 19:51:21 -0600
 
-Tue Feb 20 02:27:31 2018 -0700: Fix libpri build script
+>Author: w0jrl(admin@jlappliedtechnologies.com)
 
-Tue Feb 20 01:48:21 2018 -0700: Make sure g726aal2 and ADPCM work in both old and new iax layouts
 
-Fri Feb 16 20:02:32 2018 -0700: add g726aal2 to iax configuration
+
+
+###Split release-upgrade update function into two sections
+>Mon, 12 Mar 2018 18:00:37 -0600
+
+>Author: w0jrl(admin@jlappliedtechnologies.com)
+
+
+
+
+###Upgrade nodes to Stretch
+>Mon, 12 Mar 2018 15:37:58 -0600
+
+>Author: w0jrl(admin@jlappliedtechnologies.com)
+
+
+
+
+###Fix libpri build script
+>Tue, 20 Feb 2018 02:27:31 -0700
+
+>Author: w0jrl(admin@jlappliedtechnologies.com)
+
+
+
+
+###Make sure g726aal2 and ADPCM work in both old and new iax layouts
+>Tue, 20 Feb 2018 01:48:21 -0700
+
+>Author: w0jrl(admin@jlappliedtechnologies.com)
+
+
+
+
+###add g726aal2 to iax configuration
+>Fri, 16 Feb 2018 20:02:32 -0700
+
+>Author: w0jrl(admin@jlappliedtechnologies.com)
+
  Needed for compatibility with older ACID based systems.
 
-Wed Feb 14 13:58:23 2018 -0700: Re-add low pass and high pass filter configuration to usbradio
 
-Tue Feb 13 18:09:44 2018 -0700: Update error checking
 
-Tue Feb 13 17:39:21 2018 -0700: Update channel drivers from upstream
+###Re-add low pass and high pass filter configuration to usbradio
+>Wed, 14 Feb 2018 13:58:23 -0700
 
-Tue Feb 13 16:53:32 2018 -0700: Update codecs from upstream
+>Author: w0jrl(admin@jlappliedtechnologies.com)
 
-Tue Feb 13 16:33:26 2018 -0700: Update Asterisk core from upstream
 
-Tue Feb 13 15:06:37 2018 -0700: Suppress useless messages from system-update and uricheck
 
-Tue Feb 13 14:39:54 2018 -0700: Update service unit settings
 
-Tue Feb 13 13:55:15 2018 -0700: Create ram filesystems for temporary files at boot on RPi
+###Update error checking
+>Tue, 13 Feb 2018 18:09:44 -0700
 
-Thu Feb 1 00:16:59 2018 -0700: Make raslink-pc-install-stage2 clean objects quietly
+>Author: w0jrl(admin@jlappliedtechnologies.com)
 
-Wed Jan 31 22:50:50 2018 -0700: Make sure lsb-release is installed before running lsb checks
 
-Wed Jan 31 19:40:52 2018 -0700: Update package requirements to work with Debian stretch
 
-Sun Jan 21 21:59:07 2018 -0700: Require lsb-release to get release info
 
-Tue Jan 16 05:47:24 2018 -0700: Update jitter buffer in usbradio template
+###Update channel drivers from upstream
+>Tue, 13 Feb 2018 17:39:21 -0700
 
-Tue Jan 16 05:09:46 2018 -0700: Disable on board sound card on rpi
+>Author: w0jrl(admin@jlappliedtechnologies.com)
 
-Tue Jan 16 01:52:09 2018 -0700: Make sure old modules are removed before building Asterisk,   and fix comment in Wifi-setup
 
-Mon Jan 15 22:31:29 2018 -0700: Make sure latest version of g++ is installed for Dahdi
 
-Tue Jan 9 19:02:39 2018 -0700: Make sure build scripts exit on error
 
-Tue Jan 9 01:28:28 2018 -0700: Fix usbradio member from upstream
+###Update codecs from upstream
+>Tue, 13 Feb 2018 16:53:32 -0700
+
+>Author: w0jrl(admin@jlappliedtechnologies.com)
+
+
+
+
+###Update Asterisk core from upstream
+>Tue, 13 Feb 2018 16:33:26 -0700
+
+>Author: w0jrl(admin@jlappliedtechnologies.com)
+
+
+
+
+###Suppress useless messages from system-update and uricheck
+>Tue, 13 Feb 2018 15:06:37 -0700
+
+>Author: w0jrl(admin@jlappliedtechnologies.com)
+
+
+
+
+###Update service unit settings
+>Tue, 13 Feb 2018 14:39:54 -0700
+
+>Author: w0jrl(admin@jlappliedtechnologies.com)
+
+
+
+
+###Create ram filesystems for temporary files at boot on RPi
+>Tue, 13 Feb 2018 13:55:15 -0700
+
+>Author: w0jrl(admin@jlappliedtechnologies.com)
+
+
+
+
+###Make raslink-pc-install-stage2 clean objects quietly
+>Thu, 1 Feb 2018 00:16:59 -0700
+
+>Author: w0jrl(admin@jlappliedtechnologies.com)
+
+
+
+
+###Make sure lsb-release is installed before running lsb checks
+>Wed, 31 Jan 2018 22:50:50 -0700
+
+>Author: w0jrl(admin@jlappliedtechnologies.com)
+
+
+
+
+###Update package requirements to work with Debian stretch
+>Wed, 31 Jan 2018 19:40:52 -0700
+
+>Author: w0jrl(admin@jlappliedtechnologies.com)
+
+
+
+
+###Require lsb-release to get release info
+>Sun, 21 Jan 2018 21:59:07 -0700
+
+>Author: w0jrl(admin@jlappliedtechnologies.com)
+
+
+
+
+###Update jitter buffer in usbradio template
+>Tue, 16 Jan 2018 05:47:24 -0700
+
+>Author: w0jrl(admin@jlappliedtechnologies.com)
+
+
+
+
+###Disable on board sound card on rpi
+>Tue, 16 Jan 2018 05:09:46 -0700
+
+>Author: w0jrl(admin@jlappliedtechnologies.com)
+
+
+
+
+###Make sure old modules are removed before building Asterisk,   and fix comment in Wifi-setup
+>Tue, 16 Jan 2018 01:52:09 -0700
+
+>Author: w0jrl(admin@jlappliedtechnologies.com)
+
+
+
+
+###Make sure latest version of g++ is installed for Dahdi
+>Mon, 15 Jan 2018 22:31:29 -0700
+
+>Author: w0jrl(admin@jlappliedtechnologies.com)
+
+
+
+
+###Make sure build scripts exit on error
+>Tue, 9 Jan 2018 19:02:39 -0700
+
+>Author: w0jrl(admin@jlappliedtechnologies.com)
+
+
+
+
+###Fix usbradio member from upstream
+>Tue, 9 Jan 2018 01:28:28 -0700
+
+>Author: w0jrl(admin@jlappliedtechnologies.com)
+
  I forgot to revert t_pmr_chan.
 
-Tue Jan 9 01:02:40 2018 -0700: Revert to xpmr from upstream master
 
-Mon Jan 8 23:40:12 2018 -0700: Remove RADIO_RELAX from Asterisk build options
 
-Sun Jan 7 16:45:42 2018 -0700: Update usbradio patches
+###Revert to xpmr from upstream master
+>Tue, 9 Jan 2018 01:02:40 -0700
 
-Sat Jan 6 05:50:59 2018 -0700: Update Asterisk channel drivers from upstream
+>Author: w0jrl(admin@jlappliedtechnologies.com)
 
-Thu Jan 4 04:09:33 2018 -0700: Set each core individually to performance on rpi
 
-Sat Dec 23 13:33:30 2017 -0700: Disable Asterisk timer during system-update
 
-Sat Dec 23 12:19:36 2017 -0700: Make sure Avahi-daemon starts on boot
+
+###Remove RADIO_RELAX from Asterisk build options
+>Mon, 8 Jan 2018 23:40:12 -0700
+
+>Author: w0jrl(admin@jlappliedtechnologies.com)
+
+
+
+
+###Update usbradio patches
+>Sun, 7 Jan 2018 16:45:42 -0700
+
+>Author: w0jrl(admin@jlappliedtechnologies.com)
+
+
+
+
+###Update Asterisk channel drivers from upstream
+>Sat, 6 Jan 2018 05:50:59 -0700
+
+>Author: w0jrl(admin@jlappliedtechnologies.com)
+
+
+
+
+###Set each core individually to performance on rpi
+>Thu, 4 Jan 2018 04:09:33 -0700
+
+>Author: w0jrl(admin@jlappliedtechnologies.com)
+
+
+
+
+###Disable Asterisk timer during system-update
+>Sat, 23 Dec 2017 13:33:30 -0700
+
+>Author: w0jrl(admin@jlappliedtechnologies.com)
+
+
+
+
+###Make sure Avahi-daemon starts on boot
+>Sat, 23 Dec 2017 12:19:36 -0700
+
+>Author: w0jrl(admin@jlappliedtechnologies.com)
+
  Avahi-daemon makes it easier to log into a node by its hostname on a
 local network.
 It was disabled because I thought it was causing Asterisk to have audio issues,
 due to network latency.
 It turns out the issues were in the usbradio driver.
 
-Tue Dec 19 16:23:13 2017 -0700: Make DSP work better on Raspberry Pi
 
-Mon Dec 18 07:40:11 2017 -0700: Fix Wi-Fi connection detection
 
-Mon Dec 18 06:12:43 2017 -0700: Add sleep after Asterisk .version file creation
+###Make DSP work better on Raspberry Pi
+>Tue, 19 Dec 2017 16:23:13 -0700
 
-Mon Dec 18 03:57:57 2017 -0700: Update copyright info
+>Author: w0jrl(admin@jlappliedtechnologies.com)
 
-Mon Dec 11 23:04:52 2017 -0700: Make sure Fake-hwclock is installed on Raspberry Pi
+
+
+
+###Fix Wi-Fi connection detection
+>Mon, 18 Dec 2017 07:40:11 -0700
+
+>Author: w0jrl(admin@jlappliedtechnologies.com)
+
+
+
+
+###Add sleep after Asterisk .version file creation
+>Mon, 18 Dec 2017 06:12:43 -0700
+
+>Author: w0jrl(admin@jlappliedtechnologies.com)
+
+
+
+
+###Update copyright info
+>Mon, 18 Dec 2017 03:57:57 -0700
+
+>Author: w0jrl(admin@jlappliedtechnologies.com)
+
+
+
+
+###Make sure Fake-hwclock is installed on Raspberry Pi
+>Mon, 11 Dec 2017 23:04:52 -0700
+
+>Author: w0jrl(admin@jlappliedtechnologies.com)
+
  If the Pi loses network connection,
 Fake-hwclock will try to prevent the time from drifting.
 
-Mon Dec 11 21:52:37 2017 -0700: Make sure that /etc/init.d/asterisk is removed
+
+
+###Make sure that /etc/init.d/asterisk is removed
+>Mon, 11 Dec 2017 21:52:37 -0700
+
+>Author: w0jrl(admin@jlappliedtechnologies.com)
+
  Systemd has taken over the functions of that script.
 
-Thu Nov 30 12:32:52 2017 -0700: Set Asterisk startup timer to 30 seconds
+
+
+###Set Asterisk startup timer to 30 seconds
+>Thu, 30 Nov 2017 12:32:52 -0700
+
+>Author: w0jrl(admin@jlappliedtechnologies.com)
+
  Makes sure that the network stack has a chance to start properly.
 If it doesn't, the Asterisk service will start it.
 
-Thu Nov 30 12:21:52 2017 -0700: Update app_rpt.c to 17.12
 
-Fri Nov 17 12:55:15 2017 -0700: Update Asterisk Copyright from upstream
 
-Fri Nov 17 12:09:28 2017 -0700: Prevent the version command from printing period on a new line
+###Update app_rpt.c to 17.12
+>Thu, 30 Nov 2017 12:21:52 -0700
 
-Sat Oct 28 22:14:41 2017 -0600: Clean up code, and fix spelling errors
+>Author: w0jrl(admin@jlappliedtechnologies.com)
 
-Tue Oct 17 18:39:43 2017 -0600: Fix sleep command after country setup
 
-Mon Oct 2 14:45:44 2017 -0600: Revert "Fix ptlib configuration"
+
+
+###Update Asterisk Copyright from upstream
+>Fri, 17 Nov 2017 12:55:15 -0700
+
+>Author: w0jrl(admin@jlappliedtechnologies.com)
+
+
+
+
+###Prevent the version command from printing period on a new line
+>Fri, 17 Nov 2017 12:09:28 -0700
+
+>Author: w0jrl(admin@jlappliedtechnologies.com)
+
+
+
+
+###Clean up code, and fix spelling errors
+>Sat, 28 Oct 2017 22:14:41 -0600
+
+>Author: w0jrl(admin@jlappliedtechnologies.com)
+
+
+
+
+###Fix sleep command after country setup
+>Tue, 17 Oct 2017 18:39:43 -0600
+
+>Author: w0jrl(admin@jlappliedtechnologies.com)
+
+
+
+
+###Revert "Fix ptlib configuration"
+>Mon, 2 Oct 2017 14:45:44 -0600
+
+>Author: w0jrl(admin@jlappliedtechnologies.com)
+
 This reverts commit 1c467373bc52053d63b951d5cd43f566d7b4644c.
 
-Mon Oct 2 14:21:30 2017 -0600: Fix ptlib configuration
 
-Thu Sep 28 14:21:09 2017 -0600: Require g++-4.8 and gcc-4.8
 
-Thu Sep 28 01:05:48 2017 -0600: Require libpt-dev for Asterisk build
+###Fix ptlib configuration
+>Mon, 2 Oct 2017 14:21:30 -0600
 
-Mon Sep 25 06:09:34 2017 -0600: Stop checking for GUI packages on RPi
+>Author: w0jrl(admin@jlappliedtechnologies.com)
 
-Mon Sep 25 05:50:21 2017 -0600: Update queue size in usbradio driver
+
+
+
+###Require g++-4.8 and gcc-4.8
+>Thu, 28 Sep 2017 14:21:09 -0600
+
+>Author: w0jrl(admin@jlappliedtechnologies.com)
+
+
+
+
+###Require libpt-dev for Asterisk build
+>Thu, 28 Sep 2017 01:05:48 -0600
+
+>Author: w0jrl(admin@jlappliedtechnologies.com)
+
+
+
+
+###Stop checking for GUI packages on RPi
+>Mon, 25 Sep 2017 06:09:34 -0600
+
+>Author: w0jrl(admin@jlappliedtechnologies.com)
+
+
+
+
+###Update queue size in usbradio driver
+>Mon, 25 Sep 2017 05:50:21 -0600
+
+>Author: w0jrl(admin@jlappliedtechnologies.com)
+
 A queue size of 10 was causing audio to stutter
 
-Fri Sep 8 18:40:11 2017 -0600: Fix statement bugs in update scripts
 
-Thu Aug 31 21:00:04 2017 -0600: Update Asterisk core libraries
 
-Thu Aug 31 18:38:14 2017 -0600: Update editline and ssl packages
+###Fix statement bugs in update scripts
+>Fri, 8 Sep 2017 18:40:11 -0600
 
-Thu Aug 31 14:53:33 2017 -0600: Remove unneeded comments from rpi-allstar-install
+>Author: w0jrl(admin@jlappliedtechnologies.com)
+
+
+
+
+###Update Asterisk core libraries
+>Thu, 31 Aug 2017 21:00:04 -0600
+
+>Author: w0jrl(admin@jlappliedtechnologies.com)
+
+
+
+
+###Update editline and ssl packages
+>Thu, 31 Aug 2017 18:38:14 -0600
+
+>Author: w0jrl(admin@jlappliedtechnologies.com)
+
+
+
+
+###Remove unneeded comments from rpi-allstar-install
+>Thu, 31 Aug 2017 14:53:33 -0600
+
+>Author: w0jrl(admin@jlappliedtechnologies.com)
+
 The script is for developers, so reminders to edit config files aren't needed.
 
-Wed Aug 30 16:13:43 2017 -0600: Remove "git pull" from rpi-allstar-install
+
+
+###Remove "git pull" from rpi-allstar-install
+>Wed, 30 Aug 2017 16:13:43 -0600
+
+>Author: w0jrl(admin@jlappliedtechnologies.com)
+
 Not needed.
 
-Wed Aug 30 16:05:46 2017 -0600: Update package requirements
 
-Sat Aug 26 12:09:15 2017 -0600: Make the update process a little quieter
 
-Mon Aug 7 23:12:30 2017 -0600: Fix "Connection Failed" detection
+###Update package requirements
+>Wed, 30 Aug 2017 16:05:46 -0600
+
+>Author: w0jrl(admin@jlappliedtechnologies.com)
+
+
+
+
+###Make the update process a little quieter
+>Sat, 26 Aug 2017 12:09:15 -0600
+
+>Author: w0jrl(admin@jlappliedtechnologies.com)
+
+
+
+
+###Fix "Connection Failed" detection
+>Mon, 7 Aug 2017 23:12:30 -0600
+
+>Author: w0jrl(admin@jlappliedtechnologies.com)
+
  Wifi-setup reported that new connections failed, even though they were really active.
 
-Sat Aug 5 01:17:30 2017 -0600: Remove low pass and high pass filters from usbradio
+
+
+###Remove low pass and high pass filters from usbradio
+>Sat, 5 Aug 2017 01:17:30 -0600
+
+>Author: w0jrl(admin@jlappliedtechnologies.com)
+
  They weren't being used.
 
-Fri Aug 4 16:53:51 2017 -0600: Update channel drivers from upstream
 
-Fri Aug 4 16:25:56 2017 -0600: Update Asterisk build options
 
-Fri Aug 4 13:51:31 2017 -0600: Update xpmr from upstream
+###Update channel drivers from upstream
+>Fri, 4 Aug 2017 16:53:51 -0600
 
-Wed Aug 2 20:10:08 2017 -0600: Accept ssids with spaces in wifi-setup
+>Author: w0jrl(admin@jlappliedtechnologies.com)
 
-Mon Jul 31 13:39:57 2017 -0600: Add license information
 
-Fri Jul 28 00:53:46 2017 -0600: Add irqbalance as required package
+
+
+###Update Asterisk build options
+>Fri, 4 Aug 2017 16:25:56 -0600
+
+>Author: w0jrl(admin@jlappliedtechnologies.com)
+
+
+
+
+###Update xpmr from upstream
+>Fri, 4 Aug 2017 13:51:31 -0600
+
+>Author: w0jrl(admin@jlappliedtechnologies.com)
+
+
+
+
+###Accept ssids with spaces in wifi-setup
+>Wed, 2 Aug 2017 20:10:08 -0600
+
+>Author: w0jrl(admin@jlappliedtechnologies.com)
+
+
+
+
+###Add license information
+>Mon, 31 Jul 2017 13:39:57 -0600
+
+>Author: w0jrl(admin@jlappliedtechnologies.com)
+
+
+
+
+###Add irqbalance as required package
+>Fri, 28 Jul 2017 00:53:46 -0600
+
+>Author: w0jrl(admin@jlappliedtechnologies.com)
+
  Balance cpu interrupts to make timing better.
 
-Fri Jul 28 00:19:40 2017 -0600: Update Dahdi and Asterisk package and module requirements
 
-Sun Jul 23 11:13:30 2017 -0600: Update dynamic gpu memory split on Raspberry Pi
 
-Wed Jul 19 14:58:25 2017 -0600: Re-enable res_crypto module
+###Update Dahdi and Asterisk package and module requirements
+>Fri, 28 Jul 2017 00:19:40 -0600
+
+>Author: w0jrl(admin@jlappliedtechnologies.com)
+
+
+
+
+###Update dynamic gpu memory split on Raspberry Pi
+>Sun, 23 Jul 2017 11:13:30 -0600
+
+>Author: w0jrl(admin@jlappliedtechnologies.com)
+
+
+
+
+###Re-enable res_crypto module
+>Wed, 19 Jul 2017 14:58:25 -0600
+
+>Author: w0jrl(admin@jlappliedtechnologies.com)
+
  It's needed for the phone portal.
 
-Sat Jul 15 18:54:59 2017 -0600: Correct pthread comment in patch-asterisk
+
+
+###Correct pthread comment in patch-asterisk
+>Sat, 15 Jul 2017 18:54:59 -0600
+
+>Author: w0jrl(admin@jlappliedtechnologies.com)
+
  Pthread is used on both the RPi and Debian,
 not just the RPi.
 
-Tue Jul 11 03:35:53 2017 -0600: Make sure Asterisk uses pthread
 
-Mon Jul 10 21:33:55 2017 -0600: Increase queue size in usbradio driver
 
-Fri Jul 7 00:05:31 2017 -0600: Fix bug in Asterisk module loader patch
+###Make sure Asterisk uses pthread
+>Tue, 11 Jul 2017 03:35:53 -0600
+
+>Author: w0jrl(admin@jlappliedtechnologies.com)
+
+
+
+
+###Increase queue size in usbradio driver
+>Mon, 10 Jul 2017 21:33:55 -0600
+
+>Author: w0jrl(admin@jlappliedtechnologies.com)
+
+
+
+
+###Fix bug in Asterisk module loader patch
+>Fri, 7 Jul 2017 00:05:31 -0600
+
+>Author: w0jrl(admin@jlappliedtechnologies.com)
+
  The syntax was wrong, so the patch wasn't
 being loaded properly.
 There's really no need for res_crypto.
 
-Sun Jun 25 20:56:41 2017 -0600: Add support for nodenames
+
+
+###Add support for nodenames
+>Sun, 25 Jun 2017 20:56:41 -0600
+
+>Author: w0jrl(admin@jlappliedtechnologies.com)
+
  Nodenames are custom files that play whenever a node connects or disconnects.
 Users can use 'nodenames on' to enable,
 and 'nodenames off' to disable.
 As of this commit, nodenames are enabled by default.
 
-Wed Jun 21 15:27:53 2017 -0600: Increase jbmaxsize in usbradio
 
-Sun Jun 18 21:46:49 2017 -0600: Stop loading res_crypto module
 
-Sun Jun 18 03:18:42 2017 -0600: Update title header and download link in master README
+###Increase jbmaxsize in usbradio
+>Wed, 21 Jun 2017 15:27:53 -0600
 
-Sun Jun 18 03:06:05 2017 -0600: Update Debian installer to clone from "raslink" URL
+>Author: w0jrl(admin@jlappliedtechnologies.com)
 
-Sun Jun 18 00:41:58 2017 -0600: Migrate nodes to the RasLink URL for updates
+
+
+
+###Stop loading res_crypto module
+>Sun, 18 Jun 2017 21:46:49 -0600
+
+>Author: w0jrl(admin@jlappliedtechnologies.com)
+
+
+
+
+###Update title header and download link in master README
+>Sun, 18 Jun 2017 03:18:42 -0600
+
+>Author: w0jrl(admin@jlappliedtechnologies.com)
+
+
+
+
+###Update Debian installer to clone from "raslink" URL
+>Sun, 18 Jun 2017 03:06:05 -0600
+
+>Author: w0jrl(admin@jlappliedtechnologies.com)
+
+
+
+
+###Migrate nodes to the RasLink URL for updates
+>Sun, 18 Jun 2017 00:41:58 -0600
+
+>Author: w0jrl(admin@jlappliedtechnologies.com)
+
 "AllStar-raspbian" is now "raslink".
 
-Sat Jun 17 18:44:08 2017 -0600: Fix i2c package name
 
-Sat Jun 17 18:30:57 2017 -0600: Require i2c on RPi
 
-Sat Jun 17 17:52:35 2017 -0600: Remove avahi-daemon from startup
+###Fix i2c package name
+>Sat, 17 Jun 2017 18:44:08 -0600
 
-Tue Jun 6 10:18:44 2017 -0600: Remove unneeded filter comments in usbradio
+>Author: w0jrl(admin@jlappliedtechnologies.com)
+
+
+
+
+###Require i2c on RPi
+>Sat, 17 Jun 2017 18:30:57 -0600
+
+>Author: w0jrl(admin@jlappliedtechnologies.com)
+
+
+
+
+###Remove avahi-daemon from startup
+>Sat, 17 Jun 2017 17:52:35 -0600
+
+>Author: w0jrl(admin@jlappliedtechnologies.com)
+
+
+
+
+###Remove unneeded filter comments in usbradio
+>Tue, 6 Jun 2017 10:18:44 -0600
+
+>Author: w0jrl(admin@jlappliedtechnologies.com)
+
 The "Audio from internet" and "Audio to internet" comments are wrong!
 
-Sun Jun 4 23:31:15 2017 -0600: Optimize Asterisk for RPi CPU if Raspbian is detected
 
-Sat Jun 3 14:22:02 2017 -0600: Change display of version command to make output more readable
 
-Sat Jun 3 14:04:35 2017 -0600: Update GPU menory split on RPi
+###Optimize Asterisk for RPi CPU if Raspbian is detected
+>Sun, 4 Jun 2017 23:31:15 -0600
 
-Tue May 30 15:44:30 2017 -0600: Restore .bashrc before completing stage two of Debian install
+>Author: w0jrl(admin@jlappliedtechnologies.com)
+
+
+
+
+###Change display of version command to make output more readable
+>Sat, 3 Jun 2017 14:22:02 -0600
+
+>Author: w0jrl(admin@jlappliedtechnologies.com)
+
+
+
+
+###Update GPU menory split on RPi
+>Sat, 3 Jun 2017 14:04:35 -0600
+
+>Author: w0jrl(admin@jlappliedtechnologies.com)
+
+
+
+
+###Restore .bashrc before completing stage two of Debian install
+>Tue, 30 May 2017 15:44:30 -0600
+
+>Author: w0jrl(admin@jlappliedtechnologies.com)
+
 If the Debian install fails,
 Stage two shouldn't try again after reboot.
 
-Sun May 28 13:32:41 2017 -0600: Make GPU memory split on RPI dynamic
 
-Sat May 27 15:04:44 2017 -0600: Update app_rpt version to 17.05
 
-Sat May 27 14:21:41 2017 -0600: Update app-rpt to version 5.27.17
+###Make GPU memory split on RPI dynamic
+>Sun, 28 May 2017 13:32:41 -0600
 
-Sat May 27 13:26:38 2017 -0600: Update app_rpt to version 0.527
+>Author: w0jrl(admin@jlappliedtechnologies.com)
 
-Mon May 1 16:03:35 2017 -0600: Set CPU governor to performance on RPI
 
-Mon May 1 13:15:41 2017 -0600: Adjust Asterisk startup timer
 
-Mon May 1 02:17:12 2017 -0600: Clean Libpri before building
 
-Mon May 1 01:35:13 2017 -0600: Clean Asterisk before building
+###Update app_rpt version to 17.05
+>Sat, 27 May 2017 15:04:44 -0600
 
-Sun Apr 30 23:00:45 2017 -0600: Make RPi reboot after update stage2
+>Author: w0jrl(admin@jlappliedtechnologies.com)
+
+
+
+
+###Update app-rpt to version 5.27.17
+>Sat, 27 May 2017 14:21:41 -0600
+
+>Author: w0jrl(admin@jlappliedtechnologies.com)
+
+
+
+
+###Update app_rpt to version 0.527
+>Sat, 27 May 2017 13:26:38 -0600
+
+>Author: w0jrl(admin@jlappliedtechnologies.com)
+
+
+
+
+###Set CPU governor to performance on RPI
+>Mon, 1 May 2017 16:03:35 -0600
+
+>Author: w0jrl(admin@jlappliedtechnologies.com)
+
+
+
+
+###Adjust Asterisk startup timer
+>Mon, 1 May 2017 13:15:41 -0600
+
+>Author: w0jrl(admin@jlappliedtechnologies.com)
+
+
+
+
+###Clean Libpri before building
+>Mon, 1 May 2017 02:17:12 -0600
+
+>Author: w0jrl(admin@jlappliedtechnologies.com)
+
+
+
+
+###Clean Asterisk before building
+>Mon, 1 May 2017 01:35:13 -0600
+
+>Author: w0jrl(admin@jlappliedtechnologies.com)
+
+
+
+
+###Make RPi reboot after update stage2
+>Sun, 30 Apr 2017 23:00:45 -0600
+
+>Author: w0jrl(admin@jlappliedtechnologies.com)
+
  CPU config file doesn't get reloaded unless Pi is rebooted
 
-Sun Apr 30 21:55:22 2017 -0600: Fix audio issues with Raspberry Pi
 
-Sat Apr 29 18:13:46 2017 -0600: Add end command
+
+###Fix audio issues with Raspberry Pi
+>Sun, 30 Apr 2017 21:55:22 -0600
+
+>Author: w0jrl(admin@jlappliedtechnologies.com)
+
+
+
+
+###Add end command
+>Sat, 29 Apr 2017 18:13:46 -0600
+
+>Author: w0jrl(admin@jlappliedtechnologies.com)
+
  Used to disconnect links from AllStar
 For help, run 'end.sh -h'.
 
-Sat Apr 29 16:56:49 2017 -0600: Update comments in scripts
 
-Tue Apr 25 04:26:54 2017 -0600: Send messages to standard error if connection fails during wifi-setup
 
-Mon Apr 24 16:35:12 2017 -0600: reallocate gpu memory split on rpi
+###Update comments in scripts
+>Sat, 29 Apr 2017 16:56:49 -0600
+
+>Author: w0jrl(admin@jlappliedtechnologies.com)
+
+
+
+
+###Send messages to standard error if connection fails during wifi-setup
+>Tue, 25 Apr 2017 04:26:54 -0600
+
+>Author: w0jrl(admin@jlappliedtechnologies.com)
+
+
+
+
+###reallocate gpu memory split on rpi
+>Mon, 24 Apr 2017 16:35:12 -0600
+
+>Author: w0jrl(admin@jlappliedtechnologies.com)
+
  Set gpu_mem to 16
 Gives more memory to the Asterisk process
 
-Fri Apr 21 02:29:40 2017 -0600: Speak normal characters when EchoLink station connects
 
-Wed Apr 19 23:54:00 2017 -0600: Remove Limey Linux makefile
+
+###Speak normal characters when EchoLink station connects
+>Fri, 21 Apr 2017 02:29:40 -0600
+
+>Author: w0jrl(admin@jlappliedtechnologies.com)
+
+
+
+
+###Remove Limey Linux makefile
+>Wed, 19 Apr 2017 23:54:00 -0600
+
+>Author: w0jrl(admin@jlappliedtechnologies.com)
+
  I'm not sure why this didn't get removed during the recent code clean up.
 It's no longer needed.
 
-Tue Apr 18 12:22:54 2017 -0600: Modernize rc.updatenodelist
 
-Tue Apr 18 10:27:20 2017 -0600: Speed up execution of scripts
 
-Tue Apr 18 10:21:56 2017 -0600: Move Uridiag build process to its own script
+###Modernize rc.updatenodelist
+>Tue, 18 Apr 2017 12:22:54 -0600
 
-Sat Apr 15 00:19:40 2017 -0600: Add dahdi_cfg to Asterisk startup
+>Author: w0jrl(admin@jlappliedtechnologies.com)
 
-Fri Apr 14 19:54:01 2017 -0600: Remove Dahdi startup routine
+
+
+
+###Speed up execution of scripts
+>Tue, 18 Apr 2017 10:27:20 -0600
+
+>Author: w0jrl(admin@jlappliedtechnologies.com)
+
+
+
+
+###Move Uridiag build process to its own script
+>Tue, 18 Apr 2017 10:21:56 -0600
+
+>Author: w0jrl(admin@jlappliedtechnologies.com)
+
+
+
+
+###Add dahdi_cfg to Asterisk startup
+>Sat, 15 Apr 2017 00:19:40 -0600
+
+>Author: w0jrl(admin@jlappliedtechnologies.com)
+
+
+
+
+###Remove Dahdi startup routine
+>Fri, 14 Apr 2017 19:54:01 -0600
+
+>Author: w0jrl(admin@jlappliedtechnologies.com)
+
  Asterisk PBX can start Dahdi when needed
 
-Fri Apr 14 04:15:31 2017 -0600: Clean up startup routines
 
-Sun Apr 9 03:25:58 2017 -0600: Fix math expressions in variables
 
-Wed Apr 5 09:22:13 2017 -0600: Standardize functions in build and update scripts
+###Clean up startup routines
+>Fri, 14 Apr 2017 04:15:31 -0600
+
+>Author: w0jrl(admin@jlappliedtechnologies.com)
+
+
+
+
+###Fix math expressions in variables
+>Sun, 9 Apr 2017 03:25:58 -0600
+
+>Author: w0jrl(admin@jlappliedtechnologies.com)
+
+
+
+
+###Standardize functions in build and update scripts
+>Wed, 5 Apr 2017 09:22:13 -0600
+
+>Author: w0jrl(admin@jlappliedtechnologies.com)
+
  * Add quotes around variables
 
-Thu Mar 30 12:53:32 2017 -0600: Update EchoLink and app_rpt from upstream
 
-Wed Mar 29 22:33:30 2017 -0600: Update rpi install script
 
-Wed Mar 29 20:33:20 2017 -0600: Update statpost lines in rpt template
+###Update EchoLink and app_rpt from upstream
+>Thu, 30 Mar 2017 12:53:32 -0600
 
-Tue Mar 28 14:49:59 2017 -0600: Remove unneeded .bashrc code from debian-install-stage2
+>Author: w0jrl(admin@jlappliedtechnologies.com)
+
+
+
+
+###Update rpi install script
+>Wed, 29 Mar 2017 22:33:30 -0600
+
+>Author: w0jrl(admin@jlappliedtechnologies.com)
+
+
+
+
+###Update statpost lines in rpt template
+>Wed, 29 Mar 2017 20:33:20 -0600
+
+>Author: w0jrl(admin@jlappliedtechnologies.com)
+
+
+
+
+###Remove unneeded .bashrc code from debian-install-stage2
+>Tue, 28 Mar 2017 14:49:59 -0600
+
+>Author: w0jrl(admin@jlappliedtechnologies.com)
+
  It could've caused an annoying loop!
 
-Tue Mar 28 13:24:35 2017 -0600: Update Allstar requirements and logrotate instructions
 
-Mon Mar 20 07:45:45 2017 -0600: Fix comment in rpt.conf template
 
-Mon Mar 20 06:54:04 2017 -0600: Make sure common/version.sh is executable
+###Update Allstar requirements and logrotate instructions
+>Tue, 28 Mar 2017 13:24:35 -0600
 
-Mon Mar 20 06:39:10 2017 -0600: Fix typos in version command commit
+>Author: w0jrl(admin@jlappliedtechnologies.com)
 
-Mon Mar 20 06:00:51 2017 -0600: Add version command
+
+
+
+###Fix comment in rpt.conf template
+>Mon, 20 Mar 2017 07:45:45 -0600
+
+>Author: w0jrl(admin@jlappliedtechnologies.com)
+
+
+
+
+###Make sure common/version.sh is executable
+>Mon, 20 Mar 2017 06:54:04 -0600
+
+>Author: w0jrl(admin@jlappliedtechnologies.com)
+
+
+
+
+###Fix typos in version command commit
+>Mon, 20 Mar 2017 06:39:10 -0600
+
+>Author: w0jrl(admin@jlappliedtechnologies.com)
+
+
+
+
+###Add version command
+>Mon, 20 Mar 2017 06:00:51 -0600
+
+>Author: w0jrl(admin@jlappliedtechnologies.com)
+
  Used to display software version, and check
 for available updates
 Does not perform system update
 Will run automaticly at root login
 
-Mon Mar 20 03:00:42 2017 -0600: Stop patching asterisk on the fly
+
+
+###Stop patching asterisk on the fly
+>Mon, 20 Mar 2017 03:00:42 -0600
+
+>Author: w0jrl(admin@jlappliedtechnologies.com)
+
  Asterisk sources will be patched before upload to repository.
 
-Fri Mar 17 20:30:22 2017 -0600: Decrease DTMF energy requirement
 
-Fri Mar 17 19:13:23 2017 -0600: Fix DTMF handling in dsp.c
 
-Fri Mar 17 16:19:47 2017 -0600: Stop cleaning Asterisk objects
+###Decrease DTMF energy requirement
+>Fri, 17 Mar 2017 20:30:22 -0600
+
+>Author: w0jrl(admin@jlappliedtechnologies.com)
+
+
+
+
+###Fix DTMF handling in dsp.c
+>Fri, 17 Mar 2017 19:13:23 -0600
+
+>Author: w0jrl(admin@jlappliedtechnologies.com)
+
+
+
+
+###Stop cleaning Asterisk objects
+>Fri, 17 Mar 2017 16:19:47 -0600
+
+>Author: w0jrl(admin@jlappliedtechnologies.com)
+
  Cleaning the objects blew-away the Asterisk
 customizations needed for usbradio
 and app_rpt.c.
 
-Fri Mar 17 15:46:05 2017 -0600: Fix typo in update-stage2; both platforms
 
-Fri Mar 17 15:27:38 2017 -0600: Remove ability to keep Asterisk running during stage two
+
+###Fix typo in update-stage2; both platforms
+>Fri, 17 Mar 2017 15:46:05 -0600
+
+>Author: w0jrl(admin@jlappliedtechnologies.com)
+
+
+
+
+###Remove ability to keep Asterisk running during stage two
+>Fri, 17 Mar 2017 15:27:38 -0600
+
+>Author: w0jrl(admin@jlappliedtechnologies.com)
+
  Allowing Asterisk to run during stage two of system-update
 causes Asterisk not to build properly.
 Users will just have to
 wait for the build to complete.
 
-Fri Mar 17 05:59:07 2017 -0600: Create Asterisk version number after cleaning objects
 
-Fri Mar 17 05:16:43 2017 -0600: Make sure asterisk objects are cleaned before build
 
-Fri Mar 17 03:28:23 2017 -0600: Make code style uniform in all scripts
+###Create Asterisk version number after cleaning objects
+>Fri, 17 Mar 2017 05:59:07 -0600
+
+>Author: w0jrl(admin@jlappliedtechnologies.com)
+
+
+
+
+###Make sure asterisk objects are cleaned before build
+>Fri, 17 Mar 2017 05:16:43 -0600
+
+>Author: w0jrl(admin@jlappliedtechnologies.com)
+
+
+
+
+###Make code style uniform in all scripts
+>Fri, 17 Mar 2017 03:28:23 -0600
+
+>Author: w0jrl(admin@jlappliedtechnologies.com)
+
  The different ways of controlling file access in each program
   was driving me nuts!
 
-Fri Mar 17 01:29:33 2017 -0600: Prevent reading false DTMF digits
 
-Mon Mar 13 05:57:36 2017 -0600: Fix code error in usbradio template
 
-Mon Mar 13 05:25:08 2017 -0600: Keep stage 2 from running after reboot if failure detected during update
+###Prevent reading false DTMF digits
+>Fri, 17 Mar 2017 01:29:33 -0600
 
-Mon Mar 13 04:27:27 2017 -0600: Make messages more readable during system update
+>Author: w0jrl(admin@jlappliedtechnologies.com)
 
-Sun Mar 12 20:30:35 2017 -0600: Remove the need for a second reboot during update
 
-Fri Mar 10 20:00:10 2017 -0700: Update menuselect
 
-Fri Mar 10 19:06:16 2017 -0700: Update sound files
 
-Fri Mar 10 16:52:20 2017 -0700: Update Asterisk build instructions
+###Fix code error in usbradio template
+>Mon, 13 Mar 2017 05:57:36 -0600
 
-Wed Mar 1 06:50:13 2017 -0700: Set correct timer in rc.updatenodelist
+>Author: w0jrl(admin@jlappliedtechnologies.com)
+
+
+
+
+###Keep stage 2 from running after reboot if failure detected during update
+>Mon, 13 Mar 2017 05:25:08 -0600
+
+>Author: w0jrl(admin@jlappliedtechnologies.com)
+
+
+
+
+###Make messages more readable during system update
+>Mon, 13 Mar 2017 04:27:27 -0600
+
+>Author: w0jrl(admin@jlappliedtechnologies.com)
+
+
+
+
+###Remove the need for a second reboot during update
+>Sun, 12 Mar 2017 20:30:35 -0600
+
+>Author: w0jrl(admin@jlappliedtechnologies.com)
+
+
+
+
+###Update menuselect
+>Fri, 10 Mar 2017 20:00:10 -0700
+
+>Author: w0jrl(admin@jlappliedtechnologies.com)
+
+
+
+
+###Update sound files
+>Fri, 10 Mar 2017 19:06:16 -0700
+
+>Author: w0jrl(admin@jlappliedtechnologies.com)
+
+
+
+
+###Update Asterisk build instructions
+>Fri, 10 Mar 2017 16:52:20 -0700
+
+>Author: w0jrl(admin@jlappliedtechnologies.com)
+
+
+
+
+###Set correct timer in rc.updatenodelist
+>Wed, 1 Mar 2017 06:50:13 -0700
+
+>Author: w0jrl(admin@jlappliedtechnologies.com)
+
  I changed the wrong timer in the last 2commits.
 
-Wed Mar 1 06:50:13 2017 -0700: Set correct timer in rc.updatenodelist
+
+
+###Set correct timer in rc.updatenodelist
+>Wed, 1 Mar 2017 06:50:13 -0700
+
+>Author: w0jrl(admin@jlappliedtechnologies.com)
+
  I changed the wrong timer in the last commit.
 
-Wed Mar 1 06:50:13 2017 -0700: Adjust timers in rc.updatenodelist to make sure node list gets loaded at boot
 
-Wed Mar 1 06:50:13 2017 -0700: Adjust timers in rc.updatenodelist to keep from hitting the server too hard
 
-Wed Mar 1 02:11:23 2017 -0700: Make sure dahdi is used as timing source for asterisk
+###Adjust timers in rc.updatenodelist to make sure node list gets loaded at boot
+>Wed, 1 Mar 2017 06:50:13 -0700
 
-Tue Feb 28 18:03:26 2017 -0700: Update timers in rc.updatenodelist
+>Author: w0jrl(admin@jlappliedtechnologies.com)
+
+
+
+
+###Adjust timers in rc.updatenodelist to keep from hitting the server too hard
+>Wed, 1 Mar 2017 06:50:13 -0700
+
+>Author: w0jrl(admin@jlappliedtechnologies.com)
+
+
+
+
+###Make sure dahdi is used as timing source for asterisk
+>Wed, 1 Mar 2017 02:11:23 -0700
+
+>Author: w0jrl(admin@jlappliedtechnologies.com)
+
+
+
+
+###Update timers in rc.updatenodelist
+>Tue, 28 Feb 2017 18:03:26 -0700
+
+>Author: w0jrl(admin@jlappliedtechnologies.com)
+
  Node list will be updated more frequently.
 
-Sat Feb 25 02:51:13 2017 -0700: Update required-tools.sh and rc.updatenodelist
 
-Fri Feb 24 16:55:51 2017 -0700: Revert changes to updatenodelist
 
-Fri Feb 24 15:53:56 2017 -0700: Fix typeos
+###Update required-tools.sh and rc.updatenodelist
+>Sat, 25 Feb 2017 02:51:13 -0700
 
-Fri Feb 24 15:22:28 2017 -0700: Make sure that updatenodelist.service is removed
+>Author: w0jrl(admin@jlappliedtechnologies.com)
 
-Fri Feb 24 14:59:24 2017 -0700: Clean up build scripts
 
-Mon Feb 20 16:43:16 2017 -0700: Update EchoLink and uridiag from upstream
 
-Sat Feb 18 23:59:49 2017 -0700: Disable notch filter by defalt in rpt template
+
+###Revert changes to updatenodelist
+>Fri, 24 Feb 2017 16:55:51 -0700
+
+>Author: w0jrl(admin@jlappliedtechnologies.com)
+
+
+
+
+###Fix typeos
+>Fri, 24 Feb 2017 15:53:56 -0700
+
+>Author: w0jrl(admin@jlappliedtechnologies.com)
+
+
+
+
+###Make sure that updatenodelist.service is removed
+>Fri, 24 Feb 2017 15:22:28 -0700
+
+>Author: w0jrl(admin@jlappliedtechnologies.com)
+
+
+
+
+###Clean up build scripts
+>Fri, 24 Feb 2017 14:59:24 -0700
+
+>Author: w0jrl(admin@jlappliedtechnologies.com)
+
+
+
+
+###Update EchoLink and uridiag from upstream
+>Mon, 20 Feb 2017 16:43:16 -0700
+
+>Author: w0jrl(admin@jlappliedtechnologies.com)
+
+
+
+
+###Disable notch filter by defalt in rpt template
+>Sat, 18 Feb 2017 23:59:49 -0700
+
+>Author: w0jrl(admin@jlappliedtechnologies.com)
+
  Users can re-enable the filter by uncommenting the line, and adjusting to meet
 their needs.
 
-Sat Feb 18 19:29:26 2017 -0700: Add adaptive jitterbuffer to usbradio
 
-Sat Feb 18 18:56:13 2017 -0700: Add ability to use tail messages to rpt template
 
-Thu Feb 16 20:10:00 2017 -0700: Remove references to Acid and Limey Linux
+###Add adaptive jitterbuffer to usbradio
+>Sat, 18 Feb 2017 19:29:26 -0700
 
-Thu Feb 16 19:35:17 2017 -0700: Update configuration templates
+>Author: w0jrl(admin@jlappliedtechnologies.com)
+
+
+
+
+###Add ability to use tail messages to rpt template
+>Sat, 18 Feb 2017 18:56:13 -0700
+
+>Author: w0jrl(admin@jlappliedtechnologies.com)
+
+
+
+
+###Remove references to Acid and Limey Linux
+>Thu, 16 Feb 2017 20:10:00 -0700
+
+>Author: w0jrl(admin@jlappliedtechnologies.com)
+
+
+
+
+###Update configuration templates
+>Thu, 16 Feb 2017 19:35:17 -0700
+
+>Author: w0jrl(admin@jlappliedtechnologies.com)
+
  Add notes to usbradio.conf for filters
 
-Thu Feb 16 17:02:19 2017 -0700: Update usbradio and echolink templates
 
-Thu Feb 16 15:06:52 2017 -0700: Add low-pass and high-pass filters to usbradio from upstream
 
-Sun Feb 12 17:21:44 2017 -0700: Fix alsa audio driver configuration on RPI
+###Update usbradio and echolink templates
+>Thu, 16 Feb 2017 17:02:19 -0700
 
-Sun Feb 12 16:45:33 2017 -0700: Add bug fix from upstream to make uridiag set levles properly on RPI
+>Author: w0jrl(admin@jlappliedtechnologies.com)
 
-Sun Feb 5 00:13:20 2017 -0700: Remove Subversion dependency
 
-Sat Feb 4 14:24:48 2017 -0700: Fix remote connectivity issues
 
-Wed Feb 1 09:58:13 2017 -0700: Add alsa[utils, bc, and dnsutils as required dependencies
 
-Fri Jan 27 16:57:55 2017 -0700: Fix code error made during refactor
+###Add low-pass and high-pass filters to usbradio from upstream
+>Thu, 16 Feb 2017 15:06:52 -0700
 
-Fri Jan 27 16:25:40 2017 -0700: Refactor scripts, and fix EchoLink startup on Debian
+>Author: w0jrl(admin@jlappliedtechnologies.com)
 
-Fri Dec 30 01:24:53 2016 -0700: Make Asterisk use short commit hash when compiling
+
+
+
+###Fix alsa audio driver configuration on RPI
+>Sun, 12 Feb 2017 17:21:44 -0700
+
+>Author: w0jrl(admin@jlappliedtechnologies.com)
+
+
+
+
+###Add bug fix from upstream to make uridiag set levles properly on RPI
+>Sun, 12 Feb 2017 16:45:33 -0700
+
+>Author: w0jrl(admin@jlappliedtechnologies.com)
+
+
+
+
+###Remove Subversion dependency
+>Sun, 5 Feb 2017 00:13:20 -0700
+
+>Author: w0jrl(admin@jlappliedtechnologies.com)
+
+
+
+
+###Fix remote connectivity issues
+>Sat, 4 Feb 2017 14:24:48 -0700
+
+>Author: w0jrl(admin@jlappliedtechnologies.com)
+
+
+
+
+###Add alsa[utils, bc, and dnsutils as required dependencies
+>Wed, 1 Feb 2017 09:58:13 -0700
+
+>Author: w0jrl(admin@jlappliedtechnologies.com)
+
+
+
+
+###Fix code error made during refactor
+>Fri, 27 Jan 2017 16:57:55 -0700
+
+>Author: w0jrl(admin@jlappliedtechnologies.com)
+
+
+
+
+###Refactor scripts, and fix EchoLink startup on Debian
+>Fri, 27 Jan 2017 16:25:40 -0700
+
+>Author: w0jrl(admin@jlappliedtechnologies.com)
+
+
+
+
+###Make Asterisk use short commit hash when compiling
+>Fri, 30 Dec 2016 01:24:53 -0700
+
+>Author: w0jrl(admin@jlappliedtechnologies.com)
+
  After the source switched from Subversion to Github,
   Asterisk no longer displayed a version number on the console.
 
-Thu Dec 29 17:47:50 2016 -0700: Update rpi/chk-packages.sh to fix syntax error
 
-Tue Dec 27 13:30:28 2016 -0700: Fork AllStar Link Github repository
 
-Fri Dec 9 20:08:42 2016 -0700: Enhance logrotate check on RPI
+###Update rpi/chk-packages.sh to fix syntax error
+>Thu, 29 Dec 2016 17:47:50 -0700
+
+>Author: w0jrl(admin@jlappliedtechnologies.com)
+
+
+
+
+###Fork AllStar Link Github repository
+>Tue, 27 Dec 2016 13:30:28 -0700
+
+>Author: w0jrl(admin@jlappliedtechnologies.com)
+
+
+
+
+###Enhance logrotate check on RPI
+>Fri, 9 Dec 2016 20:08:42 -0700
+
+>Author: w0jrl(admin@jlappliedtechnologies.com)
+
  People who are running the older image of Jessie for the RPI
   are not getting their logs rotated properly
   because of a setting that Raspbian
   put in /etc/fstab.
  Chk-packages checks for this setting and removes it.
 
-Thu Dec 1 11:11:37 2016 -0700: Update AllStar sources to revision 1538M
 
-Thu Dec 1 11:16:48 2016 -0700: Increase GPU memory split on Raspberry Pis
 
-Sun Nov 20 12:38:49 2016 -0700: Make the node list load faster
+###Update AllStar sources to revision 1538M
+>Thu, 1 Dec 2016 11:11:37 -0700
 
-Sun Nov 20 13:08:08 2016 -0700: Make AllStar load faster on boot
+>Author: w0jrl(admin@jlappliedtechnologies.com)
 
-Fri Oct 28 01:35:53 2016 -0600: Make the Dahdi driver restart when restarting Asterisk from the radio
 
-Fri Oct 28 00:59:19 2016 -0600: Update usbradio.conf and sip.conf templates
 
-Wed Oct 12 08:49:24 2016 -0600: Fix issue causing repeaters to hang after disconnect
 
-Sat Aug 27 19:14:00 2016 -0600: Update AllStar sources to version-1537M
+###Increase GPU memory split on Raspberry Pis
+>Thu, 1 Dec 2016 11:16:48 -0700
 
-Sat Aug 27 19:14:00 2016 -0600: Update AllStar sources to version-1537M
+>Author: w0jrl(admin@jlappliedtechnologies.com)
 
-Wed Jul 27 09:22:28 2016 -0600: Update Debian install script to use git clone instead of wget
+
+
+
+###Make the node list load faster
+>Sun, 20 Nov 2016 12:38:49 -0700
+
+>Author: w0jrl(admin@jlappliedtechnologies.com)
+
+
+
+
+###Make AllStar load faster on boot
+>Sun, 20 Nov 2016 13:08:08 -0700
+
+>Author: w0jrl(admin@jlappliedtechnologies.com)
+
+
+
+
+###Make the Dahdi driver restart when restarting Asterisk from the radio
+>Fri, 28 Oct 2016 01:35:53 -0600
+
+>Author: w0jrl(admin@jlappliedtechnologies.com)
+
+
+
+
+###Update usbradio.conf and sip.conf templates
+>Fri, 28 Oct 2016 00:59:19 -0600
+
+>Author: w0jrl(admin@jlappliedtechnologies.com)
+
+
+
+
+###Fix issue causing repeaters to hang after disconnect
+>Wed, 12 Oct 2016 08:49:24 -0600
+
+>Author: w0jrl(admin@jlappliedtechnologies.com)
+
+
+
+
+###Update AllStar sources to version-1537M
+>Sat, 27 Aug 2016 19:14:00 -0600
+
+>Author: w0jrl(admin@jlappliedtechnologies.com)
+
+
+
+
+###Update AllStar sources to version-1537M
+>Sat, 27 Aug 2016 19:14:00 -0600
+
+>Author: w0jrl(admin@jlappliedtechnologies.com)
+
+
+
+
+###Update Debian install script to use git clone instead of wget
+>Wed, 27 Jul 2016 09:22:28 -0600
+
+>Author: w0jrl(admin@jlappliedtechnologies.com)
+
 * Remove requirement for Zip and Unzip
   The script will use the Git repository directly.
 
-Tue Aug 16 16:38:46 2016 -0600: Set permissions for wifi-setup
 
-Tue Aug 16 16:38:46 2016 -0600: Set permissions for wifi-setup
 
-Wed Jul 27 14:24:37 2016 -0600: Add additional dependency requirements
+###Set permissions for wifi-setup
+>Tue, 16 Aug 2016 16:38:46 -0600
 
-Wed Jul 27 09:22:28 2016 -0600: Update Debian install script to use git clone instead of wget
+>Author: w0jrl(admin@jlappliedtechnologies.com)
+
+
+
+
+###Set permissions for wifi-setup
+>Tue, 16 Aug 2016 16:38:46 -0600
+
+>Author: w0jrl(admin@jlappliedtechnologies.com)
+
+
+
+
+###Add additional dependency requirements
+>Wed, 27 Jul 2016 14:24:37 -0600
+
+>Author: w0jrl(admin@jlappliedtechnologies.com)
+
+
+
+
+###Update Debian install script to use git clone instead of wget
+>Wed, 27 Jul 2016 09:22:28 -0600
+
+>Author: w0jrl(admin@jlappliedtechnologies.com)
+
 * Remove requirement for Zip and Unzip
   The script will use the Git repository directly.
 
-Wed Jul 27 14:24:37 2016 -0600: Add additional dependency requirements
 
-Wed Jul 27 09:22:28 2016 -0600: Update Debian install script to use git clone instead of wget
+
+###Add additional dependency requirements
+>Wed, 27 Jul 2016 14:24:37 -0600
+
+>Author: w0jrl(admin@jlappliedtechnologies.com)
+
+
+
+
+###Update Debian install script to use git clone instead of wget
+>Wed, 27 Jul 2016 09:22:28 -0600
+
+>Author: w0jrl(admin@jlappliedtechnologies.com)
+
 * Remove requirement for Zip and Unzip
   The script will use the Git repository directly.
 
-Wed Jul 27 14:24:37 2016 -0600: Add additional dependency requirements
 
-Wed Jul 27 09:22:28 2016 -0600: Update Debian install script to use git clone instead of wget
+
+###Add additional dependency requirements
+>Wed, 27 Jul 2016 14:24:37 -0600
+
+>Author: w0jrl(admin@jlappliedtechnologies.com)
+
+
+
+
+###Update Debian install script to use git clone instead of wget
+>Wed, 27 Jul 2016 09:22:28 -0600
+
+>Author: w0jrl(admin@jlappliedtechnologies.com)
+
 * Remove requirement for Zip and Unzip
   The script will use the Git repository directly.
 
-Wed Jul 27 14:24:37 2016 -0600: Add additional dependency requirements
 
-Tue Aug 16 13:28:53 2016 -0600: Handle multiple  Wi-Fi cards on Raspberry Pi
 
-Tue Aug 16 13:28:53 2016 -0600: Handle multiple  Wi-Fi cards on Raspberry Pi
+###Add additional dependency requirements
+>Wed, 27 Jul 2016 14:24:37 -0600
 
-Wed Jul 27 16:15:47 2016 -0600: Revert changes to README
+>Author: w0jrl(admin@jlappliedtechnologies.com)
 
-Wed Jul 27 14:24:37 2016 -0600: Add additional dependency requirements
 
-Wed Jul 27 14:24:37 2016 -0600: Add additional dependency requirements
 
-Wed Jul 27 09:22:28 2016 -0600: Update Debian install script to use git clone instead of wget
+
+###Handle multiple  Wi-Fi cards on Raspberry Pi
+>Tue, 16 Aug 2016 13:28:53 -0600
+
+>Author: w0jrl(admin@jlappliedtechnologies.com)
+
+
+
+
+###Handle multiple  Wi-Fi cards on Raspberry Pi
+>Tue, 16 Aug 2016 13:28:53 -0600
+
+>Author: w0jrl(admin@jlappliedtechnologies.com)
+
+
+
+
+###Revert changes to README
+>Wed, 27 Jul 2016 16:15:47 -0600
+
+>Author: w0jrl(admin@jlappliedtechnologies.com)
+
+
+
+
+###Add additional dependency requirements
+>Wed, 27 Jul 2016 14:24:37 -0600
+
+>Author: w0jrl(admin@jlappliedtechnologies.com)
+
+
+
+
+###Add additional dependency requirements
+>Wed, 27 Jul 2016 14:24:37 -0600
+
+>Author: w0jrl(admin@jlappliedtechnologies.com)
+
+
+
+
+###Update Debian install script to use git clone instead of wget
+>Wed, 27 Jul 2016 09:22:28 -0600
+
+>Author: w0jrl(admin@jlappliedtechnologies.com)
+
 * Remove requirement for Zip and Unzip
   The script will use the Git repository directly.
 
-Wed Jul 27 16:05:52 2016 -0600: Fix README markup
 
-Wed Jul 27 14:24:37 2016 -0600: Add additional dependency requirements
 
-Wed Jul 27 15:37:16 2016 -0600: Update master-README.md
+###Fix README markup
+>Wed, 27 Jul 2016 16:05:52 -0600
 
-Wed Jul 27 14:24:37 2016 -0600: Add additional dependency requirements
+>Author: w0jrl(admin@jlappliedtechnologies.com)
 
-Wed Jul 27 09:22:28 2016 -0600: Update Debian install script to use git clone instead of wget
+
+
+
+###Add additional dependency requirements
+>Wed, 27 Jul 2016 14:24:37 -0600
+
+>Author: w0jrl(admin@jlappliedtechnologies.com)
+
+
+
+
+###Update master-README.md
+>Wed, 27 Jul 2016 15:37:16 -0600
+
+>Author: Jeremy Lincicome(w0jrl@users.noreply.github.com)
+
+
+
+
+###Add additional dependency requirements
+>Wed, 27 Jul 2016 14:24:37 -0600
+
+>Author: w0jrl(admin@jlappliedtechnologies.com)
+
+
+
+
+###Update Debian install script to use git clone instead of wget
+>Wed, 27 Jul 2016 09:22:28 -0600
+
+>Author: w0jrl(admin@jlappliedtechnologies.com)
+
 * Remove requirement for Zip and Unzip
   The script will use the Git repository directly.
 
-Wed Jul 27 09:22:28 2016 -0600: Update Debian install script to use git clone instead of wget
+
+
+###Update Debian install script to use git clone instead of wget
+>Wed, 27 Jul 2016 09:22:28 -0600
+
+>Author: w0jrl(admin@jlappliedtechnologies.com)
+
 * Remove requirement for Zip and Unzip
   The script will use the Git repository directly.
 
-Wed Jul 27 09:22:28 2016 -0600: Update Debian install script to use git clone instead of wget
+
+
+###Update Debian install script to use git clone instead of wget
+>Wed, 27 Jul 2016 09:22:28 -0600
+
+>Author: w0jrl(admin@jlappliedtechnologies.com)
+
 * Remove requirement for Zip and Unzip
   The script will use the Git repository directly.
 
-Wed Jul 27 09:22:28 2016 -0600: Update Debian install script to use git clone instead of wget
+
+
+###Update Debian install script to use git clone instead of wget
+>Wed, 27 Jul 2016 09:22:28 -0600
+
+>Author: w0jrl(admin@jlappliedtechnologies.com)
+
 * Remove requirement for Zip and Unzip
   The script will use the Git repository directly.
 
-Wed Jul 27 09:22:28 2016 -0600: Update Debian install script to use git clone instead of wget
+
+
+###Update Debian install script to use git clone instead of wget
+>Wed, 27 Jul 2016 09:22:28 -0600
+
+>Author: w0jrl(admin@jlappliedtechnologies.com)
+
 * Remove requirement for Zip and Unzip
   The script will use the Git repository directly.
 
-Wed Jul 27 09:22:28 2016 -0600: Update Debian install script to use git clone instead of wget
 
-Wed Jul 27 01:58:14 2016 -0600: Update required dependencies
 
-Tue Jul 26 23:31:47 2016 -0600: Update Debian install script
+###Update Debian install script to use git clone instead of wget
+>Wed, 27 Jul 2016 09:22:28 -0600
+
+>Author: w0jrl(admin@jlappliedtechnologies.com)
+
+
+
+
+###Update required dependencies
+>Wed, 27 Jul 2016 01:58:14 -0600
+
+>Author: w0jrl(admin@jlappliedtechnologies.com)
+
+
+
+
+###Update Debian install script
+>Tue, 26 Jul 2016 23:31:47 -0600
+
+>Author: w0jrl(admin@jlappliedtechnologies.com)
+
 * Make sure that zip and unzip are installed
   Debian no longer includes them in their basic tool kit.
 * Fix unzip file path
   Unzip tried to unpack 'AllStar-master.zip' and failed because the file is
   actually called 'master.zip'.
 
-Tue Jul 26 00:18:35 2016 -0600: Keep Dahdi from printing useless error messages to the Asterisk log file
 
-Tue Jul 26 00:28:05 2016 -0600: Update README
 
-Tue Jul 26 00:18:35 2016 -0600: Keep Dahdi from printing useless error messages to the Asterisk log file
+###Keep Dahdi from printing useless error messages to the Asterisk log file
+>Tue, 26 Jul 2016 00:18:35 -0600
 
-Mon Jul 25 14:49:58 2016 -0600: Update sources
+>Author: w0jrl(admin@jlappliedtechnologies.com)
 
-Tue Jul 26 00:28:05 2016 -0600: Update README
 
-Tue Jul 26 00:28:05 2016 -0600: Update README
 
-Tue Jul 26 00:18:35 2016 -0600: Keep Dahdi from printing useless error messages to the Asterisk log file
 
-Mon Jul 25 14:49:58 2016 -0600: Update sources
+###Update README
+>Tue, 26 Jul 2016 00:28:05 -0600
 
-Mon Jul 25 14:49:58 2016 -0600: Update sources
+>Author: w0jrl(admin@jlappliedtechnologies.com)
 
-Fri Jun 17 01:34:41 2016 -0600: Remove rpi-kernel-update script; no longer needed
+
+
+
+###Keep Dahdi from printing useless error messages to the Asterisk log file
+>Tue, 26 Jul 2016 00:18:35 -0600
+
+>Author: w0jrl(admin@jlappliedtechnologies.com)
+
+
+
+
+###Update sources
+>Mon, 25 Jul 2016 14:49:58 -0600
+
+>Author: w0jrl(admin@jlappliedtechnologies.com)
+
+
+
+
+###Update README
+>Tue, 26 Jul 2016 00:28:05 -0600
+
+>Author: w0jrl(admin@jlappliedtechnologies.com)
+
+
+
+
+###Update README
+>Tue, 26 Jul 2016 00:28:05 -0600
+
+>Author: w0jrl(admin@jlappliedtechnologies.com)
+
+
+
+
+###Keep Dahdi from printing useless error messages to the Asterisk log file
+>Tue, 26 Jul 2016 00:18:35 -0600
+
+>Author: w0jrl(admin@jlappliedtechnologies.com)
+
+
+
+
+###Update sources
+>Mon, 25 Jul 2016 14:49:58 -0600
+
+>Author: w0jrl(admin@jlappliedtechnologies.com)
+
+
+
+
+###Update sources
+>Mon, 25 Jul 2016 14:49:58 -0600
+
+>Author: w0jrl(admin@jlappliedtechnologies.com)
+
+
+
+
+###Remove rpi-kernel-update script; no longer needed
+>Fri, 17 Jun 2016 01:34:41 -0600
+
+>Author: w0jrl(admin@jlappliedtechnologies.com)
+
 The script was used to recovernodes when Raspbian forced a kernel update.
 
-Fri Jun 17 01:30:06 2016 -0600: Add exit codes to all scripts
 
-Thu Jun 16 21:09:28 2016 -0600: Remove redundant adding of Asterisk version durring stage-1 of system-update
+
+###Add exit codes to all scripts
+>Fri, 17 Jun 2016 01:30:06 -0600
+
+>Author: w0jrl(admin@jlappliedtechnologies.com)
+
+
+
+
+###Remove redundant adding of Asterisk version durring stage-1 of system-update
+>Thu, 16 Jun 2016 21:09:28 -0600
+
+>Author: w0jrl(admin@jlappliedtechnologies.com)
+
 	* Affects both platforms
 This is handled by the update-asterisk script already.
 
-Thu Jun 16 19:55:38 2016 -0600: Ask user for node country durring wifi-setup
 
-Wed Jun 15 18:21:58 2016 -0600: Provide max power to usb ports on boot; RPI
 
-Sun Jun 12 05:54:45 2016 -0600: Update AllStar sources to 1535M
+###Ask user for node country durring wifi-setup
+>Thu, 16 Jun 2016 19:55:38 -0600
 
-Mon Jun 6 15:47:22 2016 -0600: modify .gitattributes
+>Author: w0jrl(admin@jlappliedtechnologies.com)
 
-Mon Jun 6 12:30:23 2016 -0600: Fix audio module loading on rpi
+
+
+
+###Provide max power to usb ports on boot; RPI
+>Wed, 15 Jun 2016 18:21:58 -0600
+
+>Author: w0jrl(admin@jlappliedtechnologies.com)
+
+
+
+
+###Update AllStar sources to 1535M
+>Sun, 12 Jun 2016 05:54:45 -0600
+
+>Author: w0jrl(admin@jlappliedtechnologies.com)
+
+
+
+
+###modify .gitattributes
+>Mon, 6 Jun 2016 15:47:22 -0600
+
+>Author: w0jrl(admin@jlappliedtechnologies.com)
+
+
+
+
+###Fix audio module loading on rpi
+>Mon, 6 Jun 2016 12:30:23 -0600
+
+>Author: w0jrl(admin@jlappliedtechnologies.com)
+
 *Turn off internal Broadcom hardware audio module
 		May interfere with USB sound fobs.
 *Prevent snd_pcm_oss from loading more them once on boot
@@ -1250,406 +4157,1458 @@ Mon Jun 6 12:30:23 2016 -0600: Fix audio module loading on rpi
 		This caused multiple copies of 'snd_pcm_oss' to be added to
 		/etc/modules.
 
-Wed Jun 1 10:54:18 2016 -0600: Clean up the update scripts
 
-Wed Jun 1 10:54:18 2016 -0600: Clean up the update scripts
 
-Wed Jun 1 10:54:18 2016 -0600: Clean up the update scripts
+###Clean up the update scripts
+>Wed, 1 Jun 2016 10:54:18 -0600
 
-Wed Jun 1 10:47:06 2016 -0600: Revert "Change compiler flag reset to use 'git checkout -f' only"
+>Author: w0jrl(admin@jlappliedtechnologies.com)
+
+
+
+
+###Clean up the update scripts
+>Wed, 1 Jun 2016 10:54:18 -0600
+
+>Author: w0jrl(admin@jlappliedtechnologies.com)
+
+
+
+
+###Clean up the update scripts
+>Wed, 1 Jun 2016 10:54:18 -0600
+
+>Author: w0jrl(admin@jlappliedtechnologies.com)
+
+
+
+
+###Revert "Change compiler flag reset to use 'git checkout -f' only"
+>Wed, 1 Jun 2016 10:47:06 -0600
+
+>Author: w0jrl(admin@jlappliedtechnologies.com)
+
 This reverts commit b4ad3cc39fba8fde785a426ad977b7c824ca48be.
 
-Sun May 29 03:53:46 2016 -0600: Change compiler flag reset to use 'git checkout -f' only
 
-Fri May 27 14:58:43 2016 -0600: modify scripts to add AllStar build version number
 
-Fri May 27 14:46:58 2016 -0600: Update sources and scripts
+###Change compiler flag reset to use 'git checkout -f' only
+>Sun, 29 May 2016 03:53:46 -0600
 
-Thu May 19 18:07:09 2016 -0600: Change update scripts to use git clean
+>Author: w0jrl(admin@jlappliedtechnologies.com)
 
-Thu May 19 14:09:49 2016 -0600: Update Asterisk and Libpri
 
-Thu May 19 16:39:17 2016 -0600: Update source version number
 
-Thu May 19 16:20:33 2016 -0600: Update Asterisk source
 
-Thu May 19 14:47:34 2016 -0600: Modify 'common/update-asterisk.sh' to update the svn version
+###modify scripts to add AllStar build version number
+>Fri, 27 May 2016 14:58:43 -0600
 
-Thu May 19 14:09:49 2016 -0600: Update Asterisk and Libpri
+>Author: w0jrl(admin@jlappliedtechnologies.com)
 
-Thu May 19 13:42:07 2016 -0600: Add make-links script for Debian, and modify 'debian/update-stage2.sh'
 
-Thu May 19 14:09:49 2016 -0600: Update Asterisk and Libpri
 
-Thu May 19 13:42:07 2016 -0600: Add make-links script for Debian, and modify 'debian/update-stage2.sh'
 
-Thu May 19 13:42:07 2016 -0600: Add make-links script for Debian, and modify 'debian/update-stage2.sh'
+###Update sources and scripts
+>Fri, 27 May 2016 14:46:58 -0600
 
-Sun May 15 21:54:31 2016 -0600: Make kernel update run in 2 stages
+>Author: w0jrl(admin@jlappliedtechnologies.com)
 
-Sun May 15 23:58:51 2016 -0600: Revert "Make kernel update run in 2 stages"
+
+
+
+###Change update scripts to use git clean
+>Thu, 19 May 2016 18:07:09 -0600
+
+>Author: w0jrl(admin@jlappliedtechnologies.com)
+
+
+
+
+###Update Asterisk and Libpri
+>Thu, 19 May 2016 14:09:49 -0600
+
+>Author: w0jrl(admin@jlappliedtechnologies.com)
+
+
+
+
+###Update source version number
+>Thu, 19 May 2016 16:39:17 -0600
+
+>Author: w0jrl(admin@jlappliedtechnologies.com)
+
+
+
+
+###Update Asterisk source
+>Thu, 19 May 2016 16:20:33 -0600
+
+>Author: w0jrl(admin@jlappliedtechnologies.com)
+
+
+
+
+###Modify 'common/update-asterisk.sh' to update the svn version
+>Thu, 19 May 2016 14:47:34 -0600
+
+>Author: w0jrl(admin@jlappliedtechnologies.com)
+
+
+
+
+###Update Asterisk and Libpri
+>Thu, 19 May 2016 14:09:49 -0600
+
+>Author: w0jrl(admin@jlappliedtechnologies.com)
+
+
+
+
+###Add make-links script for Debian, and modify 'debian/update-stage2.sh'
+>Thu, 19 May 2016 13:42:07 -0600
+
+>Author: w0jrl(admin@jlappliedtechnologies.com)
+
+
+
+
+###Update Asterisk and Libpri
+>Thu, 19 May 2016 14:09:49 -0600
+
+>Author: w0jrl(admin@jlappliedtechnologies.com)
+
+
+
+
+###Add make-links script for Debian, and modify 'debian/update-stage2.sh'
+>Thu, 19 May 2016 13:42:07 -0600
+
+>Author: w0jrl(admin@jlappliedtechnologies.com)
+
+
+
+
+###Add make-links script for Debian, and modify 'debian/update-stage2.sh'
+>Thu, 19 May 2016 13:42:07 -0600
+
+>Author: w0jrl(admin@jlappliedtechnologies.com)
+
+
+
+
+###Make kernel update run in 2 stages
+>Sun, 15 May 2016 21:54:31 -0600
+
+>Author: w0jrl(admin@jlappliedtechnologies.com)
+
+
+
+
+###Revert "Make kernel update run in 2 stages"
+>Sun, 15 May 2016 23:58:51 -0600
+
+>Author: w0jrl(admin@jlappliedtechnologies.com)
+
 This reverts commit d68286dfe7aa53ffd6b5c17b78a05e8275ac40b1.
 
-Sun May 15 21:54:31 2016 -0600: Make kernel update run in 2 stages
 
-Sun May 15 23:23:10 2016 -0600: Revert "Make kernel update run in 2 stages"
+
+###Make kernel update run in 2 stages
+>Sun, 15 May 2016 21:54:31 -0600
+
+>Author: w0jrl(admin@jlappliedtechnologies.com)
+
+
+
+
+###Revert "Make kernel update run in 2 stages"
+>Sun, 15 May 2016 23:23:10 -0600
+
+>Author: w0jrl(admin@jlappliedtechnologies.com)
+
 This reverts commit 81b8aab2f88cf2ce25346566fd0bdf59ddd6bc8d.
 
-Sun May 15 21:54:31 2016 -0600: Make kernel update run in 2 stages
 
-Sun May 15 15:56:26 2016 -0600: Remove old kernel headers while 'rpi-update-kernel.sh' is running
 
-Sun May 15 15:56:26 2016 -0600: Remove old kernel headers while 'rpi-update-kernel.sh' is running
+###Make kernel update run in 2 stages
+>Sun, 15 May 2016 21:54:31 -0600
 
-Sun May 15 06:30:38 2016 -0600: Add wildcard to 'update-dahdi.sh'
+>Author: w0jrl(admin@jlappliedtechnologies.com)
 
-Sun May 15 06:12:23 2016 -0600: Change 'update-dahdi.sh'
 
-Sun May 15 04:01:16 2016 -0600: Replace README.md after merge
 
-Sun May 15 03:26:48 2016 -0600: Add fxload as required package in build scripts
 
-Sun May 15 02:46:08 2016 -0600: Create new build process
+###Remove old kernel headers while 'rpi-update-kernel.sh' is running
+>Sun, 15 May 2016 15:56:26 -0600
 
-Sun May 15 00:32:34 2016 -0600: Change dahdi path in build scripts
+>Author: w0jrl(admin@jlappliedtechnologies.com)
 
-Sun May 15 00:04:34 2016 -0600: Update build scripts
 
-Sat May 14 23:33:35 2016 -0600: Remove dahdi and update build scripts
+
+
+###Remove old kernel headers while 'rpi-update-kernel.sh' is running
+>Sun, 15 May 2016 15:56:26 -0600
+
+>Author: w0jrl(admin@jlappliedtechnologies.com)
+
+
+
+
+###Add wildcard to 'update-dahdi.sh'
+>Sun, 15 May 2016 06:30:38 -0600
+
+>Author: w0jrl(admin@jlappliedtechnologies.com)
+
+
+
+
+###Change 'update-dahdi.sh'
+>Sun, 15 May 2016 06:12:23 -0600
+
+>Author: w0jrl(admin@jlappliedtechnologies.com)
+
+
+
+
+###Replace README.md after merge
+>Sun, 15 May 2016 04:01:16 -0600
+
+>Author: w0jrl(admin@jlappliedtechnologies.com)
+
+
+
+
+###Add fxload as required package in build scripts
+>Sun, 15 May 2016 03:26:48 -0600
+
+>Author: w0jrl(admin@jlappliedtechnologies.com)
+
+
+
+
+###Create new build process
+>Sun, 15 May 2016 02:46:08 -0600
+
+>Author: w0jrl(admin@jlappliedtechnologies.com)
+
+
+
+
+###Change dahdi path in build scripts
+>Sun, 15 May 2016 00:32:34 -0600
+
+>Author: w0jrl(admin@jlappliedtechnologies.com)
+
+
+
+
+###Update build scripts
+>Sun, 15 May 2016 00:04:34 -0600
+
+>Author: w0jrl(admin@jlappliedtechnologies.com)
+
+
+
+
+###Remove dahdi and update build scripts
+>Sat, 14 May 2016 23:33:35 -0600
+
+>Author: w0jrl(admin@jlappliedtechnologies.com)
+
 Dahdi will be downloaded during update-stage-2.
 
-Sat May 14 22:33:30 2016 -0600: Update dahdi again
 
-Sat May 14 22:11:06 2016 -0600: Update dahdi
 
-Sat May 14 21:40:49 2016 -0600: Recreate .gitignore
+###Update dahdi again
+>Sat, 14 May 2016 22:33:30 -0600
 
-Sat May 14 21:35:58 2016 -0600: Remove .gitignore
+>Author: w0jrl(admin@jlappliedtechnologies.com)
 
-Sat May 14 20:53:17 2016 -0600: Update sources and scripts
 
-Sat May 14 01:41:46 2016 -0600: Fix README
 
-Sun May 15 00:32:34 2016 -0600: Change dahdi path in build scripts
 
-Sun May 15 00:04:34 2016 -0600: Update build scripts
+###Update dahdi
+>Sat, 14 May 2016 22:11:06 -0600
 
-Sat May 14 23:33:35 2016 -0600: Remove dahdi and update build scripts
+>Author: w0jrl(admin@jlappliedtechnologies.com)
+
+
+
+
+###Recreate .gitignore
+>Sat, 14 May 2016 21:40:49 -0600
+
+>Author: w0jrl(admin@jlappliedtechnologies.com)
+
+
+
+
+###Remove .gitignore
+>Sat, 14 May 2016 21:35:58 -0600
+
+>Author: w0jrl(admin@jlappliedtechnologies.com)
+
+
+
+
+###Update sources and scripts
+>Sat, 14 May 2016 20:53:17 -0600
+
+>Author: w0jrl(admin@jlappliedtechnologies.com)
+
+
+
+
+###Fix README
+>Sat, 14 May 2016 01:41:46 -0600
+
+>Author: w0jrl(admin@jlappliedtechnologies.com)
+
+
+
+
+###Change dahdi path in build scripts
+>Sun, 15 May 2016 00:32:34 -0600
+
+>Author: w0jrl(admin@jlappliedtechnologies.com)
+
+
+
+
+###Update build scripts
+>Sun, 15 May 2016 00:04:34 -0600
+
+>Author: w0jrl(admin@jlappliedtechnologies.com)
+
+
+
+
+###Remove dahdi and update build scripts
+>Sat, 14 May 2016 23:33:35 -0600
+
+>Author: w0jrl(admin@jlappliedtechnologies.com)
+
 Dahdi will be downloaded during update-stage-2.
 
-Sat May 14 22:33:30 2016 -0600: Update dahdi again
 
-Sat May 14 22:11:06 2016 -0600: Update dahdi
 
-Sat May 14 21:40:49 2016 -0600: Recreate .gitignore
+###Update dahdi again
+>Sat, 14 May 2016 22:33:30 -0600
 
-Sat May 14 21:35:58 2016 -0600: Remove .gitignore
+>Author: w0jrl(admin@jlappliedtechnologies.com)
 
-Sat May 14 20:53:17 2016 -0600: Update sources and scripts
 
-Sat May 14 01:41:46 2016 -0600: Fix README
 
-Fri May 13 21:46:23 2016 -0600: Update .gitattributes
 
-Fri May 13 21:43:50 2016 -0600: Replace README.md
+###Update dahdi
+>Sat, 14 May 2016 22:11:06 -0600
 
-Sat May 14 01:32:44 2016 -0600: Change compiler flag reset method
+>Author: w0jrl(admin@jlappliedtechnologies.com)
 
-Sat May 14 01:32:44 2016 -0600: Change compiler flag reset method
 
-Sat May 14 00:52:24 2016 -0600: Update uricheck to use the correct path for uridiag
 
-Sat May 14 00:52:24 2016 -0600: Update uricheck to use the correct path for uridiag
 
-Fri May 13 21:46:23 2016 -0600: Update .gitattributes
+###Recreate .gitignore
+>Sat, 14 May 2016 21:40:49 -0600
 
-Fri May 13 21:43:50 2016 -0600: Replace README.md
+>Author: w0jrl(admin@jlappliedtechnologies.com)
 
-Fri May 13 21:37:19 2016 -0600: Update gpu_mem to 16 in boot-config.txt
 
-Fri May 13 21:13:51 2016 -0600: Update build scripts and add dahdi init script
 
-Fri May 13 19:48:11 2016 -0600: Update sourcecode
 
-Fri May 13 18:04:57 2016 -0600: Update README for the testing branch
+###Remove .gitignore
+>Sat, 14 May 2016 21:35:58 -0600
 
-Fri May 13 11:11:13 2016 -0600: Add script to remove pi user; Not needed for AllStar
+>Author: w0jrl(admin@jlappliedtechnologies.com)
 
-Fri May 13 08:17:46 2016 -0600: Remove trailing whitespace after website name
 
-Mon May 9 14:18:03 2016 -0600: Update README.md
 
-Fri May 13 07:56:16 2016 -0600: Update boot-config.txt to support the new kernel package
 
-Fri May 13 07:24:31 2016 -0600: Fix rpi-kernel-update.sh
+###Update sources and scripts
+>Sat, 14 May 2016 20:53:17 -0600
+
+>Author: w0jrl(admin@jlappliedtechnologies.com)
+
+
+
+
+###Fix README
+>Sat, 14 May 2016 01:41:46 -0600
+
+>Author: w0jrl(admin@jlappliedtechnologies.com)
+
+
+
+
+###Update .gitattributes
+>Fri, 13 May 2016 21:46:23 -0600
+
+>Author: w0jrl(admin@jlappliedtechnologies.com)
+
+
+
+
+###Replace README.md
+>Fri, 13 May 2016 21:43:50 -0600
+
+>Author: w0jrl(admin@jlappliedtechnologies.com)
+
+
+
+
+###Change compiler flag reset method
+>Sat, 14 May 2016 01:32:44 -0600
+
+>Author: w0jrl(admin@jlappliedtechnologies.com)
+
+
+
+
+###Change compiler flag reset method
+>Sat, 14 May 2016 01:32:44 -0600
+
+>Author: w0jrl(admin@jlappliedtechnologies.com)
+
+
+
+
+###Update uricheck to use the correct path for uridiag
+>Sat, 14 May 2016 00:52:24 -0600
+
+>Author: w0jrl(admin@jlappliedtechnologies.com)
+
+
+
+
+###Update uricheck to use the correct path for uridiag
+>Sat, 14 May 2016 00:52:24 -0600
+
+>Author: w0jrl(admin@jlappliedtechnologies.com)
+
+
+
+
+###Update .gitattributes
+>Fri, 13 May 2016 21:46:23 -0600
+
+>Author: w0jrl(admin@jlappliedtechnologies.com)
+
+
+
+
+###Replace README.md
+>Fri, 13 May 2016 21:43:50 -0600
+
+>Author: w0jrl(admin@jlappliedtechnologies.com)
+
+
+
+
+###Update gpu_mem to 16 in boot-config.txt
+>Fri, 13 May 2016 21:37:19 -0600
+
+>Author: w0jrl(admin@jlappliedtechnologies.com)
+
+
+
+
+###Update build scripts and add dahdi init script
+>Fri, 13 May 2016 21:13:51 -0600
+
+>Author: w0jrl(admin@jlappliedtechnologies.com)
+
+
+
+
+###Update sourcecode
+>Fri, 13 May 2016 19:48:11 -0600
+
+>Author: w0jrl(admin@jlappliedtechnologies.com)
+
+
+
+
+###Update README for the testing branch
+>Fri, 13 May 2016 18:04:57 -0600
+
+>Author: w0jrl(admin@jlappliedtechnologies.com)
+
+
+
+
+###Add script to remove pi user; Not needed for AllStar
+>Fri, 13 May 2016 11:11:13 -0600
+
+>Author: w0jrl(admin@jlappliedtechnologies.com)
+
+
+
+
+###Remove trailing whitespace after website name
+>Fri, 13 May 2016 08:17:46 -0600
+
+>Author: w0jrl(admin@jlappliedtechnologies.com)
+
+
+
+
+###Update README.md
+>Mon, 9 May 2016 14:18:03 -0600
+
+>Author: w0jrl(admin@jlappliedtechnologies.com)
+
+
+
+
+###Update boot-config.txt to support the new kernel package
+>Fri, 13 May 2016 07:56:16 -0600
+
+>Author: w0jrl(admin@jlappliedtechnologies.com)
+
+
+
+
+###Fix rpi-kernel-update.sh
+>Fri, 13 May 2016 07:24:31 -0600
+
+>Author: w0jrl(admin@jlappliedtechnologies.com)
+
 Missing 'pi' in raspberrypi-kernel-headers
 
-Fri May 13 07:14:45 2016 -0600: Update boot configuration for RPI
+
+
+###Update boot configuration for RPI
+>Fri, 13 May 2016 07:14:45 -0600
+
+>Author: w0jrl(admin@jlappliedtechnologies.com)
+
 * Removed kernel lines from boot-config.txt
 * added script that should be run before system-update
  to update kernel headers
 
-Mon May 9 14:18:03 2016 -0600: Update README.md
 
-Mon May 9 14:18:03 2016 -0600: Update README.md
 
-Fri May 13 04:17:27 2016 -0600: Update scripts to install automake1.9
+###Update README.md
+>Mon, 9 May 2016 14:18:03 -0600
 
-Mon May 9 14:18:03 2016 -0600: Update README.md
+>Author: w0jrl(admin@jlappliedtechnologies.com)
 
-Mon May 9 13:58:31 2016 -0600: Update Asterisk sources
 
-Fri May 6 21:32:46 2016 -0600: Fix broken 'update-stage2.sh'; all platforms
 
-Fri May 6 20:25:29 2016 -0600: Update 'debian/update-stage2.sh' and add compiled files
 
-Fri May 6 20:03:10 2016 -0600: Update .gitignore
+###Update README.md
+>Mon, 9 May 2016 14:18:03 -0600
 
-Fri May 6 20:00:44 2016 -0600: Update .gitignore
+>Author: w0jrl(admin@jlappliedtechnologies.com)
 
-Fri May 6 19:41:59 2016 -0600: Modify 'update-stage2.sh' to disable timers; all platforms
 
-Fri May 6 18:03:53 2016 -0600: Add startup timer for dahdi
 
-Fri May 6 04:51:21 2016 -0600: Update chk-packages.sh; all platforms
 
-Fri May 6 04:46:23 2016 -0600: Update required packages
+###Update scripts to install automake1.9
+>Fri, 13 May 2016 04:17:27 -0600
 
-Fri May 6 01:35:31 2016 -0600: Update startup and build scripts to use systemd exclusively
+>Author: w0jrl(admin@jlappliedtechnologies.com)
+
+
+
+
+###Update README.md
+>Mon, 9 May 2016 14:18:03 -0600
+
+>Author: w0jrl(admin@jlappliedtechnologies.com)
+
+
+
+
+###Update Asterisk sources
+>Mon, 9 May 2016 13:58:31 -0600
+
+>Author: w0jrl(admin@jlappliedtechnologies.com)
+
+
+
+
+###Fix broken 'update-stage2.sh'; all platforms
+>Fri, 6 May 2016 21:32:46 -0600
+
+>Author: w0jrl(admin@jlappliedtechnologies.com)
+
+
+
+
+###Update 'debian/update-stage2.sh' and add compiled files
+>Fri, 6 May 2016 20:25:29 -0600
+
+>Author: w0jrl(admin@jlappliedtechnologies.com)
+
+
+
+
+###Update .gitignore
+>Fri, 6 May 2016 20:03:10 -0600
+
+>Author: w0jrl(admin@jlappliedtechnologies.com)
+
+
+
+
+###Update .gitignore
+>Fri, 6 May 2016 20:00:44 -0600
+
+>Author: w0jrl(admin@jlappliedtechnologies.com)
+
+
+
+
+###Modify 'update-stage2.sh' to disable timers; all platforms
+>Fri, 6 May 2016 19:41:59 -0600
+
+>Author: w0jrl(admin@jlappliedtechnologies.com)
+
+
+
+
+###Add startup timer for dahdi
+>Fri, 6 May 2016 18:03:53 -0600
+
+>Author: w0jrl(admin@jlappliedtechnologies.com)
+
+
+
+
+###Update chk-packages.sh; all platforms
+>Fri, 6 May 2016 04:51:21 -0600
+
+>Author: w0jrl(admin@jlappliedtechnologies.com)
+
+
+
+
+###Update required packages
+>Fri, 6 May 2016 04:46:23 -0600
+
+>Author: w0jrl(admin@jlappliedtechnologies.com)
+
+
+
+
+###Update startup and build scripts to use systemd exclusively
+>Fri, 6 May 2016 01:35:31 -0600
+
+>Author: w0jrl(admin@jlappliedtechnologies.com)
+
 Using rc.local keeps users from being able to
 start their own custom applications.
 
-Thu May 5 22:37:56 2016 -0600: Add updatenodelist.service and asterisk.timer
 
-Tue May 3 06:55:01 2016 -0600: Replace README for the 'testing' branch
+
+###Add updatenodelist.service and asterisk.timer
+>Thu, 5 May 2016 22:37:56 -0600
+
+>Author: w0jrl(admin@jlappliedtechnologies.com)
+
+
+
+
+###Replace README for the 'testing' branch
+>Tue, 3 May 2016 06:55:01 -0600
+
+>Author: w0jrl(admin@jlappliedtechnologies.com)
+
 I broke it when I did a rebase!
 
-Tue May 3 06:23:03 2016 -0600: Modify 'rpi/build-asterisk.sh' to change RPTENA message in app_rpt.c
 
-Tue May 3 06:23:03 2016 -0600: Modify 'rpi/build-asterisk.sh' to change RPTENA message in app_rpt.c
 
-Tue May 3 05:41:15 2016 -0600: Move restore bashrc lines to end of file 'update-stage2.sh'; both platforms
+###Modify 'rpi/build-asterisk.sh' to change RPTENA message in app_rpt.c
+>Tue, 3 May 2016 06:23:03 -0600
 
-Tue May 3 06:23:03 2016 -0600: Modify 'rpi/build-asterisk.sh' to change RPTENA message in app_rpt.c
+>Author: w0jrl(admin@jlappliedtechnologies.com)
 
-Tue May 3 05:41:15 2016 -0600: Move restore bashrc lines to end of file 'update-stage2.sh'; both platforms
 
-Tue May 3 04:59:26 2016 -0600: Update app_rpt.c to say "TXENA when TX enabled
 
-Tue May 3 04:39:37 2016 -0600: Merge build scripts
 
-Tue May 3 04:34:15 2016 -0600: Remove build scripts for refactoring
+###Modify 'rpi/build-asterisk.sh' to change RPTENA message in app_rpt.c
+>Tue, 3 May 2016 06:23:03 -0600
+
+>Author: w0jrl(admin@jlappliedtechnologies.com)
+
+
+
+
+###Move restore bashrc lines to end of file 'update-stage2.sh'; both platforms
+>Tue, 3 May 2016 05:41:15 -0600
+
+>Author: w0jrl(admin@jlappliedtechnologies.com)
+
+
+
+
+###Modify 'rpi/build-asterisk.sh' to change RPTENA message in app_rpt.c
+>Tue, 3 May 2016 06:23:03 -0600
+
+>Author: w0jrl(admin@jlappliedtechnologies.com)
+
+
+
+
+###Move restore bashrc lines to end of file 'update-stage2.sh'; both platforms
+>Tue, 3 May 2016 05:41:15 -0600
+
+>Author: w0jrl(admin@jlappliedtechnologies.com)
+
+
+
+
+###Update app_rpt.c to say "TXENA when TX enabled
+>Tue, 3 May 2016 04:59:26 -0600
+
+>Author: w0jrl(admin@jlappliedtechnologies.com)
+
+
+
+
+###Merge build scripts
+>Tue, 3 May 2016 04:39:37 -0600
+
+>Author: w0jrl(admin@jlappliedtechnologies.com)
+
+
+
+
+###Remove build scripts for refactoring
+>Tue, 3 May 2016 04:34:15 -0600
+
+>Author: w0jrl(admin@jlappliedtechnologies.com)
+
 A bad merge caused the wrong scripts to get added.
 
-Tue May 3 03:12:07 2016 -0600: Revert "Merge branch 'testing' of https://github.com/w0jrl/AllStar-raspbian"
+
+
+###Revert "Merge branch 'testing' of https://github.com/w0jrl/AllStar-raspbian"
+>Tue, 3 May 2016 03:12:07 -0600
+
+>Author: w0jrl(admin@jlappliedtechnologies.com)
+
 This reverts commit e7f1770d2d7387b8a689035a7578ffee06bcd7b5, reversing
 changes made to 5f4c3259e0f06be344f82367ead9e0b3eff9c369.
 
-Tue May 3 03:24:04 2016 -0600: Revert "Revert "Merge branch 'testing' of https://github.com/w0jrl/AllStar-raspbian""
+
+
+###Revert "Revert "Merge branch 'testing' of https://github.com/w0jrl/AllStar-raspbian""
+>Tue, 3 May 2016 03:24:04 -0600
+
+>Author: w0jrl(admin@jlappliedtechnologies.com)
+
 This reverts commit e8152e63421136fa9a86bf4c2564abe8759e5000.
 
-Tue May 3 03:12:07 2016 -0600: Revert "Merge branch 'testing' of https://github.com/w0jrl/AllStar-raspbian"
+
+
+###Revert "Merge branch 'testing' of https://github.com/w0jrl/AllStar-raspbian"
+>Tue, 3 May 2016 03:12:07 -0600
+
+>Author: w0jrl(admin@jlappliedtechnologies.com)
+
 This reverts commit e7f1770d2d7387b8a689035a7578ffee06bcd7b5, reversing
 changes made to 5f4c3259e0f06be344f82367ead9e0b3eff9c369.
 
-Tue May 3 02:29:36 2016 -0600: Update Dahdi and build scripts
 
-Mon May 2 22:28:34 2016 -0600: Change uridiag install method
 
-Mon May 2 22:10:22 2016 -0600: Update interpreter line in all scripts
+###Update Dahdi and build scripts
+>Tue, 3 May 2016 02:29:36 -0600
 
-Mon May 2 21:17:39 2016 -0600: Fix scripts and uricheck execution
+>Author: w0jrl(admin@jlappliedtechnologies.com)
+
+
+
+
+###Change uridiag install method
+>Mon, 2 May 2016 22:28:34 -0600
+
+>Author: w0jrl(admin@jlappliedtechnologies.com)
+
+
+
+
+###Update interpreter line in all scripts
+>Mon, 2 May 2016 22:10:22 -0600
+
+>Author: w0jrl(admin@jlappliedtechnologies.com)
+
+
+
+
+###Fix scripts and uricheck execution
+>Mon, 2 May 2016 21:17:39 -0600
+
+>Author: w0jrl(admin@jlappliedtechnologies.com)
+
  * Update scripts to prevent printing not found messages
  * Fix uricheck soft links
 
-Tue May 3 03:12:07 2016 -0600: Revert "Merge branch 'testing' of https://github.com/w0jrl/AllStar-raspbian"
+
+
+###Revert "Merge branch 'testing' of https://github.com/w0jrl/AllStar-raspbian"
+>Tue, 3 May 2016 03:12:07 -0600
+
+>Author: w0jrl(admin@jlappliedtechnologies.com)
+
 This reverts commit e7f1770d2d7387b8a689035a7578ffee06bcd7b5, reversing
 changes made to 5f4c3259e0f06be344f82367ead9e0b3eff9c369.
 
-Tue May 3 02:29:36 2016 -0600: Update Dahdi and build scripts
 
-Mon May 2 22:28:34 2016 -0600: Change uridiag install method
 
-Mon May 2 22:10:22 2016 -0600: Update interpreter line in all scripts
+###Update Dahdi and build scripts
+>Tue, 3 May 2016 02:29:36 -0600
 
-Mon May 2 21:17:39 2016 -0600: Fix scripts and uricheck execution
+>Author: w0jrl(admin@jlappliedtechnologies.com)
+
+
+
+
+###Change uridiag install method
+>Mon, 2 May 2016 22:28:34 -0600
+
+>Author: w0jrl(admin@jlappliedtechnologies.com)
+
+
+
+
+###Update interpreter line in all scripts
+>Mon, 2 May 2016 22:10:22 -0600
+
+>Author: w0jrl(admin@jlappliedtechnologies.com)
+
+
+
+
+###Fix scripts and uricheck execution
+>Mon, 2 May 2016 21:17:39 -0600
+
+>Author: w0jrl(admin@jlappliedtechnologies.com)
+
  * Update scripts to prevent printing not found messages
  * Fix uricheck soft links
 
-Mon May 2 20:03:56 2016 -0600: Update uricheck install scripts; all platforms
+
+
+###Update uricheck install scripts; all platforms
+>Mon, 2 May 2016 20:03:56 -0600
+
+>Author: w0jrl(admin@jlappliedtechnologies.com)
+
 Makes sure that uricheck installs properly on a clean build of Debian and
 Raspbian.
 
-Mon May 2 19:39:17 2016 -0600: Set uricheck execution bit
 
-Mon May 2 18:47:32 2016 -0600: Update rpi/chk-packages.sh
 
-Mon May 2 18:02:14 2016 -0600: Add logrotate parameter check to AllStar-build/rpi/chkpackages.sh
+###Set uricheck execution bit
+>Mon, 2 May 2016 19:39:17 -0600
 
-Mon May 2 17:10:23 2016 -0600: Revert "Remove README.md; Not needed"
+>Author: w0jrl(admin@jlappliedtechnologies.com)
+
+
+
+
+###Update rpi/chk-packages.sh
+>Mon, 2 May 2016 18:47:32 -0600
+
+>Author: w0jrl(admin@jlappliedtechnologies.com)
+
+
+
+
+###Add logrotate parameter check to AllStar-build/rpi/chkpackages.sh
+>Mon, 2 May 2016 18:02:14 -0600
+
+>Author: w0jrl(admin@jlappliedtechnologies.com)
+
+
+
+
+###Revert "Remove README.md; Not needed"
+>Mon, 2 May 2016 17:10:23 -0600
+
+>Author: w0jrl(admin@jlappliedtechnologies.com)
+
 This reverts commit 906fe4d0fb00af265a9dc97456a4132024bb4628.
 
-Mon May 2 17:00:36 2016 -0600: Remove README.md; Not needed
 
-Mon May 2 16:17:05 2016 -0600: Update 'rpi/rpi-image-prep.sh'
+
+###Remove README.md; Not needed
+>Mon, 2 May 2016 17:00:36 -0600
+
+>Author: w0jrl(admin@jlappliedtechnologies.com)
+
+
+
+
+###Update 'rpi/rpi-image-prep.sh'
+>Mon, 2 May 2016 16:17:05 -0600
+
+>Author: w0jrl(admin@jlappliedtechnologies.com)
+
 Change log rotate method
 
-Mon May 2 15:40:29 2016 -0600: Move 'mk-logrotate-asterisk.sh' from debian to common, and update 'debian-allstar-install.sh' to reflect the change
 
-Sun May 1 22:22:12 2016 -0600: Fix alignment in sip.conf template
 
-Sun May 1 22:14:50 2016 -0600: Update iax.conf template
+###Move 'mk-logrotate-asterisk.sh' from debian to common, and update 'debian-allstar-install.sh' to reflect the change
+>Mon, 2 May 2016 15:40:29 -0600
+
+>Author: w0jrl(admin@jlappliedtechnologies.com)
+
+
+
+
+###Fix alignment in sip.conf template
+>Sun, 1 May 2016 22:22:12 -0600
+
+>Author: w0jrl(admin@jlappliedtechnologies.com)
+
+
+
+
+###Update iax.conf template
+>Sun, 1 May 2016 22:14:50 -0600
+
+>Author: w0jrl(admin@jlappliedtechnologies.com)
+
 Fixed alignment, and enhanced comment in registration section.
 
-Sun May 1 21:49:37 2016 -0600: Fix alignment in features.conf template
 
-Sun May 1 21:45:35 2016 -0600: Fix alignment and spelling in extensions.conf template
 
-Sun May 1 18:43:26 2016 -0600: Fix alignment in echolink.conf template
+###Fix alignment in features.conf template
+>Sun, 1 May 2016 21:49:37 -0600
 
-Sun May 1 15:11:19 2016 -0600: Fix alignment in dnsmgr.conf template
+>Author: w0jrl(admin@jlappliedtechnologies.com)
 
-Sun May 1 14:45:37 2016 -0600: Fix alignment in usbradio.conf and rpt.conf templates
 
-Sun Apr 24 11:17:49 2016 -0600: Add patches to install Screen
 
-Wed Apr 20 22:38:22 2016 -0600: Remove 'killall rc.updatenodelist' from update-stage2
 
-Wed Apr 20 21:47:48 2016 -0600: Fix the kludgy patch to 'update-stage2.sh'
+###Fix alignment and spelling in extensions.conf template
+>Sun, 1 May 2016 21:45:35 -0600
+
+>Author: w0jrl(admin@jlappliedtechnologies.com)
+
+
+
+
+###Fix alignment in echolink.conf template
+>Sun, 1 May 2016 18:43:26 -0600
+
+>Author: w0jrl(admin@jlappliedtechnologies.com)
+
+
+
+
+###Fix alignment in dnsmgr.conf template
+>Sun, 1 May 2016 15:11:19 -0600
+
+>Author: w0jrl(admin@jlappliedtechnologies.com)
+
+
+
+
+###Fix alignment in usbradio.conf and rpt.conf templates
+>Sun, 1 May 2016 14:45:37 -0600
+
+>Author: w0jrl(admin@jlappliedtechnologies.com)
+
+
+
+
+###Add patches to install Screen
+>Sun, 24 Apr 2016 11:17:49 -0600
+
+>Author: w0jrl(admin@jlappliedtechnologies.com)
+
+
+
+
+###Remove 'killall rc.updatenodelist' from update-stage2
+>Wed, 20 Apr 2016 22:38:22 -0600
+
+>Author: w0jrl(admin@jlappliedtechnologies.com)
+
+
+
+
+###Fix the kludgy patch to 'update-stage2.sh'
+>Wed, 20 Apr 2016 21:47:48 -0600
+
+>Author: w0jrl(admin@jlappliedtechnologies.com)
+
 Making the script wait for 30 seconds would make the update take too long.
 Running killall rc.local before the build process fixes the problem.
 
-Wed Apr 20 21:07:14 2016 -0600: Fix 'update-stage2.sh' on both platforms
+
+
+###Fix 'update-stage2.sh' on both platforms
+>Wed, 20 Apr 2016 21:07:14 -0600
+
+>Author: w0jrl(admin@jlappliedtechnologies.com)
+
 I forgot to factor in the startup timer!
 
-Wed Apr 20 19:53:38 2016 -0600: Update system boot configuration
+
+
+###Update system boot configuration
+>Wed, 20 Apr 2016 19:53:38 -0600
+
+>Author: w0jrl(admin@jlappliedtechnologies.com)
+
  * Add timer to rc.local to keep asterisk from starting
 before other system services are up fully
  * Remove 'systemctl stop dahdi' from update-stage2.sh
 on both platforms
 No longer needed
 
-Wed Apr 20 19:53:38 2016 -0600: Update system boot configuration
+
+
+###Update system boot configuration
+>Wed, 20 Apr 2016 19:53:38 -0600
+
+>Author: w0jrl(admin@jlappliedtechnologies.com)
+
  * Add timer to rc.local to keep asterisk from starting
 before other system services are up fully
  * Remove 'systemctl stop dahdi' from update-stage2.sh
 on both platforms
 No longer needed
 
-Tue Apr 19 18:22:19 2016 -0600: Update README
+
+
+###Update README
+>Tue, 19 Apr 2016 18:22:19 -0600
+
+>Author: w0jrl(w0jrl1@gmail.com)
+
 Add information about how to switch back to master.
 
-Tue Apr 19 16:30:45 2016 -0600: Update 'AllStar-build/rpi/build-asterisk.sh'
 
-Tue Apr 19 16:21:00 2016 -0600: add rapper script for uridiag
 
-Tue Apr 19 11:26:01 2016 -0600: Update 'rpi/update-stage2.sh'
+###Update 'AllStar-build/rpi/build-asterisk.sh'
+>Tue, 19 Apr 2016 16:30:45 -0600
 
-Tue Apr 19 10:56:01 2016 -0600: Update README
+>Author: w0jrl(w0jrl1@gmail.com)
 
-Tue Apr 19 10:15:58 2016 -0600: Update README
 
-Tue Apr 19 10:06:35 2016 -0600: Add URI diagnostic tool
 
-Sat Apr 9 21:09:06 2016 -0600: Fix spelling errors in configuration templates
 
-Sat Apr 9 07:30:49 2016 -0600: Update 'AllStar-build/common/required-tools.sh' and 'AllStar-build/debian/update-stage2.sh'
+###add rapper script for uridiag
+>Tue, 19 Apr 2016 16:21:00 -0600
+
+>Author: w0jrl(w0jrl1@gmail.com)
+
+
+
+
+###Update 'rpi/update-stage2.sh'
+>Tue, 19 Apr 2016 11:26:01 -0600
+
+>Author: w0jrl(w0jrl1@gmail.com)
+
+
+
+
+###Update README
+>Tue, 19 Apr 2016 10:56:01 -0600
+
+>Author: w0jrl(w0jrl1@gmail.com)
+
+
+
+
+###Update README
+>Tue, 19 Apr 2016 10:15:58 -0600
+
+>Author: w0jrl(w0jrl1@gmail.com)
+
+
+
+
+###Add URI diagnostic tool
+>Tue, 19 Apr 2016 10:06:35 -0600
+
+>Author: w0jrl(w0jrl1@gmail.com)
+
+
+
+
+###Fix spelling errors in configuration templates
+>Sat, 9 Apr 2016 21:09:06 -0600
+
+>Author: w0jrl(w0jrl1@gmail.com)
+
+
+
+
+###Update 'AllStar-build/common/required-tools.sh' and 'AllStar-build/debian/update-stage2.sh'
+>Sat, 9 Apr 2016 07:30:49 -0600
+
+>Author: w0jrl(w0jrl1@gmail.com)
+
 Removed some link creation code from required-tools.
 Added link creation code to update-stage2.sh.
 
-Sat Apr 9 07:03:16 2016 -0600: Update 'AllStar-build/rpi/make-links.sh'
 
-Sat Apr 9 06:15:50 2016 -0600: Update 'AllStar-build/rpi/make-links.sh'
+
+###Update 'AllStar-build/rpi/make-links.sh'
+>Sat, 9 Apr 2016 07:03:16 -0600
+
+>Author: w0jrl(w0jrl1@gmail.com)
+
+
+
+
+###Update 'AllStar-build/rpi/make-links.sh'
+>Sat, 9 Apr 2016 06:15:50 -0600
+
+>Author: w0jrl(w0jrl1@gmail.com)
+
 Permissions were typed wrong.
 
-Sat Apr 9 05:39:55 2016 -0600: Update source files and templates
+
+
+###Update source files and templates
+>Sat, 9 Apr 2016 05:39:55 -0600
+
+>Author: w0jrl(w0jrl1@gmail.com)
+
 Add notch filter
 Add mdc1200 support
 Fix configuration files that will live in /etc/asterisk; They were a mess!
 
-Fri Apr 8 20:14:26 2016 -0600: Create new directory structure
+
+
+###Create new directory structure
+>Fri, 8 Apr 2016 20:14:26 -0600
+
+>Author: w0jrl(w0jrl1@gmail.com)
+
 This will make it easier to tell what platform each file is part of.
 Scripts for Raspbian and Debian have been changed to work with the new directories.
 A scripts link that points to the rpi directory was added to keep nodes from breaking during update.
 
-Fri Apr 8 20:14:26 2016 -0600: Create new directory structure
+
+
+###Create new directory structure
+>Fri, 8 Apr 2016 20:14:26 -0600
+
+>Author: w0jrl(w0jrl1@gmail.com)
+
 This will make it easier to tell what platform each file is part of.
 Scripts for Raspbian and Debian have been changed to work with the new directories.
 
-Thu Apr 7 05:13:08 2016 -0600: Update 'system/rc.allstar' and 'system/asterisk.service'
 
-Thu Apr 7 05:13:08 2016 -0600: Updated 'system/rc.allstar' and 'system/asterisk.service'
 
-Thu Apr 7 05:09:28 2016 -0600: Updated 'debian/update-stage2.sh'
+###Update 'system/rc.allstar' and 'system/asterisk.service'
+>Thu, 7 Apr 2016 05:13:08 -0600
 
-Thu Apr 7 04:21:21 2016 -0600: Tweaked boot configuration files
+>Author: w0jrl(w0jrl1@gmail.com)
 
-Sat Apr 2 22:28:30 2016 -0600: Update-stage2 script changed
 
-Sat Apr 2 20:06:35 2016 -0600: Updated system-update
 
-Sat Apr 2 19:37:27 2016 -0600: Changed attributes file
 
-Sat Apr 2 19:31:42 2016 -0600: Updated Asterisk sources
+###Updated 'system/rc.allstar' and 'system/asterisk.service'
+>Thu, 7 Apr 2016 05:13:08 -0600
 
-Sat Apr 2 18:28:23 2016 -0600: Removed attributes file; Not needed
+>Author: w0jrl(w0jrl1@gmail.com)
 
-Sat Apr 2 18:19:02 2016 -0600: Updated build scripts
 
-Sat Apr 2 17:37:18 2016 -0600: Updated build scripts
 
-Sat Apr 2 17:27:40 2016 -0600: Updated build scripts
 
-Sat Apr 2 16:15:30 2016 -0600: Removed rpi-update
+###Updated 'debian/update-stage2.sh'
+>Thu, 7 Apr 2016 05:09:28 -0600
 
-Sat Apr 2 14:40:47 2016 -0600: Updated boot parameters
+>Author: w0jrl(w0jrl1@gmail.com)
 
-Sat Apr 2 08:01:45 2016 -0600: Code clean up
 
-Sat Apr 2 07:39:11 2016 -0600: Modified attributes file
 
-Sat Apr 2 07:35:47 2016 -0600: Removed unneeded attributes file
 
-Sat Apr 2 07:04:10 2016 -0600: Merged changes from testing to master
+###Tweaked boot configuration files
+>Thu, 7 Apr 2016 04:21:21 -0600
 
-Sat Apr 2 06:55:47 2016 -0600: Added gitignore file
+>Author: w0jrl(w0jrl1@gmail.com)
 
-Tue Mar 29 17:16:00 2016 -0600: Updated merge settings
 
-Tue Mar 29 17:10:27 2016 -0600: Updated merge settings
 
-Tue Mar 29 16:56:02 2016 -0600: Fixed broken README
 
-Tue Mar 29 16:41:31 2016 -0600: Removed unneeded file
+###Update-stage2 script changed
+>Sat, 2 Apr 2016 22:28:30 -0600
 
-Tue Mar 29 16:34:31 2016 -0600: Tweaked usbradio template
+>Author: w0jrl(w0jrl1@gmail.com)
 
-Tue Mar 29 16:31:21 2016 -0600: Updated merge settings
 
-Tue Mar 29 16:28:40 2016 -0600: updated merge settings
 
-Mon Mar 28 09:00:33 2016 -0600: Tweaked usbradio template
 
-Sun Mar 27 11:15:24 2016 -0600: Fixed README file
+###Updated system-update
+>Sat, 2 Apr 2016 20:06:35 -0600
 
-Sun Mar 27 10:19:52 2016 -0600: Updated AllStar sources
+>Author: w0jrl(w0jrl1@gmail.com)
 
-Sun Mar 27 09:59:22 2016 -0600: Removed unneeded code from update scripts
 
-Sun Mar 27 09:11:06 2016 -0600: Fixed README so it looks nicer on Github
 
-Sun Mar 27 09:02:40 2016 -0600: Updated README. Rebuilt system-update scripts to use testing if the branch is turned on.
 
-Sun Mar 27 08:10:34 2016 -0600: Created README. It will be updated soon.
+###Changed attributes file
+>Sat, 2 Apr 2016 19:37:27 -0600
 
-Sun Mar 27 04:27:34 2016 -0600: Updated README
+>Author: w0jrl(w0jrl1@gmail.com)
 
-Sun Mar 27 01:34:50 2016 -0600: Updated the usbradio.conf template
 
-Sun Mar 27 01:34:50 2016 -0600: usbradio Updated the usbradio.conf template.
 
-Sat Mar 26 19:20:20 2016 -0600: Updated scripts to work with the git repository
 
-Sat Mar 26 18:08:43 2016 -0600: added update files to Github
+###Updated Asterisk sources
+>Sat, 2 Apr 2016 19:31:42 -0600
 
-Sat Mar 26 17:31:32 2016 -0600: Initial commit
+>Author: w0jrl(w0jrl1@gmail.com)
+
+
+
+
+###Removed attributes file; Not needed
+>Sat, 2 Apr 2016 18:28:23 -0600
+
+>Author: w0jrl(w0jrl1@gmail.com)
+
+
+
+
+###Updated build scripts
+>Sat, 2 Apr 2016 18:19:02 -0600
+
+>Author: w0jrl(w0jrl1@gmail.com)
+
+
+
+
+###Updated build scripts
+>Sat, 2 Apr 2016 17:37:18 -0600
+
+>Author: w0jrl(w0jrl1@gmail.com)
+
+
+
+
+###Updated build scripts
+>Sat, 2 Apr 2016 17:27:40 -0600
+
+>Author: w0jrl(w0jrl1@gmail.com)
+
+
+
+
+###Removed rpi-update
+>Sat, 2 Apr 2016 16:15:30 -0600
+
+>Author: w0jrl(w0jrl1@gmail.com)
+
+
+
+
+###Updated boot parameters
+>Sat, 2 Apr 2016 14:40:47 -0600
+
+>Author: w0jrl(w0jrl1@gmail.com)
+
+
+
+
+###Code clean up
+>Sat, 2 Apr 2016 08:01:45 -0600
+
+>Author: w0jrl(w0jrl1@gmail.com)
+
+
+
+
+###Modified attributes file
+>Sat, 2 Apr 2016 07:39:11 -0600
+
+>Author: w0jrl(w0jrl1@gmail.com)
+
+
+
+
+###Removed unneeded attributes file
+>Sat, 2 Apr 2016 07:35:47 -0600
+
+>Author: w0jrl(w0jrl1@gmail.com)
+
+
+
+
+###Merged changes from testing to master
+>Sat, 2 Apr 2016 07:04:10 -0600
+
+>Author: w0jrl(w0jrl1@gmail.com)
+
+
+
+
+###Added gitignore file
+>Sat, 2 Apr 2016 06:55:47 -0600
+
+>Author: w0jrl(w0jrl1@gmail.com)
+
+
+
+
+###Updated merge settings
+>Tue, 29 Mar 2016 17:16:00 -0600
+
+>Author: w0jrl(w0jrl1@gmail.com)
+
+
+
+
+###Updated merge settings
+>Tue, 29 Mar 2016 17:10:27 -0600
+
+>Author: w0jrl(w0jrl1@gmail.com)
+
+
+
+
+###Fixed broken README
+>Tue, 29 Mar 2016 16:56:02 -0600
+
+>Author: w0jrl(w0jrl1@gmail.com)
+
+
+
+
+###Removed unneeded file
+>Tue, 29 Mar 2016 16:41:31 -0600
+
+>Author: w0jrl(w0jrl1@gmail.com)
+
+
+
+
+###Tweaked usbradio template
+>Tue, 29 Mar 2016 16:34:31 -0600
+
+>Author: w0jrl(w0jrl1@gmail.com)
+
+
+
+
+###Updated merge settings
+>Tue, 29 Mar 2016 16:31:21 -0600
+
+>Author: w0jrl(w0jrl1@gmail.com)
+
+
+
+
+###updated merge settings
+>Tue, 29 Mar 2016 16:28:40 -0600
+
+>Author: w0jrl(w0jrl1@gmail.com)
+
+
+
+
+###Tweaked usbradio template
+>Mon, 28 Mar 2016 09:00:33 -0600
+
+>Author: w0jrl(w0jrl1@gmail.com)
+
+
+
+
+###Fixed README file
+>Sun, 27 Mar 2016 11:15:24 -0600
+
+>Author: w0jrl(w0jrl1@gmail.com)
+
+
+
+
+###Updated AllStar sources
+>Sun, 27 Mar 2016 10:19:52 -0600
+
+>Author: w0jrl(w0jrl1@gmail.com)
+
+
+
+
+###Removed unneeded code from update scripts
+>Sun, 27 Mar 2016 09:59:22 -0600
+
+>Author: w0jrl(w0jrl1@gmail.com)
+
+
+
+
+###Fixed README so it looks nicer on Github
+>Sun, 27 Mar 2016 09:11:06 -0600
+
+>Author: w0jrl(w0jrl1@gmail.com)
+
+
+
+
+###Updated README. Rebuilt system-update scripts to use testing if the branch is turned on.
+>Sun, 27 Mar 2016 09:02:40 -0600
+
+>Author: w0jrl(w0jrl1@gmail.com)
+
+
+
+
+###Created README. It will be updated soon.
+>Sun, 27 Mar 2016 08:10:34 -0600
+
+>Author: w0jrl(w0jrl1@gmail.com)
+
+
+
+
+###Updated README
+>Sun, 27 Mar 2016 04:27:34 -0600
+
+>Author: w0jrl(w0jrl1@gmail.com)
+
+
+
+
+###Updated the usbradio.conf template
+>Sun, 27 Mar 2016 01:34:50 -0600
+
+>Author: w0jrl(w0jrl1@gmail.com)
+
+
+
+
+###usbradio Updated the usbradio.conf template.
+>Sun, 27 Mar 2016 01:34:50 -0600
+
+>Author: w0jrl(w0jrl1@gmail.com)
+
+
+
+
+###Updated scripts to work with the git repository
+>Sat, 26 Mar 2016 19:20:20 -0600
+
+>Author: w0jrl(w0jrl1@gmail.com)
+
+
+
+
+###added update files to Github
+>Sat, 26 Mar 2016 18:08:43 -0600
+
+>Author: w0jrl(w0jrl1@gmail.com)
+
+
+
+
+###Initial commit
+>Sat, 26 Mar 2016 17:31:32 -0600
+
+>Author: Jeremy Lincicome(w0jrl@users.noreply.github.com)
+
+
+
