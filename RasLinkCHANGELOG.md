@@ -1,3 +1,11 @@
+###update(changelog-generator): Add .md extension to the output file name
+>Thu Oct 8 05:27:17 2020 -0600
+
+>Author: Jeremy Lincicome [W0JRL](admin@jlappliedtechnologies.com)
+
+Signed-off-by: Jeremy Lincicome [W0JRL] <admin@jlappliedtechnologies.com>
+
+
 ###fix(changelog-generator): Define the "outputFile" variable properly in the confirmation echo statement
 >Thu Oct 8 04:43:35 2020 -0600
 
