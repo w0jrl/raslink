@@ -20,7 +20,7 @@
 cd ../../
 outputFile=RasLinkCHANGELOG
 # Create the log
-git --no-pager log --no-merges --pretty=format:"###%s%n>%aD%n%n>Author: %aN(%aE)%n%n%b%n%N%n" > ${outputFile}
+git --no-pager log --no-merges --pretty=format:"###%s%n>%ad%n%n>Author: %aN(%aE)%n%n%b%n%N" > ${outputFile}
 # Don't repeat log entries 
 changes=$(git status --porcelain | grep -c ${outputFile})
 if [ "${changes}" -gt 0 ]; then
