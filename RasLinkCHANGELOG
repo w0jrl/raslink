@@ -1,3 +1,11 @@
+###fix(changelog-generator): Define the "outputFile" variable properly in the confirmation echo statement
+>Thu Oct 8 04:43:35 2020 -0600
+
+>Author: Jeremy Lincicome [W0JRL](admin@jlappliedtechnologies.com)
+
+Signed-off-by: Jeremy Lincicome [W0JRL] <admin@jlappliedtechnologies.com>
+
+
 ###update(changelog-generator): Change the date format to be Month Day Year
 >Thu Oct 8 04:31:43 2020 -0600
 

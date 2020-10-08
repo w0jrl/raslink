@@ -26,6 +26,6 @@ changes=$(git status --porcelain | grep -c ${outputFile})
 if [ "${changes}" -gt 0 ]; then
     git add ${outputFile}
     git commit --amend --no-edit
-    echo "Populated Changelog in {outputFile}"
+    echo "Populated Changelog in ${outputFile}"
 fi
 exit 0
