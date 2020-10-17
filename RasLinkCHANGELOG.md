@@ -1,3 +1,12 @@
+## fix(app_rpt): GPIO command parsing
+>Sun Oct 18 19:39:46 2020 -0600
+
+>Author: Ben Cranston(thecranston@gmail.com)
+
+Contributed-by: Ben Cranston <thecranston@gmail.com>
+Signed-off-by: Jeremy Lincicome [W0JRL] <admin@jlappliedtechnologies.com>
+
+
 ## feature(asterisk): Update inline_api from upstream asterisk for compatibility with modern GCC
 >Sun Oct 18 14:41:19 2020 -0600
 
