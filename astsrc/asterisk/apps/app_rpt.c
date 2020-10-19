@@ -1498,7 +1498,7 @@ struct rpt_globals_pvt {
 	char net_if[50];	// Network interface to report in status 22 messages
 } __attribute__((aligned));
 
-#define ASL_STATPOST_URL "http://stats-mco.allstarlink.org/uhandler.php"
+#define ASL_STATPOST_URL "http://stats.allstarlink.org/uhandler.php"
 #define	REMOTEIP_URL	 "http://ifconfig.me/ip"
 
 static struct rpt_globals_pvt rpt_globals = {
