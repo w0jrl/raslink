@@ -1,7 +1,18 @@
+## rewrite(app_rpt): Cherry-pick libcurl updates from AllStarLink
+>Mon Oct 19 23:21:57 2020 -0600
+
+>Author: Jeremy Lincicome [W0JRL](admin@jlappliedtechnologies.com)
+
+Signed-off-by: Jeremy Lincicome [W0JRL] <admin@jlappliedtechnologies.com>
+
+
 ## feature(app_rpt): Add the rpt lookup function
->Mon Oct 19 16:20:41 2020 -0600
+>Mon Oct 19 19:55:57 2020 -0600
 
 >Author: Adam Paul(adamjpaul@gmail.com)
+
+Used to find information about a node in the nodelist
+You can run "rpt lookup" from the 'asterisk' console.
 
 Contributed-by: Adam Paul <adamjpaul@gmail.com>
 edited-by: Stacy Olivas <kg7qin@arrl.net>
