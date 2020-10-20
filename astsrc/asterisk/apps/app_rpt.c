@@ -465,8 +465,6 @@
 
 #define	REQUIRED_ZAPTEL_VERSION 'A'
 
-#define	STATPOST_PROGRAM "/usr/bin/wget,-q,--output-document=/dev/null,--no-check-certificate"
-
 //Define noop equivalent
 #define noop ((void)0)
 
@@ -1235,7 +1233,6 @@ static struct rpt
 		char telemdefault;
 		char telemdynamic;		
 		char lnkactenable;
-		char *statpost_program;
 		char *statpost_url;
 		int statpost_override;
 		int statpost_custom;

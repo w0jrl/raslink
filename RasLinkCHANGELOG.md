@@ -1,3 +1,14 @@
+## refactor(app_rpt): Remove statpost_program
+>Tue Oct 20 10:46:13 2020 -0600
+
+>Author: Jeremy Lincicome [W0JRL](admin@jlappliedtechnologies.com)
+
+We use libcurl to send status info to the server,
+so statpost_program is redundant.
+
+Signed-off-by: Jeremy Lincicome [W0JRL] <admin@jlappliedtechnologies.com>
+
+
 ## rewrite(app_rpt): Cherry-pick libcurl updates from AllStarLink
 >Mon Oct 19 23:21:57 2020 -0600
 
