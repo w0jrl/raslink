@@ -1,3 +1,14 @@
+## docks: Fix rpt_flow.pdf file
+>Thu Oct 22 14:33:21 2020 -0600
+
+>Author: Stacy Olivas(kg7qin@arrl.net)
+
+Replacement from https://wiki.allstarlink.org/w/images/f/fa/App_rpt_single_instance_audio_flow.pdf
+
+Contributed-by: Stacy Olivas <kg7qin@arrl.net>
+Signed-off-by: Jeremy Lincicome [W0JRL] <admin@jlappliedtechnologies.com>
+
+
 ## refactor(app_rpt): Remove statpost_program
 >Tue Oct 20 10:46:13 2020 -0600
 
