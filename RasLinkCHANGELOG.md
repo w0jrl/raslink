@@ -1,3 +1,17 @@
+## feature(app_rpt): Allow users to adjust morse code letter spacing
+>Fri Oct 23 14:55:57 2020 -0600
+
+>Author: James Colderwood <jamesc@ip6net.net>
+
+You can use "farnsworth = " in </etc/asterisk/rpt.conf
+in the "[morse]" section.
+To learn more about Farnsworth timing, visit <http://www.justlearnmorsecode.com/farnsworth.html>.
+The minimum spacing value is 3, and the maximum value is 10.
+
+Contributed-by: Jim <james@colderwood.com>
+Signed-off-by: Jeremy Lincicome [W0JRL] <admin@jlappliedtechnologies.com>
+
+
 ## style(changelog-generator): Change display of email addresses
 >Thu Oct 22 18:37:06 2020 -0600
 
