@@ -151,5 +151,16 @@ if [[ $txoffdelay = "0" ]]; then
         ; This is useful when setting up a half-duplex link with an existing\
         ; repeater\, where you need to ignore the repeater'\''s hangtime.' ./usbradio*
 fi
+# Add farnsworth timing to rpt
+farnsworth=$(grep -RiIl 'farnsworth' --include="rpt*"| wc -w)
+if [[ $farnsworth = "0" ]]; then
+    sed -i -e '/idamplitude/a\
+farnsworth = 3     ; Adjust morse code letter spacing\
+     ; Values are from 3 to 10\
+     ; 3 = the least amount of space between letters\,\
+     ; and 10 = the most.\
+     ; For more information about Farnsworth Timing\, visit\:\
+     ; http://www.justlearnmorsecode.com/farnsworth.html' ./rpt*
+fi
 echo -e "Done.\n"
 exit 0

@@ -1,3 +1,11 @@
+## feature(rpt.conf): Add Farnsworth Timing
+>Fri Oct 23 21:14:38 2020 -0600
+
+>Author: Jeremy Lincicome [W0JRL] <admin@jlappliedtechnologies.com>
+
+Signed-off-by: Jeremy Lincicome [W0JRL] <admin@jlappliedtechnologies.com>
+
+
 ## feature(app_rpt): Allow users to adjust morse code letter spacing
 >Fri Oct 23 14:55:57 2020 -0600
 
