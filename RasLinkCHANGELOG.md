@@ -1,3 +1,11 @@
+## RL-20.11
+>Sat Oct 31 19:44:12 2020 -0600
+
+>Author: Jeremy Lincicome [W0JRL] <admin@jlappliedtechnologies.com>
+
+Signed-off-by: Jeremy Lincicome [W0JRL] <admin@jlappliedtechnologies.com>
+
+
 ## feature(rpt.conf): Add Farnsworth Timing
 >Fri Oct 23 21:14:38 2020 -0600
 
