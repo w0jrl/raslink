@@ -1,3 +1,12 @@
+## fix(app_rpt.c): Fix IP status telemetry settings
+>Tue Nov 3 02:29:28 2020 -0700
+
+>Author: Stacy Olivas <kg7qin@arrl.net>
+
+Contributed-by: Stacy Olivas <kg7qin@arrl.net>
+Signed-off-by: Jeremy Lincicome [W0JRL] <admin@jlappliedtechnologies.com>
+
+
 ## RL-20.11
 >Sat Oct 31 19:44:12 2020 -0600
 

@@ -1523,6 +1523,7 @@ struct sysinfo_pvt {
 	char vers[200];
 	char cvers[40];
 	char myip[50];
+	char localip[50];
 	char sysid[66];
 	char ssysid[26];
 } __attribute__((aligned));
@@ -1532,6 +1533,7 @@ static struct sysinfo_pvt sysinfo = {
 	.cvers = "Unknown",
 	.sysid = "00000000000000000000000000000000000000000000000000000000000000000",
 	.ssysid = "000000000000-000000000000",
+	.localip = "0.0.0.0",
 };
 
 /* Declarations for everyting else */
@@ -7102,9 +7104,30 @@ static const char *public_ip( char *ip)
         return ip;
 }
 
+// Lookup local IP and return it, or 0 if error
+static const char *local_ip( char *ip)
+{
+	char *myip = ip;
+	struct in_addr ia;
+        char buf[65]="";
+
+        /* Check if network interface in rpt_globals is valid/get local IP */
+        if(!ast_lookup_iface((char *)rpt_globals.net_if, &ia))
+        {
+                strncpy(buf,ast_inet_ntoa(ia),sizeof(buf)-1);
+                strncpy(sysinfo.localip,buf,20);
+		ast_log(LOG_WARNING, "[*] Local Interface in rpt.conf is valid\n");
+        } else {
+		ast_log(LOG_ERROR, "[*] Local Interface %s in rpt.conf is not valid!!!!!\n", (char *)rpt_globals.net_if);
+		strcpy(sysinfo.localip, "0.0.0.0");
+	}
+
+	strncpy(myip,sysinfo.localip,20);
+	return ip;
+}
+
 static void get_sys_info (void)
 {
-
 	int i = 0;
 	char tmp1[200];
 	char tmp2[200];
@@ -7117,6 +7140,7 @@ static void get_sys_info (void)
 	blkid_probe mp;
 	FILE *fp;
 
+	/* Fetch kernel version info */
 	fp = fopen("/proc/version", "r");
 	if(fp) {
 		if((fgets(tmp1,sizeof(tmp1)-1, fp))) {
@@ -7130,9 +7154,14 @@ static void get_sys_info (void)
 		strcpy(sysinfo.cvers, "Unknown");
 	}
 
+	/* Get Public IP */
 	public_ip(buf);
 	strncpy(sysinfo.myip,buf,20);
 
+	/* Get Local IP */
+	local_ip(buf);
+
+	/* Generate system id */
 	fp = fopen("/etc/machine-id", "r");
 	if(fp) {
 		if((!fgets(tmp1,sizeof(tmp1)-1, fp))) {
@@ -7190,6 +7219,7 @@ static int rpt_do_utils(int fd, int argc, char *argv[])
 	char myip[100] = "";
 	char myiface[25] = "";
 	char node[20] ="";
+	char buf[65] ="";
 	struct in_addr ia;
 
 
@@ -7265,8 +7295,12 @@ static int rpt_do_utils(int fd, int argc, char *argv[])
 					chunk.memory[chunk.size -1] = '\0';
 				ast_copy_string(myip,chunk.memory,20);
 				ast_free(chunk.memory);
-	
-				strncpy(sysinfo.myip,myip,20);
+
+				/* Fetch Public IP again in case it changes */
+				public_ip(buf);
+				strncpy(sysinfo.myip,buf,20);
+				strncpy(myip,sysinfo.myip,20);
+
 	       	         	/* Show IP on console */
 				ast_cli(fd, "\n* Public IP address is %s\n\n", myip);
 
@@ -7337,6 +7371,9 @@ static void rpt_show_globals(int fd, int i)
 				    "   Remote IP URL   :  %s\n"
 				    "\n"
 				    "   System ID       :  %s\n"
+				    "   Public IP       :  %s\n"
+				    "   Local Interface :  %s\n"
+				    "   Local IP        :  %s\n" 
 				    "   ----------------------------\n\n\n",
 				    rpt_globals.conslock,
 				    MAX_STAT_LINKS,
@@ -7357,7 +7394,10 @@ static void rpt_show_globals(int fd, int i)
 				    rpt_globals.statpost,
 				    rpt_globals.statpost_url,
 			            rpt_globals.remoteip_url,
-				    sysinfo.ssysid
+				    sysinfo.ssysid,
+				    sysinfo.myip,
+				    rpt_globals.net_if,
+				    sysinfo.localip
 				    );
 			break;
 		case 1:
@@ -7383,6 +7423,10 @@ static void rpt_show_globals(int fd, int i)
 			ast_cli(fd, "   Statpost        :  %d\n", rpt_globals.statpost);
 			ast_cli(fd, "   Statport URL    :  %s\n", rpt_globals.statpost_url);
 			ast_cli(fd, "   Remote IP URL   :  %s\n", rpt_globals.remoteip_url);
+			ast_cli(fd, "\n");
+			ast_cli(fd, "   Public IP       :  %s\n", sysinfo.myip);
+			ast_cli(fd, "   Local Interface :  %s\n", rpt_globals.net_if);
+			ast_cli(fd, "   Local IP        :  %s\n", sysinfo.localip);
 			ast_cli(fd, "\n\n");
 			break;
 		default:
@@ -11525,14 +11569,14 @@ treataslocal:
 	    case REMIP_LOCAL:
                 if (wait_interval(myrpt, DLY_TELEM, mychannel) == -1) break;
 		res = telem_lookup(myrpt, mychannel, myrpt->name, "remip");
-        	strncpy(sysinfo.myip,myip,20);
-		if(strlen(myip)>0) {
+        	strncpy(myip,sysinfo.myip,20);
+		if(strlen(myip)) {
 	        	ast_log(LOG_NOTICE, "[*] Public IP address is %s\n\n", sysinfo.myip);
 			saynode(myrpt,mychannel,myrpt->name);
 			sayfile(mychannel, "system");
 			saycharstr(mychannel, "ip");
 			sayfile(mychannel, "is-set-to");
-			saycharstr(mychannel, sysinfo.myip);
+			saycharstr(mychannel, myip);
 		} else {
 			ast_log(LOG_ERROR, "Failed to fetch Public IP address\n\n");
 			sayfile(mychannel, "tt-somethingwrong");
@@ -23420,7 +23464,6 @@ static void cfg_globals_init(struct ast_config *cfg)
 				}
 		}
 
-
 		p = (char *) ast_variable_retrieve(cfg,"globals","notchfilter"); /* enable notch filter */
 		if(p)
 		{
@@ -23523,7 +23566,6 @@ static void cfg_globals_init(struct ast_config *cfg)
 			ast_verbose(VERBOSE_PREFIX_3 "Settings dtmftimeout to %d\n", DTMF_TIMEOUT);
 		}	 		    
 	}
-	rpt_show_globals(0, 0);
 }
 
 static void *rpt_master(void *ignore)
@@ -23566,18 +23608,20 @@ struct sched_param      rptmaster_sched;
 
 	ast_verbose("\n>>>---> Initializing %s\n\n", tdesc);
 
-	get_sys_info();
-
-	/*
- 	* If there are daq devices present, open and initialize them
- 	*/
-	daq_init(cfg);
-
 	/*
 	 * If there is a [globals] stanza, read it
 	 */
         cfg_globals_init(cfg);
 
+	/* Initalize sysinfo struct */
+	get_sys_info();
+
+	rpt_show_globals(0, 0);
+
+	/*
+ 	* If there are daq devices present, open and initialize them
+ 	*/
+	daq_init(cfg);
 
 	while((this = ast_category_browse(cfg,this)) != NULL)
 	{
