@@ -115,7 +115,7 @@ linkclip = 1     ; 0=off\/ 1=on\
 ;dtmftimeout = 3     ; Change dtmf timeout interval (3- )\
 statpost = 1     ; 0 = off \/ 1= AllStar \/ 2= custom (set statpost_url line)\
 ;statpost_url =     ; Set to custom statpost_url if statpost=2 (above)\
-net_if = ens192     ; Set to name of ethernet interface for sayip to use' ./rpt*
+net_if = eth0     ; Set to name of ethernet interface for sayip to use' ./rpt*
 fi
 # Remove statpost comment from rpt
 sed -i -e "/If you're setting up a public node/,+1d" ./rpt*
@@ -136,7 +136,7 @@ if [[ $stpost = "0" ]]; then
     sed -i -e "/For ACID and Debian/{N;N;N;d}" ./rpt*
     sed -i -e "/For Limey Linux/{N;N;N;d}" ./rpt*
 fi
-# Fix rxondelay comment in usbradio
+# Fix "rxondelay" comment in usbradio
 sed -i '/rxondelay/,/!/ {
     s/following the/regardless if the/
     s/release of PTT/PTT is keyed/
@@ -162,5 +162,7 @@ farnsworth = 3     ; Adjust morse code letter spacing\
      ; For more information about Farnsworth Timing\, visit\:\
      ; http://www.justlearnmorsecode.com/farnsworth.html' ./rpt*
 fi
+# Set "net_if" to eth0 in rpt
+sed -i 's/ens192/eth0/' /etc/asterisk/rpt*
 echo -e "Done.\n"
 exit 0

@@ -1,5 +1,16 @@
+## fix(rpt.conf): Change "net_if" to eth0
+>Thu Nov 5 01:37:31 2020 -0700
+
+>Author: Jeremy Lincicome [W0JRL] <admin@jlappliedtechnologies.com>
+
+The "ens192" interface is not valid for most users.
+"eth0" is more commonly used.
+
+Signed-off-by: Jeremy Lincicome [W0JRL] <admin@jlappliedtechnologies.com>
+
+
 ## fix(app_rpt.c): Fix IP status telemetry settings
->Tue Nov 3 02:29:28 2020 -0700
+>Thu Nov 5 01:27:53 2020 -0700
 
 >Author: Stacy Olivas <kg7qin@arrl.net>
 
