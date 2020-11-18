@@ -1,3 +1,11 @@
+## rewrite(boot-config.txt): Support Raspbian Stretch
+>Wed Nov 18 10:30:04 2020 -0700
+
+>Author: Jeremy Lincicome [W0JRL] <admin@jlappliedtechnologies.com>
+
+Signed-off-by: Jeremy Lincicome [W0JRL] <admin@jlappliedtechnologies.com>
+
+
 ## fix(rpt.conf): Change "net_if" to eth0
 >Thu Nov 5 01:37:31 2020 -0700
 
