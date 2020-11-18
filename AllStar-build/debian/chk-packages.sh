@@ -39,7 +39,7 @@ if [ -e "$subversion" ]; then
 else
     echo "Subversion isn't installed; Skipping."
 fi
-if [ -f /etc/motd ]; then
+if [ -f /etc/motd ] || [ -d /etc/update-motd.d ]; then
     find /etc/ -name "*motd*" -exec rm -rf {} +
 fi
 echo -e "Done\n"

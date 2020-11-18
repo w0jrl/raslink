@@ -1,3 +1,14 @@
+## release(Stretch): Upgrade RasLink servers to Raspbian Stretch
+>Wed Nov 25 16:48:19 2020 -0700
+
+>Author: Jeremy Lincicome [W0JRL] <admin@jlappliedtechnologies.com>
+
+Your node[s] will be upgraded to Debian Stretch, which adds support for the
+Raspberry Pi model 3B+.
+
+Signed-off-by: Jeremy Lincicome [W0JRL] <admin@jlappliedtechnologies.com>
+
+
 ## rewrite(boot-config.txt): Support Raspbian Stretch
 >Wed Nov 18 10:30:04 2020 -0700
 

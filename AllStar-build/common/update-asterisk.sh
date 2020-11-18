@@ -39,6 +39,12 @@ status make install
 if [ -e /etc/init.d/asterisk ]; then
     (update-rc.d asterisk remove;rm /etc/init.d/asterisk)
 fi
+if [ -e /etc/systemd/system/asterisk.timer ]; then
+    (systemctl disable asterisk.timer;rm /etc/systemd/system/asterisk.timer) &>/dev/null
+fi
+if [ -e /usr/local/bin/dsp.startup ]; then
+    rm  /usr/local/bin/dsp.startup
+fi
 echo -e "Done\n"
 chmod +x /usr/src/utils/AllStar-build/common/asterisk-config-check.sh
 status /usr/src/utils/AllStar-build/common/asterisk-config-check.sh

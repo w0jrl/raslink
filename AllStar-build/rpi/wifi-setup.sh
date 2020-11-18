@@ -20,7 +20,7 @@
 #
 # Script Start
 echo "Welcome to Wi-Fi setup."
-sleep 0.5
+sleep 0.5s
 country=$( cat /etc/wpa_supplicant/wpa_supplicant.conf | grep "country=" | sed 's/country\=//' )
 read -e -p "$( echo -e "Your country is currently set to: $country\n Do you want to change it? [Y/N]" )" changeCountry
 if [[ "$changeCountry" = "y" ]] || [[ "$changeCountry" = "Y" ]]; then
@@ -32,57 +32,66 @@ if [[ "$changeCountry" = "y" ]] || [[ "$changeCountry" = "Y" ]]; then
 else
   echo "Country not changed"
 fi
-sleep 0.5
+sleep 0.5s
 echo "Please enter the Wi-Fi card name from the list below:"
-ip a|grep 'wlan'|sed 's/^..//;s/:.*//;s/inet.*//'
+ip a | grep 'wlan' | sed 's/^..//;s/:.*//;s/inet.*//'
 read -e -p "[wlan0] : " wificard
-cardnum=$(ip a|grep "${wificard}"|sed 's/:.*//;s/inet.*//')
+cardnum=$(ip a | grep "${wificard}" | sed 's/:.*//;s/inet.*//')
 if [ "${wificard}" = "" ]; then
   wificard=wlan0
 fi
-sleep 0.5
+sleep 0.5s
 scan=1
 while [ "${scan}" == "1" ]; do
   echo "Scanning for networks..."
   echo "___________________________________"
-  sleep 0.5
+  sleep 0.5s
+  ifconfig ${wificard} up &>/dev/null
+  sleep 1s
   iwlist ${wificard} scan | grep 'ESSID' | sed 's/ESSID://g;s/"//g;s/^ *//;s/ *$//'
-  sleep 0.5
+  sleep 0.5s
   echo "Scan complete"
-  sleep 0.5
+  sleep 0.5s
   read -e -p "Do you want to scan again? [y/N]" YN
   if [[ "${YN}" = "y" ]] || [[ "${YN}" = "Y}" ]];  then
-   scan=1
+    scan=1
   else
-   scan=0
-     fi
+    scan=0
+  fi
 done
-sleep 0.5
+sleep 0.5s
 read -e -p "Please enter the name of the network you want to connect to: " networkName
 echo "You entered: ${networkName}"
 read -e -p "Please enter the password for the network: " networkPass
 echo "Password accepted"
-sleep 0.5
+sleep 0.5s
 echo "Setting up connection..."
 echo "network={
  ssid=\"$networkName\"
  psk=\"$networkPass\"
 }" >> /etc/wpa_supplicant/wpa_supplicant.conf
 echo "Done"
-sleep 0.5
+sleep 0.5s
 echo "Activating connection; Please wait..."
-ifdown ${wificard} &>/dev/null
-sleep 0.5
-ifup ${wificard} &>/dev/null
-sleep 10
-if [ "$(ip a|grep "${wificard}"|grep -ic 'inet')" = "1" ]; then
-    echo "***Connection Active***"
+wpa_cli -i ${wificard} reconfigure &>/dev/null
+waitcount="0"
+while [[ "${waitcount}" != "20" ]]; do
+  if [[ "${waitcount}"  == "20" ]]; then
+    continue
+  else
+    echo -n '.--.-..- '
+    sleep 1s
+    waitcount=$((waitcount+1))
+  fi
+done
+if (( "$(ip a | grep "${wificard}" | grep -ic "inet")" >= "1" )); then
+    echo ""; echo "***Connection Active***"
     sleep 0.5s
     echo "displaying connection information"
     sleep 0.5s
-    (ip a|grep "${wificard}"|sed 's/^..//';ip a|grep "${cardnum}:"|grep 'inet6')
+    (ip a | grep "${wificard}" | sed 's/^..//';ip a | grep "${cardnum}:" | grep 'inet6')
 else
-    echo "***Connection Failed***" >&2
+    echo ""; echo "***Connection Failed***" >&2
     echo "See <https://jlappliedtechnologies.com/raslink/> if you need assistance." >&2
     exit 1
 fi

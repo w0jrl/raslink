@@ -1,5 +1,5 @@
 #!/bin/bash
-# raslink-pc-install.sh - Install AllStar on Debian
+# raslink-pc-install.sh - Install RasLink/AllStar on Debian
 #    Copyright (C) 2020  Jeremy Lincicome (W0JRL)
 #    https://jlappliedtechnologies.com  admin@jlappliedtechnologies.com
 #
@@ -18,7 +18,7 @@
 #
 # Script Start
 echo "Welcome to the RasLink-pc installer."
-echo "This script will install AllStar on your Debian server."
+echo "This script will install RasLink on your Debian server."
 read -e -p "$(echo -e "Do you want to continue? [Y/N]" ) " install
 if [[ "$install" = "y" ]] || [[ "$install" = "Y" ]]; then
   echo " Installing Git..."
@@ -29,17 +29,17 @@ if [[ "$install" = "y" ]] || [[ "$install" = "Y" ]]; then
   cd /usr/src
   git clone https://gitlab.com/w0jrl/raslink.git utils
   echo "Done"
-  sleep 0.5
+  sleep 0.5s
   echo "Updating the system..."
   (apt-get update;apt-get dist-upgrade -y)
   echo "Done"
-  sleep 0.5
+  sleep 0.5s
   echo "Setting up log rotate..."
   echo "Logs will be rotated once a week."
   chmod +x /usr/src/utils/AllStar-build/common/mk-logrotate-asterisk.sh
   /usr/src/utils/AllStar-build/common/mk-logrotate-asterisk.sh
   echo "Done"
-  sleep 0.5
+  sleep 0.5s
   echo "Configuring packages..."
   chmod +x /usr/src/utils/AllStar-build/debian/chk-packages.sh
   /usr/src/utils/AllStar-build/debian/chk-packages.sh
@@ -57,8 +57,8 @@ if [[ "$install" = "y" ]] || [[ "$install" = "Y" ]]; then
   reboot
   exit 0
 else
-  echo "AllStar will not be installed."
-  echo "When you're ready to install AllStar, run this script again."
+  echo "RasLink will not be installed."
+  echo "When you're ready to install RasLink, run this script again."
   echo "Exiting"
 fi
 exit 1

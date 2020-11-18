@@ -20,22 +20,32 @@
 # Make sure release-upgrade runs in screen
 if [ -z "$STY" ]; then exec screen -S release-upgrade /bin/bash "$0"; fi
 # Functions
+status() {
+    "$@"
+    if [ $? -ne 0 ]; then
+        echo -e "***RELEASE-UPGRADE FAILED***\nPlease see <https://jlappliedtechnologies.com/raslink/> for assistance."
+        exit 1
+    fi
+}
 prompt() {
     echo "${name} ${release} is available."
     read -e -p "Do you wish to upgrade? [Y/N]" upgrade
-    if [[ "$upgrade" = "y" ]] || [[ "$upgrade" = "Y" ]]; then
+    if [[ "$upgrade" = "y" ]] || [[ "$upgrade" = "Y" || "$upgrade" = "" ]]; then
         echo "Upgrading to ${name} ${release}
 This is going to take awhile.
+Your node will remain disabled until 'system-update' completes.
 During the upgrade, several questions will be asked.
 If you're not sure about a question, choose the default
 answer by pressing enter.
-DO NOT POWER OFF THE SYSTEM!"
-        sleep 3s
+DO NOT POWER OFF THE SYSTEM!
+PRESS ENTER TO CONTINUE"
+        read
     else
         echo "Not upgrading to ${name} ${release}.
 Run 'release-upgrade' when you are ready."
-sleep 3s
-        exit 1
+        echo "PRESS ENTER TO CONTINUE with normal 'system-update'"
+        read
+        exit 0
     fi
 }
 distro() {
@@ -47,27 +57,32 @@ distro() {
 check() {
     if [[ $(grep -ic "${prev}" /etc/apt/sources.list) = "0" ]]; then
         echo "Already updated to ${name} ${release}"
-        sleep 3s
         exit 0
     fi
 }
 update() {
     sed -i "s/${prev}/${release}/" /etc/apt/sources.list /etc/apt/sources.list.d/*.list
     if [[ $platform = "Raspbian" ]]; then
-        umount /tmp &>/dev/null
-        umount /var/tmp &>/dev/null
-        (cp /usr/src/utils/AllStar-build/rpi/tmpfs.sh /usr/local/bin/tmpfs.sh;chmod +x /usr/local/bin/tmpfs.sh)
-        /usr/local/bin/tmpfs.sh
+        rm -rf /tmp/* /tmp/.* &>/dev/null
+        rm -rf /var/tmp/* /var/tmp/.* &>/dev/null
+        status umount /tmp &>/dev/null
+        status umount /var/tmp &>/dev/null
+        (status cp /usr/src/utils/AllStar-build/rpi/tmpfs.sh /usr/local/bin/tmpfs.sh;chmod +x /usr/local/bin/tmpfs.sh)
+        status /usr/local/bin/tmpfs.sh
     fi
-    apt-get -qq autoremove --purge apt-listchanges libpt-dev -y
-    (apt-get update;apt-get upgrade -y;apt-get clean;apt-get autoclean)
-    (apt-get dist-upgrade -y;apt-get autoremove --purge -y;apt-get clean;apt-get autoclean;hash -r)
-    apt-get -qq install -y ssh
-    apt-get -qq purge -y $(dpkg -l | awk '/^rc/ { print $2 }')
+    status apt-get -qq autoremove --purge apt-listchanges -y
+    (status apt-get update;apt-get upgrade -y;apt-get clean;apt-get autoclean)
+    (status apt-get dist-upgrade -y;apt-get autoremove --purge -y;apt-get clean;apt-get autoclean)
+    (status apt-get -qq install -y ssh;apt-get -qq update)
     if [[ $platform = "Raspbian" ]]; then
-        (apt-get -qq install --reinstall wpasupplicant -y;apt-get -qq clean;dpkg-reconfigure wpasupplicant)
+        (status apt-get -qq install --reinstall wpasupplicant -y;apt-get -qq clean;dpkg-reconfigure wpasupplicant)
     fi
-    sed -i '/PermitRootLogin/c\PermitRootLogin yes' /etc/ssh/sshd_config
+    (status apt-get -qq purge -y $(dpkg -l | awk '/^rc/ { print $2 }'))
+    hash -r
+    sed -i '0,/^.PermitRootLogin/s/\(^.PermitRoot.*\)\|\(^PermitRoot.*\)/PermitRootLogin yes/' /etc/ssh/sshd_config
+    if [ -d /etc/php5 ]; then
+        rm -rf /etc/php5
+    fi
     cd /root
     mv .bashrc .bashrc.orig
     cat .bashrc.orig > .bashrc
@@ -76,16 +91,17 @@ update() {
     else
         echo "/usr/src/utils/AllStar-build/debian/update-stage2.sh" >> .bashrc
     fi
-    echo "Rebooting to finish install"
+    echo "REBOOT TO FINISH UPGRADE"
     echo "When your node reboots, you need to log in
 to finish the upgrade."
-    sleep 5
+    echo "PRESS ENTER TO REBOOT"
+    read
     sync
-    sudo reboot
+    reboot
 }
 # Run the upgrade
   distro
   check
   prompt
   update
-exit 1
+exit 0

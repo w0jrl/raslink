@@ -20,7 +20,7 @@
 # Also used for resetting AllStar to defaults in test environments
 # For developers only!
 # Do not use unless you know what you're doing,
-	# and you've made a complete backup first!
+# and you've made a complete backup first!
 # This script can break your node!
 # This script should only be run on development Raspberry Pis!
 # You have been warned!
@@ -48,49 +48,26 @@ status /usr/src/utils/AllStar-build/common/update-fail2ban.sh
 echo "Done"
 echo "Installing default sound files..."
 cp -a /usr/src/utils/astsrc/sounds/* /var/lib/asterisk/sounds
-if [ "$(grep -ic "snd_bcm2835" /etc/modules)" == "1" ]; then
-  sed -i '/snd_bcm2835/d' /etc/modules
-fi
-if [ "$(grep -ic "snd_pcm_oss" /etc/modules)" == "0" ]; then
-  echo "snd_pcm_oss" >> /etc/modules
-fi
-if [[ "$(grep -ic "snd_pcm_oss" /etc/modules)" > "1" ]]; then
-  sed -i '/snd_pcm_oss/d' /etc/modules
-  echo "snd_pcm_oss" >> /etc/modules
-fi
-if [ "$(grep -ic "snd_mixer_oss" /etc/modules)" == "0" ]; then
-  echo "snd_mixer_oss" >> /etc/modules
-fi
-if [[ "$(grep -ic "snd_mixer_oss" /etc/modules)" > "1" ]]; then
-  sed -i '/snd_mixer_oss/d' /etc/modules
-  echo "snd_mixer_oss" >> /etc/modules
-fi
 echo "Done"
 echo "Setting up startup scripts and system-update..."
 (cp /usr/src/utils/AllStar-build/common/rc.updatenodelist /usr/local/bin/rc.updatenodelist;chmod +x /usr/local/bin/rc.updatenodelist)
 (cp /usr/src/utils/AllStar-build/common/rc.nodenames /usr/local/bin/rc.nodenames;chmod +x /usr/local/bin/rc.nodenames)
 (cp /usr/src/utils/AllStar-build/rpi/tmpfs.sh /usr/local/bin/tmpfs.sh;chmod +x /usr/local/bin/tmpfs.sh)
 (cp /usr/src/utils/AllStar-build/rpi/zram.sh /usr/local/bin/zram.sh;chmod +x /usr/local/bin/zram.sh)
-(cp /usr/src/utils/AllStar-build/common/dsp.startup /usr/local/bin/dsp.startup;chmod +x /usr/local/bin/dsp.startup)
 (cp /usr/src/utils/AllStar-build/common/timesync.hourly /usr/local/bin/timesync.hourly;chmod +x /usr/local/bin/timesync.hourly)
 cp /usr/src/utils/AllStar-build/common/asterisk.service /etc/systemd/system
-cp /usr/src/utils/AllStar-build/common/asterisk.timer /etc/systemd/system
 cp /usr/src/utils/AllStar-build/common/updatenodelist.service /etc/systemd/system
 cp /usr/src/utils/AllStar-build/common/nodenames.service /etc/systemd/system
 cp /usr/src/utils/AllStar-build/rpi/tmpfs.service /etc/systemd/system
 cp /usr/src/utils/AllStar-build/rpi/zram.service /etc/systemd/system
 cp /usr/src/utils/AllStar-build/common/timesync.service /etc/systemd/system
 systemctl daemon-reload
-systemctl enable asterisk.timer &>/dev/null
-systemctl enable updatenodelist.service &>/dev/null
+systemctl enable asterisk.service updatenodelist.service nodenames.service fail2ban.service timesync.service &>/dev/null
 systemctl enable tmpfs.service &>/dev/null
-systemctl enable nodenames.service &>/dev/null
 systemctl enable zram.service &>/dev/null
-systemctl enable timesync.service &>/dev/null
-systemctl enable fail2ban.service &>/dev/null
 (cp /usr/src/utils/AllStar-build/common/irqbalance.daily /etc/cron.daily/irqbalance;chmod +x /etc/cron.daily/irqbalance)
 chmod +x /usr/src/utils/AllStar-build/rpi/make-links.sh
-/usr/src/utils/AllStar-build/rpi/make-links.sh
+status /usr/src/utils/AllStar-build/rpi/make-links.sh
 if [[ "$(grep -ic "/usr/bin/version" /root/.profile)" = "0" ]]; then
   echo "/usr/bin/version" >> /root/.profile
 fi
