@@ -1,3 +1,15 @@
+## refactor(app_rpt.c): Remove hangtime when sending beacon ID
+>Tue Dec 8 10:45:05 2020 -0700
+
+>Author: JimZAH <james@colderwood.com>
+
+Beacon IDs are required in countries such as the UK.
+See </etc/asterisk/rpt.conf> for more information.
+
+Contributed-by: JimZAH <james@colderwood.com>
+Signed-off-by: Jeremy Lincicome [W0JRL] <admin@jlappliedtechnologies.com>
+
+
 ## license(*): Update copyright for scripts and service units
 >Mon Dec 7 04:39:44 2020 -0700
 
