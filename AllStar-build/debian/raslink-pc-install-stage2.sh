@@ -32,6 +32,8 @@ mkdir -p /etc/asterisk
 cd /etc/asterisk
 cp /usr/src/utils/AllStar-build/configs/* .
 echo "Done"
+chmod +x /usr/src/utils/AllStar-build/common/update-audio-config.sh
+status /usr/src/utils/AllStar-build/common/update-audio-config.sh
 chmod +x /usr/src/utils/AllStar-build/common/update-dahdi.sh
 status /usr/src/utils/AllStar-build/common/update-dahdi.sh
 chmod +x /usr/src/utils/AllStar-build/common/update-asterisk.sh
@@ -52,7 +54,8 @@ cp /usr/src/utils/AllStar-build/common/updatenodelist.service /etc/systemd/syste
 cp /usr/src/utils/AllStar-build/common/nodenames.service /etc/systemd/system
 cp /usr/src/utils/AllStar-build/common/timesync.service /etc/systemd/system
 systemctl daemon-reload
-systemctl enable asterisk.service updatenodelist.service nodenames.service fail2ban.service timesync.service &>/dev/null
+systemctl enable pulseaudio.service osspd.service asterisk.service updatenodelist.service nodenames.service fail2ban.service timesync.service &>/dev/null
+$(which timedatectl) set-ntp off
 (cp /usr/src/utils/AllStar-build/common/irqbalance.daily /etc/cron.daily/irqbalance;chmod +x /etc/cron.daily/irqbalance)
 chmod +x /usr/src/utils/AllStar-build/debian/make-links.sh
 status /usr/src/utils/AllStar-build/debian/make-links.sh

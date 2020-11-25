@@ -34,6 +34,7 @@ apt-get install raspberrypi-kernel raspberrypi-kernel-headers
 # Replace /boot/config.txt
 cp /usr/src/utils/AllStar-build/rpi/boot-config.txt /boot/config.txt
 # Setup Pulseaudio configuration
+chmod +x /usr/src/utils/AllStar-build/common/update-audio-config.sh
 /usr/src/utils/AllStar-build/common/update-audio-config.sh
 # Configure packages
 chmod +x /usr/src/utils/AllStar-build/rpi/chk-packages.sh

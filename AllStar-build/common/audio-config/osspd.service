@@ -1,4 +1,4 @@
-# asterisk.service - Load Dahdi and Asterisk on system boot
+# osspd.service - Load OSS Proxy Daemon on system boot
 #    Copyright (C) 2020  Jeremy Lincicome (W0JRL)
 #    https://jlappliedtechnologies.com  admin@jlappliedtechnologies.com
 #
@@ -17,26 +17,14 @@
 #
 # Service Start
 [Unit]
-Description=Asterisk PBX and telephony daemon
-Documentation=man:asterisk(8)
-Wants=network.target
-Requires=osspd.service
-After=network.target pulseaudio.service osspd.service
-BindsTo=pulseaudio.service osspd.service
+Description=OSS Proxy Daemon
+Requires=pulseaudio.service
+After=network.target pulseaudio.service
+BindsTo=pulseaudio.service
 #
 [Service]
-Type=simple
-StandardOutput=null
-ExecStartPre=/sbin/modprobe dahdi_dummy
-ExecStartPre=/usr/sbin/dahdi_cfg
-ExecStart=/usr/sbin/asterisk -f -C /etc/asterisk/asterisk.conf
-ExecStartPost=-/usr/sbin/asterisk -rx 'module load chan_echolink.so'
-ExecStop=/usr/sbin/asterisk -rx 'stop now'
-ExecStopPost=-/sbin/modprobe -r dahdi_dummy
-ExecReload=/usr/sbin/asterisk -rx 'module reload'
+ExecStart=/usr/sbin/osspd -f --dsp-slave=/usr/lib/osspd/ossp-padsp --adsp=dsp1
+ExecStop=/usr/bin/killall -9 osspd
 #
-# safe_asterisk emulation
-Restart=always
-RestartSec=10
 [Install]
 WantedBy=multi-user.target

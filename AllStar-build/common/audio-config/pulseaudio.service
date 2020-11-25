@@ -1,4 +1,4 @@
-# asterisk.service - Load Dahdi and Asterisk on system boot
+# pulseaudio.service - Load PulseAudio sound server on system boot
 #    Copyright (C) 2020  Jeremy Lincicome (W0JRL)
 #    https://jlappliedtechnologies.com  admin@jlappliedtechnologies.com
 #
@@ -17,26 +17,14 @@
 #
 # Service Start
 [Unit]
-Description=Asterisk PBX and telephony daemon
-Documentation=man:asterisk(8)
-Wants=network.target
-Requires=osspd.service
-After=network.target pulseaudio.service osspd.service
-BindsTo=pulseaudio.service osspd.service
+Description=Pulseaudio sound server
+After=network.target
 #
 [Service]
-Type=simple
-StandardOutput=null
-ExecStartPre=/sbin/modprobe dahdi_dummy
-ExecStartPre=/usr/sbin/dahdi_cfg
-ExecStart=/usr/sbin/asterisk -f -C /etc/asterisk/asterisk.conf
-ExecStartPost=-/usr/sbin/asterisk -rx 'module load chan_echolink.so'
-ExecStop=/usr/sbin/asterisk -rx 'stop now'
-ExecStopPost=-/sbin/modprobe -r dahdi_dummy
-ExecReload=/usr/sbin/asterisk -rx 'module reload'
+Type=forking
+ExecStart=/usr/bin/pulseaudio --system --disallow-exit --daemon
+ExecStop=/usr/bin/killall -9 pulseaudio
 #
-# safe_asterisk emulation
-Restart=always
-RestartSec=10
 [Install]
 WantedBy=multi-user.target
+

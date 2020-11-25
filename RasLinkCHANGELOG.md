@@ -1,3 +1,14 @@
+## update(audio-configuration): Replace the OSS driver with PulseAudio
+>Wed Nov 25 14:55:54 2020 -0700
+
+>Author: Jeremy Lincicome [W0JRL] <admin@jlappliedtechnologies.com>
+
+Starting in Debian Stretch,
+the OSS kernel module is no longer available.
+
+Signed-off-by: Jeremy Lincicome [W0JRL] <admin@jlappliedtechnologies.com>
+
+
 ## release(Stretch): Upgrade RasLink servers to Raspbian Stretch
 >Wed Nov 25 16:48:19 2020 -0700
 

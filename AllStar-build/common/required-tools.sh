@@ -41,7 +41,8 @@ apt-get -qqy --fix-missing --fix-broken install\
     dh-autoreconf dh-strip-nondeterminism dwz groff intltool-debian\
     libarchive-zip-perl libfile-stripnondeterminism-perl libice6 libnewt-dev\
     libpng-dev libslang2-dev libsm6 libtool libusb-1.0-0-dev libxaw7 libpopt-dev\
-    libxml2-utils libxmu6 libxt6 m4 module-assistant po-debconf x11-common freetds-dev freetds-common freetds-bin binutils binutils-dev libcap-dev libpq-dev libblkid-dev libcurlpp0 libcurlpp-dev
+    libxml2-utils libxmu6 libxt6 m4 module-assistant po-debconf x11-common freetds-dev freetds-common freetds-bin binutils binutils-dev libcap-dev libpq-dev libblkid-dev libcurlpp0 libcurlpp-dev\
+    pulseaudio osspd osspd-pulseaudio
 if [[ $release = "stretch" ]]; then
     apt-get -qqy --fix-missing --fix-broken install\
     php-cli php-curl libssl1.0-dev libpt-dev libneon27-gnutls-dev libneon27-gnutls\

@@ -19,7 +19,8 @@
 [Unit]
 Description=AllStar NodeList updater
 Wants=network.target
-After=network-online.target
+Requires=asterisk.service
+After=network-online.target asterisk.service
 BindsTo=asterisk.service
 #
 [Service]

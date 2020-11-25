@@ -62,9 +62,10 @@ cp /usr/src/utils/AllStar-build/rpi/tmpfs.service /etc/systemd/system
 cp /usr/src/utils/AllStar-build/rpi/zram.service /etc/systemd/system
 cp /usr/src/utils/AllStar-build/common/timesync.service /etc/systemd/system
 systemctl daemon-reload
-systemctl enable asterisk.service updatenodelist.service nodenames.service fail2ban.service timesync.service &>/dev/null
+systemctl enable pulseaudio.service osspd.service asterisk.service updatenodelist.service nodenames.service fail2ban.service timesync.service &>/dev/null
 systemctl enable tmpfs.service &>/dev/null
 systemctl enable zram.service &>/dev/null
+$(which timedatectl) set-ntp off
 (cp /usr/src/utils/AllStar-build/common/irqbalance.daily /etc/cron.daily/irqbalance;chmod +x /etc/cron.daily/irqbalance)
 chmod +x /usr/src/utils/AllStar-build/rpi/make-links.sh
 status /usr/src/utils/AllStar-build/rpi/make-links.sh

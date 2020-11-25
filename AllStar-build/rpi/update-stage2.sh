@@ -31,7 +31,7 @@ status() {
 }
 echo "RUNNING UPDATE; STAGE TWO"
 echo -e "This will take a while.\nSystem-update is running in a screen session.\nIf your session disconnects during the update,\nafter reconnecting, run\n'screen -dr'\nto reconnect to\nthe update screen.\n"
-service asterisk stop &>/dev/null
+systemctl stop asterisk.service osspd.service pulseaudio.service&>/dev/null
 echo -e "YOU CANNOT USE YOUR NODE DURING THIS PROCESS.\nIt has been disabled.\nPRESS ENTER TO CONTINUE"
 read
 # Restore bashrc
@@ -51,6 +51,9 @@ if [[ "$(grep -ic "/usr/bin/version" /root/.profile)" = "0" ]]; then
 fi
 chmod +x /usr/src/utils/AllStar-build/rpi/chk-packages.sh
 status /usr/src/utils/AllStar-build/rpi/chk-packages.sh
+sleep 0.5s
+chmod +x /usr/src/utils/AllStar-build/common/update-audio-config.sh
+status /usr/src/utils/AllStar-build/common/update-audio-config.sh
 sleep 0.5s
 chmod +x /usr/src/utils/AllStar-build/common/update-dahdi.sh
 status /usr/src/utils/AllStar-build/common/update-dahdi.sh
@@ -94,7 +97,7 @@ cp /usr/src/utils/AllStar-build/rpi/tmpfs.service /etc/systemd/system
 cp /usr/src/utils/AllStar-build/rpi/zram.service /etc/systemd/system
 cp /usr/src/utils/AllStar-build/common/timesync.service /etc/systemd/system
 systemctl daemon-reload
-systemctl enable asterisk.service updatenodelist.service timesync.service &>/dev/null
+systemctl enable pulseaudio.service osspd.service asterisk.service updatenodelist.service timesync.service &>/dev/null
 systemctl enable avahi-daemon &>/dev/null
 systemctl enable tmpfs.service &>/dev/null
 systemctl enable zram.service &>/dev/null
