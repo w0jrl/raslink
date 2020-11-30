@@ -1,5 +1,13 @@
+## bugfix(release-upgrade.sh): Fix the test condition for the prompt function
+>Mon Nov 30 01:32:25 2020 -0700
+
+>Author: Jeremy Lincicome [W0JRL] <admin@jlappliedtechnologies.com>
+
+Signed-off-by: Jeremy Lincicome [W0JRL] <admin@jlappliedtechnologies.com>
+
+
 ## update(audio-configuration): Replace the OSS driver with PulseAudio
->Wed Nov 25 14:55:54 2020 -0700
+>Wed Nov 25 16:59:32 2020 -0700
 
 >Author: Jeremy Lincicome [W0JRL] <admin@jlappliedtechnologies.com>
 

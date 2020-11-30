@@ -30,7 +30,7 @@ status() {
 prompt() {
     echo "${name} ${release} is available."
     read -e -p "Do you wish to upgrade? [Y/N]" upgrade
-    if [[ "$upgrade" = "y" ]] || [[ "$upgrade" = "Y" || "$upgrade" = "" ]]; then
+    if [[ "$upgrade" = "y" ]] || [[ "$upgrade" = "Y" ]] || [[ "$upgrade" = "" ]]; then
         echo "Upgrading to ${name} ${release}
 This is going to take awhile.
 Your node will remain disabled until 'system-update' completes.
