@@ -1,3 +1,11 @@
+## refactor(release-upgrade.sh): Drop support for gcc-4.8 and gcc-4.9 in RasLink Stretch
+>Mon Nov 30 15:40:26 2020 -0700
+
+>Author: Jeremy Lincicome [W0JRL] <admin@jlappliedtechnologies.com>
+
+Signed-off-by: Jeremy Lincicome [W0JRL] <admin@jlappliedtechnologies.com>
+
+
 ## bugfix(release-upgrade.sh): Fix the test condition for the prompt function
 >Mon Nov 30 01:32:25 2020 -0700
 

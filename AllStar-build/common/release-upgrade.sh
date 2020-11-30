@@ -70,7 +70,7 @@ update() {
         (status cp /usr/src/utils/AllStar-build/rpi/tmpfs.sh /usr/local/bin/tmpfs.sh;chmod +x /usr/local/bin/tmpfs.sh)
         status /usr/local/bin/tmpfs.sh
     fi
-    status apt-get -qq autoremove --purge apt-listchanges -y
+    status apt-get -qq autoremove --purge apt-listchanges gcc-4.8 gcc-4.9 -y
     (status apt-get update;apt-get upgrade -y;apt-get clean;apt-get autoclean)
     (status apt-get dist-upgrade -y;apt-get autoremove --purge -y;apt-get clean;apt-get autoclean)
     (status apt-get -qq install -y ssh;apt-get -qq update)
