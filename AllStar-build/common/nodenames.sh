@@ -1,6 +1,6 @@
 #!/bin/bash
 # nodenames.sh - Enable/disable nodenames
-#    Copyright (C) 2020  Jeremy Lincicome (W0JRL)
+#    Copyright (C) 2021  Jeremy Lincicome (W0JRL)
 #    https://jlappliedtechnologies.com  admin@jlappliedtechnologies.com
 #
 #    This program is free software: you can redistribute it and/or modify

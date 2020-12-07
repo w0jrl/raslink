@@ -1,3 +1,11 @@
+## license(*): Update copyright for scripts and service units
+>Mon Dec 7 04:39:44 2020 -0700
+
+>Author: Jeremy Lincicome [W0JRL] <admin@jlappliedtechnologies.com>
+
+Signed-off-by: Jeremy Lincicome [W0JRL] <admin@jlappliedtechnologies.com>
+
+
 ## bugfix(update-stage2.sh): Make sure Systemd doesn't hang the update
 >Mon Dec 7 02:41:06 2020 -0700
 

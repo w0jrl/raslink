@@ -1,6 +1,6 @@
 #!/bin/bash
 # asterisk-config-check.sh - Update Asterisk configuration files if required
-#    Copyright (C) 2020  Jeremy Lincicome (W0JRL)
+#    Copyright (C) 2021  Jeremy Lincicome (W0JRL)
 #    https://jlappliedtechnologies.com  admin@jlappliedtechnologies.com
 #
 #    This program is free software: you can redistribute it and/or modify
@@ -126,8 +126,10 @@ if [[ $stpost = "0" ]]; then
     sed -i '/\*\*\*\ Status\ Reporting\ \*\*\*/a\
 ;\
 ; Set the following to override the global statpost behavior.\
-     ; 0=off; 1=on when globals are off\
+     ; 0=off; 1=on\
 ;statpost_override = 1\
+     ; 0 = Information about this node will not be sent to the configured stats server.\
+     ; 1 = Information about this node will be sent to the configured stats server.\
 ;\
 ; Set to 1 to use custom statpost url for this node only.\
 ;statpost_custom = 0     ; If left blank\, it will default to using the global statpost.\
@@ -166,7 +168,7 @@ fi
 sed -i 's/ens192/eth0/' /etc/asterisk/rpt*
 # Fix statpost_override docs in rpt
 statpostdoc=$(grep -RiIl 'when globals are off' --include="rpt*" | wc -w)
-if [[ $statpostdock != "0" ]]; then
+if [[ $statpostdoc != "0" ]]; then
     sed -i 's/when globals are off//g; /statpost_override/a\     \; 0 \= Information about this node will not be sent to the configured stats server\.\n     \; 1 \= Information about this node will be sent to the configured stats server\.' ./rpt*
 fi
 echo -e "Done.\n"

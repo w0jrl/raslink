@@ -1,6 +1,6 @@
 #!/bin/bash
 # wifi-setup.sh - Setup Wi-fi connections
-#    Copyright (C) 2020  Jeremy Lincicome (W0JRL)
+#    Copyright (C) 2021  Jeremy Lincicome (W0JRL)
 #    https://jlappliedtechnologies.com  admin@jlappliedtechnologies.com
 #    Wi-fi card selection and loop scan contributed by Skyler Fennell (W0SKY)
 #    https://www.youtube.com/channel/UCyQzGw5fvymeCcafN-J7krQ
