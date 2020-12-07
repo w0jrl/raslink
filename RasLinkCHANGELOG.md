@@ -1,3 +1,14 @@
+## bugfix(update-stage2.sh): Make sure Systemd doesn't hang the update
+>Mon Dec 7 02:41:06 2020 -0700
+
+>Author: Jeremy Lincicome [W0JRL] <admin@jlappliedtechnologies.com>
+
+If Systemd needs to stop services, it may take a while for the services to completely stop.
+While we wait for the services to stop, we will download the rest of the sources we need.
+
+Signed-off-by: Jeremy Lincicome [W0JRL] <admin@jlappliedtechnologies.com>
+
+
 ## docs(rpt.conf): Fix "statpost_override" documentation
 >Mon Dec 7 00:54:17 2020 -0700
 
