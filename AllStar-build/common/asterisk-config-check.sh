@@ -91,7 +91,7 @@ telemduckdb = -9     ; Reduce telemetry level when ducking (default = -9)\
 ;' ./rpt*
 fi
 # Add globals section to rpt
-globals=$(grep -RiIl 'globals' --include="rpt*"| wc -w)
+globals=$(grep -RiIl 'globals' --include="rpt*" | wc -w)
 if [[ $globals = "0" ]]; then
     sed -i '/Your\ Repeater/a\
 ;\
@@ -120,7 +120,7 @@ fi
 # Remove statpost comment from rpt
 sed -i -e "/If you're setting up a public node/,+1d" ./rpt*
 # Update statpost program in rpt
-stpost=$(grep -RiIl 'statpost_custom' --include="rpt*"| wc -w)
+stpost=$(grep -RiIl 'statpost_custom' --include="rpt*" | wc -w)
 if [[ $stpost = "0" ]]; then
     sed -i -e "/\*\*\* Status Reporting \*\*\*/{n;N;N;N;d}" ./rpt*
     sed -i '/\*\*\*\ Status\ Reporting\ \*\*\*/a\
@@ -142,7 +142,7 @@ sed -i '/rxondelay/,/!/ {
     s/release of PTT/PTT is keyed/
     }' ./usbradio*
 # Add txoffdelay to usbradio
-txoffdelay=$(grep -RiIl 'txoffdelay' --include="usbradio*"| wc -w)
+txoffdelay=$(grep -RiIl 'txoffdelay' --include="usbradio*" | wc -w)
 if [[ $txoffdelay = "0" ]]; then
     sed -i -e '/interfering\ with\ sub-audible\ signaling/a\
 ;\
@@ -152,7 +152,7 @@ if [[ $txoffdelay = "0" ]]; then
         ; repeater\, where you need to ignore the repeater'\''s hangtime.' ./usbradio*
 fi
 # Add farnsworth timing to rpt
-farnsworth=$(grep -RiIl 'farnsworth' --include="rpt*"| wc -w)
+farnsworth=$(grep -RiIl 'farnsworth' --include="rpt*" | wc -w)
 if [[ $farnsworth = "0" ]]; then
     sed -i -e '/idamplitude/a\
 farnsworth = 3     ; Adjust morse code letter spacing\
@@ -164,5 +164,10 @@ farnsworth = 3     ; Adjust morse code letter spacing\
 fi
 # Set "net_if" to eth0 in rpt
 sed -i 's/ens192/eth0/' /etc/asterisk/rpt*
+# Fix statpost_override docs in rpt
+statpostdoc=$(grep -RiIl 'when globals are off' --include="rpt*" | wc -w)
+if [[ $statpostdock != "0" ]]; then
+    sed -i 's/when globals are off//g; /statpost_override/a\     \; 0 \= Information about this node will not be sent to the configured stats server\.\n     \; 1 \= Information about this node will be sent to the configured stats server\.' ./rpt*
+fi
 echo -e "Done.\n"
 exit 0

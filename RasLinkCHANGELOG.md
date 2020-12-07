@@ -1,3 +1,14 @@
+## docs(rpt.conf): Fix "statpost_override" documentation
+>Mon Dec 7 00:54:17 2020 -0700
+
+>Author: Jeremy Lincicome [W0JRL] <admin@jlappliedtechnologies.com>
+
+"statpost_override" will turn on or off "statpost", regardless
+if it is enabled in the globals section.
+
+Signed-off-by: Jeremy Lincicome [W0JRL] <admin@jlappliedtechnologies.com>
+
+
 ## RL-20.12
 >Mon Nov 30 16:06:48 2020 -0700
 
