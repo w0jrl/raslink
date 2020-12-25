@@ -1,3 +1,15 @@
+## refactor(app_rpt.c): Set CURLOPT_TIMEOUT to 2 seconds
+>Thu Dec 24 19:24:12 2020 -0700
+
+>Author: Jeremy Lincicome [W0JRL] <admin@jlappliedtechnologies.com>
+
+This is not a 100% fix for the audio dropsthat happen
+when RasLink can't contact the stats server,
+but it makes the dropouts more tolerable.
+
+Signed-off-by: Jeremy Lincicome [W0JRL] <admin@jlappliedtechnologies.com>
+
+
 ## refactor(app_rpt.c): Remove hangtime when sending beacon ID
 >Tue Dec 8 10:45:05 2020 -0700
 

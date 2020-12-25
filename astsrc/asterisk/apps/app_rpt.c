@@ -2064,7 +2064,7 @@ static int curl_internal(struct MemoryStruct *chunk, char *url, char *post)
 
 		curl_easy_setopt(*curl, CURLOPT_NOSIGNAL, 1);
 
-		curl_easy_setopt(*curl, CURLOPT_TIMEOUT, 30);
+		curl_easy_setopt(*curl, CURLOPT_TIMEOUT, 2);
 	        curl_easy_setopt(*curl, CURLOPT_WRITEFUNCTION, WriteMemoryCallback);
 	        curl_easy_setopt(*curl, CURLOPT_USERAGENT, curl_agent_string);
 	        curl_easy_setopt(*curl, CURLOPT_SSL_VERIFYHOST, 0);

@@ -51,5 +51,7 @@ if [ "$(grep -ic 'pthread.h' ./apps/app_rpt.c)" = "0" ];then
 fi
 # Make sure asterisk core uses pthread
 sed -i 's/ASTCFLAGS+=-lpthread -Wno-unused-result/ASTCFLAGS\+\=-pthread -Wno-unused-result/' ./Makefile
+# Set libcurl timeout
+sed -i 's/CURLOPT_TIMEOUT\, 30/CURLOPT_TIMEOUT\, 2/' ./apps/app_rpt.c
 echo "Done"
 exit 0
