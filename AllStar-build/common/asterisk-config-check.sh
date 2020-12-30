@@ -134,7 +134,7 @@ if [[ $stpost = "0" ]]; then
 ; Set to 1 to use custom statpost url for this node only.\
 ;statpost_custom = 0     ; If left blank\, it will default to using the global statpost.\
 ;statpost_url = \<url to custom handler\>     ; Set to a valid URL if overriding.\
-     ; Example\: http\:\/\/stats.allstarlink.org\/uhandler.php' ./rpt*
+     ; Example\: http\:\/\/stats.pttlink.org\/uhandler.php' ./rpt*
     sed -i -e "/For ACID and Debian/{N;N;N;d}" ./rpt*
     sed -i -e "/For Limey Linux/{N;N;N;d}" ./rpt*
 fi
@@ -170,6 +170,11 @@ sed -i 's/ens192/eth0/' /etc/asterisk/rpt*
 statpostdoc=$(grep -RiIl 'when globals are off' --include="rpt*" | wc -w)
 if [[ $statpostdoc != "0" ]]; then
     sed -i 's/when globals are off//g; /statpost_override/a\     \; 0 \= Information about this node will not be sent to the configured stats server\.\n     \; 1 \= Information about this node will be sent to the configured stats server\.' ./rpt*
+fi
+# Update config files to use pttlink.org
+aslurl=$(grep -RiIl 'allstarlink.org' --include="*.conf" | wc -w)
+if [[ $aslurl != "0" ]]; then
+    find . -type f -exec sed -i 's/allstarlink\.org/pttlink.org/g' {} +
 fi
 echo -e "Done.\n"
 exit 0

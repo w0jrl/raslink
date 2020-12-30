@@ -126,6 +126,8 @@ $(which timedatectl) set-ntp off
 (cp /usr/src/utils/AllStar-build/common/irqbalance.daily /etc/cron.daily/irqbalance;chmod +x /etc/cron.daily/irqbalance)
 echo -e "Done\n"
 sleep 0.5s
+chmod +x /usr/src/AllStar-build/common/system-update-messages.sh
+/usr/src/AllStar-build/common/system-update-messages.sh
 echo -e "UPDATE COMPLETE\nYou can run this tool at any time by typing 'system-update' at a root prompt."
 date +'%A, %B %d, %Y%t%t%T %Z' > /root/.lastupdate
 echo "REBOOTING TO APPLY CHANGES"

@@ -202,7 +202,7 @@ startup_macro =
 
 ;set to 1 to use custom statpost url for this node only
 ;statpost_custom=0			; If left blank it will default to using the globa satpost
-;statpost_url=<url to custom handler>	; Set to a valid URL if overriding (e.g, http://stats.allstarlink.org/uhandler.php)
+;statpost_url=<url to custom handler>	; Set to a valid URL if overriding (e.g, http://stats.pttlink.org/uhandler.php)
 
 [functions]
 
@@ -225,7 +225,7 @@ startup_macro =
 
 
 ; Mandatory Command Codes
-; http://docs.allstarlink.org/drupal/node/91
+; http://docs.pttlink.org/drupal/node/91
 
 1 = ilink,1		; Disconnect specified link
 2 = ilink,2		; Connect specified link -- monitor only

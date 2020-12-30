@@ -176,7 +176,7 @@ Cleaned up compile time warnings for app_rpt.c  These warnings have been around 
 
     q.  remoteip_url - URL for fetching remote IP in rpt utils pubip (default:  http://ifconfig.me/ip)
 
-    r.  statpost_url - Global statpost URL (default http://stats.allstarlink.org/uhandler.php)
+    r.  statpost_url - Global statpost URL (default http://stats.pttlink.org/uhandler.php)
 
     s.  statpost - Global control us turning update of stats via statpost_url on/off.  0=off, 1=Use AllStarLink (uses default and ignores statpost_url change), 2=use custom (statpost_url must be set)
 

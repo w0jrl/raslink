@@ -1,5 +1,5 @@
 ; Inter-Asterisk eXchange driver definition
-; http://docs.allstarlink.org/drupal/node/15 
+; http://docs.pttlink.org/drupal/node/15 
 
 ; ulaw, alaw, GSM and ADPCM should only be used, 
 ; the rest of the standard Asterisk codecs
@@ -49,7 +49,7 @@ delayreject = yes
 ; iaxthreadcount = 30                                                              
 ; iaxmaxthreadcount = 150   
 
-; register = 1999:123456@register.allstarlink.org	; This must be changed to your node number, password 
+; register = 1999:123456@register.pttlink.org	; This must be changed to your node number, password 
                                                 	; remove the leading ";"
 
 ; Incoming radio connections
@@ -110,7 +110,7 @@ allow = gsm
 ; The following should be un-commented to support Allstar Autopatch service
 ; [allstar-autopatch]
 ; type = peer
-; host = register.allstarlink.org
+; host = register.pttlink.org
 ; username = <One of the Node numbers on this server>
 ; secret = <The node password for the above node>
 ; auth = md5

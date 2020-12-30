@@ -131,7 +131,7 @@ exten => _5.,n,Hangup
 [allstar-public]
 
 exten => s,1,Ringing
-exten => s,n,Set(RESP=${CURL(https://register.allstarlink.org/cgi-bin/authwebphone.pl?${CALLERID(name)})})
+exten => s,n,Set(RESP=${CURL(https://register.pttlink.org/cgi-bin/authwebphone.pl?${CALLERID(name)})})
 exten => s,n,Set(NODENUM=${CALLERID(number)})
 exten => s,n,GotoIf($["${RESP:0:1}" = "?"]?hangit)
 exten => s,n,GotoIf($["${RESP:0:1}" = ""]?hangit)

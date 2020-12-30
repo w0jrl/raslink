@@ -1,3 +1,15 @@
+## refactor(*): Migrate RasLink servers to use PTTLink
+>Fri Jan 1 00:30:57 2021 -0700
+
+>Author: Jeremy Lincicome [W0JRL] <admin@jlappliedtechnologies.com>
+
+Your server[s] will be migrated to PTTLink <https://pttlink.org/> for
+registration and status posting.
+The AllStarLink network may be added back in the future as a secondary network.
+
+Signed-off-by: Jeremy Lincicome [W0JRL] <admin@jlappliedtechnologies.com>
+
+
 ## refactor(tmpfs.sh): Set the mountpoint size to 100MB for /var/tmp
 >Thu Dec 31 00:04:40 2020 -0700
 
