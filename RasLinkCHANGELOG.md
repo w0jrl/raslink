@@ -1,3 +1,13 @@
+## refactor(zram.sh): Recalculate zram swap size
+>Wed Dec 30 23:57:41 2020 -0700
+
+>Author: Jeremy Lincicome [W0JRL] <admin@jlappliedtechnologies.com>
+
+The zram swap size will be 1.5 times the installed RAM.
+
+Signed-off-by: Jeremy Lincicome [W0JRL] <admin@jlappliedtechnologies.com>
+
+
 ## refactor(app_rpt.c): Set CURLOPT_TIMEOUT to 2 seconds
 >Thu Dec 24 19:24:12 2020 -0700
 
