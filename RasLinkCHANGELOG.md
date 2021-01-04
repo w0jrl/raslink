@@ -1,3 +1,17 @@
+## rewrite(README.md): Update text and links
+>Sun Jan 3 22:28:45 2021 -0700
+
+>Author: Jeremy Lincicome [W0JRL] <admin@jlappliedtechnologies.com>
+
+*   replace the repository description<br>
+    The RasLink repository is used to build RasLink, not AllStar (Reg).
+    We should no longer use the AllStar (Reg) name, as we are not part of the<br>[AllStarLink Network](https://allstarlink.org).
+*   fix the link markdown<br>
+    It's easier to read in a plain text editor.
+
+Signed-off-by: Jeremy Lincicome [W0JRL] <admin@jlappliedtechnologies.com>
+
+
 ## RL-21.01
 >Fri Jan 1 01:09:28 2021 -0700
 
