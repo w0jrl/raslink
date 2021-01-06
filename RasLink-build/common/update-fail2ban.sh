@@ -25,17 +25,17 @@ status() {
     fi
 }
 clone() {
-    cd /usr/src/utils/astsrc/
+    cd /usr/src/utils/src/
     git clone https://github.com/fail2ban/fail2ban.git &>/dev/null
 }
 update() {
-    cd /usr/src/utils/astsrc/fail2ban/
+    cd /usr/src/utils/src/fail2ban/
     (git clean -f;git checkout -f) &>/dev/null
     git pull &>/dev/null
 }
 # Get the sources
     # If they don't exist, clone them
-if [ ! -e /usr/src/utils/astsrc/fail2ban/.git ]; then
+if [ ! -e /usr/src/utils/src/fail2ban/.git ]; then
     echo "Downloading Fail2Ban sources..."
     status clone
     echo -e "Done\n"
@@ -47,7 +47,7 @@ else
 fi
 sleep 0.5s
 # Install from the fetched sources
-cd /usr/src/utils/astsrc/fail2ban/
+cd /usr/src/utils/src/fail2ban/
 echo "Building and installing Fail2Ban..."
 status ./setup.py install
 echo -e "Done\n"

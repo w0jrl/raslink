@@ -27,7 +27,7 @@ status() {
 echo "Building and installing Asterisk..."
 # Remove modules
 status rm -f /usr/lib/asterisk/modules/*
-cd /usr/src/utils/astsrc/asterisk/
+cd /usr/src/utils/src/asterisk/
 # Configure the build process
 chmod +x ./bootstrap.sh
 status ./bootstrap.sh

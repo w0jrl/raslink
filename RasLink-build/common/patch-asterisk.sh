@@ -17,7 +17,7 @@
 #    along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #
 # Script Start
-cd ../../astsrc/asterisk/
+cd ../../src/asterisk/
 echo "Patching Asterisk files..."
 #
 # Set on demand telemetry timer

@@ -26,18 +26,18 @@ status() {
 }
 echo "Downloading and unpacking Dahdi..."
 cd /usr/src/utils/
-if [ -e /usr/src/utils/astsrc/dahdi ]; then
-    status rm -rf /usr/src/utils/astsrc/dahdi
+if [ -e /usr/src/utils/src/dahdi ]; then
+    status rm -rf /usr/src/utils/src/dahdi
 fi
 status wget http://downloads.asterisk.org/pub/telephony/dahdi-linux-complete/dahdi-linux-complete-current.tar.gz &>/dev/null
-cd /usr/src/utils/astsrc/
+cd /usr/src/utils/src/
 status tar zxvf /usr/src/utils/dahdi-linux-complete-current.tar.gz &>/dev/null
 status mv dahdi-linux-* dahdi
 echo -e "Done\n"
-cd /usr/src/utils/astsrc/dahdi/
+cd /usr/src/utils/src/dahdi/
 echo "Building and installing Dahdi..."
-status patch -p1 < /usr/src/utils/astsrc/dahdi-patches/patch-dahdi-no-pciradio
-status patch -p0 < /usr/src/utils/astsrc/dahdi-patches/patch-dahdi.rules
+status patch -p1 < /usr/src/utils/src/dahdi-patches/patch-dahdi-no-pciradio
+status patch -p0 < /usr/src/utils/src/dahdi-patches/patch-dahdi.rules
 export MODULES_EXTRA='dahdi_dummy'
 status make -j $(nproc) all
 status make -j $(nproc) install

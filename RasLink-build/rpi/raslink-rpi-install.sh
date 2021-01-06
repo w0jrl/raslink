@@ -47,7 +47,7 @@ chmod +x /usr/src/utils/RasLink-build/common/update-fail2ban.sh
 status /usr/src/utils/RasLink-build/common/update-fail2ban.sh
 echo "Done"
 echo "Installing default sound files..."
-cp -a /usr/src/utils/astsrc/sounds/* /var/lib/asterisk/sounds
+cp -a /usr/src/utils/src/sounds/* /var/lib/asterisk/sounds
 echo "Done"
 echo "Setting up startup scripts and system-update..."
 (cp /usr/src/utils/RasLink-build/common/rc.updatenodelist /usr/local/bin/rc.updatenodelist;chmod +x /usr/local/bin/rc.updatenodelist)

@@ -76,7 +76,7 @@ echo "Updating start up scripts..."
 (cp /usr/src/utils/RasLink-build/common/timesync.hourly /usr/local/bin/timesync.hourly;chmod +x /usr/local/bin/timesync.hourly)
 chmod +x /usr/src/utils/RasLink-build/rpi/make-links.sh
 status /usr/src/utils/RasLink-build/rpi/make-links.sh
-cp -a /usr/src/utils/astsrc/sounds/* /var/lib/asterisk/sounds
+cp -a /usr/src/utils/src/sounds/* /var/lib/asterisk/sounds
 gsmcount=$(find /var/lib/asterisk/sounds/rpt/ -maxdepth 1 -type f -name '*.gsm' -printf x | wc -c)
 if [ "$gsmcount" -ne "0" ]; then
   rm -f /var/lib/asterisk/sounds/rpt/*.gsm

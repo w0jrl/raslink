@@ -1,5 +1,13 @@
+## chore: Rename astsrc to src
+>Thu Jan 7 05:14:51 2021 -0700
+
+>Author: Jeremy Lincicome [W0JRL] <admin@jlappliedtechnologies.com>
+
+Signed-off-by: Jeremy Lincicome [W0JRL] <admin@jlappliedtechnologies.com>
+
+
 ## chore: Add soft link  to point to RasLink-build
->Wed Jan 6 11:31:48 2021 -0700
+>Thu Jan 7 05:14:39 2021 -0700
 
 >Author: Jeremy Lincicome [W0JRL] <admin@jlappliedtechnologies.com>
 
@@ -11,7 +19,7 @@ Signed-off-by: Jeremy Lincicome [W0JRL] <admin@jlappliedtechnologies.com>
 
 
 ## chore: Rename AllStar-build to RasLink-build
->Wed Jan 6 02:59:21 2021 -0700
+>Thu Jan 7 05:14:39 2021 -0700
 
 >Author: Jeremy Lincicome [W0JRL] <admin@jlappliedtechnologies.com>
 
@@ -19,7 +27,7 @@ Signed-off-by: Jeremy Lincicome [W0JRL] <admin@jlappliedtechnologies.com>
 
 
 ## rewrite(README.md): Update text and links
->Sun Jan 3 22:28:45 2021 -0700
+>Thu Jan 7 05:14:14 2021 -0700
 
 >Author: Jeremy Lincicome [W0JRL] <admin@jlappliedtechnologies.com>
 

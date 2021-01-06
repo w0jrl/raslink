@@ -26,7 +26,7 @@ status() {
     fi
 }
 echo "Building and installing Uridiag..."
-cd /usr/src/utils/astsrc/uridiag/
+cd /usr/src/utils/src/uridiag/
 status make
 status make install
 echo -e "Done\n"
