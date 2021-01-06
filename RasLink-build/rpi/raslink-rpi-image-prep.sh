@@ -25,22 +25,22 @@
 #
 # Script Start
 # Rotate logs weekly
-chmod +x /usr/src/utils/AllStar-build/common/mk-logrotate-asterisk.sh
-/usr/src/utils/AllStar-build/common/mk-logrotate-asterisk.sh
+chmod +x /usr/src/utils/RasLink-build/common/mk-logrotate-asterisk.sh
+/usr/src/utils/RasLink-build/common/mk-logrotate-asterisk.sh
 # Make sure we are running the latest and greatest
 (apt-get update;apt-get dist-upgrade -y)
 # Install kernel and matching headers
 apt-get install raspberrypi-kernel raspberrypi-kernel-headers
 # Replace /boot/config.txt
-cp /usr/src/utils/AllStar-build/rpi/boot-config.txt /boot/config.txt
+cp /usr/src/utils/RasLink-build/rpi/boot-config.txt /boot/config.txt
 # Setup Pulseaudio configuration
-chmod +x /usr/src/utils/AllStar-build/common/update-audio-config.sh
-/usr/src/utils/AllStar-build/common/update-audio-config.sh
+chmod +x /usr/src/utils/RasLink-build/common/update-audio-config.sh
+/usr/src/utils/RasLink-build/common/update-audio-config.sh
 # Configure packages
-chmod +x /usr/src/utils/AllStar-build/rpi/chk-packages.sh
-/usr/src/utils/AllStar-build/rpi/chk-packages.sh
+chmod +x /usr/src/utils/RasLink-build/rpi/chk-packages.sh
+/usr/src/utils/RasLink-build/rpi/chk-packages.sh
 # Setup for AllStar install
-chmod +x /usr/src/utils/AllStar-build/rpi/raslink-rpi-install.sh
+chmod +x /usr/src/utils/RasLink-build/rpi/raslink-rpi-install.sh
 cpu=$(grep -ic 'for cpu' /etc/rc.local)
 governor=$(grep -ic 'scaling_governor' /etc/rc.local)
 if (( "$governor" >= "1" )) && [ "$cpu" = "0" ]; then

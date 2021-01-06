@@ -67,7 +67,7 @@ update() {
         rm -rf /var/tmp/* /var/tmp/.* &>/dev/null
         status umount /tmp &>/dev/null
         status umount /var/tmp &>/dev/null
-        (status cp /usr/src/utils/AllStar-build/rpi/tmpfs.sh /usr/local/bin/tmpfs.sh;chmod +x /usr/local/bin/tmpfs.sh)
+        (status cp /usr/src/utils/RasLink-build/rpi/tmpfs.sh /usr/local/bin/tmpfs.sh;chmod +x /usr/local/bin/tmpfs.sh)
         status /usr/local/bin/tmpfs.sh
     fi
     status apt-get -qq autoremove --purge apt-listchanges gcc-4.8 gcc-4.9 -y
@@ -87,9 +87,9 @@ update() {
     mv .bashrc .bashrc.orig
     cat .bashrc.orig > .bashrc
     if [[ $platform = "Raspbian" ]]; then
-        echo "/usr/src/utils/AllStar-build/rpi/update-stage2.sh" >> .bashrc
+        echo "/usr/src/utils/RasLink-build/rpi/update-stage2.sh" >> .bashrc
     else
-        echo "/usr/src/utils/AllStar-build/debian/update-stage2.sh" >> .bashrc
+        echo "/usr/src/utils/RasLink-build/debian/update-stage2.sh" >> .bashrc
     fi
     echo "REBOOT TO FINISH UPGRADE"
     echo "When your node reboots, you need to log in

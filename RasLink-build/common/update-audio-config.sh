@@ -17,7 +17,7 @@
 #    along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #
 # Script Start
-cd /usr/src/utils/AllStar-build/common/audio-config
+cd /usr/src/utils/RasLink-build/common/audio-config
 echo "Updating Pulseaudio configuration files if required..."
 # Make sure the pulse directory exists
 mkdir -p /etc/pulse

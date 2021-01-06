@@ -36,21 +36,21 @@ if [[ "$install" = "y" ]] || [[ "$install" = "Y" ]]; then
   sleep 0.5s
   echo "Setting up log rotate..."
   echo "Logs will be rotated once a week."
-  chmod +x /usr/src/utils/AllStar-build/common/mk-logrotate-asterisk.sh
-  /usr/src/utils/AllStar-build/common/mk-logrotate-asterisk.sh
+  chmod +x /usr/src/utils/RasLink-build/common/mk-logrotate-asterisk.sh
+  /usr/src/utils/RasLink-build/common/mk-logrotate-asterisk.sh
   echo "Done"
   sleep 0.5s
   echo "Configuring packages..."
-  chmod +x /usr/src/utils/AllStar-build/debian/chk-packages.sh
-  /usr/src/utils/AllStar-build/debian/chk-packages.sh
+  chmod +x /usr/src/utils/RasLink-build/debian/chk-packages.sh
+  /usr/src/utils/RasLink-build/debian/chk-packages.sh
   echo "Done"
   sleep 0.5
 # Setup for stage two
   cd /root
   mv .bashrc .bashrc.orig
   cat .bashrc.orig > .bashrc
-  chmod +x /usr/src/utils/AllStar-build/debian/raslink-pc-install-stage2.sh
-  echo "/usr/src/utils/AllStar-build/debian/raslink-pc-install-stage2.sh" >> .bashrc
+  chmod +x /usr/src/utils/RasLink-build/debian/raslink-pc-install-stage2.sh
+  echo "/usr/src/utils/RasLink-build/debian/raslink-pc-install-stage2.sh" >> .bashrc
   echo "After the system reboots, you need to log in as the root user to finish the installation."
   echo "Rebooting to finish install."
   sync

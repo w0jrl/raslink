@@ -1,5 +1,5 @@
 #!/bin/bash
-# chk-packages.sh - Check package status, and install needed packages
+# chk-packages.sh - Check package status, and remove packages that aren't needed.
 #    Copyright (C) 2021  Jeremy Lincicome (W0JRL)
 #    https://jlappliedtechnologies.com  admin@jlappliedtechnologies.com
 #
@@ -28,9 +28,40 @@ if [ -e "${ntp}" ]; then
 else
     echo "NTP isn't installed; Skipping."
 fi
+echo "Looking for Wolfram Engine..."
+if [ -e /usr/bin/wolfram ]; then
+    echo "Uninstalling Wolfram Engine; Not needed for AllStar."
+    apt-get -qq purge -y wolfram-engine &>/dev/null
+    echo "Cleaning the database"
+    (apt-get autoremove --purge -y;apt-get clean;apt-get autoclean) &>/dev/null
+    echo "Removing Wolfram Engine data"
+    rm -rf /opt/Wolfram &>/dev/null
+else
+    echo "Wolfram Engine isn't installed; Skipping."
+fi
+echo "Looking for Minecraft..."
+if [ -e /usr/bin/minecraft-pi ]; then
+    echo "Uninstalling Minecraft; Not needed for AllStar."
+    apt-get -qq purge -y minecraft-pi &>/dev/null
+    echo "Cleaning the database"
+    (apt-get autoremove --purge -y;apt-get clean;apt-get autoclean) &>/dev/null
+else
+    echo "Minecraft isn't installed; Skipping."
+fi
+chmod +x /usr/src/utils/RasLink-build/rpi/rm-pi.sh
+/usr/src/utils/RasLink-build/rpi/rm-pi.sh
+echo "Looking for RPI Update..."
+if [ -e /usr/bin/rpi-update ]; then
+    echo "Uninstalling RPI Update; No longer needed for AllStar."
+    apt-get purge -y rpi-update &>/dev/null
+    echo "Cleaning the database"
+    (apt-get autoremove --purge -y;apt-get clean;apt-get autoclean) &>/dev/null
+else
+    echo "RPI Update isn't installed; Skipping."
+fi
 subversion=/usr/bin/svn
 echo "Checking Subversion..."
-if [ -e "$subversion" ]; then
+if [ -e "${subversion}" ]; then
     echo "Removing Subversion; No longer needed for AllStar."
     apt-get -qq autoremove --purge -y subversion
     rm -rf /root/.subversion &>/dev/null
@@ -44,8 +75,8 @@ if [ -f /etc/motd ] || [ -d /etc/update-motd.d ]; then
 fi
 echo -e "Done\n"
 echo "Checking and installing required packages..."
-chmod +x /usr/src/utils/AllStar-build/common/required-tools.sh
-/usr/src/utils/AllStar-build/common/required-tools.sh
+chmod +x /usr/src/utils/RasLink-build/common/required-tools.sh
+/usr/src/utils/RasLink-build/common/required-tools.sh
 echo -e "Done\n"
 echo "checking Logrotate status..."
 fstab=$(grep -ic "/var/log tmpfs defaults,noatime,nosuid,mode=0755,size=64m 0 0" /etc/fstab )
@@ -62,9 +93,13 @@ else
     if [ -e /etc/logrotate.d/asterisk ]; then
         rm -rf /etc/logrotate.d/asterisk
     fi
-    chmod +x /usr/src/utils/AllStar-build/common/mk-logrotate-asterisk.sh
-    /usr/src/utils/AllStar-build/common/mk-logrotate-asterisk.sh
+    chmod +x /usr/src/utils/RasLink-build/common/mk-logrotate-asterisk.sh
+    /usr/src/utils/RasLink-build/common/mk-logrotate-asterisk.sh
     echo "Logs will be rotated once a week."
     echo -e "Done\n"
+fi
+if [ "$( grep -ic "i2c-dev" /etc/modules )" == "0" ]; then
+    echo "i2c-dev" >> /etc/modules
+    modprobe i2c-dev
 fi
 exit 0

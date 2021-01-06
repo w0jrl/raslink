@@ -50,7 +50,7 @@ sleep 0.5
 cd /root
 mv .bashrc .bashrc.orig
 cat .bashrc.orig > .bashrc
-echo "/usr/src/utils/AllStar-build/debian/update-stage2.sh" >> .bashrc
+echo "/usr/src/utils/RasLink-build/debian/update-stage2.sh" >> .bashrc
 systemctl disable pulseaudio.service osspd.service asterisk.service nodenames.service updatenodelist.service &>/dev/null
 echo -e "REBOOT TO FINISH INSTALL\nWhen your node reboots, you need to log in\nto finish the update."
 echo "PRESS ENTER TO REBOOT"

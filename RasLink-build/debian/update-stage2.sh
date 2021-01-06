@@ -37,11 +37,11 @@ read
 # Restore bashrc
 mv /root/.bashrc.orig /root/.bashrc
 # Check for release upgrade
-chmod +x /usr/src/utils/AllStar-build/common/release-upgrade.sh
-status /usr/src/utils/AllStar-build/common/release-upgrade.sh
+chmod +x /usr/src/utils/RasLink-build/common/release-upgrade.sh
+status /usr/src/utils/RasLink-build/common/release-upgrade.sh
 # Check and update repository URL
-chmod +x /usr/src/utils/AllStar-build/common/remote-fetch.sh
-status /usr/src/utils/AllStar-build/common/remote-fetch.sh
+chmod +x /usr/src/utils/RasLink-build/common/remote-fetch.sh
+status /usr/src/utils/RasLink-build/common/remote-fetch.sh
 # Make sure version runs at login
 if [[ "$(grep -ic "/usr/bin/version" /root/.bashrc)" = "1" ]]; then
   sed -i '/\/usr\/bin\/version/d' /root/.bashrc
@@ -49,33 +49,31 @@ fi
 if [[ "$(grep -ic "/usr/bin/version" /root/.profile)" = "0" ]]; then
   echo "/usr/bin/version" >> /root/.profile
 fi
-chmod +x /usr/src/utils/AllStar-build/rpi/chk-packages.sh
-status /usr/src/utils/AllStar-build/rpi/chk-packages.sh
+chmod +x /usr/src/utils/RasLink-build/debian/chk-packages.sh
+status /usr/src/utils/RasLink-build/debian/chk-packages.sh
 sleep 0.5s
-chmod +x /usr/src/utils/AllStar-build/common/update-audio-config.sh
-status /usr/src/utils/AllStar-build/common/update-audio-config.sh
+chmod +x /usr/src/utils/RasLink-build/common/update-audio-config.sh
+status /usr/src/utils/RasLink-build/common/update-audio-config.sh
 sleep 0.5s
-chmod +x /usr/src/utils/AllStar-build/common/update-dahdi.sh
-status /usr/src/utils/AllStar-build/common/update-dahdi.sh
+chmod +x /usr/src/utils/RasLink-build/common/update-dahdi.sh
+status /usr/src/utils/RasLink-build/common/update-dahdi.sh
 sleep 0.5s
-chmod +x /usr/src/utils/AllStar-build/common/update-asterisk.sh
-status /usr/src/utils/AllStar-build/common/update-asterisk.sh
+chmod +x /usr/src/utils/RasLink-build/common/update-asterisk.sh
+status /usr/src/utils/RasLink-build/common/update-asterisk.sh
 sleep 0.5s
-chmod +x /usr/src/utils/AllStar-build/common/update-uridiag.sh
-status /usr/src/utils/AllStar-build/common/update-uridiag.sh
+chmod +x /usr/src/utils/RasLink-build/common/update-uridiag.sh
+status /usr/src/utils/RasLink-build/common/update-uridiag.sh
 sleep 0.5s
-chmod +x /usr/src/utils/AllStar-build/common/update-fail2ban.sh
-status /usr/src/utils/AllStar-build/common/update-fail2ban.sh
+chmod +x /usr/src/utils/RasLink-build/common/update-fail2ban.sh
+status /usr/src/utils/RasLink-build/common/update-fail2ban.sh
 sleep 0.5s
 # Make sure configuration files and scripts are loaded
 echo "Updating start up scripts..."
-(cp /usr/src/utils/AllStar-build/common/rc.updatenodelist /usr/local/bin/rc.updatenodelist;chmod +x /usr/local/bin/rc.updatenodelist)
-(cp /usr/src/utils/AllStar-build/common/rc.nodenames /usr/local/bin/rc.nodenames;chmod +x /usr/local/bin/rc.nodenames)
-(cp /usr/src/utils/AllStar-build/rpi/tmpfs.sh /usr/local/bin/tmpfs.sh;chmod +x /usr/local/bin/tmpfs.sh)
-(cp /usr/src/utils/AllStar-build/rpi/zram.sh /usr/local/bin/zram.sh;chmod +x /usr/local/bin/zram.sh)
-(cp /usr/src/utils/AllStar-build/common/timesync.hourly /usr/local/bin/timesync.hourly;chmod +x /usr/local/bin/timesync.hourly)
-chmod +x /usr/src/utils/AllStar-build/rpi/make-links.sh
-status /usr/src/utils/AllStar-build/rpi/make-links.sh
+(cp /usr/src/utils/RasLink-build/common/rc.updatenodelist /usr/local/bin/rc.updatenodelist;chmod +x /usr/local/bin/rc.updatenodelist)
+(cp /usr/src/utils/RasLink-build/common/rc.nodenames /usr/local/bin/rc.nodenames;chmod +x /usr/local/bin/rc.nodenames)
+(cp /usr/src/utils/RasLink-build/common/timesync.hourly /usr/local/bin/timesync.hourly;chmod +x /usr/local/bin/timesync.hourly)
+chmod +x /usr/src/utils/RasLink-build/debian/make-links.sh
+status /usr/src/utils/RasLink-build/debian/make-links.sh
 cp -a /usr/src/utils/astsrc/sounds/* /var/lib/asterisk/sounds
 gsmcount=$(find /var/lib/asterisk/sounds/rpt/ -maxdepth 1 -type f -name '*.gsm' -printf x | wc -c)
 if [ "$gsmcount" -ne "0" ]; then
@@ -89,18 +87,13 @@ cd /usr/src/utils
 echo -e "Done\n"
 sleep 0.5s
 echo "Updating system boot configuration..."
-cp /usr/src/utils/AllStar-build/rpi/boot-config.txt /boot/config.txt
-cp /usr/src/utils/AllStar-build/common/asterisk.service /etc/systemd/system
-cp /usr/src/utils/AllStar-build/common/updatenodelist.service /etc/systemd/system
-cp /usr/src/utils/AllStar-build/common/nodenames.service /etc/systemd/system
-cp /usr/src/utils/AllStar-build/rpi/tmpfs.service /etc/systemd/system
-cp /usr/src/utils/AllStar-build/rpi/zram.service /etc/systemd/system
-cp /usr/src/utils/AllStar-build/common/timesync.service /etc/systemd/system
+cp /usr/src/utils/RasLink-build/common/asterisk.service /etc/systemd/system
+cp /usr/src/utils/RasLink-build/common/updatenodelist.service /etc/systemd/system
+cp /usr/src/utils/RasLink-build/common/nodenames.service /etc/systemd/system
+cp /usr/src/utils/RasLink-build/common/timesync.service /etc/systemd/system
 systemctl daemon-reload
 systemctl enable pulseaudio.service osspd.service asterisk.service updatenodelist.service timesync.service &>/dev/null
 systemctl enable avahi-daemon &>/dev/null
-systemctl enable tmpfs.service &>/dev/null
-systemctl enable zram.service &>/dev/null
 if [ ! -e /root/.nonames ]; then
   systemctl enable nodenames.service &>/dev/null
 fi
@@ -108,26 +101,12 @@ if [ -e /etc/systemd/system/fail2ban.service ]; then
   systemctl enable fail2ban.service &>/dev/null
 fi
 sed -i '/snd_bcm2835/d;/snd_pcm_oss/d;/snd_mixer_oss/d' /etc/modules
-cpu=$(grep -ic 'for cpu' /etc/rc.local)
-governor=$(grep -ic 'scaling_governor' /etc/rc.local)
-if (( "$governor" >= "0" )) && [ "$cpu" = "0" ]; then
-  sed -i '/scaling_governor/c\
-for cpu in \/sys\/devices\/system\/cpu\/cpu\[0-9\]\*\; do echo -n performance \\\
-| tee $cpu\/cpufreq\/scaling_governor\; done \&\>\/dev\/null' /etc/rc.local
-else
-  if [ "$governor" = "0" ] && [ "$cpu" = "0" ]; then
-    sed -i '/Print the IP address/i\
-# Set CPU governor to performance\
-for cpu in \/sys\/devices\/system\/cpu\/cpu\[0-9\]\*\; do echo -n performance \\\
-| tee $cpu\/cpufreq\/scaling_governor\; done \&\>\/dev\/null' /etc/rc.local
-  fi
-fi
 $(which timedatectl) set-ntp off
-(cp /usr/src/utils/AllStar-build/common/irqbalance.daily /etc/cron.daily/irqbalance;chmod +x /etc/cron.daily/irqbalance)
+(cp /usr/src/utils/RasLink-build/common/irqbalance.daily /etc/cron.daily/irqbalance;chmod +x /etc/cron.daily/irqbalance)
 echo -e "Done\n"
 sleep 0.5s
-chmod +x /usr/src/utils/AllStar-build/common/system-update-messages.sh
-/usr/src/utils/AllStar-build/common/system-update-messages.sh
+chmod +x /usr/src/utils/RasLink-build/common/system-update-messages.sh
+/usr/src/utils/RasLink-build/common/system-update-messages.sh
 echo -e "UPDATE COMPLETE\nYou can run this tool at any time by typing 'system-update' at a root prompt."
 date +'%A, %B %d, %Y%t%t%T %Z' > /root/.lastupdate
 echo "REBOOTING TO APPLY CHANGES"

@@ -1,3 +1,11 @@
+## chore: Rename AllStar-build to RasLink-build
+>Wed Jan 6 02:59:21 2021 -0700
+
+>Author: Jeremy Lincicome [W0JRL] <admin@jlappliedtechnologies.com>
+
+Signed-off-by: Jeremy Lincicome [W0JRL] <admin@jlappliedtechnologies.com>
+
+
 ## rewrite(README.md): Update text and links
 >Sun Jan 3 22:28:45 2021 -0700
 

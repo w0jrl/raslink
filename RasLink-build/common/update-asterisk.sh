@@ -46,6 +46,6 @@ if [ -e /usr/local/bin/dsp.startup ]; then
     rm  /usr/local/bin/dsp.startup
 fi
 echo -e "Done\n"
-chmod +x /usr/src/utils/AllStar-build/common/asterisk-config-check.sh
-status /usr/src/utils/AllStar-build/common/asterisk-config-check.sh
+chmod +x /usr/src/utils/RasLink-build/common/asterisk-config-check.sh
+status /usr/src/utils/RasLink-build/common/asterisk-config-check.sh
 exit 0

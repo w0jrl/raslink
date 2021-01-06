@@ -55,10 +55,10 @@ sleep 0.5s
 # If no configuration files are available, install them
 if [ ! -e /etc/fail2ban/fail2ban.local ] || [ ! -e /etc/fail2ban/jail.d/00raslink.local ]; then
     echo "Installing Fail2Ban configuration..."
-    (status cp /usr/src/utils/AllStar-build/common/fail2ban-files/*.local /etc/fail2ban/;status mv /etc/fail2ban/00raslink.local /etc/fail2ban/jail.d/)
-    status cp /usr/src/utils/AllStar-build/common/fail2ban-files/fail2ban.rotate /etc/logrotate.d/fail2ban
+    (status cp /usr/src/utils/RasLink-build/common/fail2ban-files/*.local /etc/fail2ban/;status mv /etc/fail2ban/00raslink.local /etc/fail2ban/jail.d/)
+    status cp /usr/src/utils/RasLink-build/common/fail2ban-files/fail2ban.rotate /etc/logrotate.d/fail2ban
     status touch /var/log/fail2ban.log
-    status cp /usr/src/utils/AllStar-build/common/fail2ban-files/fail2ban.service /etc/systemd/system/
+    status cp /usr/src/utils/RasLink-build/common/fail2ban-files/fail2ban.service /etc/systemd/system/
     echo -e "Done\n"
     isF2bRunning=$(ps aux | grep 'fail2ban-server' | wc -l)
     if [ "$isF2bRunning" != "1" ]; then
@@ -71,8 +71,8 @@ if [ ! -e /etc/fail2ban/fail2ban.local ] || [ ! -e /etc/fail2ban/jail.d/00raslin
     echo  ""
 else
     echo "Updating RasLink Fail2Ban rules if required..."
-    status cp /usr/src/utils/AllStar-build/common/fail2ban-files/00raslink.local /etc/fail2ban/jail.d/ 
-    status cp /usr/src/utils/AllStar-build/common/fail2ban-files/fail2ban.service /etc/systemd/system/
+    status cp /usr/src/utils/RasLink-build/common/fail2ban-files/00raslink.local /etc/fail2ban/jail.d/ 
+    status cp /usr/src/utils/RasLink-build/common/fail2ban-files/fail2ban.service /etc/systemd/system/
     echo -e "Done\n"
     echo "Reloading Fail2Ban rules..."
     $(which fail2ban-client) reload

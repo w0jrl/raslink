@@ -17,20 +17,20 @@
 #    along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #
 # Script Start
-chmod +x /usr/src/utils/AllStar-build/debian/update-stage1.sh
-ln -fs /usr/src/utils/AllStar-build/debian/update-stage1.sh /usr/bin/system-update
+chmod +x /usr/src/utils/RasLink-build/debian/update-stage1.sh
+ln -fs /usr/src/utils/RasLink-build/debian/update-stage1.sh /usr/bin/system-update
 ln -fs /tmp/rpt_extnodes /var/lib/asterisk/rpt_extnodes
-chmod +x /usr/src/utils/AllStar-build/common/asterisk-restart.sh
-ln -fs /usr/src/utils/AllStar-build/common/asterisk-restart.sh /usr/bin/asterisk-restart
-chmod +x /usr/src/utils/AllStar-build/common/uricheck.sh
-ln -fs /usr/src/utils/AllStar-build/common/uricheck.sh /usr/bin/uricheck
-chmod +x /usr/src/utils/AllStar-build/common/version.sh
-ln -fs /usr/src/utils/AllStar-build/common/version.sh /usr/bin/version
-chmod +x /usr/src/utils/AllStar-build/common/end.sh
-ln -fs /usr/src/utils/AllStar-build/common/end.sh /usr/bin/end
-chmod +x /usr/src/utils/AllStar-build/common/nodenames.sh
-ln -fs /usr/src/utils/AllStar-build/common/nodenames.sh /usr/bin/nodenames
-chmod +x /usr/src/utils/AllStar-build/common/release-upgrade.sh
-ln -fs /usr/src/utils/AllStar-build/common/release-upgrade.sh /usr/bin/release-upgrade
+chmod +x /usr/src/utils/RasLink-build/common/asterisk-restart.sh
+ln -fs /usr/src/utils/RasLink-build/common/asterisk-restart.sh /usr/bin/asterisk-restart
+chmod +x /usr/src/utils/RasLink-build/common/uricheck.sh
+ln -fs /usr/src/utils/RasLink-build/common/uricheck.sh /usr/bin/uricheck
+chmod +x /usr/src/utils/RasLink-build/common/version.sh
+ln -fs /usr/src/utils/RasLink-build/common/version.sh /usr/bin/version
+chmod +x /usr/src/utils/RasLink-build/common/end.sh
+ln -fs /usr/src/utils/RasLink-build/common/end.sh /usr/bin/end
+chmod +x /usr/src/utils/RasLink-build/common/nodenames.sh
+ln -fs /usr/src/utils/RasLink-build/common/nodenames.sh /usr/bin/nodenames
+chmod +x /usr/src/utils/RasLink-build/common/release-upgrade.sh
+ln -fs /usr/src/utils/RasLink-build/common/release-upgrade.sh /usr/bin/release-upgrade
 unlink /etc/cron.hourly/ntpdate &>/dev/null
 exit 0
