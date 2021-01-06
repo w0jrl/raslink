@@ -1,3 +1,15 @@
+## chore: Add soft link  to point to RasLink-build
+>Wed Jan 6 11:31:48 2021 -0700
+
+>Author: Jeremy Lincicome [W0JRL] <admin@jlappliedtechnologies.com>
+
+'system-update' stage 1 is not aware of changes to the RasLink repository. When it sets up for stage-2,
+it expects to find the AllStar-build directory.
+We don't want to break 'system-update', so a soft link is needed.
+
+Signed-off-by: Jeremy Lincicome [W0JRL] <admin@jlappliedtechnologies.com>
+
+
 ## chore: Rename AllStar-build to RasLink-build
 >Wed Jan 6 02:59:21 2021 -0700
 
