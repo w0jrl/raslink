@@ -1,3 +1,15 @@
+## refactor(app_rpt.c): Update statpost function to use forked wget
+>Wed Jan 13 14:33:56 2021 -0700
+
+>Author: Ben Cranston <thecranston@gmail.com>
+
+This reverts statpost to using fork-n-exec of wget but retains the logic for individual node configurations.
+
+Contributed-by: Ben Cranston <thecranston@gmail.com>
+Edited-by: Jeremy Lincicome [W0JRL] <admin@jlappliedtechnologies.com>
+Signed-off-by: Jeremy Lincicome [W0JRL] <admin@jlappliedtechnologies.com>
+
+
 ## chore: Rename astsrc to src
 >Thu Jan 7 05:14:51 2021 -0700
 
