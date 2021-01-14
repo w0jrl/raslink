@@ -17,21 +17,27 @@
 #    along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #
 # Script Start
-check()
-{
+check() {
     cd /var/lib/asterisk/sounds/rpt/nodenames
+    oldbranchcount="$(git branch -l | grep -Ec "(^| )master( |$)")"
+    oldbranch="master"
+    newbranch="main"
     if [ "$(git config --get remote.origin.url | grep -ic "github")" == "1" ]; then
-      git remote set-url origin https://gitlab.com/w0jrl/nodenames.git
+        git remote set-url origin https://gitlab.com/w0jrl/nodenames.git
+    fi
+    if [ "${oldbranchcount}" = "1" ]; then
+        git branch -m ${oldbranch} ${newbranch} &>/dev/null
+        git fetch origin &>/dev/null
+        git branch --unset-upstream ${newbranch} &>/dev/null
+        git branch --set-upstream-to=origin/${newbranch} ${newbranch} &>/dev/null
     fi
 }
-clone()
-{
+clone() {
     cd /var/lib/asterisk/sounds/rpt/nodenames
     rm -r * .* &>/dev/null
     git clone https://gitlab.com/w0jrl/nodenames.git . &>/dev/null
 }
-update()
-{
+update() {
     (git clean -f;git checkout -f) &>/dev/null
     git pull &>/dev/null
 }

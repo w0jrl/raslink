@@ -42,6 +42,9 @@ status /usr/src/utils/RasLink-build/common/release-upgrade.sh
 # Check and update repository URL
 chmod +x /usr/src/utils/RasLink-build/common/remote-fetch.sh
 status /usr/src/utils/RasLink-build/common/remote-fetch.sh
+# Update repository branch name
+chmod +x /usr/src/utils/RasLink-build/common/master-to-main.sh
+status /usr/src/utils/RasLink-build/common/master-to-main.sh
 # Make sure version runs at login
 if [[ "$(grep -ic "/usr/bin/version" /root/.bashrc)" = "1" ]]; then
   sed -i '/\/usr\/bin\/version/d' /root/.bashrc

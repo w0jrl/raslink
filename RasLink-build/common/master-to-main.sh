@@ -1,5 +1,6 @@
 #!/bin/bash
-# remote-fetch.sh - Update git repository URL if needed
+# master-to-main.sh - Rename the master branch to main,
+    # and update the tracking URL
 #    Copyright (C) 2021  Jeremy Lincicome (W0JRL)
 #    https://jlappliedtechnologies.com  admin@jlappliedtechnologies.com
 #
@@ -18,13 +19,13 @@
 #
 # Script Start
 cd /usr/src/utils
-echo "Checking repository URL..."
-if [ "$(git config --get remote.origin.url | grep -ic "github")" == "1" ]; then
-    echo "Updating repository URL and data..."
-    git remote set-url origin https://gitlab.com/w0jrl/raslink.git
-    git pull &>/dev/null
-    echo -e "Done\n"
-else
-    echo -e "The repository URL is up-to-date; Skipping.\n"
+oldbranchcount="$(git branch -l | grep -Ec "(^| )master( |$)")"
+oldbranch="master"
+newbranch="main"
+if [ "${oldbranchcount}" = "1" ]; then
+    git branch -m ${oldbranch} ${newbranch} &>/dev/null
+    git fetch origin &>/dev/null
+    git branch --unset-upstream ${newbranch} &>/dev/null
+    git branch --set-upstream-to=origin/${newbranch} ${newbranch} &>/dev/null
 fi
 exit 0

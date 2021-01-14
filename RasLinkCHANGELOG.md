@@ -1,3 +1,13 @@
+## chore: Rename the master branch to main
+>Thu Jan 14 08:54:04 2021 -0700
+
+>Author: Jeremy Lincicome [W0JRL] <admin@jlappliedtechnologies.com>
+
+To comply with software development inclusiveness best practices, the "master" branch has been renamed to "main."
+
+Signed-off-by: Jeremy Lincicome [W0JRL] <admin@jlappliedtechnologies.com>
+
+
 ## refactor(app_rpt.c): Update statpost function to use forked wget
 >Wed Jan 13 14:33:56 2021 -0700
 
