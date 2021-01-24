@@ -1,3 +1,13 @@
+## chore(zram.sh): Remove sleep command
+>Sat Jan 23 21:32:34 2021 -0700
+
+>Author: Jeremy Lincicome [W0JRL] <admin@jlappliedtechnologies.com>
+
+Not needed.
+
+Signed-off-by: Jeremy Lincicome [W0JRL] <admin@jlappliedtechnologies.com>
+
+
 ## chore(zram.sh): Use zstd conpression algorithm if available
 >Sat Jan 23 17:40:15 2021 -0700
 

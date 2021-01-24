@@ -17,7 +17,6 @@
 #    along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #
 # Script Start
-sleep 2s
 loaded=$(lsmod|grep -ic 'zram')
 if (( ${loaded} >= "1" )); then
     echo "Zram is already loaded; exiting."
