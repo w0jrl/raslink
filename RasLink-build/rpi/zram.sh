@@ -34,7 +34,7 @@ fi
 swapoff -a
 #
 totalmem=$(free | grep -e '^Mem:' | awk '{print $2}')
-mem=$(echo $totalmem \/ $cores \* 1024 \* 1.5 | bc)
+mem=$(perl -E "print $totalmem/$cores*1024*1.5")
 #
 core=0
 while [[ ${core} < ${cores} ]]; do
