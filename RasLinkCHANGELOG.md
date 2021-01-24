@@ -1,3 +1,14 @@
+## chore(zram.sh): Use zstd conpression algorithm if available
+>Sat Jan 23 17:40:15 2021 -0700
+
+>Author: Jeremy Lincicome [W0JRL] <admin@jlappliedtechnologies.com>
+
+The zstd compression algorithm gives a much higher compression ratio than the default algorithm configured in the kernel on The Raspberry Pi.
+If the zstd algorithm is available, it will be used.
+
+Signed-off-by: Jeremy Lincicome [W0JRL] <admin@jlappliedtechnologies.com>
+
+
 ## chore: Rename the master branch to main
 >Thu Jan 14 08:54:04 2021 -0700
 
