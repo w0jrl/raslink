@@ -75,7 +75,7 @@ echo "Updating start up scripts..."
 (cp /usr/src/utils/RasLink-build/common/rc.updatenodelist /usr/local/bin/rc.updatenodelist;chmod +x /usr/local/bin/rc.updatenodelist)
 (cp /usr/src/utils/RasLink-build/common/rc.nodenames /usr/local/bin/rc.nodenames;chmod +x /usr/local/bin/rc.nodenames)
 (cp /usr/src/utils/RasLink-build/rpi/tmpfs.sh /usr/local/bin/tmpfs.sh;chmod +x /usr/local/bin/tmpfs.sh)
-(cp /usr/src/utils/RasLink-build/rpi/zram.sh /usr/local/bin/zram.sh;chmod +x /usr/local/bin/zram.sh)
+(cp /usr/src/utils/RasLink-build/rpi/zram.start /usr/src/utils/RasLink-build/rpi/zram.stop /usr/local/bin/.;chmod +x /usr/local/bin/zram.st*)
 (cp /usr/src/utils/RasLink-build/common/timesync.hourly /usr/local/bin/timesync.hourly;chmod +x /usr/local/bin/timesync.hourly)
 chmod +x /usr/src/utils/RasLink-build/rpi/make-links.sh
 status /usr/src/utils/RasLink-build/rpi/make-links.sh
@@ -83,6 +83,9 @@ cp -a /usr/src/utils/src/sounds/* /var/lib/asterisk/sounds
 gsmcount=$(find /var/lib/asterisk/sounds/rpt/ -maxdepth 1 -type f -name '*.gsm' -printf x | wc -c)
 if [ "$gsmcount" -ne "0" ]; then
   rm -f /var/lib/asterisk/sounds/rpt/*.gsm
+fi
+if [ -e /usr/local/bin/zram.sh ]; then
+  rm -f /usr/local/bin/zram.sh
 fi
 echo -e "Done\n"
 sleep 0.5s

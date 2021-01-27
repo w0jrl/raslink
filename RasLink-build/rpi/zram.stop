@@ -1,5 +1,5 @@
 #!/bin/bash
-# zram.sh - Use zram for swap space on Raspberry Pi
+# zram.stop - Turn off zram swap
 #    Copyright (C) 2021  Jeremy Lincicome (W0JRL)
 #    https://jlappliedtechnologies.com  admin@jlappliedtechnologies.com
 #
@@ -18,28 +18,10 @@
 #
 # Script Start
 loaded=$(lsmod|grep -ic 'zram')
-if (( ${loaded} >= "1" )); then
-    echo "Zram is already loaded; exiting."
+devices=$(zramctl | grep -ic 'swap')
+if (( ${loaded} >= "1" )) && (( ${devices} >= "1" )); then
+    swapoff -a
+    rmmod zram
     exit 0
 fi
-#
-cores=$(nproc --all)
-modprobe zram num_devices=${cores}
-zstd=$(cat /sys/block/zram0/comp_algorithm | grep -c 'zstd')
-if [ ${zstd} = "1" ]; then
-    for comp in /sys/block/zram[0-9]*; do
-        echo -n zstd | tee $comp/comp_algorithm; done &>/dev/null
-fi
-#
-swapoff -a
-#
-totalmem=$(free | grep -e '^Mem:' | awk '{print $2}')
-mem=$(perl -E "print $totalmem/$cores*1024*1.5")
-#
-core=0
-while [[ ${core} < ${cores} ]]; do
-    echo ${mem} > /sys/block/zram${core}/disksize
-    mkswap /dev/zram${core}
-    swapon -p 5 /dev/zram${core}
-    let core=core+1
-done
+exit 1
