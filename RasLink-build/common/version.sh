@@ -26,7 +26,7 @@ echo -e "WELCOME TO RASLINK\n"
 echo "Your software version is: $(git describe --tags)"
 echo -e "Your last update was on: $(cat /root/.lastupdate)\n"
 echo "Checking for available updates..."
-git fetch &>/dev/null
+git fetch --all --prune &>/dev/null
 echo -e "Done\n"
 echo -e "Your repository branch is set to: $(git status | grep "branch" | sed 's/On branch\ //' | sed 's/git pull/system-update/' | sed 's/to update your local branch/to UPDATE YOUR NODE/' | sed 's/up-to-date/UP-TO-DATE/')\n"
 echo -e "The RasLink license file is located at:\n/usr/src/utils/LICENSE_RasLink\n"

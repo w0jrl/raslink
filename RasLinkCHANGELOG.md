@@ -1,3 +1,11 @@
+## chore(version.sh): Prune deleted branches while fetching update information
+>Sun Jan 31 00:18:15 2021 -0700
+
+>Author: Jeremy Lincicome [W0JRL] <admin@jlappliedtechnologies.com>
+
+Signed-off-by: Jeremy Lincicome [W0JRL] <admin@jlappliedtechnologies.com>
+
+
 ## RL-21.02
 >Sat Jan 30 22:49:38 2021 -0700
 
