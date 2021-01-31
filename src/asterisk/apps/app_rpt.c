@@ -70,7 +70,7 @@
 /*! \file
  *
  * \brief Radio Repeater / Remote Base program
- *  version 21.01 01/01/2021
+ *  version 21.02 02/01/2021
  *
  * \author Jim Dixon, WB6NIL <jim@lambdatel.com>
  *
@@ -579,11 +579,11 @@ enum{DAQ_TYPE_UCHAMELEON};
 #endif
 
 /*
- * Please change this revision number when you make a edit
+ * Please change this revision number when you make an edit
  * use the simple format YYMMDD (better for sort)
 */
 
-ASTERISK_FILE_VERSION(__FILE__, "$Revision 200511")
+ASTERISK_FILE_VERSION(__FILE__, "$Revision 210201")
 // ASTERISK_FILE_VERSION(__FILE__, "$"ASTERISK_VERSION" $")
 
 #include <pthread.h>
@@ -702,7 +702,7 @@ int ast_playtones_start(struct ast_channel *chan, int vol, const char* tonelist,
 /*! Stop the tones from playing */
 void ast_playtones_stop(struct ast_channel *chan);
 
-static  char *tdesc = "Radio Repeater / Remote Base  version 21.01 01/01/2021";
+static  char *tdesc = "Radio Repeater / Remote Base  version 21.02 02/01/2021";
 
 static char *app = "Rpt";
 
