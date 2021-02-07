@@ -1,3 +1,14 @@
+## refactor(updatenodelist.service): Update description and configuration
+>Sat Feb 6 18:57:23 2021 -0700
+
+>Author: Jeremy Lincicome [W0JRL] <admin@jlappliedtechnologies.com>
+
+*   Change AllStar to RasLink
+*   Change BindsTo to PartOf
+
+Signed-off-by: Jeremy Lincicome [W0JRL] <admin@jlappliedtechnologies.com>
+
+
 ## RL-21.02.2
 >Sun Jan 31 00:57:05 2021 -0700
 

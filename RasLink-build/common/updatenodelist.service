@@ -17,11 +17,11 @@
 #
 # Service Start
 [Unit]
-Description=AllStar NodeList updater
+Description=RasLink NodeList updater
 Wants=network.target
 Requires=asterisk.service
 After=network-online.target asterisk.service
-BindsTo=asterisk.service
+PartOf=asterisk.service
 #
 [Service]
 Type=simple
