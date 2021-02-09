@@ -72,6 +72,7 @@ if [ ! -e /etc/fail2ban/fail2ban.local ] || [ ! -e /etc/fail2ban/jail.d/00raslin
 else
     echo "Updating RasLink Fail2Ban rules if required..."
     status cp /usr/src/utils/RasLink-build/common/fail2ban-files/00raslink.local /etc/fail2ban/jail.d/ 
+    status cp /usr/src/utils/RasLink-build/common/fail2ban-files/fail2ban.local /etc/fail2ban/ 
     status cp /usr/src/utils/RasLink-build/common/fail2ban-files/fail2ban.service /etc/systemd/system/
     echo -e "Done\n"
     echo "Reloading Fail2Ban rules..."
