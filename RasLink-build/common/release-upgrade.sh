@@ -17,8 +17,8 @@
 #    along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #
 # Script Start
-# Make sure release-upgrade runs in screen
-if [ -z "$STY" ]; then exec screen -S release-upgrade /bin/bash "$0"; fi
+# Make sure release-upgrade runs in tmux
+if [ -z "$TMUX" ]; then exec tmux new -s release-upgrade /bin/bash "$0"; fi
 # Functions
 status() {
     "$@"

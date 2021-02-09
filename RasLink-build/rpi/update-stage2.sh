@@ -19,8 +19,10 @@
 #
 # Script Start
 clear
-# Make sure system-update runs in screen
-if [ -z "$STY" ]; then exec screen -S system-update /bin/bash "$0"; fi
+# Make sure system-update runs in tmux
+tmx="$(dpkg -l | grep 'tmux')"
+if [ "${tmx}" = "0" ]; then apt-get -qq install tmux; fi
+if [ -z "$TMUX" ]; then exec tmux new -s system-update /bin/bash "$0"; fi
 status() {
     "$@"
     if [ $? -ne 0 ]; then
@@ -30,7 +32,7 @@ status() {
     fi
 }
 echo "RUNNING UPDATE; STAGE TWO"
-echo -e "This will take a while.\nSystem-update is running in a screen session.\nIf your session disconnects during the update,\nafter reconnecting, run\n'screen -dr'\nto reconnect to\nthe update screen.\n"
+echo -e "This will take a while.\nSystem-update is running in a tmux session.\nIf your session disconnects during the update,\nafter reconnecting, run\n'tmux a'\nto reconnect to\nthe update screen.\n"
 systemctl stop asterisk.service osspd.service pulseaudio.service &>/dev/null &
 echo -e "YOU CANNOT USE YOUR NODE DURING THIS PROCESS.\nIt has been disabled.\nPRESS ENTER TO CONTINUE"
 read

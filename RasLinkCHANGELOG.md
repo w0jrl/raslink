@@ -1,3 +1,11 @@
+## chore: Replace Screen with Tmux
+>Fri Feb 12 20:27:51 2021 -0700
+
+>Author: Jeremy Lincicome [W0JRL] <admin@jlappliedtechnologies.com>
+
+Signed-off-by: Jeremy Lincicome [W0JRL] <admin@jlappliedtechnologies.com>
+
+
 ## RL-21.02.4
 >Tue Feb 9 15:12:02 2021 -0700
 

@@ -27,7 +27,7 @@ if (( "$sourcesList" >= "1" )); then
 fi
 apt-get -qqy build-dep fail2ban
 apt-get -qqy --fix-missing --fix-broken install\
-    preload ntpdate g++ gcc make build-essential automake git screen ssh\
+    preload ntpdate g++ gcc make build-essential automake git tmux screen- ssh\
     sudo ca-certificates libusb-dev libeditline-dev libreadline-dev libedit-dev libgsm1-dev\
     libncurses5-dev libncursesw5-dev bison libasound2-dev\
     libcurl4-openssl-dev libiksemel-dev libvorbis-dev libjack-dev libss7-dev\
