@@ -20,8 +20,8 @@
 # Script Start
 clear
 # Make sure system-update runs in tmux
-tmx="$(dpkg -l | grep 'tmux')"
-if [ "${tmx}" = "0" ]; then apt-get -qq install tmux; fi
+tmx="$(dpkg -l | grep -c 'tmux')"
+if [ "${tmx}" = "0" ]; then apt-get -qq -y install tmux; fi
 if [ -z "$TMUX" ]; then exec tmux new -s system-update /bin/bash "$0"; fi
 status() {
     "$@"

@@ -1,3 +1,11 @@
+## bugfix(system-update*): Define the Tmix variables correctly
+>Mon Mar 1 14:01:49 2021 -0700
+
+>Author: Jeremy Lincicome [W0JRL] <admin@jlappliedtechnologies.com>
+
+Signed-off-by: Jeremy Lincicome [W0JRL] <admin@jlappliedtechnologies.com>
+
+
 ## RL-21.03
 >Mon Mar 1 12:10:52 2021 -0700
 
