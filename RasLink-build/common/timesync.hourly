@@ -18,8 +18,8 @@
 #
 # Script Start
 online=0
-ntp=$(which ntpdate)
-server=pool.ntp.org
+ntp="command ntpdate"
+server="pool.ntp.org"
 netcheck() {
     wget -q --spider http://1.1.1.1
     if [[ "$?" > "0" ]]; then
@@ -30,6 +30,10 @@ netcheck() {
     fi
 }
 timesync() {
+    date -s "$(wget -qSO- --max-redirect=0 ${server} 2>&1 | grep Date: | cut -d' ' -f5-8)Z"
+    if [[ "$?" = "1" ]]; then
+        online=0
+    fi
     ${ntp} ${server}
     if [[ "$?" = "1" ]]; then
         online=0
