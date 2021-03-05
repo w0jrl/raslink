@@ -1,3 +1,11 @@
+## RL-21.03.2
+>Fri Mar 5 12:44:06 2021 -0700
+
+>Author: Jeremy Lincicome [W0JRL] <admin@jlappliedtechnologies.com>
+
+Signed-off-by: Jeremy Lincicome [W0JRL] <admin@jlappliedtechnologies.com>
+
+
 ## bugfix(timesync.hourly): Make sure the date is set correctly
 >Fri Mar 5 11:56:48 2021 -0700
 
