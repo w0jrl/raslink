@@ -30,14 +30,11 @@ netcheck() {
     fi
 }
 timesync() {
-    date -s "$(wget -qSO- --max-redirect=0 ${server} 2>&1 | grep Date: | cut -d' ' -f5-8)Z"
-    if [[ "$?" = "1" ]]; then
-        online=0
-    fi
     ${ntp} ${server}
     if [[ "$?" = "1" ]]; then
         online=0
     else
+        date -s "$(wget -qSO- --max-redirect=0 ${server} 2>&1 | grep Date: | cut -d' ' -f5-8)Z"
         sleep 1h
     fi
 }

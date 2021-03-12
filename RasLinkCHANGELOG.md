@@ -1,3 +1,11 @@
+## bugfix(timesync.hourly): Make sure we don't crash Asterisk while syncing to the time server
+>Thu Mar 11 17:56:14 2021 -0700
+
+>Author: Jeremy Lincicome [W0JRL] <admin@jlappliedtechnologies.com>
+
+Signed-off-by: Jeremy Lincicome [W0JRL] <admin@jlappliedtechnologies.com>
+
+
 ## RL-21.03.2
 >Fri Mar 5 12:44:06 2021 -0700
 
