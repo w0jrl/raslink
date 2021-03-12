@@ -77,6 +77,7 @@ echo "Updating start up scripts..."
 (cp /usr/src/utils/RasLink-build/common/rc.updatenodelist /usr/local/bin/rc.updatenodelist;chmod +x /usr/local/bin/rc.updatenodelist)
 (cp /usr/src/utils/RasLink-build/common/rc.nodenames /usr/local/bin/rc.nodenames;chmod +x /usr/local/bin/rc.nodenames)
 (cp /usr/src/utils/RasLink-build/common/timesync.hourly /usr/local/bin/timesync.hourly;chmod +x /usr/local/bin/timesync.hourly)
+(cp /usr/src/utils/RasLink-build/common/timesync.startup /usr/local/bin/timesync.startup;chmod +x /usr/local/bin/timesync.startup)
 chmod +x /usr/src/utils/RasLink-build/debian/make-links.sh
 status /usr/src/utils/RasLink-build/debian/make-links.sh
 cp -a /usr/src/utils/src/sounds/* /var/lib/asterisk/sounds

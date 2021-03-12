@@ -79,6 +79,8 @@ echo "Updating start up scripts..."
 (cp /usr/src/utils/RasLink-build/rpi/tmpfs.sh /usr/local/bin/tmpfs.sh;chmod +x /usr/local/bin/tmpfs.sh)
 (cp /usr/src/utils/RasLink-build/rpi/zram.start /usr/src/utils/RasLink-build/rpi/zram.stop /usr/local/bin/.;chmod +x /usr/local/bin/zram.st*)
 (cp /usr/src/utils/RasLink-build/common/timesync.hourly /usr/local/bin/timesync.hourly;chmod +x /usr/local/bin/timesync.hourly)
+(cp /usr/src/utils/RasLink-build/common/timesync.startup /usr/local/bin/timesync.startup;chmod +x /usr/local/bin/timesync.startup)
+
 chmod +x /usr/src/utils/RasLink-build/rpi/make-links.sh
 status /usr/src/utils/RasLink-build/rpi/make-links.sh
 cp -a /usr/src/utils/src/sounds/* /var/lib/asterisk/sounds

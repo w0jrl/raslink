@@ -55,6 +55,7 @@ echo "Setting up startup scripts and system-update..."
 (cp /usr/src/utils/RasLink-build/rpi/tmpfs.sh /usr/local/bin/tmpfs.sh;chmod +x /usr/local/bin/tmpfs.sh)
 (cp /usr/src/utils/RasLink-build/rpi/zram.sh /usr/local/bin/zram.sh;chmod +x /usr/local/bin/zram.sh)
 (cp /usr/src/utils/RasLink-build/common/timesync.hourly /usr/local/bin/timesync.hourly;chmod +x /usr/local/bin/timesync.hourly)
+(cp /usr/src/utils/RasLink-build/common/timesync.startup /usr/local/bin/timesync.startup;chmod +x /usr/local/bin/timesync.startup)
 cp /usr/src/utils/RasLink-build/common/asterisk.service /etc/systemd/system
 cp /usr/src/utils/RasLink-build/common/updatenodelist.service /etc/systemd/system
 cp /usr/src/utils/RasLink-build/common/nodenames.service /etc/systemd/system

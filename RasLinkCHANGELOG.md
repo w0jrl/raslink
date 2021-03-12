@@ -1,3 +1,13 @@
+## chore(timesync*): Move the date command to its own script
+>Fri Mar 12 04:10:56 2021 -0700
+
+>Author: Jeremy Lincicome [W0JRL] <admin@jlappliedtechnologies.com>
+
+When the date command was running once an hour, it was causing Asterisk to restart. The date command will now only run once when the timesync service is started.
+
+Signed-off-by: Jeremy Lincicome [W0JRL] <admin@jlappliedtechnologies.com>
+
+
 ## RL-21.03.3
 >Thu Mar 11 17:58:59 2021 -0700
 
