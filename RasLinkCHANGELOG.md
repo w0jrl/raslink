@@ -1,3 +1,11 @@
+## style(timesync.hourly): Remove unneeded blank line
+>Sat Mar 13 06:43:35 2021 -0700
+
+>Author: Jeremy Lincicome [W0JRL] <admin@jlappliedtechnologies.com>
+
+Signed-off-by: Jeremy Lincicome [W0JRL] <admin@jlappliedtechnologies.com>
+
+
 ## RL-21.03.4
 >Fri Mar 12 04:13:49 2021 -0700
 

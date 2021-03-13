@@ -34,7 +34,6 @@ timesync() {
     if [[ "$?" = "1" ]]; then
         online=0
     else
-
         sleep 1h
     fi
 }
