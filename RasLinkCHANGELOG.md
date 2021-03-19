@@ -1,3 +1,15 @@
+## feature(chan_usrp.c): Add DTMF decoding
+>Sun Mar 21 14:29:47 2021 -0600
+
+>Author: Danny Lloyd <kb4mdd@arrl.net>
+
+*   Cleaned up the compiler warnings
+
+Contributed-by: Danny Lloyd <kb4mdd@arrl.net>
+Edited-by: Jeremy Lincicome [W0JRL] <admin@jlappliedtechnologies.com>
+Signed-off-by: Jeremy Lincicome [W0JRL] <admin@jlappliedtechnologies.com>
+
+
 ## style(timesync.hourly): Remove unneeded blank line
 >Sat Mar 13 06:43:35 2021 -0700
 
