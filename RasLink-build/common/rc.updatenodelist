@@ -17,17 +17,17 @@
 #    along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #
 # Script Start
-TOPDOMAIN=pttlink.org
+TOPDOMAIN="pttlink.org"
 SUBDOMAINS="nodes1 nodes2 nodes3 nodes4"
-FILEPATH=/tmp
-WGET="$( which wget )"
-CP="$( which cp )"
-MV="$( which mv )"
-RM="$( which rm )"
-CHMOD="$( which chmod )"
-GREP="$( which grep )"
-CAT="$( which cat )"
-DATE="$( which date)"
+FILEPATH="/tmp"
+WGET="command wget"
+CP="command cp"
+MV="command mv"
+RM="command rm"
+CHMOD="command chmod"
+GREP="command grep"
+CAT="command cat"
+DATE="command date"
 #
 # Diagnostics
 dry_run=0

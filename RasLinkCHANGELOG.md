@@ -1,3 +1,11 @@
+## refactor(rc.updatenodelist): Replace which with command
+>Tue Mar 23 21:33:39 2021 -0600
+
+>Author: Jeremy Lincicome [W0JRL] <admin@jlappliedtechnologies.com>
+
+Signed-off-by: Jeremy Lincicome [W0JRL] <admin@jlappliedtechnologies.com>
+
+
 ## feature(chan_usrp.c): Add DTMF decoding
 >Sun Mar 21 14:29:47 2021 -0600
 
