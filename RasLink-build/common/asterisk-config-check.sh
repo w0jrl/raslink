@@ -1,5 +1,5 @@
 #!/bin/bash
-# asterisk-config-check.sh - Update Asterisk configuration files if required
+# asterisk-config-check.sh: Update Asterisk configuration files if required
 #    Copyright (C) 2021  Jeremy Lincicome (W0JRL)
 #    https://jlappliedtechnologies.com  admin@jlappliedtechnologies.com
 #

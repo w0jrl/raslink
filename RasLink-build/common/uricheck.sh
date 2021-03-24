@@ -1,5 +1,5 @@
 #!/bin/bash
-# uricheck.sh - Check a USB Radio Interface (URI) for problems
+# uricheck.sh: Check a USB Radio Interface (URI) for problems
 #    Copyright (C) 2021  Jeremy Lincicome (W0JRL)
 #    https://jlappliedtechnologies.com  admin@jlappliedtechnologies.com
 #

@@ -1,6 +1,6 @@
 #!/bin/bash
-# master-to-main.sh - Rename the master branch to main,
-    # and update the tracking URL
+# master-to-main.sh: Rename the master branch to main,
+# and update the tracking URL
 #    Copyright (C) 2021  Jeremy Lincicome (W0JRL)
 #    https://jlappliedtechnologies.com  admin@jlappliedtechnologies.com
 #

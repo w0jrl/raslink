@@ -1,4 +1,4 @@
-# jail.local - User customizable rules for Fail2Ban
+# jail.local: User customizable rules for Fail2Ban
 #
 # USER DEFINED JAILS SHOULD BE PLACED IN THIS FILE.
 # This file will not be overwritten by system-update.

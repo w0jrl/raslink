@@ -1,5 +1,5 @@
 #! /bin/bash
-# update-asterisk.sh - Build asterisk for AllStar
+# update-asterisk.sh: Build asterisk for AllStar
 #    Copyright (C) 2021  Jeremy Lincicome (W0JRL)
 #    https://jlappliedtechnologies.com  admin@jlappliedtechnologies.com
 #

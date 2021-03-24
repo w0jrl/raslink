@@ -1,5 +1,5 @@
 #!/bin/bash
-# update-stage1.sh - Update the system
+# update-stage1.sh: Update the system
 # Stage One
 #    Copyright (C) 2021  Jeremy Lincicome (W0JRL)
 #    https://jlappliedtechnologies.com  admin@jlappliedtechnologies.com

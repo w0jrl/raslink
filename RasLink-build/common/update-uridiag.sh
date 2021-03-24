@@ -1,5 +1,5 @@
 #!/bin/bash
-# update-uridiag.sh - Build Uridiag
+# update-uridiag.sh: Build Uridiag
 #    Copyright (C) 2021  Jeremy Lincicome (W0JRL)
 #    https://jlappliedtechnologies.com  admin@jlappliedtechnologies.com
 #

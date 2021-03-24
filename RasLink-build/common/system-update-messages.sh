@@ -1,5 +1,5 @@
 #!/bin/bash
-# system-update-messages.sh - Show important announcements
+# system-update-messages.sh: Show important announcements
 #    Copyright (C) 2021  Jeremy Lincicome (W0JRL)
 #    https://jlappliedtechnologies.com  admin@jlappliedtechnologies.com
 #

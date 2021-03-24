@@ -1,5 +1,5 @@
 #!/bin/bash
-# raslink-rpi-image-prep.sh - Prepare a clean image for AllStar on Raspbian
+# raslink-rpi-image-prep.sh: Prepare a clean image for AllStar on Raspbian
 #    Copyright (C) 2021  Jeremy Lincicome (W0JRL)
 #    https://jlappliedtechnologies.com  admin@jlappliedtechnologies.com
 #

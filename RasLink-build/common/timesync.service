@@ -1,4 +1,4 @@
-# timesync.service - Sync time from NTP servers
+# timesync.service: Sync time from NTP servers
 #    Copyright (C) 2021  Jeremy Lincicome (W0JRL)
 #    https://jlappliedtechnologies.com  admin@jlappliedtechnologies.com
 #

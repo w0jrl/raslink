@@ -1,5 +1,5 @@
 #!/bin/bash
-# asterisk-restart.sh - Restart Asterisk from a radio
+# asterisk-restart.sh: Restart Asterisk from a radio
 #    Copyright (C) 2021  Jeremy Lincicome (W0JRL)
 #    https://jlappliedtechnologies.com  admin@jlappliedtechnologies.com
 #

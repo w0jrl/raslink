@@ -1,5 +1,5 @@
 #!/bin/bash
-# update-audio-config.sh - Update PulseAudio configuration if required
+# update-audio-config.sh: Update PulseAudio configuration if required
 #    Copyright (C) 2021  Jeremy Lincicome (W0JRL)
 #    https://jlappliedtechnologies.com  admin@jlappliedtechnologies.com
 #

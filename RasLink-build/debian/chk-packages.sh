@@ -1,5 +1,5 @@
 #!/bin/bash
-# chk-packages.sh - Check package status, and install needed packages
+# chk-packages.sh: Check package status, and install needed packages
 #    Copyright (C) 2021  Jeremy Lincicome (W0JRL)
 #    https://jlappliedtechnologies.com  admin@jlappliedtechnologies.com
 #

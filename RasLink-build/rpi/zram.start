@@ -1,5 +1,5 @@
 #!/bin/bash
-# zram.start - Use zram for swap space
+# zram.start: Use zram for swap space
 #    Copyright (C) 2021  Jeremy Lincicome (W0JRL)
 #    https://jlappliedtechnologies.com  admin@jlappliedtechnologies.com
 #

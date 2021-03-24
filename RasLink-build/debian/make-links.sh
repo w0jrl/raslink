@@ -1,5 +1,5 @@
 #!/bin/bash
-# make-links.sh - Create system soft links for AllStar
+# make-links.sh: Create system soft links for AllStar
 #    Copyright (C) 2021  Jeremy Lincicome (W0JRL)
 #    https://jlappliedtechnologies.com  admin@jlappliedtechnologies.com
 #

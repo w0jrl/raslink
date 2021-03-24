@@ -1,4 +1,4 @@
-# 00raslink.local - Default rules for Fail2Ban
+# 00raslink.local: Default rules for Fail2Ban
 #
 # HOW TO ACTIVATE JAILS:
 #
@@ -64,9 +64,9 @@ bantime.formula = ban.Time * (1<<(ban.Count if ban.Count<20 else 20)) * banFacto
 # "bantime.multipliers" used to calculate next value of ban time instead of formula, coresponding 
 # previously ban count and given "bantime.factor" (for multipliers default is 1);
 # following example grows ban time by 1, 2, 4, 8, 16 ... and if last ban count greater as multipliers count, 
-# always used last multiplier (64 in example), for factor '1' and original ban time 600 - 10.6 hours
+# always used last multiplier (64 in example), for factor '1' and original ban time 600: 10.6 hours
 #bantime.multipliers = 1 2 4 8 16 32 64
-# following example can be used for small initial ban time (bantime=60) - it grows more aggressive at begin,
+# following example can be used for small initial ban time (bantime=60): it grows more aggressive at begin,
 # for bantime=60 the multipliers are minutes and equal: 1 min, 5 min, 30 min, 1 hour, 5 hour, 12 hour, 1 day, 2 day
 #bantime.multipliers = 1 5 30 60 300 720 1440 2880
 
@@ -391,7 +391,7 @@ maxretry = 2
 
 
 # Ban attackers that try to use PHP's URL-fopen() functionality
-# through GET/POST variables. - Experimental, with more than a year
+# through GET/POST variables.: Experimental, with more than a year
 # of usage in production environments.
 
 [php-url-fopen]
@@ -833,7 +833,7 @@ backend   = %(syslog_backend)s
 maxretry  = 2
 
 
-# stunnel - need to set port for this
+# stunnel: need to set port for this
 [stunnel]
 
 logpath = /var/log/stunnel4/stunnel.log

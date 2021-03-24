@@ -1,5 +1,5 @@
 #!/bin/bash
-# rm-pi.sh - Remove the pi user if needed
+# rm-pi.sh: Remove the pi user if needed
 #    Copyright (C) 2021  Jeremy Lincicome (W0JRL)
 #    https://jlappliedtechnologies.com  admin@jlappliedtechnologies.com
 #

@@ -1,5 +1,5 @@
 #!/bin/bash
-# raslink-pc-install.sh - Install RasLink/AllStar on Debian
+# raslink-pc-install.sh: Install RasLink/AllStar on Debian
 #    Copyright (C) 2021  Jeremy Lincicome (W0JRL)
 #    https://jlappliedtechnologies.com  admin@jlappliedtechnologies.com
 #

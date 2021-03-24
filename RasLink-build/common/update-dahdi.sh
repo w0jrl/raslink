@@ -1,5 +1,5 @@
 #!/bin/bash
-# update-dahdi.sh - Build Dahdi for AllStar
+# update-dahdi.sh: Build Dahdi for AllStar
 #    Copyright (C) 2021  Jeremy Lincicome (W0JRL)
 #    https://jlappliedtechnologies.com  admin@jlappliedtechnologies.com
 #

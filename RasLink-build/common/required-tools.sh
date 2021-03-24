@@ -1,5 +1,5 @@
 #! /bin/bash
-# required-tools.sh - Install packages required to install AllStar Debian/RasLink
+# required-tools.sh: Install packages required to install AllStar Debian/RasLink
 #    Copyright (C) 2021  Jeremy Lincicome (W0JRL)
 #    https://jlappliedtechnologies.com  admin@jlappliedtechnologies.com
 #

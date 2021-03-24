@@ -1,5 +1,5 @@
 #! /bin/bash
-# mk-logrotate-asterisk.sh - Rotate logs for AllStar
+# mk-logrotate-asterisk.sh: Rotate logs for Asterisk
 #    Copyright (C) 2021  Jeremy Lincicome (W0JRL)
 #    https://jlappliedtechnologies.com  admin@jlappliedtechnologies.com
 #

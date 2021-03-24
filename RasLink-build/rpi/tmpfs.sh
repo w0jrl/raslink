@@ -1,5 +1,5 @@
 #!/bin/bash
-# tmpfs.sh - Create ram filesystems for temporary files
+# tmpfs.sh: Create ram filesystems for temporary files
 #    Copyright (C) 2021  Jeremy Lincicome (W0JRL)
 #    https://jlappliedtechnologies.com  admin@jlappliedtechnologies.com
 #

@@ -1,5 +1,5 @@
 #!/bin/bash
-# nodenames.sh - Enable/disable nodenames
+# nodenames.sh: Enable/disable nodenames
 #    Copyright (C) 2021  Jeremy Lincicome (W0JRL)
 #    https://jlappliedtechnologies.com  admin@jlappliedtechnologies.com
 #

@@ -1,4 +1,4 @@
-# osspd.service - Load OSS Proxy Daemon on system boot
+# osspd.service: Load OSS Proxy Daemon on system boot
 #    Copyright (C) 2021  Jeremy Lincicome (W0JRL)
 #    https://jlappliedtechnologies.com  admin@jlappliedtechnologies.com
 #
