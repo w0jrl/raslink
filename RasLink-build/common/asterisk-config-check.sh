@@ -174,7 +174,7 @@ fi
 # Update config files to use pttlink.org
 aslurl=$(grep -RiIl 'allstarlink.org' --include="*.conf" | wc -w)
 if [[ $aslurl != "0" ]]; then
-    find . -type f -exec sed -i 's/allstarlink\.org/pttlink.org/g' {} +
+    find . -type f -exec sed -i -r '/statpost_url|register/!s/allstarlink\.org/pttlink.org/g' {} +
 fi
 echo -e "Done.\n"
 exit 0

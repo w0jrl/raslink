@@ -1,3 +1,14 @@
+## bugfix(asterisk-config-check.sh): Don't overwrite user customizations
+>Wed Mar 31 22:00:47 2021 -0600
+
+>Author: Jeremy Lincicome [W0JRL] <admin@jlappliedtechnologies.com>
+
+*   Ignore registration lines in </etc/asterisk/iax.conf>
+*   Ignore "statpost_url" (if defined) in </etc/asterisk/rpt.conf>
+
+Signed-off-by: Jeremy Lincicome [W0JRL] <admin@jlappliedtechnologies.com>
+
+
 ## docs(RasLink-build*): Update comment formatting
 >Sun Mar 28 13:47:25 2021 -0600
 
