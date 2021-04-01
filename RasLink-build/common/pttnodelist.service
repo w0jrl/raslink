@@ -1,4 +1,4 @@
-# updatenodelist.service: Update list of node Ip addresses
+# pttnodelist.service - Update list of node Ip addresses from PTTLink
 #    Copyright (C) 2021  Jeremy Lincicome (W0JRL)
 #    https://jlappliedtechnologies.com  admin@jlappliedtechnologies.com
 #
@@ -17,7 +17,7 @@
 #
 # Service Start
 [Unit]
-Description=RasLink NodeList updater
+Description=RasLink NodeList updater for PTTLink
 Wants=network.target
 Requires=asterisk.service
 After=network-online.target asterisk.service
@@ -26,8 +26,8 @@ PartOf=asterisk.service
 [Service]
 Type=simple
 StandardOutput=null
-ExecStart=/usr/local/bin/rc.updatenodelist &
-ExecStop=/usr/bin/killall -9 rc.updatenodelist
+ExecStart=/usr/local/bin/rc.pttnodelist &
+ExecStop=/usr/bin/killall -9 rc.pttnodelist
 #
 # safe_emulation
 Restart=always

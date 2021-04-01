@@ -1,0 +1,104 @@
+#! /bin/bash
+# rc.aslnodelist: Download the list of nodes from AllStarLink
+#    Copyright (C) 2021  Jeremy Lincicome (W0JRL)
+#    https://jlappliedtechnologies.com  admin@jlappliedtechnologies.com
+#
+#    This program is free software; you can redistribute it and/or modify
+#    it under the terms of the GNU General Public License as published by
+#    the Free Software Foundation, either version 3 of the License, or
+#    (at your option) any later version.
+#
+#    This program is distributed in the hope that it will be useful,
+#    but WITHOUT ANY WARRANTY; without even the implied warranty of
+#    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+#    GNU General Public License for more details.
+#
+#    You should have received a copy of the GNU General Public License
+#    along with this program.  If not, see <http://www.gnu.org/licenses/>.
+#
+# Script Start
+TOPDOMAIN="allstarlink.org"
+SUBDOMAINS="nodes1 nodes2 nodes3 nodes4"
+FILEPATH="/tmp"
+WGET="command wget"
+CP="command cp"
+MV="command mv"
+RM="command rm"
+CHMOD="command chmod"
+GREP="command grep"
+CAT="command cat"
+DATE="command date"
+#
+# Diagnostics
+dry_run=0
+verbose=0
+#
+downloads=0
+retries=0
+while [ 1 ]; do
+    for i in $SUBDOMAINS; do
+        res=0
+        while [ $res = "0" ]; do
+            $WGET -q -O /tmp/rpt_allstarlink-temp http://$i.$TOPDOMAIN/cgi-bin/nodes.pl
+            res=$?
+            if [ $res = "0" ]; then
+                $GREP -q extnodes /tmp/rpt_allstarlink-temp
+            if [ $? = "0" ]; then
+                downloads=$((downloads+1))
+                retries=0
+            if [ $dry_run = "0" ]; then
+                $CHMOD 700 /tmp/rpt_allstarlink-temp
+                $MV -f $FILEPATH/rpt_allstarlink-temp $FILEPATH/rpt_allstarlink
+            else
+                $CAT /tmp/rpt_allstarlink-temp
+            fi
+            if [ $verbose -ne 0 ]; then
+                echo "Retrieved node list from $i.$TOPDOMAIN"
+                $DATE
+            fi
+            if [ $downloads -gt 100 ]; then
+                downloads=0
+                sleep 2m
+                break; # Don't dwell on one server, Look for a new server
+            fi
+            if [ $dry_run = "0" ]; then
+                sleep 2m
+            else
+                sleep 5s
+            fi
+            else
+            if [[ $verbose != "0" ]]; then
+                echo "Retreived garbage node list from $i.$TOPDOMAIN"
+                echo "Moving to next node server in list..."
+            fi
+            $RM -f /tmp/rpt_allstarlink-temp			
+            downloads=0
+            retries=$((retries+1))
+            if [[ $retries > 100 ]]; then
+                sleep 15m # doze for 15 min to lighten network load
+            else
+                sleep 30s
+            fi
+                break
+            fi
+            else
+                $RM -f /tmp/rpt_allstarlink-temp
+            if [[ $verbose != "0" ]]; then
+                echo "Problem retrieving node list from $i.$TOPDOMAIN, trying another server"
+                downloads=0
+                retries=$((retries+1))
+            fi
+            if [ $verbose = "0" ]; then
+                if [[ $retries > "100" ]]; then
+                    sleep 15m # doze for 15 min to lighten network load
+                else
+                    sleep 30s
+                fi
+            else
+                sleep 5s
+            fi
+                break
+            fi
+        done
+    done
+done

@@ -1,5 +1,5 @@
 #! /bin/bash
-# rc.updatenodelist: Download the list of nodes from PTTLink
+# rc.pttnodelist: Download the list of nodes from PTTLink
 #    Copyright (C) 2021  Jeremy Lincicome (W0JRL)
 #    https://jlappliedtechnologies.com  admin@jlappliedtechnologies.com
 #

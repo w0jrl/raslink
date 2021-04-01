@@ -46,16 +46,16 @@ echo "Installing default sound files..."
 cp -a /usr/src/utils/src/sounds/* /var/lib/asterisk/sounds
 echo "Done"
 echo "Setting up startup scripts and system-update..."
-(cp /usr/src/utils/RasLink-build/common/rc.updatenodelist /usr/local/bin/rc.updatenodelist;chmod +x /usr/local/bin/rc.updatenodelist)
+(cp /usr/src/utils/RasLink-build/common/rc.pttlinknodelist /usr/src/utils/RasLink-build/common/rc.allstarlinknodelist /usr/local/bin/.;chmod +x /usr/local/bin/rc.*nodelist)
 (cp /usr/src/utils/RasLink-build/common/rc.nodenames /usr/local/bin/rc.nodenames;chmod +x /usr/local/bin/rc.nodenames)
 (cp /usr/src/utils/RasLink-build/common/timesync.hourly /usr/local/bin/timesync.hourly;chmod +x /usr/local/bin/timesync.hourly)
 (cp /usr/src/utils/RasLink-build/common/timesync.startup /usr/local/bin/timesync.startup;chmod +x /usr/local/bin/timesync.startup)
 cp /usr/src/utils/RasLink-build/common/asterisk.service /etc/systemd/system
-cp /usr/src/utils/RasLink-build/common/updatenodelist.service /etc/systemd/system
+cp /usr/src/utils/RasLink-build/common/pttnodelist.service /usr/src/utils/RasLink-build/common/aslnodelist.service /etc/systemd/system/.
 cp /usr/src/utils/RasLink-build/common/nodenames.service /etc/systemd/system
 cp /usr/src/utils/RasLink-build/common/timesync.service /etc/systemd/system
 systemctl daemon-reload
-systemctl enable pulseaudio.service osspd.service asterisk.service updatenodelist.service nodenames.service fail2ban.service timesync.service &>/dev/null
+systemctl enable pulseaudio.service osspd.service asterisk.service pttnodelist.service aslnodelist.service nodenames.service fail2ban.service timesync.service &>/dev/null
 $(which timedatectl) set-ntp off
 (cp /usr/src/utils/RasLink-build/common/irqbalance.daily /etc/cron.daily/irqbalance;chmod +x /etc/cron.daily/irqbalance)
 chmod +x /usr/src/utils/RasLink-build/debian/make-links.sh

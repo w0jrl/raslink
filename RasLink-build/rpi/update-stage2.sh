@@ -74,7 +74,7 @@ status /usr/src/utils/RasLink-build/common/update-fail2ban.sh
 sleep 0.5s
 # Make sure configuration files and scripts are loaded
 echo "Updating start up scripts..."
-(cp /usr/src/utils/RasLink-build/common/rc.updatenodelist /usr/local/bin/rc.updatenodelist;chmod +x /usr/local/bin/rc.updatenodelist)
+(cp /usr/src/utils/RasLink-build/common/rc.pttnodelist /usr/src/utils/RasLink-build/common/rc.aslnodelist /usr/local/bin/.;chmod +x /usr/local/bin/rc.*nodelist)
 (cp /usr/src/utils/RasLink-build/common/rc.nodenames /usr/local/bin/rc.nodenames;chmod +x /usr/local/bin/rc.nodenames)
 (cp /usr/src/utils/RasLink-build/rpi/tmpfs.sh /usr/local/bin/tmpfs.sh;chmod +x /usr/local/bin/tmpfs.sh)
 (cp /usr/src/utils/RasLink-build/rpi/zram.start /usr/src/utils/RasLink-build/rpi/zram.stop /usr/local/bin/.;chmod +x /usr/local/bin/zram.st*)
@@ -101,13 +101,13 @@ sleep 0.5s
 echo "Updating system boot configuration..."
 cp /usr/src/utils/RasLink-build/rpi/boot-config.txt /boot/config.txt
 cp /usr/src/utils/RasLink-build/common/asterisk.service /etc/systemd/system
-cp /usr/src/utils/RasLink-build/common/updatenodelist.service /etc/systemd/system
+cp /usr/src/utils/RasLink-build/common/pttnodelist.service /usr/src/utils/RasLink-build/common/aslnodelist.service /etc/systemd/system/.
 cp /usr/src/utils/RasLink-build/common/nodenames.service /etc/systemd/system
 cp /usr/src/utils/RasLink-build/rpi/tmpfs.service /etc/systemd/system
 cp /usr/src/utils/RasLink-build/rpi/zram.service /etc/systemd/system
 cp /usr/src/utils/RasLink-build/common/timesync.service /etc/systemd/system
 systemctl daemon-reload
-systemctl enable pulseaudio.service osspd.service asterisk.service updatenodelist.service timesync.service &>/dev/null
+systemctl enable pulseaudio.service osspd.service asterisk.service pttnodelist.service aslnodelist.service timesync.service &>/dev/null
 systemctl enable avahi-daemon &>/dev/null
 systemctl enable tmpfs.service &>/dev/null
 systemctl enable zram.service &>/dev/null

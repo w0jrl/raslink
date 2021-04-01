@@ -176,5 +176,13 @@ aslurl=$(grep -RiIl 'allstarlink.org' --include="*.conf" | wc -w)
 if [[ $aslurl != "0" ]]; then
     find . -type f -exec sed -i -r '/statpost_url|register/!s/allstarlink\.org/pttlink.org/g' {} +
 fi
+# Support both AllStarLink and PTTLink node lists
+aslnodes=$(grep -RiIl 'rpt_allstarlink' --include="rpt*" | wc -w)
+if [[ $aslnodes = "0" ]]; then
+    find . -type f -exec sed -i -e '/controlstates \=/a\
+;\
+;nodes = /var/lib/asterisk/rpt_allstarlink\
+     ; Uncomment this to use the AllStarLink node list for this node.' {} +
+fi
 echo -e "Done.\n"
 exit 0

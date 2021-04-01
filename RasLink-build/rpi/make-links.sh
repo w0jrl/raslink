@@ -1,5 +1,5 @@
 #!/bin/bash
-# make-links.sh: Create system soft links for AllStar
+# make-links.sh: Create system soft links for RasLink
 #    Copyright (C) 2021  Jeremy Lincicome (W0JRL)
 #    https://jlappliedtechnologies.com  admin@jlappliedtechnologies.com
 #
@@ -20,6 +20,7 @@
 chmod +x /usr/src/utils/RasLink-build/rpi/update-stage1.sh
 ln -fs /usr/src/utils/RasLink-build/rpi/update-stage1.sh /usr/bin/system-update
 ln -fs /tmp/rpt_extnodes /var/lib/asterisk/rpt_extnodes
+ln -fs /tmp/rpt_allstarlink /var/lib/asterisk/rpt_allstarlink
 chmod +x /usr/src/utils/RasLink-build/rpi/wifi-setup.sh
 ln -fs /usr/src/utils/RasLink-build/rpi/wifi-setup.sh /usr/bin/wifi-setup
 chmod +x /usr/src/utils/RasLink-build/common/asterisk-restart.sh

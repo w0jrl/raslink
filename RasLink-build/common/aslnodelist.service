@@ -1,5 +1,4 @@
-#!/bin/bash
-# system-update-messages.sh: Show important announcements
+# aslnodelist.service - Update list of node Ip addresses from AllStarLink
 #    Copyright (C) 2021  Jeremy Lincicome (W0JRL)
 #    https://jlappliedtechnologies.com  admin@jlappliedtechnologies.com
 #
@@ -16,19 +15,23 @@
 #    You should have received a copy of the GNU General Public License
 #    along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #
-# Script Start
-if [ ! -f /root/.nodelistsupport ]; then
-    cat << _MSG_
-***PLEASE READ***
-This server has been updated to support nodelists from both PTTLink and AllStarLink.
-PTTLink remains the default network for RasLink.
-If any of your nodes are registered with AllStarLink, and you would like to use the AllStarLink node list instead of the PttLink version, you can enable the AllStarLink node list for each node
-by searching for
-"nodes ="
-in </etc/asterisk/rpt.conf>.
-_MSG_
-    echo "PRESS ENTER TO CONTINUE"
-    read
-    touch /root/.nodelistsupport
-fi
-exit 0
+# Service Start
+[Unit]
+Description=RasLink NodeList updater for AllStarLink
+Wants=network.target
+Requires=asterisk.service
+After=network-online.target asterisk.service
+PartOf=asterisk.service
+#
+[Service]
+Type=simple
+StandardOutput=null
+ExecStart=/usr/local/bin/rc.aslnodelist &
+ExecStop=/usr/bin/killall -9 rc.aslnodelist
+#
+# safe_emulation
+Restart=always
+RestartSec=10
+[Install]
+WantedBy=multi-user.target
+

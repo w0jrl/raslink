@@ -1,3 +1,14 @@
+## feature: Support both PTTLink and AllStarLink node lists
+>Thu Apr 1 06:25:52 2021 -0600
+
+>Author: Jeremy Lincicome [W0JRL] <admin@jlappliedtechnologies.com>
+
+[PTTLink](https://pttlink.org) remains the default network for RasLink.
+If you would like to use the [AllStarLink Network](https://allstarlink.org) for IAX registration and node status posting, your files can easily be reconfigured.
+
+Signed-off-by: Jeremy Lincicome [W0JRL] <admin@jlappliedtechnologies.com>
+
+
 ## bugfix(asterisk-config-check.sh): Don't overwrite user customizations
 >Wed Mar 31 22:00:47 2021 -0600
 

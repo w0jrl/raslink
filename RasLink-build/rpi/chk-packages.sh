@@ -1,5 +1,5 @@
 #!/bin/bash
-# chk-packages.sh: Check package status, and remove packages that aren't needed.
+# chk-packages.sh: Check package status, and remove packages and configuration files that aren't needed.
 #    Copyright (C) 2021  Jeremy Lincicome (W0JRL)
 #    https://jlappliedtechnologies.com  admin@jlappliedtechnologies.com
 #
@@ -21,7 +21,7 @@ echo "Removing unneeded packages and data"
 ntp=$(which ntpd)
 echo "Checking NTP..."
 if [ -e "${ntp}" ]; then
-    echo "Removing NTP; No longer needed for AllStar."
+    echo "Removing NTP; No longer needed for RasLink."
     apt-get -qq autoremove --purge -y ntp
     echo "Cleaning the database"
     (apt-get clean;apt-get autoclean) &>/dev/null
@@ -30,7 +30,7 @@ else
 fi
 echo "Looking for Wolfram Engine..."
 if [ -e /usr/bin/wolfram ]; then
-    echo "Uninstalling Wolfram Engine; Not needed for AllStar."
+    echo "Uninstalling Wolfram Engine; Not needed for RasLink."
     apt-get -qq purge -y wolfram-engine &>/dev/null
     echo "Cleaning the database"
     (apt-get autoremove --purge -y;apt-get clean;apt-get autoclean) &>/dev/null
@@ -41,7 +41,7 @@ else
 fi
 echo "Looking for Minecraft..."
 if [ -e /usr/bin/minecraft-pi ]; then
-    echo "Uninstalling Minecraft; Not needed for AllStar."
+    echo "Uninstalling Minecraft; Not needed for RasLink."
     apt-get -qq purge -y minecraft-pi &>/dev/null
     echo "Cleaning the database"
     (apt-get autoremove --purge -y;apt-get clean;apt-get autoclean) &>/dev/null
@@ -52,7 +52,7 @@ chmod +x /usr/src/utils/RasLink-build/rpi/rm-pi.sh
 /usr/src/utils/RasLink-build/rpi/rm-pi.sh
 echo "Looking for RPI Update..."
 if [ -e /usr/bin/rpi-update ]; then
-    echo "Uninstalling RPI Update; No longer needed for AllStar."
+    echo "Uninstalling RPI Update; No longer needed for RasLink."
     apt-get purge -y rpi-update &>/dev/null
     echo "Cleaning the database"
     (apt-get autoremove --purge -y;apt-get clean;apt-get autoclean) &>/dev/null
@@ -62,7 +62,7 @@ fi
 subversion=/usr/bin/svn
 echo "Checking Subversion..."
 if [ -e "${subversion}" ]; then
-    echo "Removing Subversion; No longer needed for AllStar."
+    echo "Removing Subversion; No longer needed for RasLink."
     apt-get -qq autoremove --purge -y subversion
     rm -rf /root/.subversion &>/dev/null
     echo "Cleaning the database"
@@ -72,6 +72,17 @@ else
 fi
 if [ -f /etc/motd ] || [ -d /etc/update-motd.d ]; then
     find /etc/ -name "*motd*" -exec rm -rf {} +
+fi
+if [ -f /root/.nodeconverted ]; then
+    rm /root/.nodeconverted
+fi
+if [ -f /etc/systemd/system/updatenodelist.service ]; then
+    systemctl disable updatenodelist.service &>/dev/null
+    systemctl stop updatenodelist.service &>/dev/null
+    rm /etc/systemd/system/updatenodelist.service
+fi
+if [ -f /usr/local/bin/rc.updatenodelist ]; then
+    rm /usr/local/bin/rc.updatenodelist
 fi
 echo -e "Done\n"
 echo "Checking and installing required packages..."
