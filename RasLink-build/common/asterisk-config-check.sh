@@ -181,8 +181,9 @@ aslnodes=$(grep -RiIl 'rpt_allstarlink' --include="rpt*" | wc -w)
 if [[ $aslnodes = "0" ]]; then
     find . -type f -exec sed -i -e '/controlstates \=/a\
 ;\
-;nodes = /var/lib/asterisk/rpt_allstarlink\
+;extnodes = /var/lib/asterisk/rpt_allstarlink\
      ; Uncomment this to use the AllStarLink node list for this node.' {} +
 fi
+sed -i 's/nodes \=/extnodes =/' ./rpt*
 echo -e "Done.\n"
 exit 0

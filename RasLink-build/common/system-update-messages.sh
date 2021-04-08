@@ -24,7 +24,7 @@ This server has been updated to support nodelists from both PTTLink and AllStarL
 PTTLink remains the default network for RasLink.
 If any of your nodes are registered with AllStarLink, and you would like to use the AllStarLink node list instead of the PttLink version, you can enable the AllStarLink node list for each node
 by searching for
-"nodes ="
+"extnodes ="
 in </etc/asterisk/rpt.conf>.
 _MSG_
     echo "PRESS ENTER TO CONTINUE"

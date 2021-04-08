@@ -1,3 +1,14 @@
+## bugfix(node list support): Use "extnodes =" instead of "nodes ="
+>Thu Apr 8 14:59:53 2021 -0600
+
+>Author: Jeremy Lincicome [W0JRL] <admin@jlappliedtechnologies.com>
+
+*   Update rpt.conf template
+*   Update active rpt.conf configuration
+
+Signed-off-by: Jeremy Lincicome [W0JRL] <admin@jlappliedtechnologies.com>
+
+
 ## RL-21.04
 >Thu Apr 1 07:32:06 2021 -0600
 
