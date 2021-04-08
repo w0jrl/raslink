@@ -1,3 +1,11 @@
+## RL-21.04.1
+>Thu Apr 8 15:03:48 2021 -0600
+
+>Author: Jeremy Lincicome [W0JRL] <admin@jlappliedtechnologies.com>
+
+Signed-off-by: Jeremy Lincicome [W0JRL] <admin@jlappliedtechnologies.com>
+
+
 ## bugfix(node list support): Use "extnodes =" instead of "nodes ="
 >Thu Apr 8 14:59:53 2021 -0600
 
