@@ -1,3 +1,11 @@
+## RL-21.04.2
+>Thu Apr 8 22:31:22 2021 -0600
+
+>Author: Jeremy Lincicome [W0JRL] <admin@jlappliedtechnologies.com>
+
+Signed-off-by: Jeremy Lincicome [W0JRL] <admin@jlappliedtechnologies.com>
+
+
 ## bugfix(asterisk-menuselect): Update SOUNDS_URL to  <http://downloads.asterisk.org/pub/telephony/sounds/releases>
 >Thu Apr 8 22:20:47 2021 -0600
 
