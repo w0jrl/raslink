@@ -1,3 +1,13 @@
+## bugfix(asterisk-menuselect): Update SOUNDS_URL to  <http://downloads.asterisk.org/pub/telephony/sounds/releases>
+>Thu Apr 8 22:20:47 2021 -0600
+
+>Author: Jeremy Lincicome [W0JRL] <admin@jlappliedtechnologies.com>
+
+The old URL <http://downloads.digium.com/pub/telephony/sounds/releases> times out randomly, preventing Asterisk from finishing installation.
+
+Signed-off-by: Jeremy Lincicome [W0JRL] <admin@jlappliedtechnologies.com>
+
+
 ## RL-21.04.1
 >Thu Apr 8 15:03:48 2021 -0600
 
