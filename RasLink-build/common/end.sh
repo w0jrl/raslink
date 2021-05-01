@@ -1,5 +1,5 @@
 #!/bin/bash
-# end.sh: Disconnect links from AllStar
+# end.sh: Disconnect links from RasLink
 #    Copyright (C) 2021  Jeremy Lincicome (W0JRL)
 #    https://jlappliedtechnologies.com  admin@jlappliedtechnologies.com
 #

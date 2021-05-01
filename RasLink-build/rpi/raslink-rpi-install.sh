@@ -1,5 +1,5 @@
 #!/bin/bash
-# raslink-rpi-install.sh: Automated build and patch script for AllStar Raspbian install
+# raslink-rpi-install.sh: Automated build and patch script for RasLink Raspbian install
 #    Copyright (C) 2021  Jeremy Lincicome (W0JRL)
 #    https://jlappliedtechnologies.com  admin@jlappliedtechnologies.com
 #

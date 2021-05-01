@@ -1,5 +1,5 @@
 ﻿#!/bin/bash
-# raslink-pc-install-stage2.sh: Complete the RasLink/AllStar install on Debian
+# raslink-pc-install-stage2.sh: Complete the RasLink install on Debian
 #    Copyright (C) 2021  Jeremy Lincicome (W0JRL)
 #    https://jlappliedtechnologies.com  admin@jlappliedtechnologies.com
 #

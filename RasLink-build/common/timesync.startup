@@ -20,7 +20,7 @@
 online=0
 server="google.com"
 netcheck() {
-    wget -q --spider http://google.com
+    wget -q --spider http://${server}
     if [[ "$?" > "0" ]]; then
         online=0
         sleep 5s

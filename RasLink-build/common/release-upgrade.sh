@@ -1,5 +1,5 @@
 #!/bin/bash
-# release-upgrade: Upgrade nodes to the next stable Debian/Raspbian version
+# release-upgrade: Upgrade RasLink servers to the next stable Debian/Raspbian version
 #    Copyright (C) 2021  Jeremy Lincicome (W0JRL)
 #    https://jlappliedtechnologies.com  admin@jlappliedtechnologies.com
 #

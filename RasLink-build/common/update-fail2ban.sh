@@ -1,5 +1,5 @@
 #!/bin/bash
-# update-fail2ban.sh -- Build Fail2Ban for RasLink
+# update-fail2ban.sh: Build Fail2Ban for RasLink
 #    Copyright (C) 2021  Jeremy Lincicome (W0JRL)
 #    https://jlappliedtechnologies.com  admin@jlappliedtechnologies.com
 #
