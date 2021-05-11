@@ -1,3 +1,16 @@
+## chore(zram*): Convert from two scripts to one
+>Tue May 11 00:03:55 2021 -0600
+
+>Author: Jeremy Lincicome [W0JRL] <admin@jlappliedtechnologies.com>
+
+*   Remove zram.start
+*   Remove zram.stop
+*   Add zram
+*   Modify zram.service to work with the new script
+
+Signed-off-by: Jeremy Lincicome [W0JRL] <admin@jlappliedtechnologies.com>
+
+
 ## RL-21.05
 >Fri Apr 30 18:32:49 2021 -0600
 

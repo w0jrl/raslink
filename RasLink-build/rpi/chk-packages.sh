@@ -84,6 +84,12 @@ fi
 if [ -f /usr/local/bin/rc.updatenodelist ]; then
     rm /usr/local/bin/rc.updatenodelist
 fi
+if [ -f /usr/local/bin/zram.start ] || [ -f /usr/local/bin/zram.stop ]; then
+    rm -rf /usr/local/bin/zram.s*
+fi
+if [ -f /usr/local/bin/zram.sh ]; then
+    rm -f /usr/local/bin/zram.sh
+fi
 echo -e "Done\n"
 echo "Checking and installing required packages..."
 chmod +x /usr/src/utils/RasLink-build/common/required-tools.sh

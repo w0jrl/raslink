@@ -1,0 +1,73 @@
+#!/bin/bash
+# zram: Use zram for swap space
+#    Copyright (C) 2021  Jeremy Lincicome (W0JRL)
+#    https://jlappliedtechnologies.com  admin@jlappliedtechnologies.com
+#
+#    This program is free software; you can redistribute it and/or modify
+#    it under the terms of the GNU General Public License as published by
+#    the Free Software Foundation, either version 3 of the License, or
+#    (at your option) any later version.
+#
+#    This program is distributed in the hope that it will be useful,
+#    but WITHOUT ANY WARRANTY; without even the implied warranty of
+#    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+#    GNU General Public License for more details.
+#
+#    You should have received a copy of the GNU General Public License
+#    along with this program.  If not, see <http://www.gnu.org/licenses/>.
+#
+# Script Start
+# Define variables
+core=0
+cores=$(nproc --all)
+devices=$(zramctl | grep -ic 'swap')
+loaded=$(lsmod|grep -ic 'zram')
+totalmem=$(free | grep -e '^Mem:' | awk '{print $2}')
+mem=$(perl -E "print $totalmem/$cores*1024*1.5")
+# Define the start function
+start() {
+    if (( ${loaded} >= "1" )); then
+        echo -e "Zram is already loaded.\nEXITING"
+        exit 1
+    fi
+    # Load zram kernel module, and set number of zram devices
+    modprobe zram num_devices=${cores}
+    # Check if zstd compression is available
+    zstd=$(cat /sys/block/zram0/comp_algorithm | grep -c 'zstd')
+    if [ ${zstd} = "1" ]; then
+        # Set zstd for all zram devices
+        for comp in /sys/block/zram[0-9]*; do
+            echo -n zstd | tee $comp/comp_algorithm; done &>/dev/null
+    fi
+    # Turn off swap
+    swapoff -a
+    # Create and enable zram devices
+    while [[ ${core} < ${cores} ]]; do
+        # Create a new device
+        echo ${mem} > /sys/block/zram${core}/disksize
+        mkswap /dev/zram${core}
+        # Turn on swap for the current device in the loop
+        swapon -p 5 /dev/zram${core}
+        # Move to the next device
+        let core=core+1
+    done
+}
+# Defind the stop function
+stop() {
+    if (( ${loaded} >= "1" )) && (( ${devices} >= "1" )); then
+        # Turn off swap
+        swapoff -a
+        # Remove zram kernel module and devices
+        rmmod zram
+    fi
+}
+# Check if the function exists
+if declare -f "$1" > /dev/null; then
+    # Call arguments verbatim
+    "$@"
+else
+    # Show a helpful error
+    echo "'$1' is not a known function name." >&2
+    exit 1
+fi
+exit 0
