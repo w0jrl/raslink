@@ -1,0 +1,44 @@
+#!/bin/bash
+# post-commit: Generate changelog from commits for RasLink
+#    Copyright (C) 2021  Jeremy Lincicome (W0JRL)
+#    https://jlappliedtechnologies.com  admin@jlappliedtechnologies.com
+#
+#    This program is free software: you can redistribute it and/or modify
+#    it under the terms of the GNU General Public License as published by
+#    the Free Software Foundation, either version 3 of the License, or
+#    (at your option) any later version.
+#
+#    This program is distributed in the hope that it will be useful,
+#    but WITHOUT ANY WARRANTY; without even the implied warranty of
+#    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+#    GNU General Public License for more details.
+#
+#    You should have received a copy of the GNU General Public License
+#    along with this program.  If not, see <http://www.gnu.org/licenses/>.
+#
+# FOR DEVELOPERS ONLY!
+# To use this script, place it in <utils/.git/hooks> or
+# <raslink/.git/hooks>,
+# depending on where you cloned this repository.
+#
+# Script Start
+# Define the output file    
+outputFile=RasLinkCHANGELOG.md
+# Make sure we only populate the Changelog
+# if the branch we're committing on tracks origin
+remote=$(git rev-parse --abbrev-ref @{upstream})
+if [ "$(echo "${remote}" | grep -ic 'origin')" = "1" ]; then
+    # Create the log
+    git --no-pager log --no-merges --pretty=format:"## %s%n>%cd%n%n>Author: %aN <%aE>%n%n%b%n%N" > ${outputFile}
+    # Don't repeat log entries
+    changes=$(git status --porcelain | grep -c ${outputFile})
+    if [[ "${changes}" != "0" ]]; then
+        git add ${outputFile}
+        git commit --amend --no-edit
+        echo "Populated Changelog in ${outputFile}"
+    fi
+else
+    echo -e "'$(git status | grep 'branch' | sed -e 's/branch//1g;/up to date/d;/commit.*/d;s/On//g;s/^[ \t]*//')' is not part of RasLink.\nRefusing to populate Changelog in ${outputFile}"
+    exit 1
+fi
+exit 0
