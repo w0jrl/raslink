@@ -1,3 +1,14 @@
+## bugfix(master-to-main.sh): Display script status
+>Mon May 24 02:16:05 2021 -0600
+
+>Author: Jeremy Lincicome [W0JRL] <admin@jlappliedtechnologies.com>
+
+There was no information displayed when the script ran,
+causing 'system-update' to look like it froze.
+
+Signed-off-by: Jeremy Lincicome [W0JRL] <admin@jlappliedtechnologies.com>
+
+
 ## style(uricheck.sh): Update spacing to match other scripts
 >Mon May 24 01:43:07 2021 -0600
 

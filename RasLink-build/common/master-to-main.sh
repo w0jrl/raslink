@@ -22,10 +22,15 @@ cd /usr/src/utils
 oldbranchcount="$(git branch -l | grep -Ec "(^| )master( |$)")"
 oldbranch="master"
 newbranch="main"
+echo "Checking repository branch configuration..."
 if [ "${oldbranchcount}" = "1" ]; then
+    echo "Updating repository branch configuration and data..."
     git branch -m ${oldbranch} ${newbranch} &>/dev/null
     git fetch origin &>/dev/null
     git branch --unset-upstream ${newbranch} &>/dev/null
     git branch --set-upstream-to=origin/${newbranch} ${newbranch} &>/dev/null
+    echo -e "Done\n"
+else
+    echo -e "The repository branch configuration is up-to-date; Skipping.\n"
 fi
 exit 0
