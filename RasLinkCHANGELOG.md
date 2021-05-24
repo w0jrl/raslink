@@ -1,3 +1,11 @@
+## style(uricheck.sh): Update spacing to match other scripts
+>Mon May 24 01:43:07 2021 -0600
+
+>Author: Jeremy Lincicome [W0JRL] <admin@jlappliedtechnologies.com>
+
+Signed-off-by: Jeremy Lincicome [W0JRL] <admin@jlappliedtechnologies.com>
+
+
 ## chore: Replace changelog-generator with post-commit
 >Mon May 24 01:03:27 2021 -0600
 
