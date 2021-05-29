@@ -1,3 +1,11 @@
+## style: Fix formatting of service units
+>Fri May 28 21:03:15 2021 -0600
+
+>Author: Jeremy Lincicome [W0JRL] <admin@jlappliedtechnologies.com>
+
+Signed-off-by: Jeremy Lincicome [W0JRL] <admin@jlappliedtechnologies.com>
+
+
 ## bugfix(timesync.service): Make sure the service runs before pulseaudio.service
 >Fri May 28 20:34:54 2021 -0600
 
