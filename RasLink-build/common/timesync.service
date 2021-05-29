@@ -20,11 +20,14 @@
 Description=Time sync utility 
 Wants=network.target
 After=network-online.target
+Before=pulseaudio.service
+#
 [Service]
 Type=simple
 StandardOutput=null
 ExecStartPre=-/usr/local/bin/timesync.startup
 ExecStart=/usr/local/bin/timesync.hourly &
 ExecStop=/usr/bin/killall -9 timesync.hourly
+#
 [Install]
 WantedBy=multi-user.target

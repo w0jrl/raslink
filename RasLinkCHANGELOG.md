@@ -1,3 +1,13 @@
+## bugfix(timesync.service): Make sure the service runs before pulseaudio.service
+>Fri May 28 20:34:54 2021 -0600
+
+>Author: Jeremy Lincicome [W0JRL] <admin@jlappliedtechnologies.com>
+
+The Asterisk logs sometimes had inaccurate timestamps, because the clock wasn't always set correctly before Asterisk started.
+
+Signed-off-by: Jeremy Lincicome [W0JRL] <admin@jlappliedtechnologies.com>
+
+
 ## bugfix(master-to-main.sh): Display script status
 >Mon May 24 02:16:05 2021 -0600
 
