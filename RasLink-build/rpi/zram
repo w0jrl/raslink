@@ -52,7 +52,7 @@ start() {
         let core=core+1
     done
 }
-# Defind the stop function
+# Define the stop function
 stop() {
     if (( ${loaded} >= "1" )) && (( ${devices} >= "1" )); then
         # Turn off swap
