@@ -19,10 +19,12 @@
 [Unit]
 Description=Zram block devices for swap space
 Before=shutdown.target
+#
 [Service]
 Type=oneshot
 ExecStart=/usr/local/bin/zram start
 ExecStop=/usr/local/bin/zram stop
 RemainAfterExit=yes
+#
 [Install]
 WantedBy=multi-user.target
