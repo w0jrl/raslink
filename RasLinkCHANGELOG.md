@@ -1,3 +1,14 @@
+## rewrite(LICENSE_RasLink.md): Use markdown syntax
+>Mon Jun 21 02:20:58 2021 -0600
+
+>Author: Jeremy Lincicome [W0JRL] <admin@jlappliedtechnologies.com>
+
+*   Rename LICENSE_RasLink to LICENSE_RasLink.md
+*   Update file path in version.sh
+
+Signed-off-by: Jeremy Lincicome [W0JRL] <admin@jlappliedtechnologies.com>
+
+
 ## style(rpi/zram.service): Update formatting
 >Mon Jun 21 01:18:52 2021 -0600
 

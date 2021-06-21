@@ -29,7 +29,7 @@ echo "Checking for available updates..."
 git fetch --all --prune &>/dev/null
 echo -e "Done\n"
 echo -e "Your repository branch is set to: $(git status | grep "branch" | sed 's/On branch\ //' | sed 's/git pull/system-update/' | sed 's/to update your local branch/to UPDATE YOUR NODE/' | sed 's/up-to-date/UP-TO-DATE/')\n"
-echo -e "The RasLink license file is located at:\n/usr/src/utils/LICENSE_RasLink\n"
+echo -e "The RasLink license file is located at:\n/usr/src/utils/LICENSE_RasLink.md\n"
 echo -e "You can read the changelog at:\n/usr/src/utils/RasLinkCHANGELOG.md\n"
 echo -e "You can review this information at any time by typing\n'version' at a root prompt.\n"
 exit 0
