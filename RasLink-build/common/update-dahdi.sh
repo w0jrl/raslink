@@ -20,6 +20,7 @@
 status() {
     "$@"
     if [ $? -ne 0 ]; then
+        rm -rf /usr/src/utils/dahdi*.tar*
         echo -e "***DAHDI FAILED TO INSTALL***\nPlease see <https://jlappliedtechnologies.com/raslink/> for assistance."
         exit 1
     fi
@@ -46,7 +47,7 @@ echo "Updating Dahdi configuration..."
 /sbin/modprobe dahdi_dummy &>/dev/null
 /usr/sbin/dahdi_span_assignments auto &>/dev/null
 /usr/sbin/dahdi_genconf &>/dev/null
-status rm -f /etc/dahdi/*.bak /etc/asterisk/dahdi*.bak /usr/src/utils/1 /usr/src/utils/dahdi*.gz &>/dev/null
+status rm -f /etc/dahdi/*.bak /etc/asterisk/dahdi*.bak /usr/src/utils/1 /usr/src/utils/dahdi*.tar* &>/dev/null
 if [ "$(grep -ic '#include dahdi-channels.conf' /etc/asterisk/chan_dahdi.conf)" == "0" ]; then
     echo '#include dahdi-channels.conf' >> /etc/asterisk/chan_dahdi.conf
 fi

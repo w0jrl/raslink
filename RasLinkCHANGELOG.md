@@ -1,3 +1,11 @@
+## bugfix(RasLink-build/common/update-dahdi.sh): Make sure the tarball is removed if Dahdi install fails
+>Fri Jul 2 15:13:35 2021 -0600
+
+>Author: Jeremy Lincicome [W0JRL] <admin@jlappliedtechnologies.com>
+
+Signed-off-by: Jeremy Lincicome [W0JRL] <admin@jlappliedtechnologies.com>
+
+
 ## RL-21.07
 >Wed Jun 30 09:47:15 2021 -0600
 
