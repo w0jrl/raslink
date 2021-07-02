@@ -1,3 +1,11 @@
+## rewrite(RasLink-build/common/required-tools.sh): Support Bullseye
+>Mon Aug 1 16:14:16 2022 -0600
+
+>Author: Jeremy Lincicome W0JRL <admin@jlappliedtechnologies.com>
+
+Signed-off-by: Jeremy Lincicome W0JRL <admin@jlappliedtechnologies.com>
+
+
 ## bugfix(RasLink-build/debian/raslink-pc-install-stage2.sh): Fix node list file names
 >Mon Aug 1 13:36:18 2022 -0600
 
