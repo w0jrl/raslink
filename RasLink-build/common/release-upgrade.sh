@@ -51,12 +51,12 @@ Run 'release-upgrade' when you are ready."
 }
 distro() {
     platform=$(lsb_release -is)
-    name=RasLink
-    prev=jessie
-    release=stretch
+    name="RasLink"
+    prev="stretch"
+    release="buster"
 }
 check() {
-    if [[ $(grep -ic "${prev}" /etc/apt/sources.list) = "0" ]]; then
+    if [[ "$(grep -ic "${prev}" /etc/apt/sources.list)" = "0" ]]; then
         echo "Already updated to ${name} ${release}"
         exit 0
     fi
@@ -75,10 +75,10 @@ update() {
     (status apt-get update;apt-get upgrade -y;apt-get clean;apt-get autoclean)
     (status apt-get dist-upgrade -y;apt-get autoremove --purge -y;apt-get clean;apt-get autoclean)
     (status apt-get -qq install -y ssh;apt-get -qq update)
-    if [[ $platform = "Raspbian" ]]; then
+    if [[ "$platform" = "Raspbian" ]]; then
         (status apt-get -qq install --reinstall wpasupplicant -y;apt-get -qq clean;dpkg-reconfigure wpasupplicant)
     fi
-    (status apt-get -qq purge -y $(dpkg -l | awk '/^rc/ { print $2 }'))
+    (status apt-get -qq purge -y "$(dpkg -l | awk '/^rc/ { print $2 }')")
     hash -r
     sed -i '0,/^.PermitRootLogin/s/\(^.PermitRoot.*\)\|\(^PermitRoot.*\)/PermitRootLogin yes/' /etc/ssh/sshd_config
     if [ -d /etc/php5 ]; then
@@ -87,7 +87,7 @@ update() {
     cd /root
     mv .bashrc .bashrc.orig
     cat .bashrc.orig > .bashrc
-    if [[ $platform = "Raspbian" ]]; then
+    if [[ "$platform" = "Raspbian" ]]; then
         echo "/usr/src/utils/RasLink-build/rpi/update-stage2.sh" >> .bashrc
     else
         echo "/usr/src/utils/RasLink-build/debian/update-stage2.sh" >> .bashrc

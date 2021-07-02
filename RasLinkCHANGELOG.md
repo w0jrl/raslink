@@ -1,3 +1,14 @@
+## distro: Support Debian Buster
+>Fri May 24 11:19:42 2024 -0600
+
+>Author: Jeremy Lincicome W0JRL <admin@jlappliedtechnologies.com>
+
+* Update required packages
+* Drop support for Jessie
+
+Signed-off-by: Jeremy Lincicome (W0JRL) <jlincicome@jlappliedtechnologies.com>
+
+
 ## style(system-update): Fix spelling error in failure prompt
 >Sat May 18 18:35:10 2024 -0600
 
