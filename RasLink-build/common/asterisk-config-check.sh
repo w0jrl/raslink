@@ -184,6 +184,6 @@ if [[ $aslnodes = "0" ]]; then
 ;extnodes = /var/lib/asterisk/rpt_allstarlink\
      ; Uncomment this to use the AllStarLink node list for this node.' {} +
 fi
-sed -i 's/nodes \=/extnodes =/' ./rpt*
+sed -i 's/nodes \=/extnodes =/; s/extext.* \=/extnodes =/' ./rpt*
 echo -e "Done.\n"
 exit 0

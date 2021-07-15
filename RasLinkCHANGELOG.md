@@ -1,3 +1,17 @@
+## bugfix(RasLink-build/common/asterisk-config-check.sh): Keep the extnodes key from growing in rpt.conf
+>Thu Jul 15 15:28:00 2021 -0600
+
+>Author: Jeremy Lincicome [W0JRL] <admin@jlappliedtechnologies.com>
+
+Every time 'system-update' called this script,  the extnodes key was expanded by adding "ext" to the front of the line.
+If you wanted to use the AllStarLink node list instead of the PTTLink version, you couldn't.
+The line expansion caused the extnodes = key value pair to not match.
+This forced your node to use the PTTLink node list.
+The extnodes key has been replaced, and will work properly.
+
+Signed-off-by: Jeremy Lincicome [W0JRL] <admin@jlappliedtechnologies.com>
+
+
 ## bugfix(RasLink-build/common/update-dahdi.sh): Make sure the tarball is removed if Dahdi install fails
 >Fri Jul 2 15:13:35 2021 -0600
 
