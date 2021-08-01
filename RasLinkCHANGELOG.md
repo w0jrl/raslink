@@ -1,3 +1,11 @@
+## RL-21.08
+>Sun Aug 1 11:58:06 2021 -0600
+
+>Author: Jeremy Lincicome [W0JRL] <admin@jlappliedtechnologies.com>
+
+Signed-off-by: Jeremy Lincicome [W0JRL] <admin@jlappliedtechnologies.com>
+
+
 ## change(src/asterisk/apps/app_rpt.c)(RasLink-build/common/patch-asterisk.sh): Update revision format to use "YYYYMMDD"
 >Sun Aug 1 11:53:22 2021 -0600
 
