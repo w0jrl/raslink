@@ -23,9 +23,9 @@ echo "Patching Asterisk files..."
 # Set on demand telemetry timer
 sed -i '/#define\tTELEM_HANG_TIME 120000/c\#define\tTELEM_HANG_TIME 15000' ./apps/app_rpt.c
 # Update app_rpt version information
-sed -i '/ \*  version/c\ \*  version 21.07 07\/01\/2021' ./apps/app_rpt.c
-sed -i '/static  char \*tdesc \= "Radio Repeater \/ Remote Base  version/c\static  char \*tdesc \= "Radio Repeater \/ Remote Base  version 21.07 07\/01\/2021";' ./apps/app_rpt.c
-sed -i '/ASTERISK_FILE_VERSION(__FILE__, \"\$Revision/c\ASTERISK_FILE_VERSION\(__FILE__\, \"\$Revision 210701\"\)' ./apps/app_rpt.c
+sed -i '/ \*  version/c\ \*  version 21.08 08\/01\/2021' ./apps/app_rpt.c
+sed -i '/static  char \*tdesc \= "Radio Repeater \/ Remote Base  version/c\static  char \*tdesc \= "Radio Repeater \/ Remote Base  version 21.08 08\/01\/2021";' ./apps/app_rpt.c
+sed -i '/ASTERISK_FILE_VERSION(__FILE__, \"\$Revision/c\ASTERISK_FILE_VERSION\(__FILE__\, \"\$Revision 20210801\"\)' ./apps/app_rpt.c
 #sed -i '/note ported by Michael Zingman, N4IRR/a\
 # \* \\note modified by Jeremy Lincicome, W0JRL' ./apps/app_rpt.c
 # Change TX enabled message

@@ -1,3 +1,11 @@
+## change(src/asterisk/apps/app_rpt.c)(RasLink-build/common/patch-asterisk.sh): Update revision format to use "YYYYMMDD"
+>Sun Aug 1 11:53:22 2021 -0600
+
+>Author: Jeremy Lincicome [W0JRL] <admin@jlappliedtechnologies.com>
+
+Signed-off-by: Jeremy Lincicome [W0JRL] <admin@jlappliedtechnologies.com>
+
+
 ## bugfix(RasLink-build/common/asterisk-config-check.sh): Keep the extnodes key from growing in rpt.conf
 >Thu Jul 15 15:28:00 2021 -0600
 
