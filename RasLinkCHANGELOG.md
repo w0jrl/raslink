@@ -1,3 +1,13 @@
+## RL-21.11
+>Sun Oct 31 22:11:01 2021 -0600
+
+>Author: Jeremy Lincicome [W0JRL] <admin@jlappliedtechnologies.com>
+
+*   Security updates from Debian/Raspbian
+
+Signed-off-by: Jeremy Lincicome [W0JRL] <admin@jlappliedtechnologies.com>
+
+
 ## RL-21.09
 >Wed Sep 1 09:04:34 2021 -0600
 
