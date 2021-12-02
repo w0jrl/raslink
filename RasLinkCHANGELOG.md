@@ -1,3 +1,16 @@
+## rewrite(RasLink-build/common/timesync.service): Restart after 5 seconds if the service fails
+>Thu Dec 2 12:26:59 2021 -0700
+
+>Author: Jeremy Lincicome [W0JRL] <admin@jlappliedtechnologies.com>
+
+If the system was booted without an internet connection, the service would time out,
+causing the system time to be set incorrectly.
+The 2 ways to fix this were to either run 'systemctl start timesync', or reboot the system.
+Systemd will restart the Timesync service after 5 seconds if it fails.
+
+Signed-off-by: Jeremy Lincicome [W0JRL] <admin@jlappliedtechnologies.com>
+
+
 ## change(RasLink-build/common/asterisk.service): Restart after 5 seconds if the service fails
 >Thu Dec 2 11:51:21 2021 -0700
 

@@ -29,5 +29,9 @@ ExecStartPre=-/usr/local/bin/timesync.startup
 ExecStart=/usr/local/bin/timesync.hourly &
 ExecStop=/usr/bin/killall -9 timesync.hourly
 #
+# Restart 5 seconds after failure
+Restart=always
+RestartSec=5
+#
 [Install]
 WantedBy=multi-user.target
