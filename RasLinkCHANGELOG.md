@@ -1,3 +1,13 @@
+## change(RasLink-build/common/asterisk.service): Restart after 5 seconds if the service fails
+>Thu Dec 2 11:51:21 2021 -0700
+
+>Author: Jeremy Lincicome [W0JRL] <admin@jlappliedtechnologies.com>
+
+The restart time used to be 10 seconds.
+
+Signed-off-by: Jeremy Lincicome [W0JRL] <admin@jlappliedtechnologies.com>
+
+
 ## RL-21.11
 >Sun Oct 31 22:11:01 2021 -0600
 

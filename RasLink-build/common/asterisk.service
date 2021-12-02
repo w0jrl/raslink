@@ -37,7 +37,7 @@ ExecReload=/usr/sbin/asterisk -rx 'module reload'
 #
 # safe_asterisk emulation
 Restart=always
-RestartSec=10
+RestartSec=5
 #
 [Install]
 WantedBy=multi-user.target
