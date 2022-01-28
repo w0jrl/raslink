@@ -1,20 +1,21 @@
 #!/bin/bash
-# patch-asterisk.sh: Add customizations to Asterisk
-#    Copyright (C) 2021  Jeremy Lincicome (W0JRL)
-#    https://jlappliedtechnologies.com  admin@jlappliedtechnologies.com
+# patch-asterisk.sh: Add RasLink customizations to Asterisk
+#   Copyright (C) 2016-2022  Jeremy Lincicome W0JRL
+#   <https://jlappliedtechnologies.com>  <admin@jlappliedtechnologies.com>
 #
-#    This program is free software; you can redistribute it and/or modify
-#    it under the terms of the GNU General Public License as published by
-#    the Free Software Foundation, either version 3 of the License, or
-#    (at your option) any later version.
+#   This file is part of RasLink.
+#   RasLink is free software; you can redistribute it and/or modify
+#   it under the terms of the GNU General Public License as published by
+#   the Free Software Foundation, either version 3 of the License, or
+#   (at your option) any later version.
 #
-#    This program is distributed in the hope that it will be useful,
-#    but WITHOUT ANY WARRANTY; without even the implied warranty of
-#    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-#    GNU General Public License for more details.
+#   RasLink is distributed in the hope that it will be useful,
+#   but WITHOUT ANY WARRANTY; without even the implied warranty of
+#   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+#   GNU General Public License for more details.
 #
-#    You should have received a copy of the GNU General Public License
-#    along with this program.  If not, see <http://www.gnu.org/licenses/>.
+#   You should have received a copy of the GNU General Public License
+#   along with RasLink.  If not, see <http://www.gnu.org/licenses/>.
 #
 # Script Start
 cd ../../src/asterisk/
@@ -27,7 +28,7 @@ sed -i '/ \*  version/c\ \*  version 21.12 12\/02\/2021' ./apps/app_rpt.c
 sed -i '/static  char \*tdesc \= "Radio Repeater \/ Remote Base  version/c\static  char \*tdesc \= "Radio Repeater \/ Remote Base  version 21.12 12\/02\/2021";' ./apps/app_rpt.c
 sed -i '/ASTERISK_FILE_VERSION(__FILE__, \"\$Revision/c\ASTERISK_FILE_VERSION\(__FILE__\, \"\$Revision 20211202\"\)' ./apps/app_rpt.c
 #sed -i '/note ported by Michael Zingman, N4IRR/a\
-# \* \\note modified by Jeremy Lincicome, W0JRL' ./apps/app_rpt.c
+# \* \\note modified by Jeremy Lincicome W0JRL' ./apps/app_rpt.c
 # Change TX enabled message
 sed -i 's/"RPTENA"/"TXENA"/' ./apps/app_rpt.c
 # Make EchoLink call signs use normal characters

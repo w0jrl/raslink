@@ -5,8 +5,8 @@
  * Copyright (C) 2007-2017, Jim Dixon, WB6NIL and AllStarLink, Inc. and contributors
  * Copyright (C) 2018 Steve Zingman, N4IRS; Michael Zingman, N4IRR; AllStarLink, Inc. and contributors
  * Copyright (C) 2018-2020 Stacy Olivas, KG7QIN and contributors 
- * Modified by Jeremy Lincicome [W0JRL]
- * Modified by Skyler Fennell [W0SKY]
+ * Modified by Jeremy Lincicome, W0JRL
+ * Modified by Skyler Fennell, W0SKY
  *
  * All Rights Reserved
  * Licensed under the GNU GPL v2 (see below)
