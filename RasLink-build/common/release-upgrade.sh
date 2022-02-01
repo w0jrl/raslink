@@ -62,7 +62,7 @@ check() {
     fi
 }
 update() {
-    sed -i "s/${prev}/${release}/" /etc/apt/sources.list /etc/apt/sources.list.d/*.list
+    sed -i "s/${prev}/${release}/" /etc/apt/sources.list /etc/apt/sources.list.d/*.list &>/dev/null
     if [[ $platform = "Raspbian" ]]; then
         rm -rf /tmp/* /tmp/.* &>/dev/null
         rm -rf /var/tmp/* /var/tmp/.* &>/dev/null

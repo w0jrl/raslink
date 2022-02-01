@@ -1,3 +1,15 @@
+## bugfix(RasLink-build/common/release-upgrade.sh): Suppress error when no files are found in `/etc/apt/sources.list.d/`
+>Tue Feb 1 00:35:04 2022 -0700
+
+>Author: Jeremy Lincicome W0JRL <admin@jlappliedtechnologies.com>
+
+If no files were found, the following error was shown: \
+"sed: can't read /etc/apt/sources.list.d/*.list: No such file or directory" \
+The error is harmless, and just means that there are no files to change in that directory. This is typical on stock Debian systems.
+
+Signed-off-by: Jeremy Lincicome W0JRL <admin@jlappliedtechnologies.com>
+
+
 ## license(*): Update copyright information
 >Mon Jan 31 23:53:12 2022 -0700
 
