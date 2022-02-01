@@ -1,5 +1,13 @@
+## RL-22.02
+>Tue Feb 1 01:35:38 2022 -0700
+
+>Author: Jeremy Lincicome W0JRL <admin@jlappliedtechnologies.com>
+
+Signed-off-by: Jeremy Lincicome W0JRL <admin@jlappliedtechnologies.com>
+
+
 ## bugfix(RasLink-build/common/release-upgrade.sh): Suppress error when no files are found in `/etc/apt/sources.list.d/`
->Tue Feb 1 00:35:04 2022 -0700
+>Tue Feb 1 01:08:50 2022 -0700
 
 >Author: Jeremy Lincicome W0JRL <admin@jlappliedtechnologies.com>
 
@@ -11,7 +19,7 @@ Signed-off-by: Jeremy Lincicome W0JRL <admin@jlappliedtechnologies.com>
 
 
 ## license(*): Update copyright information
->Mon Jan 31 23:53:12 2022 -0700
+>Tue Feb 1 01:07:41 2022 -0700
 
 >Author: Jeremy Lincicome W0JRL <admin@jlappliedtechnologies.com>
 
