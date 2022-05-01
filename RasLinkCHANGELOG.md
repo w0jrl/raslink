@@ -1,3 +1,11 @@
+## RL-22.04
+>Sun May 1 14:23:54 2022 -0600
+
+>Author: Jeremy Lincicome W0JRL <admin@jlappliedtechnologies.com>
+
+Signed-off-by: Jeremy Lincicome W0JRL <admin@jlappliedtechnologies.com>
+
+
 ## chore(fail2ban*): Update command used for apache-fakegooglebot jail
 >Sun May 1 14:17:04 2022 -0600
 
