@@ -75,6 +75,7 @@ else
     status cp /usr/src/utils/RasLink-build/common/fail2ban-files/00raslink.local /etc/fail2ban/jail.d/ 
     status cp /usr/src/utils/RasLink-build/common/fail2ban-files/fail2ban.local /etc/fail2ban/ 
     status cp /usr/src/utils/RasLink-build/common/fail2ban-files/fail2ban.service /etc/systemd/system/
+    sed -i '\|ignorecommand =|c\ignorecommand = %(fail2ban_confpath)s/filter.d/ignorecommands/apache-fakegooglebot <ip>' /etc/fail2ban/jail.local
     echo -e "Done\n"
     echo "Reloading Fail2Ban rules..."
     $(which fail2ban-client) reload

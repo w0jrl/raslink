@@ -1,5 +1,16 @@
+## chore(fail2ban*): Update command used for apache-fakegooglebot jail
+>Sun May 1 14:17:04 2022 -0600
+
+>Author: Jeremy Lincicome W0JRL <admin@jlappliedtechnologies.com>
+
+If Fail2Ban is updated to the latest version, and the "apache-fakegooglebot" jail is enabled, Fail2Ban will fail to start without this change.
+If you have the "apache-fakegooglebot" jail enabled in `/etc/fail2ban/jail.local`, the jail will work like normal.
+
+Signed-off-by: Jeremy Lincicome W0JRL <admin@jlappliedtechnologies.com>
+
+
 ## RL-22.02
->Tue Feb 1 01:35:38 2022 -0700
+>Tue Feb 1 01:37:30 2022 -0700
 
 >Author: Jeremy Lincicome W0JRL <admin@jlappliedtechnologies.com>
 
