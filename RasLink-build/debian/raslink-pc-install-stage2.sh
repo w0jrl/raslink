@@ -47,7 +47,7 @@ echo "Installing default sound files..."
 cp -a /usr/src/utils/src/sounds/* /var/lib/asterisk/sounds
 echo "Done"
 echo "Setting up startup scripts and system-update..."
-(cp /usr/src/utils/RasLink-build/common/rc.pttlinknodelist /usr/src/utils/RasLink-build/common/rc.allstarlinknodelist /usr/local/bin/.;chmod +x /usr/local/bin/rc.*nodelist)
+(cp /usr/src/utils/RasLink-build/common/rc.pttnodelist /usr/src/utils/RasLink-build/common/rc.aslnodelist /usr/local/bin/.;chmod +x /usr/local/bin/rc.*nodelist)
 (cp /usr/src/utils/RasLink-build/common/rc.nodenames /usr/local/bin/rc.nodenames;chmod +x /usr/local/bin/rc.nodenames)
 (cp /usr/src/utils/RasLink-build/common/timesync.hourly /usr/local/bin/timesync.hourly;chmod +x /usr/local/bin/timesync.hourly)
 (cp /usr/src/utils/RasLink-build/common/timesync.startup /usr/local/bin/timesync.startup;chmod +x /usr/local/bin/timesync.startup)
@@ -78,5 +78,6 @@ echo "EchoLink is disabled by default."
 echo "All files are located in /etc/asterisk."
 echo "After editing files, reboot to get your node online."
 echo "Enjoy RasLink AllStar on Debian!"
+touch /root/.nodelistsupport
 date +'%A, %B %d, %Y%t%t%T %Z' > /root/.lastupdate
 exit 0
