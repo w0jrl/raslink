@@ -19,12 +19,15 @@
 # Service Start
 [Unit]
 Description=Pulseaudio sound server
-After=network.target
+Wants=network.target timesync.service
+After=network.target timesync.service
 #
 [Service]
 Type=forking
 ExecStart=/usr/bin/pulseaudio --system --disallow-exit --daemon
 ExecStop=/usr/bin/killall -9 pulseaudio
+Restart=on-failure
+RestartSec=1
 #
 [Install]
 WantedBy=multi-user.target

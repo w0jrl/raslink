@@ -19,13 +19,16 @@
 # Service Start
 [Unit]
 Description=OSS Proxy Daemon
+Wants=network.target
 Requires=pulseaudio.service
 After=network.target pulseaudio.service
-BindsTo=pulseaudio.service
+PartOf=pulseaudio.service
 #
 [Service]
 ExecStart=/usr/sbin/osspd -f --dsp-slave=/usr/lib/osspd/ossp-padsp --adsp=dsp1
 ExecStop=/usr/bin/killall -9 osspd
+Restart=on-failure
+restartSec=1
 #
 [Install]
 WantedBy=multi-user.target

@@ -21,9 +21,9 @@
 Description=Asterisk PBX and telephony daemon
 Documentation=man:asterisk(8)
 Wants=network.target
-Requires=osspd.service
+Requires=pulseaudio.service osspd.service
 After=network.target pulseaudio.service osspd.service
-BindsTo=pulseaudio.service osspd.service
+PartOf=pulseaudio.service osspd.service
 #
 [Service]
 Type=simple
@@ -37,8 +37,8 @@ ExecStopPost=-/sbin/modprobe -r dahdi_dummy
 ExecReload=/usr/sbin/asterisk -rx 'module reload'
 #
 # safe_asterisk emulation
-Restart=always
-RestartSec=5
+Restart=on-failure
+RestartSec=1
 #
 [Install]
 WantedBy=multi-user.target
