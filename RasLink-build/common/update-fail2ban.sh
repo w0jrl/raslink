@@ -25,34 +25,47 @@ status() {
         exit 1
     fi
 }
+isF2bRunning="$(command pgrep -x fail2ban-server > /dev/null)"
+if [ ! "$isF2bRunning" ]; then
+    echo "Stopping Fail2Ban..."
+    command fail2ban-client stop
+fi
 clone() {
     cd /usr/src/utils/src/
-    git clone https://github.com/fail2ban/fail2ban.git &>/dev/null
+    git clone https://github.com/fail2ban/fail2ban.git &>/dev/null &
 }
 update() {
     cd /usr/src/utils/src/fail2ban/
-    (git clean -f;git checkout -f) &>/dev/null
-    git pull &>/dev/null
+    (git clean -fdx&&git checkout -f) &>/dev/null &
+    wait
+    (git fetch --all --prune &&git pull) &>/dev/null &
 }
 # Get the sources
     # If they don't exist, clone them
 if [ ! -e /usr/src/utils/src/fail2ban/.git ]; then
     echo "Downloading Fail2Ban sources..."
     status clone
-    echo -e "Done\n"
+    wait
+    echo "Done"
 else
     # If they do exist, pull the latest version
     echo "Updating Fail2Ban sources..."
     status update
-    echo -e "Done\n"
+    wait
+    echo "Done"
 fi
-sleep 0.5s
 # Install from the fetched sources
 cd /usr/src/utils/src/fail2ban/
 echo "Building and installing Fail2Ban..."
-status ./setup.py install
-echo -e "Done\n"
-sleep 0.5s
+if [ "$(command -v python3)" ]; then
+    pycmd="python3"
+    status git checkout master &>/dev/null
+else
+    pycmd="python2"
+    status git checkout 0.9 &>/dev/null
+fi
+status ${pycmd} ./setup.py install
+echo "Done"
 # If no configuration files are available, install them
 if [ ! -e /etc/fail2ban/fail2ban.local ] || [ ! -e /etc/fail2ban/jail.d/00raslink.local ]; then
     echo "Installing Fail2Ban configuration..."
@@ -60,25 +73,18 @@ if [ ! -e /etc/fail2ban/fail2ban.local ] || [ ! -e /etc/fail2ban/jail.d/00raslin
     status cp /usr/src/utils/RasLink-build/common/fail2ban-files/fail2ban.rotate /etc/logrotate.d/fail2ban
     status touch /var/log/fail2ban.log
     status cp /usr/src/utils/RasLink-build/common/fail2ban-files/fail2ban.service /etc/systemd/system/
-    echo -e "Done\n"
-    isF2bRunning=$(ps aux | grep 'fail2ban-server' | wc -l)
-    if [ "$isF2bRunning" != "1" ]; then
-        echo "Loading Fail2Ban rules..."
-        $(which fail2ban-client) reload
-    else
-        echo "Starting Fail2Ban..."
-        $(which fail2ban-client) start
-    fi
-    echo  ""
+    status command systemctl daemon-reload
+    echo "Done"
 else
     echo "Updating RasLink Fail2Ban rules if required..."
     status cp /usr/src/utils/RasLink-build/common/fail2ban-files/00raslink.local /etc/fail2ban/jail.d/ 
     status cp /usr/src/utils/RasLink-build/common/fail2ban-files/fail2ban.local /etc/fail2ban/ 
     status cp /usr/src/utils/RasLink-build/common/fail2ban-files/fail2ban.service /etc/systemd/system/
+    status command systemctl daemon-reload
     sed -i '\|ignorecommand =|c\ignorecommand = %(fail2ban_confpath)s/filter.d/ignorecommands/apache-fakegooglebot <ip>' /etc/fail2ban/jail.local
-    echo -e "Done\n"
-    echo "Reloading Fail2Ban rules..."
-    $(which fail2ban-client) reload
-    echo ""
+    echo "Done"
 fi
+echo "Starting Fail2Ban..."
+command fail2ban-client start
+echo ""
 exit 0
