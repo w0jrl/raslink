@@ -95,7 +95,7 @@ echo -e "Done\n"
 sleep 0.5s
 echo "Updating system boot configuration..."
 cp /usr/src/utils/RasLink-build/common/asterisk.service /etc/systemd/system
-cp /usr/src/utils/RasLink-build/common/pttnodelist.service /usr/src/utils/RasLink-build/common/aslnodelist.service /etc/systemd/system/.
+cp /usr/src/utils/RasLink-build/common/pttnodelist.service /usr/src/utils/RasLink-build/common/aslnodelist.service /etc/systemd/system
 cp /usr/src/utils/RasLink-build/common/nodenames.service /etc/systemd/system
 cp /usr/src/utils/RasLink-build/common/timesync.service /etc/systemd/system
 systemctl daemon-reload

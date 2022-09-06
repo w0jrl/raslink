@@ -1,3 +1,11 @@
+## style(install)(system-update): Make formatting of directory paths consistent
+>Wed Sep 7 12:36:43 2022 -0600
+
+>Author: Jeremy Lincicome W0JRL <admin@jlappliedtechnologies.com>
+
+Signed-off-by: Jeremy Lincicome W0JRL <admin@jlappliedtechnologies.com>
+
+
 ## chore(RasLink-build/common/update-fail2ban.sh): Add Python3 support
 >Tue Aug 2 04:11:55 2022 -0600
 

@@ -47,12 +47,12 @@ echo "Installing default sound files..."
 cp -a /usr/src/utils/src/sounds/* /var/lib/asterisk/sounds
 echo "Done"
 echo "Setting up startup scripts and system-update..."
-(cp /usr/src/utils/RasLink-build/common/rc.pttnodelist /usr/src/utils/RasLink-build/common/rc.aslnodelist /usr/local/bin/.;chmod +x /usr/local/bin/rc.*nodelist)
+(cp /usr/src/utils/RasLink-build/common/rc.pttnodelist /usr/src/utils/RasLink-build/common/rc.aslnodelist /usr/local/bin;chmod +x /usr/local/bin/rc.*nodelist)
 (cp /usr/src/utils/RasLink-build/common/rc.nodenames /usr/local/bin/rc.nodenames;chmod +x /usr/local/bin/rc.nodenames)
 (cp /usr/src/utils/RasLink-build/common/timesync.hourly /usr/local/bin/timesync.hourly;chmod +x /usr/local/bin/timesync.hourly)
 (cp /usr/src/utils/RasLink-build/common/timesync.startup /usr/local/bin/timesync.startup;chmod +x /usr/local/bin/timesync.startup)
 cp /usr/src/utils/RasLink-build/common/asterisk.service /etc/systemd/system
-cp /usr/src/utils/RasLink-build/common/pttnodelist.service /usr/src/utils/RasLink-build/common/aslnodelist.service /etc/systemd/system/.
+cp /usr/src/utils/RasLink-build/common/pttnodelist.service /usr/src/utils/RasLink-build/common/aslnodelist.service /etc/systemd/system
 cp /usr/src/utils/RasLink-build/common/nodenames.service /etc/systemd/system
 cp /usr/src/utils/RasLink-build/common/timesync.service /etc/systemd/system
 systemctl daemon-reload
