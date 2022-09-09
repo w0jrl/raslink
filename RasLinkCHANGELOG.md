@@ -1,5 +1,15 @@
+## bugfix(docs)(rpt.conf): Comment out duplex documentation properly
+>Thu Jul 13 01:07:26 2023 -0600
+
+>Author: Jeremy Lincicome W0JRL <admin@jlappliedtechnologies.com>
+
+This wasn't a sho stopper, but it ment that Asterisk had to spend a second figuring out how to ignore it.
+
+Signed-off-by: Jeremy Lincicome W0JRL <admin@jlappliedtechnologies.com>
+
+
 ## style(install)(system-update): Make formatting of directory paths consistent
->Wed Sep 7 12:36:43 2022 -0600
+>Thu Jul 13 01:06:45 2023 -0600
 
 >Author: Jeremy Lincicome W0JRL <admin@jlappliedtechnologies.com>
 
@@ -7,15 +17,15 @@ Signed-off-by: Jeremy Lincicome W0JRL <admin@jlappliedtechnologies.com>
 
 
 ## chore(RasLink-build/common/update-fail2ban.sh): Add Python3 support
->Tue Aug 2 04:11:55 2022 -0600
+>Thu Jul 13 01:05:40 2023 -0600
 
 >Author: Jeremy Lincicome W0JRL <admin@jlappliedtechnologies.com>
 
 Signed-off-by: Jeremy Lincicome W0JRL <admin@jlappliedtechnologies.com>
 
 
-## bugfix(services): Make sure Asterisk, Pulseaudio and Osspd restart on failure
->Mon Aug 1 18:09:58 2022 -0600
+## bugfix(services): Make sure Asterisk, Pulseaudio, Osspd and Timesync restart on failure
+>Fri Jan 6 16:23:53 2023 -0700
 
 >Author: Jeremy Lincicome W0JRL <admin@jlappliedtechnologies.com>
 

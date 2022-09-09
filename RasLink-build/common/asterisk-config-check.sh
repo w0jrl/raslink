@@ -186,5 +186,6 @@ if [[ $aslnodes = "0" ]]; then
      ; Uncomment this to use the AllStarLink node list for this node.' {} +
 fi
 sed -i 's/nodes \=/extnodes =/; s/extext.* \=/extnodes =/' ./rpt*
+sed -i 's/.*Set to 1 if configuring a half-duplex RF link to a repeater\./     \; Set to 1 if configuring a half-duplex RF link to a repeater./' ./rpt*
 echo -e "Done.\n"
 exit 0
