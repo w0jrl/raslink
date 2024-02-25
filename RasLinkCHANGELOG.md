@@ -1,3 +1,16 @@
+## chore: Remove AllStar-build
+>Sat May 18 12:40:15 2024 -0600
+
+>Author: Jeremy Lincicome (W0JRL) <admin@jlappliedtechnologies.com>
+
+`AllStar-build` was a symlink to `RasLink-build`.
+The link was used to ensure that stage 1 of `system-update`
+would work properly in older builds.
+The link hasn't been used in any update scripts in a long time
+
+Signed-off-by: Jeremy Lincicome (W0JRL) <admin@jlappliedtechnologies.com>
+
+
 ## bugfix(docs)(rpt.conf): Comment out duplex documentation properly
 >Thu Jul 13 01:07:26 2023 -0600
 
