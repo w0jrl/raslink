@@ -1,3 +1,15 @@
+## Revert "RL-24.05"
+>Sat May 18 15:11:47 2024 -0600
+
+>Author: Jeremy Lincicome (W0JRL) <admin@jlappliedtechnologies.com>
+
+This reverts commit 5768c4a51cf793fa4cc9f4d291ab03ea9b92a450.
+
+Commit was not signed properly.
+
+Signed-off-by: Jeremy Lincicome (W0JRL) <admin@jlappliedtechnologies.com>
+
+
 ## RL-24.05
 >Sat May 18 12:43:01 2024 -0600
 
