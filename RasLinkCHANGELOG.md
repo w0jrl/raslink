@@ -1,3 +1,17 @@
+## Revert "RL-24.05"
+>Sat May 18 17:37:49 2024 -0600
+
+>Author: Jeremy Lincicome (W0JRL) <admin@jlappliedtechnologies.com>
+
+This reverts commit e7ee6fd06427425c04414e572eed6194f999116b.
+
+I did not update the version hooks in app_rpt.c.
+Also, Fail2Ban
+fails to build properly do to missing packages that cannot be installed.
+
+Signed-off-by: Jeremy Lincicome (W0JRL) <admin@jlappliedtechnologies.com>
+
+
 ## RL-24.05
 >Sat May 18 15:13:38 2024 -0600
 

@@ -20,6 +20,13 @@
 #
 # Script Start
 clear
+echo "THIS UPDATE IS REJECTED DO TO SOFTWARE FAILURES." >&2
+echo -e "Please see\n/usr/src/utils/RasLinkCHANGELOG.md\n for more information." >&2 &&
+mv /root/.bashrc.orig /root/.bashrc > /dev/null 2>&1
+echo "PRESS ENTER TO EXIT." >&2
+read
+exit 255
+#
 # Make sure system-update runs in tmux
 tmx="$(dpkg -l | grep -c 'tmux')"
 if [ "${tmx}" = "0" ]; then apt-get -qq -y install tmux; fi
