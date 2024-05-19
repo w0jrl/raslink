@@ -23,6 +23,7 @@ clear
 echo "THIS UPDATE IS REJECTED DO TO SOFTWARE FAILURES." >&2
 echo -e "Please see\n/usr/src/utils/RasLinkCHANGELOG.md\n for more information." >&2 &&
 mv /root/.bashrc.orig /root/.bashrc > /dev/null 2>&1
+systemctl enable --now pulseaudio.service osspd.service asterisk.service nodenames.service pttnodelist.service aslnodelist.service &>/dev/null
 echo "PRESS ENTER TO EXIT." >&2
 read
 exit 255

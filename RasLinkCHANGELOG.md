@@ -1,3 +1,13 @@
+## chore: Make sure services are restarted after exiting the failure prompt
+>Sat May 18 18:13:36 2024 -0600
+
+>Author: Jeremy Lincicome (W0JRL) <admin@jlappliedtechnologies.com>
+
+This is related to the revert of RL-24.05.
+
+Signed-off-by: Jeremy Lincicome (W0JRL) <admin@jlappliedtechnologies.com>
+
+
 ## Revert "RL-24.05"
 >Sat May 18 17:37:49 2024 -0600
 
