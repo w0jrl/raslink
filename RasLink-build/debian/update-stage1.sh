@@ -1,7 +1,7 @@
 #!/bin/bash
 # update-stage1.sh: Update the system
 # Stage One
-#   Copyright (C) 2016-2022  Jeremy Lincicome W0JRL
+#   Copyright (C) 2016-2022, 2024  Jeremy Lincicome W0JRL
 #   <https://jlappliedtechnologies.com>  <admin@jlappliedtechnologies.com>
 #
 #   This file is part of RasLink.

@@ -16,4 +16,4 @@ You should have received a copy of the GNU General Public License
 along with RasLink.  If not, see <http://www.gnu.org/licenses/>.
 
 Some components licensed under GPL version 2.
-Please see `src/asterisk/LICENSE` and `src/asterisk/LICENSE_AllStarLink` for more information.
+Please see `src/asterisk/LICENSE` for more information.

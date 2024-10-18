@@ -1,6 +1,6 @@
 #!/bin/bash
 # release-upgrade: Upgrade RasLink servers to the next stable Debian/Raspbian version
-#   Copyright (C) 2016-2022  Jeremy Lincicome W0JRL
+#   Copyright (C) 2016-2022, 2024  Jeremy Lincicome W0JRL
 #   <https://jlappliedtechnologies.com>  <admin@jlappliedtechnologies.com>
 #
 #   This file is part of RasLink.

@@ -1,6 +1,6 @@
 #!/bin/bash
 # patch-asterisk.sh: Add RasLink customizations to Asterisk
-#   Copyright (C) 2016-2022  Jeremy Lincicome W0JRL
+#   Copyright (C) 2016-2022, 2024  Jeremy Lincicome W0JRL
 #   <https://jlappliedtechnologies.com>  <admin@jlappliedtechnologies.com>
 #
 #   This file is part of RasLink.
@@ -28,7 +28,7 @@ sed -i '/ \*  version/c\ \*  version 22.04 04\/01\/2022' ./apps/app_rpt.c
 sed -i '/static  char \*tdesc \= "Radio Repeater \/ Remote Base  version/c\static  char \*tdesc \= "Radio Repeater \/ Remote Base  version 22.04 04\/01\/2022";' ./apps/app_rpt.c
 sed -i '/ASTERISK_FILE_VERSION(__FILE__, \"\$Revision/c\ASTERISK_FILE_VERSION\(__FILE__\, \"\$Revision 20220401\"\)' ./apps/app_rpt.c
 #sed -i '/note ported by Michael Zingman, N4IRR/a\
-# \* \\note modified by Jeremy Lincicome W0JRL' ./apps/app_rpt.c
+# \* \\note modified by Jeremy Lincicome, W0JRL' ./apps/app_rpt.c
 # Change TX enabled message
 sed -i 's/"RPTENA"/"TXENA"/' ./apps/app_rpt.c
 # Make EchoLink call signs use normal characters

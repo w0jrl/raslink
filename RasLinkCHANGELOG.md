@@ -1,12 +1,20 @@
+## license(*): Update information
+>Fri Oct 18 01:28:21 2024 -0600
+
+>Author: Jeremy Lincicome (W0JRL) <admin@jlappliedtechnologies.com>
+
+Signed-off-by: Jeremy Lincicome (W0JRL) <admin@jlappliedtechnologies.com>
+
+
 ## distro: Support Debian Buster
->Fri May 24 11:19:42 2024 -0600
+>Fri Oct 18 01:23:25 2024 -0600
 
 >Author: Jeremy Lincicome W0JRL <admin@jlappliedtechnologies.com>
 
 * Update required packages
 * Drop support for Jessie
 
-Signed-off-by: Jeremy Lincicome (W0JRL) <jlincicome@jlappliedtechnologies.com>
+Signed-off-by: Jeremy Lincicome (W0JRL) <admin@jlappliedtechnologies.com>
 
 
 ## style(system-update): Fix spelling error in failure prompt

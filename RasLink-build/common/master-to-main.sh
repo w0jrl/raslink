@@ -1,7 +1,7 @@
 #!/bin/bash
 # master-to-main.sh: Rename the master branch to main,
 # and update the tracking URL
-#   Copyright (C) 2016-2022  Jeremy Lincicome W0JRL
+#   Copyright (C) 2016-2022, 2024  Jeremy Lincicome W0JRL
 #   <https://jlappliedtechnologies.com>  <admin@jlappliedtechnologies.com>
 #
 #   This file is part of RasLink.

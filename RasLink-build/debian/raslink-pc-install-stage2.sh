@@ -1,6 +1,6 @@
 ﻿#!/bin/bash
 # raslink-pc-install-stage2.sh: Complete the RasLink install on Debian
-#   Copyright (C) 2016-2022  Jeremy Lincicome W0JRL
+#   Copyright (C) 2016-2022, 2024  Jeremy Lincicome W0JRL
 #   <https://jlappliedtechnologies.com>  <admin@jlappliedtechnologies.com>
 #
 #   This file is part of RasLink.
